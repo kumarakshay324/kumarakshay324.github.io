@@ -1,0 +1,95 @@
+	<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>WELCOME - AKSHAY KUMAR</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header Wrapper -->
+			<div class="wrapper style1">
+			
+			<!-- Header -->
+				<div id="header">
+					<div class="container">
+							
+						<!-- Logo -->
+							<h1><a href="#" id="logo">Solarize</a></h1>
+						
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li class="active"><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf">RESUME</a></li>
+									<li class="active"><a href="index.html">WELCOME</a></li>
+									<li>
+										<a href="">NAVIGATE</a>
+										<ul>
+											<li><a href="portfolio.html">PORTFOLIO</a></li>
+											<li><a href="http://www.zine.co.in" target="_blank">ZINE RESEARCH GROUP</a></li>
+											<li><a href="posts.html">POSTS</a></li>
+											<li><a href="contact.html">CONTACT</a></li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+	
+					</div>
+				</div>
+				
+			<!-- Banner -->
+				<div id="banner">
+					<section class="container">
+						<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+						<span style="font-size:25px;color:black" >GRADUATE STUDENT | <b>ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+						<span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+						</section>
+				</div>
+
+			</div>				
+			<!-- Patents -->
+			<div class="wrapper style5">
+				<h2 style="font-size:50px"> RAIL ALERT SYSTEM BASED ON GEOFENCING</h2>
+			<p style="text-align:center;margin:3%;font-size:30px">SEPTEMBER-OCTOBER 2015 | ZINE LAB | MNIT JAIPUR</p>
+			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
+			<p style="text-align:left;margin:3%">Building a system capable of designing a virtual perimeter-geofence around unmanned rail-road crossovers to prevent mishaps  </p>
+
+			<p style="text-align:left;margin:3%"> <b>RESEARCH ASPECTS</b></p> 
+<p style="text-align:left;margin:3%"> <b>•</b> Two on-board GPS to ascertain the correct current location of the moving vehicle<br><b>•</b> Option to build geofence using co-ordinates that are either pre-fed or dynamically updated over the internet, for all the rail-road crossovers in the country<br><b>•</b> Low power bluetooth supported system for instant update on new geofences  <p style="text-align:center">	<img src="images/geofence/d.jpg" style="width:852px;height:453px;margin-left:2%"></img> 			<img src="images/geofence/c.jpg" style="width:661px;height:353px;margin-left:2%"></img> 
+</p>
+
+			<p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
+			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> The system was designed to be mounted in vehicles and could initiate a series of warnings if in case the vehicle moves nearby any rail-road crossover. The system helped avert any inappropriate attempt at crossing the junction when there are chances of a train to cross at the same time. The setup drew several layers of concentric circles/polygons that served as multiple levels of perimeter breach. The on-board GPS from the vehicle checked for such breaches and initiated control measures depending upon the intensity of breach. The corrective measures included verbal warning, speed reduction and automatic vehicle lockdown among others.
+
+
+
+
+			<p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
+			<p style="text-align:left;margin:3%"> <b>•</b> &nbsp;&nbsp;Published a patent for the innovative technology<br>
+			<b>•</b>&nbsp;&nbsp; The system current is being implemented into use by the <b>North-Eastern Railways, a Government of India undertaking. </b></p>
+
+			<p style="text-align:left;margin:3%"> <b>GALLERY</b></p>
+			<img src="images/geofence/a.jpg" style="width:420px;height:300px;margin-left:2%;"></img>
+			<img src="images/geofence/b.jpg" style="width:420px;height:300px;margin-left:2%"></img>
+
+			<br>
+			<br><br>
+			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
+			<p style="margin-bottom:0;padding-bottom:0;"><center><hr>Copyright @Akshay Kumar | Last Updated on 30/12/2017</center></p>
+			</div>
+	</body>
+</html>	

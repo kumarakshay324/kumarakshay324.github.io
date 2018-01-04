@@ -1,0 +1,111 @@
+	<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>WELCOME - AKSHAY KUMAR</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header Wrapper -->
+			<div class="wrapper style1">
+			
+			<!-- Header -->
+				<div id="header">
+					<div class="container">
+							
+						<!-- Logo -->
+							<h1><a href="#" id="logo">Solarize</a></h1>
+						
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li class="active"><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf">RESUME</a></li>
+									<li class="active"><a href="index.html">WELCOME</a></li>
+									<li>
+										<a href="">NAVIGATE</a>
+										<ul>
+											<li><a href="portfolio.html">PORTFOLIO</a></li>
+											<li><a href="http://www.zine.co.in" target="_blank">ZINE RESEARCH GROUP</a></li>
+											<li><a href="posts.html">POSTS</a></li>
+											<li><a href="contact.html">CONTACT</a></li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+	
+					</div>
+				</div>
+				
+			<!-- Banner -->
+				<div id="banner">
+					<section class="container">
+						<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+						<span style="font-size:25px;color:black" >GRADUATE STUDENT | <b>ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+						<span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+						</section>
+				</div>
+
+			</div>				
+			<!-- Patents -->
+			<div class="wrapper style5">
+				<h2 style="font-size:50px" > GRIDTECH '15 </h2>
+			<p style="text-align:center;margin:3%;font-size:30px">JANUARY-APRIL 2016 | ZINE LAB | MNIT JAIPUR | <a href="http://ieeexplore.ieee.org/document/8068734/" target="_blank"><i>Publication Link</i></a></p> 
+			<p style="text-align:left;margin:3%"><b>ABOUT THE EVENT</b></p>
+			<p style="text-align:justify;margin-left:3%;margin-right:3%;">The event <b>GRIDTECH</b>, is an international technology exhibition event organised by Power Grid Corporation Of India Limited(PGCIL), Government Of India. It also features a Student's Pavallion section where students were supposed
+			to present their innovation that could help solve the problems related generation, transmission, distribution and other needs of today's electricity market.</p>
+			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
+			<p style="text-align:left;margin:3%">Building a robotic system for high-voltage power transmission line monitoring, maintenance and repair in live condition.</p>
+			
+			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>RESEARCH ASPECTS</b></p>
+			<p style="text-align:left;margin:3%"> <b>•</b> &nbsp;&nbsp;Powered by the on-board computation power of a Raspberry Pi, the system fed sensor data to a URL which was retrieved at the control station for monitoring <br>
+			<b>•</b>&nbsp;&nbsp;&nbsp;HILS model signals were transmitted to the remotely operating robotic setup via Simulink using the internal MATLAB web browser being triggered multiple times. It was slightly slow but good enough for proof-of-conccept demonstration </br>
+			<b>•</b>&nbsp;&nbsp;&nbsp;The CAD model of the robot assembly was imported from Solidworks to Simulink to interface with the controller signals reaching MATLAB via Serial communication <br> 
+<b>•</b>&nbsp;&nbsp; The input signals from the controller simultaneously manipulated the Simulink simulated model as well the real-life model operating remotely </p>
+
+
+
+			<p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
+			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;">The system was designed to traverse through the power transmission lines in live condition. This standalone system was equipped with numerous on-board sensors that measure various parameters that it needs to 
+			  measure in order to ascertain the condition of the power line. The system had on-board cameras, current sensors, voltage sensors, magnetic field sensor, temperature sensor, smoke sensor and laser detection sensors. All these supplied real-time data about the condition of the transmission line while the system covers the entire length of the line. The system was controlled over the internet via a controller that provided real-time animation and camera feed of the motion.<br><br>The system was capable of traversing through multiple towers owing to its modular retractable design. It used the Hardware in the Loop Simulation(HILS) setup to animate the real-time functioning of the remotely operating system, thereby giving the control room operator, a bird's eye view of the same. 
+</p>
+
+
+			<p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
+			<p style="text-align:left;margin:3%"> <b>•</b> &nbsp;&nbsp;Won the first prize for our innovative robotic system<br>
+			<b>•</b>&nbsp;&nbsp;&nbsp;Patent Published for the innovative setup</br>
+			<b>•</b>&nbsp;&nbsp;&nbsp;Invitation from various power corporations inlcuding Central Power Research Insititute(CPRI) for testing of our robotic system</p>
+			<p style="text-align:left;margin:3%"> <b>GALLERY</b></p>
+			<img src="images/gridtech/f.jpg" style="width:439px;height:247px;margin-left:2%;"></img>
+			<img src="images/gridtech/g.jpg" style="width:439px;height:247px;margin-left:2%"></img>
+			<img src="images/gridtech/h.jpg" style="width:439px;height:247px;margin-left:2%"></img>
+			<br><br>	
+
+			<img src="images/gridtech/a.jpg" style="width:439px;height:247px;margin-left:2%;"></img>
+			<img src="images/gridtech/b.jpg" style="width:439px;height:247px;margin-left:2%"></img>
+			<img src="images/gridtech/c.jpg" style="width:439px;height:247px;margin-left:2%"></img>
+			
+	<!--		<img src="images/gridtech/d.jpg" style="width:293px;height:165px;margin-left:2%"></img> -->
+			<br>
+			<br><br>
+			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
+			<p style="margin-bottom:0;padding-bottom:0;"><center>Copyright @Akshay Kumar | Last Updated on 12/30/2017</center></p>
+			</div>
+
+			
+	</body>
+</html>	
