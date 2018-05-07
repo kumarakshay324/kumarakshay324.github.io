@@ -62,58 +62,58 @@
 
 			</div>
 				
-			<!-- Patents -->
 			<div class="wrapper style5">
-				<h2 style="font-size:50px"> HAPTIC REHABILITATION DEVICE</h2>
-			<p style="text-align:center;margin:3%;font-size:30px">SEPTEMBER - DECEMBER 2017 | CIBR LAB | WPI | Prof. Zhi Jane Li</p>
-			<p style="text-align:center;font-size:25px"><a href="images/haptic/project_report.pdf">LINK TO COMPLETE PROJECT REPORT</a></p>
+				<h2 style="font-size:50px"> FUZZY LOGIC CONTROLLER </h2>
+			<p style="text-align:center;margin:3%;font-size:30px">FEBRUARY-APRIL 2018 </p>
+			<p style="text-align:center;font-size:25px"><a href="images/fuzzy/fuzzy.pdf">LINK TO PROJECT REPORT</a></p>
 
 			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
-			<p style="text-align:left;margin:3%">To build two robotic manipulators that work as end-effector type rehabilitation device capable of aiding upper body stroke patients to regain motion <br><br><br> <b>I specifically worked on DMP based formulation of the robot path and conversion of the same from task-space to joint space trajectory </b></p>
+			<p style="text-align:left;margin:3%"> <b> Design of a Fuzzy Logic Controller (FLC) for mobile robot navigation in an unknown, static or dynamic envinronments using the Tracking FLC and Obstacle Avoidance FLC and implementation of the same on TurtleBot2 robot. </b> 
 
 			<p style="text-align:left;margin:3%"> <b>RESEARCH ASPECTS</b></p>
-			<p style="text-align:left;margin:3%"><b>•</b> &nbsp;&nbsp;Vibrational feedback enabled end-effector gripper for haptic intimation<br><b>•</b> &nbsp;&nbsp;Motion Capture was used to record regular exercises<br><b>•</b>&nbsp;&nbsp; Dynamic Movement Primitives were used to formulate the trajectory for generalization<br><b>•</b>&nbsp;&nbsp;&nbsp;Motion was interfaced with a two-paddle Pong game to make the exercises more interactive  <br><b>•</b> &nbsp;&nbsp;Excercise action trajectories for the wrist for shoulder abduction/rotation and elbow flexion were translated on to the rehabilation devices<!--<a href="images/ugv/ugv_report.pdf">LINK TO COMPLETE PROJECT REPORT<b></a>-->
-					<p style="text-align:center">	<img src="images/haptic/flowchart.png" style="width:840px;height:523px;margin-left:2%;"></img> </p>	
+			<p style="text-align:left;margin:3%"><b>•</b> &nbsp;&nbsp;Accessing stereovision point-cloud data and laserscan data <br><b>•</b> &nbsp;&nbsp;Defining membership functions for Obstacle Avoidance FLC and Tracking FLC inputs - distance between the robot and the target, distance between the robot and obstacle and the angular presence of the same<br><b>•</b>&nbsp;&nbsp;&nbsp;Fuzzy Inference System design and defuzzification techniques <br><b>•</b> &nbsp;&nbsp;Design of If-Else fuzzy rules for OAFLC and TFLC    
 
+				<!--<a href="images/ugv/ugv_report.pdf">LINK TO COMPLETE PROJECT REPORT<b></a>-->
+					<p style="text-align:center">	<img src="images/fuzzy/fis.png" style="width:840*0.6px;height:523*0.6px;margin-left:2%;"></img> </p>	
+				<p style="text-align:center;font-size:20px"> <b>Fuzzy Inference System - Controller Design </b></p>
 
+			<p style="text-align:center">	<img src="images/fuzzy/mem.png" style="width:378px;height:235px;margin-left:2%;"></img> </p>	
+				<p style="text-align:center;font-size:20px"> <b>Membership Function for TFLC - Distance between robot and target  </b></p>
 
 
 			<p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
-			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> The model was made large enough to cover considerable 3D space for each exercise to be possible. Electronics used in the project included Nucleo 144 board for processing, 12-bit absolute magnetic encoder to sense joint position and velocity, 10 kgs payload load-cells at each joints to measure the torque and 22 kg-cm servo motors. Two motors were used at each joint to provide extra torque that could actually carry the stroke patient's arm around. <br><br>
+			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> 
 
-Software part of the project, basically has two modes of operation for arms based on the stage of recovery. First is user control mode, i.e with compliant control in this mode the patient can play the pong game , this mode can be used after significant recovery is done. Second is follow path mode, in which the arm is provided with predefined path, so it basically moves the patient's arm so the joints can get some recovery this mode can be used in the early stage of recovery. This uses the DMP generated trajectories.
+The Takagi-Sugeno-Kang fuzzy inference technique and the Centroid defuzzification methods are used to implement our proposed controller
 
-The other sections included developing Compliant Controller, a gravity compensation system and implementing the vibrational feedback in the in-house developed game.
+				<br><br>
+The TSK approach computes the output of the If-Else rules as a linear expression made up of weighted conditional components. Elaborately, the FIS
+setup processes all If-Else conditional statements with the weights generated on the basis of the membership functions
+and computes a new weight for execution of the condition<br><br>
 
-					<p style="text-align:center;font-size:25px"><img src="images/haptic/traj.png" style="width:1295px;height:226px;margin-left:2%;"></img><br><b> Trajectory generation pipeline </b></p>	
+The Centroid defuzzification process computes a normalized weight distribution for conditions and thereafter their weighted sum to generate final numerical output values<br><br>
 
+The Gazebo simulation environment was used with a customized design of the world cluttered with obstacles<br><br>
 
+Weighted behavior fusion for both FLCs to obtain final robot commands.
+
+					<p style="text-align:center;font-size:25px"><img src="images/fuzzy/fusion.jpeg" style="width:971*0.7px;height:571*0.7px;margin-left:2%;"></img><br><b> Behavior Fusion  </b></p>	
 
 			<p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
 			
 			<p style="text-align:left;margin:3%">
-			<b>•</b>&nbsp;&nbsp; Though slightly erroneous, satisfactory motion capture data was extracted for several upper body rehabilitation exercises </b><br>
-			<b>•</b> &nbsp; DMP was successfully implemented in simulation as well as on the real robot<br>
-			<b>•</b>&nbsp;&nbsp; Compliance control as well as gravity compensation was achieved </b><br>
-			<b>•</b>&nbsp;&nbsp; Pong game with haptic feedback was achieved as well </b><br> 
-			<b>•</b>&nbsp;&nbsp; Non-constrained IK solvers, low communication speed, inefficient PID tuning and noisy sensors are the prominent current limitations among others </b> 
-			<b>•</b>&nbsp;&nbsp; Proof-of-concept working model was successfully achieved </b><br> </p>
+			<b>•</b>&nbsp;&nbsp; The robot was successfully able to navigate through the environment and avoid obstacles enroute reaching the target.  </b><br>
 
-			<p style="text-align:center;font-size:25px"><img src="images/haptic/akshay.PNG" style="width:1375px;height:493px;margin-left:2%;"></img><br><br><b> Final trajectory in joint-space </b></p>	
+			<b>•</b> &nbsp; The controller was tested on several terminal states as well as environments<br>
 
 
 			<br>
-		<p style="font-size:25px"><iframe width="640" height="360" src="https://www.youtube.com/embed/LuIrgPoT_I8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<iframe width="640" height="360" src="https://www.youtube.com/embed/Xygv5b_1DZs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-<br><br><b>Left Arm Trajectory simulation | Right Arm Trajectory simulation  </b> <br><br><br> <iframe width="1280" height="720" src="https://www.youtube.com/embed/_7Q-fqpDKSM" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> <br><br> <b>Final Working model </b></p>
+		<p style="font-size:35px;align-self: center;"> <iframe width="768" height="432" src="https://www.youtube.com/embed/GUEN4Orpb2A?list=UUCk5wHNDD9jFbkOJnkb4Bag" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
+<br>
+  	<center>		<iframe width="768" height="432" src="https://www.youtube.com/embed/4fj4q-swg0U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
 
-			<p style="text-align:left;margin:3%"> <b>GALLERY</b></p>
-			<img src="images/haptic/ldmpx.png" style="width:800px;height:450px;margin-left:2%;"></img>
-			<img src="images/haptic/ldmpx.png" style="width:800px;height:450px;margin-left:2%"></img>
-			<img src="images/haptic/ldmpx.png" style="width:800px;height:450px;margin-left:2%"></img> 
-			<img src="images/haptic/rdmpx.png" style="width:800px;height:450px;margin-left:2%"></img>
-			<img src="images/haptic/rdmpy.png" style="width:800px;height:450px;margin-left:2%"></img> 
-			<img src="images/haptic/rdmpz.png" style="width:800px;height:450px;margin-left:2%"></img>
+			<b>Video Demonstrations of implemented FLC </b></p>
+
 
 			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
 			<p style="margin-bottom:0;padding-bottom:0;"><hr><center>Copyright @Akshay Kumar | Last Updated on 12/30/2017</center></p>
