@@ -1,0 +1,123 @@
+	<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>WELCOME - AKSHAY KUMAR</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header Wrapper -->
+			<div class="wrapper style1">
+			
+			<!-- Header -->
+				<div id="header">
+					<div class="container">
+							
+						<!-- Logo -->
+							<h1><a href="#" id="logo">Solarize</a></h1>
+						
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li class="active"><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf">RESUME</a></li>
+									<li class="active"><a href="index.html">WELCOME</a></li>
+									<li>
+										<a href="">NAVIGATE</a>
+										<ul>
+											<li><a href="portfolio.html">PORTFOLIO</a></li>
+											<li><a href="http://www.zine.co.in" target="_blank">ZINE RESEARCH GROUP</a></li>
+											<li><a href="posts.html">POSTS</a></li>
+											<li><a href="contact.html">CONTACT</a></li>
+										</ul>
+									</li>
+								</ul>
+							</nav>
+	
+					</div>
+				</div>
+				
+			<!-- Banner -->
+				<div id="banner">
+					<section class="container">
+						<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+						<span style="font-size:25px;color:black" >GRADUATE STUDENT | <b>ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+						<span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+						</section>
+				</div>
+
+			</div>
+				
+			<!-- Patents -->
+			<div class="wrapper style5">
+				<h2 style="font-size:50px"> BAXTER KINEMATICS AND DYNAMICS LIBRARY - SOFTWARE PACKAGE</h2>
+			<p style="text-align:center;margin:3%;font-size:30px">FEBRUARY - APRIL 2017 | Prof. Gregory Fischer</p>
+			<p style="text-align:center;font-size:25px"><a href="images/mykdl/baxter-kdl-project.pdf">LINK TO COMPLETE PROJECT REPORT</a></p>
+
+			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
+			<p style="text-align:left;margin:3%">To develop a complete Kinematics and Dynamics Library for the 7-DOF arm of the Baxter robot. The libray includes solutions to Forward and Inverse Position and Velocity Kinematics and the M, C and G matrices required to build the dynamical models of manipulator arms along with workspace analysis and building blocks for null-space optimization<br><br><br> <b>I worked on Cyclic Coordinate Descent Inverse Kinematics Solution for the robot and computation of the Mass, Coriolis Effect and Gravity matrix via the Euler-Lagrangian methodology using the Uicker-Kahn formulation as well as the standard joint-angular velocity formulation </b></p>
+
+			<p style="text-align:left;margin:3%"> <b>RESEARCH ASPECTS</b></p>
+			<p style="text-align:left;margin:3%"><b>•</b> &nbsp;&nbsp;Real-time feasible Inverse Kinematics solutions satisfying joint-angle limits<br><b>•</b> &nbsp;&nbsp;Developmemt of a library with direct interface to the Baxter robot <br><b>•</b>&nbsp;&nbsp; Determination of the almost "half-a-million" coefficients of the M, C and G matrices<br>
+
+
+<!-- 				<b>•</b>&nbsp;&nbsp;&nbsp;Computation of <br><b>•</b> &nbsp;&nbsp;Excercise action trajectories for the wrist for shoulder abduction/rotation and elbow flexion were translated on to the rehabilation devices<!<a href="images/ugv/ugv_report.pdf">LINK TO COMPLETE PROJECT REPORT<b></a>-->
+				<p style="text-align:center">	<img src="images/mykdl/final_flowchart.jpeg" style="width:840px;height:523px;margin-left:2%;"></img> </p>	
+				<p style="text-align:center;font-size:20px"> <b>FLow-Chart showing the modules of the library</b></p>
+
+
+
+			<p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
+			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> The software library was developed in Python 2 with a Object-Oriented setup that has modular sections for  the various applications. The flowchart shown above gives a clear view of the various dependencies within the library and how indvidual modules contribute towards different solutions for the manipulator.  <br><br>
+
+The <b>Jacobian Pseudo-Inverse</b> technique for Inverse Kinematics was desgined with random restarts when it hit any joint limit constraints while looking for a solution.  <br><br>
+
+<b>Cyclic Coordinate Descent</b> algorithm iteratively tries to make the end-effector first converge onto a sphere with radius equaling the distance between the base of the manipulator and the end-effector and thereafter making the same converge onto the target position. However, it only solves for the position and not the orientation of the target pose. <br><br>  
+
+The <b>Euler-Lagrangian</b> method to derive the dynamical model of a robotic manipulator incorporates the computation of Kinetic and Potential energies of the system parameterized by the joint angles, i.e. the orientation of the arm. Thereafter, computation of the Lagrangian and its derivatives with time
+and joint variables results in the required dynamic model.
+
+					<p style="text-align:center;font-size:20px"><img src="images/mykdl/fpk.png" style="width:674px;height:408px;margin-left:2%;"></img><br><b> Forward Position Kinematics - Implementation on real robot model and skeleton model in simulation</b></p>	
+
+
+
+			<p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
+			
+			<p style="text-align:left;margin:3%">
+			<b>•</b>&nbsp;&nbsp; The Forward Position Kinematics solution had very comparative performance with the PyKDL package developed by the makers of Baxter, Rethink Robotics  </b><br>
+			<b>•</b> &nbsp; The Cyclic Coordinate Descent algorithm was able to solve for any given position within ~3 seconds for any random configuration but almost real-time solutions for way-points along a given path  <br>
+			<b>•</b>&nbsp;&nbsp; Pseduo-Inverse IK solutions along a given way-point performed well in real-time </b><br>
+			<b>•</b>&nbsp;&nbsp; The developed library was successfully tested on a skeletal model of the robot arm as well as the actual Baxter robot in Gazebo simulation environment using the standard ROS interface</b><br> 
+
+
+
+			<p style="text-align:left;margin:3%"> <b>VIDEO RESULTS SHOWING IMPLEMENTATIONS</b></p>
+
+	<p style="font-size:25px"><iframe width="640" height="360" src="https://www.youtube.com/embed/Wy0hyKiDvaw?list=UUCk5wHNDD9jFbkOJnkb4Bag" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<iframe width="640" height="360" src="https://www.youtube.com/embed/E54lb_UORLA?list=UUCk5wHNDD9jFbkOJnkb4Bag" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br><br><b>Cyclic Coordinate Descent IK Solution | Pseduo-Inverse IK Solution </b> <br><br><br> 
+
+<iframe width="768" height="434" src="https://www.youtube.com/embed/PPKZ8XThTAk?list=UUCk5wHNDD9jFbkOJnkb4Bag" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe><br><br> <b>IK solution implemented on Baxter in Gazebo simulation </b></p>
+
+
+			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
+			<p style="margin-bottom:0;padding-bottom:0;"><hr><center>Copyright @Akshay Kumar | Last Updated on 12/30/2017</center></p>
+			</div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-CZ8x1CZw9b9A6D7D-50.gif' border='0' alt='free counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=CZ8x1CZw9b9A6D7D'></script></div>
+	</body>
+</html>	
