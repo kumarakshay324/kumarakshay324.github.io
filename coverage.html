@@ -1,5 +1,28 @@
 	<!DOCTYPE HTML>
 
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #f5f5ef;
+  /*border: 1px black;*/
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  width: 30%;
+  position: fixed;
+}
+
+</style>
+</head>
+
 <html>
 	<head>
 		<title>AKSHAY  KUMAR</title>
@@ -24,6 +47,7 @@
 			<div class="wrapper style1">
 			
 			<!-- Header -->
+
 				<div id="header">
 					<div class="container">
 							
@@ -53,26 +77,50 @@
 				</div>
 				
 			<!-- Banner -->
-				<div id="banner">
-					<section class="container">
-						<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
-						<span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
-						<span style="font-size:40px;color:black"> PORTFOLIO </span>
+	<!-- 				<div id="banner">
+						<section class="container">
+							<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+							<span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+							<span style="font-size:40px;color:black"> PORTFOLIO </span>
 
-						</section>
-				</div>
-
+							</section>
+					</div>
+ -->
 			</div>			
 
 			<!-- Introduction -->
-			<div class="wrapper style5" >
-					<!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
-				<br><br>
-				<hr width="50%"><hr width="50%">
-				<br><br>
+			<div class="wrapper style5" align="justify" >
 
-				<h2>COVERAGE PROBLEM IN MOBILE ROBOTICS</h2>
-				<br><br>
+			<br>
+
+			<div class="column">
+				<div class="blog_box" align="justify" >
+					<center>
+					<br>
+					<p style="font-size:20px;">LATEST POSTS</p>
+					</center>
+
+					<a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+					href="slam_intro.html">
+						<p style="margin-right:5%">&#128462 Simulataneous Localization and Mapping - An Introduction</p>
+					</a>
+
+					<a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+					href="mp_intro.html">
+						<p style="margin-right:5%">&#128462 Motion Planning in Robotics - Yet Another Introduction!</p>
+						<br>
+					</a>
+					<br>
+				</div>
+				
+			</div>
+
+			<div class="blog_box" align="justify" >
+					<!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+				<br>
+					<h2 style="font-size:40px">COVERAGE PROBLEM IN MOBILE ROBOTICS</h2>
+				<br>
+
 
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">Mobile robots are very often supposed to move around the deployment area and
 				complete certain tasks in specific locations of the area. Such problems where the robot
@@ -82,11 +130,16 @@
 				is supposed to traverse to the area from any random start point and navigate the area
 				according to the tool and task</p>
 
-				<center><img src="images/coverage/f1.png" style="width:622px;height:390px;margin-left:100px;">
-					<img src="images/coverage/f2.png" style="width:622px;height:390px;margin-left:50px;"></center>
+				<center>
+					<figure>
+						<img src="images/coverage/f1.png" style="width:622px;height:390px;">
+					    <figcaption>Figure 1 - Sample Coverage Area in a WareHouse Map</figcaption>
+					</figure>
 
-				<br><br>
-				<h1 style="text-align:left;margin-left:200px ">Introduction</h1>
+
+					<br><br>
+				</center>
+				<h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
 				<br>
 
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">Mobile robots are the driving force of the warehouses and factories. Such robots are
@@ -110,12 +163,10 @@
 				that has contingency plans and tries to be inclusive of all the possible scenarios that the
 				robot may run into. ​The further sections of the this document cover Robot
 				Localization techniques, Coverage Area Decomposition techniques, Coverage
-				Area Navigation techniques and finally its implementation on the ​WayPoint
-				Robotics’ Vector RMP
-				​using its technologies and ROS support. </p>
+				Area Navigation techniques. </p>
 
 				<br>
-				<h1 style="text-align:left;margin-left:200px ">Robot Localization</h1>
+				<h1 style="text-align:left;margin-left:200px;font-size:20px ">Robot Localization</h1>
 				<br>
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 				The ability of robot to recognize its current positioning in the map is of utmost
@@ -127,6 +178,14 @@
 				assistance in navigation and task completion. <b>​Figure 2</b> shows the general approach to
 				mobile robot localization. <br><br> The techniques for robot localization include:</p> 
 
+				<center>
+					<figure>
+						<img src="images/coverage/f2.png" style="width:622px;height:390px;">
+					    <figcaption>Figure 2 - Mobile Robot Localization</figcaption>
+					</figure>
+
+					<br><br>
+				</center>
 
 				<li style="text-align:left;margin-left:200px "> Probabilistic Techniques  </li>
 				<br>	
@@ -198,7 +257,7 @@
 				determines robot’s motion. It is followed by methods to reach and decompose the
 				arbitrary coverage area into units and reduce the complexity of the task.</p>
 
-				<h1 style="text-align:left;margin-left:200px ">Coverage Area Decomposition Techniques</h1>
+				<h1 style="text-align:left;margin-left:200px;font-size:20px ">Coverage Area Decomposition Techniques</h1>
 				<br>
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 				The coverage area for the task could be any arbitrary section, either continuous or
@@ -207,23 +266,38 @@
 				<br><br> The complex scenarios for coverage areas could be:</p> 
 
 
-				<li style="text-align:left;margin-left:200px "> The area is not a perfect polygon with standard angles on the edges. User inputs
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The area is not a perfect polygon with standard angles on the edges. User inputs
 				using haptic devices and other manual inputs devices or using drawing tools
 				could form very inconsistent edges and angles. A comparative version of
 				standard computationally defined coverage area and a manual-input defined
 				coverage area is shown in ​<b>Figure 3 </b>  </li>
 				<br>	
 
+				<center>
+					<figure>
+						<img src="images/coverage/f3.png" style="width:435px;height:273px;">
+					    <figcaption>Figure 3 - Coverage Area With Irregular Boundaries</figcaption>
+					</figure>
 
-				<li style="text-align:left;margin-left:200px "> The coverage area includes voids in centers and demands robot motion in a way
+					<br><br>
+				</center>
+
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The coverage area includes voids in centers and demands robot motion in a way
 				that the robot should eventually find a way out of the area, doesn’t get stuck in it.
 				An example of such scenario can also be seen in <b>​Figure 4</b> </li>
 				<br>	
 
-				<center><img src="images/coverage/f3.png" style="width:435px;height:273px;margin-left:100px;">
-					<img src="images/coverage/f4.png" style="width:435px;height:273px;margin-left:50px;"></center>
 
-				<li style="text-align:left;margin-left:200px "> The coverage area is discontinuous and distributed all over the map and the
+				<center>
+					<figure>
+						<img src="images/coverage/f4.png" style="width:435px;height:273px;">
+					    <figcaption>Figure 4 - Coverage Area With voids within</figcaption>
+					</figure>
+
+					<br><br>
+				</center>
+
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The coverage area is discontinuous and distributed all over the map and the
 				robot needs to determine the optimal strategy where incorrect sequence of
 				handling the zones could trap the robot. An example of this special problem is
 				shown in <b>Figure 5</b> ​. Here the blue strips are to be painted and the robot starts at
@@ -234,12 +308,28 @@
 				options.</li>
 				<br>	
 
-				<li style="text-align:left;margin-left:200px "> The coverage zones are smaller than the robot footprint and navigation to such
-				zones has only one approach. Such a problem could be seen in ​ <b>Figure 6</b> ​.</li>
-				<br>	
+				<center>
+					<figure>
+						<img src="images/coverage/f5.png" style="width:435px;height:273px;">
+					    <figcaption>Figure 5 - Coverage Area with Discontinuities</figcaption>
+					</figure>
 
-				<center><img src="images/coverage/f5.png" style="width:435px;height:273px;margin-left:100px;">
-					<img src="images/coverage/f6.png" style="width:435px;height:273px;margin-left:50px;"></center>
+					<br><br>
+				</center>
+
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The coverage zones are smaller than the robot footprint and navigation to such
+				zones has only one approach. Such a problem could be seen in ​ <b>Figure 6</b> ​.</li>
+				<br>
+
+				<center>
+					<figure>
+						<img src="images/coverage/f6.png" style="width:435px;height:273px;margin-left:50px;">
+					    <figcaption>Figure 6 - Coverage Area With zones with area less than robot footprint</figcaption>
+					</figure>
+
+					<br><br>
+				</center>
+
 
 
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
@@ -248,7 +338,7 @@
 				individually approachable zones.
 				<br><br> The different mapping techniques include:</p>
 
-				<li style="text-align:left;margin-left:200px "> Metric or Topological maps where the complete area is placed on a 2D
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Metric or Topological maps where the complete area is placed on a 2D
 				coordinate frame and any point in the area is mapped with a particular position in
 				the frame, either using cartesian or polar representation. While Cartesian
 				presentation helps represent discrete points, polar representation helps in
@@ -256,14 +346,14 @@
 				the target and thus aligns with navigation tasks’ necessities</li>
 				<br>				 
 
-				<li style="text-align:left;margin-left:200px "> Grid based maps are where the complete are is divided into several square grids
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Grid based maps are where the complete are is divided into several square grids
 				of predefined size, generally equal to the robot footprint. Since areas need not be
 				perfectly rectangular and thus can’t have finite grids; the smaller sections are
 				represented as a part of the grid with smaller sections of varying granularity that
 				cover all tiny zones.</li>
 				<br>				 
 
-				<li style="text-align:left;margin-left:200px ">Certain maps could also be built to overlay on the standard maps. Such a
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;">Certain maps could also be built to overlay on the standard maps. Such a
 				representation would be having the distances between landmarks as certain
 				nodes on the map while the obstacle free path between them represents a
 				traversable path called an arc. </li>
@@ -276,7 +366,7 @@
 				are proposed to reduce the coverage area into simpler accessible zones.</p>
 
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>Boustrophedon Decomposition</b></p>
-				<li style="text-align:left;margin-left:200px "> Here, the complete map is subdivided into several parallel strips that can be covered
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Here, the complete map is subdivided into several parallel strips that can be covered
 				using the zig-zag motion that covers area equal to the width of the robot footprint. This
 				eases out robot’s motion in each individual strip as it simply supposed to cover each
 				strip once and that zone of the coverage area is worked upon.
@@ -286,14 +376,14 @@
 				<br>				 
 
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>Trapezoidal Decomposition</b></p>
-				<li style="text-align:left;margin-left:200px "> Just like the above decomposition, here we could use trapezoidal shapes to divided the
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Just like the above decomposition, here we could use trapezoidal shapes to divided the
 				coverage area into simpler zones that can be traversed using the zig-zag motion.
 				However, this tends to create several unnecessary smaller sections that could have
 				been essentially merged and used in the above technique.</li>
 				<br>				 
 
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>Rectangular sub-sections with grids of variable granularity for remaining zones of non-standard dimensions - A subclass of Boustrophedon Decomposition</b></p>
-				<li style="text-align:left;margin-left:200px "> As the heading suggest, we try to break the coverage area into large unoccupied with
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> As the heading suggest, we try to break the coverage area into large unoccupied with
 				obstacle zones that can be covered easily by the robot’s sweeping or cyclic motion(to
 				be discussed later). It is tried that such sections’ edges align with the polygonal edges
 				and the broken zones allow traversal with between adjacent ones. There should exist a
@@ -301,13 +391,14 @@
 				<br>				 
 
 				<p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>4. Random zones for random motion</b></p>
-				<li style="text-align:left;margin-left:200px "> This is the easiest technique to be implemented in coverage problems where the map is
+				<li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> This is the easiest technique to be implemented in coverage problems where the map is
 				divided into random zones or shapes larger than the robot footprint and the robot could
 				make random sweeps within each of them. Theoretically, as time tends to infinity(very
 				large time span of operation), all points would have been covered. This technique is the
 				most extravagant one and just a theoretical approach to improve upon.</li>
 				<br>				 
 
+			</div>
 			</div>
 	
 		<!-- Section One -->

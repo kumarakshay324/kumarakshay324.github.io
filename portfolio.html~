@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>WELCOME - AKSHAY KUMAR</title>
+		<title>AKSHAY  KUMAR</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -33,7 +33,9 @@
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
+									<li class="active"><a href="portfolio.html">PORTFOLIO</a></li>									
 									<li class="active"><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf">RESUME</a></li>
+
 									<li class="active"><a href="index.html">WELCOME</a></li>
 									<li>
 										<a href="">NAVIGATE</a>
@@ -91,7 +93,7 @@
 							<p>Haptic feedback enabled End-effector type upper body rehabilitation device for stroke patients</p>
 						</div>						
 					</div>
-<br> <br><br> <hr> 
+<br> <br><br> <hr width="50%"> 
  
 
 					<header class="major">
@@ -172,7 +174,7 @@
 
 					</div>	-->
 					</div>
-					<br><br><hr>
+					<br><br><hr width="50%">
 				</section>
 			</div>
 			
@@ -188,7 +190,7 @@
 				<div id="content" class="container">
 					<section align="left">
 				<li> &nbsp;&nbsp;Kumar, Akshay, et al. "Hardware in the loop based simulation of a robotic system with real time control and animation of working model." 2017 IEEE International Conference on Inventive Systems and Control (ICISC), 2017. <a href="http://ieeexplore.ieee.org/document/8068734/" target="_blank" color="blue"><b>URL</b></a></li>
-										<br><br><hr>
+										<br><br><hr width="50%">
 
 </section>
 				</div>
@@ -211,7 +213,7 @@
 				<li> &nbsp;&nbsp;&nbsp;&nbsp; Robotic Technology for Transmission Line Inspection in Live Condition – <b>Published</b> <a href="http://ipindiaonline.gov.in/patentsearch/PublishedSearch/publishApplicationNumber.aspx?application_number=4YbeFPkZC0QSgWfIH+qlGA==" target="_blank" color="blue"><b>URL</b></a></li>
 					<li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rail Alert Systems- <b>Published </b><a href="http://ipindiaonline.gov.in/patentsearch/PublishedSearch/publishApplicationNumber.aspx?application_number=gCAhwvpxX630GxxigThmIQ==" target="_blank"><b>URL</b></a></li>
 					<li>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ORTHO-DAER: Comprehensive System for Osteoarthritis detection, analysis and rehabilitation based on efficient SEMG signals - <b>Published </b><a href="http://ipindiaonline.gov.in/patentsearch/PublishedSearch/publishApplicationNumber.aspx?application_number=LTK2c7NX27olZEpNMUSZhg==" target="_blank" color="blue"><b>URL</b></a></li>
-					<br><br><hr>
+					<br><br><hr width="50%">
 			
 					</section>
 				</div>
@@ -232,7 +234,7 @@
 					</div> -->
 						<center><img src="images/skills.png" alt="PROGRAMMING SKILLS" style="width:1000px;height:800px;"></center>
 	
-					<br><br><hr>
+					<br><br><hr width="50%">
 
 				</section>
 			</div>
@@ -261,7 +263,7 @@
 						<a href="http://ees.mnit.ac.in" target="_blank"><b>ELECTRICAL ENGINEERING SOCIETY</b></a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href="http://ees.mnit.ac.in" target="_blank"><b>BASANTI - THE ACTROID</b></a>		
 						<br><br><br>
-						<p style="margin-bottom:0;padding-bottom:0;"><hr><center>Copyright @Akshay Kumar | Last Updated on 12/30/2017</center></p>
+						<p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p>
 					</section>
 				</div>
 			</div>
