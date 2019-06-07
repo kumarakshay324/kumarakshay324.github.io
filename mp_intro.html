@@ -1,0 +1,377 @@
+    <!DOCTYPE HTML>
+
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #f5f5ef;
+  /*border: 1px black;*/
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+</style>
+</head>
+
+<html>
+    <head>
+        <title>AKSHAY  KUMAR</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+            
+            <!-- Header -->
+
+                <div id="header">
+                    <div class="container">
+                            
+                        <!-- Logo -->
+                            <h1><a href="#" id="logo">Solarize</a></h1>
+                        
+                        <!-- Nav -->
+                            <nav id="nav">
+                                <ul>
+                                    <li class="active"><a href="portfolio.html">PORTFOLIO</a></li>                                  
+                                    <li class="active"><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf">RESUME</a></li>
+
+                                    <li class="active"><a href="index.html">WELCOME</a></li>
+                                    <li>
+                                        <a href="">NAVIGATE</a>
+                                        <ul>
+                                            <li><a href="portfolio.html">PORTFOLIO</a></li>
+                                            <li><a href="http://www.zine.co.in" target="_blank">ZINE RESEARCH GROUP</a></li>
+                                            <li><a href="posts.html">POSTS</a></li>
+                                            <li><a href="contact.html">CONTACT</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+    
+                    </div>
+                </div>
+                
+            <!-- Banner -->
+    <!--                <div id="banner">
+                        <section class="container">
+                            <span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+                            <span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+                            <span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+                            </section>
+                    </div>
+ -->
+            </div>          
+
+            <!-- Introduction -->
+            <div class="wrapper style5" align="justify" >
+
+            <br>
+
+            <div class="column">
+                <div class="blog_box" align="left" >
+                    <center>
+                    <br>
+                    <p style="font-size:20px;">LATEST POSTS</p>
+                    </center>
+
+                    <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%">&#128462 &emsp; Visual SLAM - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%">&#128462 &emsp; Simulataneous Localization and Mapping - An Introduction</p>
+                        <br>
+                    </a>
+                    <br>
+                </div>
+                
+            </div>
+
+            <div class="blog_box" align="justify" >
+                    <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+                <br>
+                    <h2 style="font-size:40px">MOTION PLANNING IN ROBOTICS</h2>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                <b>Motion Planning</b> in robotics refers to mathematically deriving the seqeunce of robot configuration that allows it to achieve a task. It is the study of algorithms and techniques that determine variation in the physical properties of a robot that consequently determine its path of motion. Motion planning is a broad envelope of algorithms applicable to mobile robots, humanoids, manipulator arms and any non-trivial robot type. 
+
+                <br><br>
+                Apart from different kinds of robots, few other nuances of motion planning includes non-holonomic constraints, multi-robot planning, physically constrained robot planning and high-dimensional planning. While deriving the robot configuration like angular positions of the actuators of position controlled 6DOF robot arm or robot pose (positio and orientation) for a mobile robot, motion planning algorithms are largely dependent upon the robot model, the world around (obstacles, viable motion paths and configurations), robot physical properties and many more.
+
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mp/mp1.gif" style="width:576px;height:324px;">
+                        <figcaption>Figure 1 - Robot Manipulator moving through the green target path </figcaption>
+                    </figure>
+
+
+                    <br><br>
+                </center>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Robotics involves innumerable concepts like motion planning, path planning, robot control and collision detection among others that can be defined as a high-level task or process. However, it is important to define the problem from high-level specifications to low-level machine level descriptions. Motion planning is one of those problem where while at the high level it is making the robot go from a start to an end point, the computational representation would be defining the actuator path at every momemnt, velocity profiling, configuration conversion from task space to actuator space and many more such nuancces. 
+
+                <br><br>
+                MP generally addresses the translations and rotations ignoring the robot dynamics and motion-affecting properties. It is the contol system that implements the desired motion (generated from the motion planning algorithms) considering the physical properties of the robot.
+                
+                <br><br>                 
+                For a task like motion from point A to point B on a robot, a motion planning solution generates a plan, represents it as computationally viable solution, declares conditions for compeletion and qualitative expectations.
+
+                <br><br>
+
+                A robot planning algorithm needs a state-space definition of the robot (basically the different independent variables of a robot) that needs to be defined during the planning, the temporal distrubution of the state-space, initial and final states and the feasibility definition and the optimality conditions. 
+
+                <br><br>
+
+                The general concepts involved in motion planning include <b>geometric representations and transformations of robot state (position, orientation, joint angles), configuration space definitions, sampling-based planners, search-based planners, dynamic motion planning, obstacle avoidance, decision theory and closed-loop online motion planning</b>. Each of these concepts have their own contribution towards handling exceptional planning scenarios or completing more complex definitions of the planning task.
+
+                <br><br>
+                
+                It is important to note that motion planning operates on four broad spectrums - <b>discrete space planning, planning under different constraints, planning in continuous space and planning in uncertainty.</b>
+
+                </p>
+
+                <br>
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Nuances of Motion Planning for Robots</h1>                
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Motion planning is a broad field that is not merely confined to generating kinematic configurations but encapsulates several other smaller problems in robotics along.   
+                </p> 
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Trajectory Planning</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+
+                A trajectory is a time-sequence of desired position, velocity and acceleration(could also extend to jerk) for every robot actuator. During boundary condition checking across timestamps, this may also define velocity profile to ensure smooth motion.
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Planning Under Constraints</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+
+                Planning for robots gets tricky with constraints about kinematic, dynamic or other physial properties. Holonomic constraints (where spatial properties like joint angle limits or end-effector position) are easier to abide by for motion planning algorithms. However, the non-holonomic constraints are anything apart from the constraints on geometric coordinates and could be limits on jerk observed, manipulability index limits or otherwise. 
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Task Based Planning</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+
+                While the basic definition of motion planning is generation of configuration sequences for start to end points, on several occassions there are open-ended tasks that are defined in different terms. <a  href="coverage.html">Coverage problems</a> for robots like vacuum cleaners, warehouse robots, welding robots and force-controlled task executing robots are non-trivial. They often are strategised in terms of intermittent start-end based MP problems that eventually complete the final task.  
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Planning for Non-trivial Robots</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+
+                Planning for redundant robots with extra DOFs or for underwater/zero-gravity robots or unique designs like snake robots or even humanoids is more of a control integrated motion planning task. In such MP problems, it is not possible to defined trajectories or motion profiles without considering the robot stability (dynamic or static), feasibility and optimality of the proposed motion.  
+                </p>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Motion Planning Algorithms</h1>
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                Robots are complex structures with considerable disparities between the mathematical models and the actual hardware. Moreover, there are several uncertainties in the environment that can potentially not be represented in the motion planning problem.
+                <br><br>
+                Thus, there are different approaches to solving for the desired motion of the robot.
+
+                </p> 
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Sampling-based Planning Algorithms</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Sampling-based algorithms deduce the configuration space into huge number of samples and thus breakdownt the complete motion into smaller steps. Paths are constructed between samples that satisfy certain task completion criterion and sequentially the intermittent steps are solved. Conditions on sampling ensure individual optimal steps but do not promise completeness of the task as they solve only at a granular level.
+
+                <br><br>
+                Sampling algorithms are apt for even high-dimensional robot state-space and also suitable for real-time applications. <b>Randomly Growing Rapi Trees(RRT) or PRM(Probabilistic Roadmaps)</b> are the commmon sampling-based algorithms. 
+
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mp/rrt_star.gif" style="width:350;height:250;">
+                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
+                        <!-- <br><br> -->
+                        &emsp;&emsp;
+                        <img src="images/blogs/mp/prm.gif" style="width:250;height:250px;">
+                        <figcaption>RRT* and PRM Algorithms </figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Exact Planning Algorithms</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Certain planning algorithms try to solve for motion planning problems directly. Exact algorithms are thorough in their approach and thus find a solution if it exists, for sure. It computes exact path of motion between any two points (terminal or intermittent) that are supposed to solve a part of the problem. 
+                <br><br>
+
+                <b>Cellular decomposition or visibility graphs</b> are the most common examples of such algorithms. They are however intractable and computationally expensive, thus not really extensible for high-dimensional problems.
+
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mp/cells.gif" style="width:350;height:250;">
+                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
+                        <!-- <br><br> -->
+                        &emsp;&emsp;
+                        <img src="images/blogs/mp/visibilitygraph.png" style="width:220;height:220px;">
+                        <figcaption>Cellular Decomposition and Visibility Graphs </figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Search-based Planning Algorithms</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Search-based algorithms employ general computer-science search algorithms and solve the motion planning task as optimization tasks. Generally, the MP problem is represented as a graph with several grids/lattices and then optimal connections/nodes between the grids that connect the start and desired end points are derived. 
+                <br><br>
+
+                <b>Dijkstra, A* and other A* variants</b> are the most common examples of search-based algorithms. While they are again not apt for high-dimensional solutions, they can be applicable to certain tasks like coverage problems and vehicle planning.
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mp/a_star.gif" style="width:250px;height:250px;">
+                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
+                        <!-- <br><br> -->
+                        &emsp;&emsp;
+                        <img src="images/blogs/mp/djikstra.gif" style="width:250;height:250px;">
+                        <figcaption>A* and Dijkstra Algorithms </figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <br>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Other Planning Algorithms</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                The above-mentioned algorithms are all model-based operations that  need the robot model to determine the feasibility of the algorithm. There has been recent research done in <b>reinforcement learning and other AI technology</b> for motion planning. 
+                <br><br>
+
+                <br>
+
+                </p>
+
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Nuances of Motion Planning</h1>                
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Motion planning is literally all over the place with numerous solutions to a problem, numerous kinds of constraints and limitations and lots of confounding terminology. Advanced robotic systems need to encorporate several of these and thus makes the system too complex to perform reliably.   
+
+                <br><br>
+
+                <li style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                    Algorithms like <b> roadmaps (visibility maps and voronoi maps), cellular decomposition and potential fields </b> are generally applicable to possibly all kinds of mobile robots. The assumption here is generally that the robot is a point in space and the actual 3D model is only used for collision checks that decide the feasibility of the path.
+                </li>
+                <br><br>
+
+
+                <li style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                    Any path for robot motion should ideally be formulated by a set of mathematical equations connecting the start and the end through intermittent points. Computers execute instructions in discrete steps and thus any continuous state mathematical representations are still executed in <b>discrete steps by random sampling (in sampling-based algorithms) </b> or <b>pre-defined steps (search-based cellular decomposition and many more) </b>.
+                </li>
+                <br><br>
+
+
+                <li style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                    <b>Configuration space or C-space</b> is the set of all possible configurations(a representation of the position of every point on the robot, for a rigid body robot) of a robot. For manipulators, the joint angles and posiitons (for revolute and prismatic joints respectively) for all the DOFs are able to successfully represent it in 3D space and for mobile robots, it is the odometry that defines its setup in space.
+
+                <br><br>
+
+                    Motion planning needs the information about a robot's valid C-space (valid in the sense where joint position limits exist due to physical structure or otherwise) before proposing a path for motion. <b>C<sub>free</sub></b> and <b>C<sub>obs</sub></b> represent the obstacle-free and obstacle occupied C-space respectively. 
+
+                </li>
+
+                <br><br>
+
+                <li style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                    The most common high-level tasks for motion planning are <b>coverage, localization, mapping and navigation</b>. There are huge trade-offs made between completeness, optimality, computational expense, control.   
+
+                </li>
+                <br><br>
+
+
+                <li style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                    The formulation of a robot path can be done in joint-space(actuator positions) or task-space(3D world coordinates). While joint-space representations are straighforward, task space representations use <b>homogeneous transformations and pose definitions</b>
+
+                    Pose definitions for a manipulator end-effector or mobile robot center comprise of positions and orientations. Positions in 2D space are <b>x, y</b> for 2D and <b>x, y, z</b> in 3D. Orientations are represented by <b>quaternions and euler angles</b>. 
+                </li>
+
+                <br><br>
+
+                <li style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                    There are certain standard transformations used to define the motion planning results in the desired frames of reference. <b>Affine Transformations</b> are the most common linear transformations that effect all translations, rotations, scaling, shearing and reflections.
+
+                    <br><br>
+                    <b>Homogeneous transformations</b> are linear transformations that can effect all rotations, shearing, scaling and reflections but not translations. They preserve linearity but not the distance.
+
+                    <br><br>
+                    <b>Orthogonal transformations</b> are again linear transformations that preserve linearity and distance while only effecting rotations and reflections.
+
+                </li>
+
+                </p> 
+
+                <br><br>
+            </div>
+            </div>
+    
+        <!-- Section One -->
+            <div class="wrapper style2">
+
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+
+            </div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script></div>
+
+    </body>
+</html>

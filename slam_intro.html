@@ -96,20 +96,20 @@ div.column{
             <br>
 
             <div class="column">
-                <div class="blog_box" align="justify" >
+                <div class="blog_box" align="left" >
                     <center>
                     <br>
                     <p style="font-size:20px;">LATEST POSTS</p>
                     </center>
 
                     <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
-                    href="slam_intro.html">
-                        <p style="margin-right:2%">&#128462 Simulataneous Localization and Mapping - An Introduction</p>
+                    href="visual_slam.html">
+                        <p style="margin-right:2%">&#128462 &emsp; Visual SLAM - An Introduction</p>
                     </a>
 
                     <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
                     href="mp_intro.html">
-                        <p style="margin-right:2%">&#128462 Motion Planning in Robotics - Yet Another Introduction!</p>
+                        <p style="margin-right:2%">&#128462 &emsp; Motion Planning in Robotics - Yet Another Introduction!</p>
                         <br>
                     </a>
                     <br>
@@ -125,278 +125,181 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                SLAM is the spinal cord of all mobile robotics and determines how it 
+                <b>Simultaneous Localization & Mapping</b> is the domain of robotics that forms the pillar for autonomous navigation in mobile robots of all kinds and even self-driving cars. As the name suggests, SLAM involves mapping  (creating computationally viable representation of the environment) and localization(determination of robot's pose in the environment), at the same time. It is like a chicken-and-the-egg problem - a map is needed to localize the robot pose on it and the pose is needed to estimate the map. It is the most applicable in GPS denied environments or environments where a task needs to be done at higher accuracy than the GPS provided map information. 
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/coverage/f1.png" style="width:622px;height:390px;">
-                        <figcaption>Figure 1 - Sample Coverage Area in a WareHouse Map</figcaption>
+                        <img src="images/blogs/slam/slam_intro.png" style="width:622px;height:390px;">
+                        <figcaption>Figure 1 - Sample of a SLAM operational PR2 robot</figcaption>
                     </figure>
 
 
                     <br><br>
                 </center>
+
                 <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
                 <br>
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">Mobile robots are the driving force of the warehouses and factories. Such robots are
-                required to complete tasks ranging from transporting goods ro routine patrolling. All
-                these tasks are essentially to be completed autonomously with little to no interference of
-                humans involved. Thus, the robot needs to make decisions in real-time, on its behavior
-                while also planning to act upon the repercussions of the probabilistic effects that its
-                current action has on the future. To delineate the previous statement, consider that the
-                robot knows that it is supposed to be travelling straight to get to a target point and
-                suddenly meets an obstacle. In such cases, the robot needs to decide if it should
-                change its path to come back to the originally planned straight path or if shall compute a
-                new path to the trajectory - depending upon which of them is computationally/otherwise
-                expensive or not.
-                In coverage problems, the robot faces similar issues where it is supposed to act
-                considering the task it is doing, the tool it is using, the start and end locations fed to it
-                and the utility constraints(time, fuel used, sensing limitations etc.)
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                SLAM is used for locomotion tasks in indoor as well as outdoor applications. Moroever, there are applications of the same in robotic manipulation and humanoids. The robot pose is the robot's position (x, y, z) coordinates with reference to the origin and the orientation of robot's heading. Mapping is modeling of the environment in different ways. Estimating one among the pose or the map when the other is given is easy but simultaneous estimations with uncertain priori is extremely difficult. So, the results obtained are highly stochastic and thus the entire process is aimed at making decisions that enhance the probabilities. 
+
+                <br><br>
+                Using observed landmarks, estimates of maps and sensor-based information; the complete navigation SLAM is implemented. The sensor-based information includes deriving landmarks in the scene (like edges of the wall as seen by a camera) or other features of the map like the possible relative positioning of landmarks or otherwise.
+                
+                <br><br>                 
+                SLAM as expected is a highly stochastic setup and probabilistic techniques are largely used. The stochasticity in solutions is reduced by using closed-loop solutions, i.e. relating the landmarks and features by comparing it against the ones that the robot has already visited. Meticulous perception systems are needed to establish relationships between unknown map elements, features and landmarks.
+                </p>
+
+                <br>
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Mapping</h1>                
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Maps are representations of a scene and can be done in several ways for robot to interpret. For instance, a human-readable definition of a map for a desert would be sand all around, then an oasis in the center and then a few bushes around; a robot needs to know a lot more and the nuances and in a computationally defined format. These maps are generally 2D and can be easily extensible to 3D format.
+
+
+                There are two main categories of maps - metric maps and topological maps. Metric maps are analogous to political maps of a city while topological maps are the physical maps of the same place.
+
+                </p> 
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/slam/occup.png" style="width:622px;height:390px;">
+                        <figcaption>Figure 2 - Sample Robot Map - Occupany Grid Map </figcaption>
+                    </figure>
+
+                    <br><br>
+                </center>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Metric Maps</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+
+                Metric maps are geometric representations of the surroundings with known edge sizes and area scaled as per real world. Occupany grids are the most common form of metric maps where the complete area is decomposed into several smaller units with information about if the map is occupied by anything or free for robot motion.
+
+                <br>
+                While the ease of creating occupancy grids makes them preferrable for general applications, large storage and processing power is needed to process all individual grids at every iteration. Dynamic variation of grid sizes(collapsing several smaller grids into one large grid) is useful in overcoming these limitations. Grids maps are useful for motion and path planning algorithms like A* or Djisktra as they have low computational costs. Occupancy probability definition for each sub-grid in the large grid makes the map diffcult to obtain for practical use with large areas.  
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Topological Maps</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Topological maps are description of the robot environment in terms of physical features. For an indoor environment, it would be landmarks and features like rooms, electrical appliances and furniture. The path to locations are proposed as sections in the map that can be accessed by the robot. The features are called nodes while the connecting paths are called edges or connections. These maps require verbose knowledge of the environment and are generally used in visual SLAM.
+                </p>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Localization</h1>
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                Localization is a map dependent definition of robot's pose that determines. For a known map, known sensor observations and location estimates, robot localization is very much possible. The quality of localization with higher probabilities for correctness highly depends on sensor readings. Thus, more the sensors, better the localization sensing.
+                <br><br>
+                A robot can bes easily localized using information from exteroceptive and interoceptive sensors like range finders and IMUs respectively, processed over time.
+
+                <br><br> 
+                </p> 
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Localization Algorithms</b></i> </p>
+
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Robot localization is generally solved using algorithms like Kalman Filter, Extended Kalman Filter and Particle Filters. KF and EKF solve for linear and non-linear systems respectively, by using the system model and the related covariances. Extended Kalman Filtering is generally the most used algorithm that supports multiple sensor data usage and provides accurate robot pose.
+
+                <br><br>
+                Particle filter is a setup where each unique particle represents a probable robot pose with some associated probability of being the robot's actual pose. Thereafter, the SLAM algorithm can use the mean, average or highest probability value as the robot pose. Large number of particles results in more computational overhead.
+
+
+                </p>
+                <br>                 
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Robot Pose Types</b></i> </p>
+
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                A robot's pose is generally defined in a frame of reference, i.e. the origin of a map. 
+
+                Onboard sensors are good for measuring the robot's own motion and thus the <b>relative pose estimation</b> of the robot with reference to the previous can be obtained. Wheel encoders are used for odometry estimation. They measure the rotations in each motor and use the robot's model to obtain the motion information (change in position and change in orientation). The other way is using inertial measurement units that use accelerometers, gyroscopes andd magnetometers and integrate the measurements to estimate the motion. However, each of these sensing options have their own limitations. Wheel encoder based odometry are prone to huge errors due to slipping, uneven ground and drifting as well as inherent sensor inefficiencies. IMUs are prone to drift and bias accumulation over time. The estimations are made based on integrations and thus prone drift
 
                 <br><br>
 
-                This report discusses the complete approach to deduce methodologies for such tasks
-                that has contingency plans and tries to be inclusive of all the possible scenarios that the
-                robot may run into. ​The further sections of the this document cover Robot
-                Localization techniques, Coverage Area Decomposition techniques, Coverage
-                Area Navigation techniques and finally its implementation on the ​WayPoint
-                Robotics’ Vector RMP
-                ​using its technologies and ROS support. </p>
+                Given the volatality of maps and thus everything derived from it, <b>absolute pose estimation</b> of a robot in a map is extremely difficult and inextensible as the map is still in evolution. The unknown nature of surroundings makes it difficult to localize on the absolute level. Absolute positioning is done by laser rangefinders or GPS, both of which are very limited in scope and usage. While it is not prone to any accumulating errors, the absolute estimations can be marred by sensor issues and limited sensors.
 
-                <br>
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Robot Localization</h1>
-                <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                The ability of robot to recognize its current positioning in the map is of utmost
-                importance as it determines any further action. It is the most important step for any
-                mobile robot before it does any movement. If the robot fails to localize itself
-                deterministically, it can try probabilistic techniques with cues from several small motions
-                to finally determine its global position in the map. Knowledge about current position and
-                orientation with reference to the global origin helps it to refer to landmarks in the map for
-                assistance in navigation and task completion. <b>​Figure 2</b> shows the general approach to
-                mobile robot localization. <br><br> The techniques for robot localization include:</p> 
-
-                <center>
-                    <figure>
-                        <img src="images/coverage/f2.png" style="width:622px;height:390px;">
-                        <figcaption>Figure 2 - Mobile Robot Localization</figcaption>
-                    </figure>
-
-                    <br><br>
-                </center>
-
-                <li style="text-align:left;margin-left:200px "> Probabilistic Techniques  </li>
-                <br>    
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;">
-                Such techniques generally draw a probable distribution of robot positioning on the map
-                and then further reduce it down to deterministic values using sensor and trial
-                movements. All probabilistic techniques depend upon inputs from ​perception ​model ​(
-                robot’s idiothetic sources tell it about its own motion, proprioception and robot’s
-                allothetic sources tell it about the world - camera, lidar and laser sensors ) and ​action
-                model ​(like odometry information and wheel revolution based distance covered - subject
-                to errors accrued over time)</p>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Markov Localization</b></i> </p>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> In this technique, the robot starts with an arbitrarily defined probability distribution
-                of the robot’s position on the map over discrete positions and updates these beliefs over
-                time., The prior probabilities are updated using sensor data like encoder values and
-                laser scans and given it the conditions to discard or support probabilities over the
-                locations. The process of keeping track of probabilities over the complete map, for all
-                discretized possible locations, and re-computing probabilities over all of them makes the
-                process computationally expensive but still helpful as it addresses all the possibilities.
-                The perception model is used to individually update all probabilities over the possible
-                locations using Bayes formula. It could work for both, topological as well as grid maps,
-                but given the generality of the algorithm, it tends to be very inefficient.</p>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Kalman Localization</b></i> </p>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> This method considers the robot’s possible location on the map as a single
-                Gaussian probability distribution where the mean and covariance values are repeatedly
-                updated to get to the best representation of its pose. Kalman Localization works on
-                using the transition model, that is the robot’s <b></b> ​action model that updates its likelihood
-                factors and the plant model that is the ​perception model ​that gives another estimate of
-                the future pose in the map. It combines information from the two to get final localization
-                values. The prediction step works on movement prior movement information to predict
-                new locations and then the same is estimated via the sensors that see the environment;
-                finally culminating the update by fusing the two information.<br><br>
-
-                An example to this could be that the robot starts with a random Gaussian belief of its
-                position, takes a small move, records this to predict new position with the existing
-                Gaussian belief, then uses sensors to view the surroundings (distance from the edges
-                of the maps and relative position to certain landmarks on the map) and estimate its
-                location on the map and finally using the two hypotheses to find a better Gaussian
-                probability representation. This iterative techniques terminates when further updates
-                make the probabilities to converge and the resultant distribution shows where the robot
-                could best be in the map. Very often, the high-class sensing systems help make this
-                distribution deterministic with a very narrow region of uncertainty.</p>
-
-                <li style="text-align:left;margin-left:200px "> Landmark based Localization  </li>
-                <br>    
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;">
-                Another category of localization could scenario where the environment is customized for
-                robot navigation. These cases include easy to sense RFID tags on the floor or shelves
-                of a warehouse, visual landmark coding that represents the corresponding position on
-                the map or otherwise. Such practices are fairly simple but obviously not efficient to be
-                duplicated under time and money constraints. Beacon systems, artificial floor markers
-                and GPS based location estimation are also examples of the same. The robot
-                processes such highly informative tags and compares it with a pre-fed look-up table for
-                the same and finds the best match of the location, deterministically on most of the
-                occasion.</p>
-
-                <li style="text-align:left;margin-left:200px "> Computer Vision based Localization  </li>
-                <br>    
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;">
-                Use of visual feed could be incorporated in both of the above techniques but using
-                machine vision explicitly to explore the environment while tracking own motion, building
-                an own version of the map and then trying to fit this generated map to a subset of the
-                global map can also be used.
-                In our approach to solving the coverage problem, localization is the first step that
-                determines robot’s motion. It is followed by methods to reach and decompose the
-                arbitrary coverage area into units and reduce the complexity of the task.</p>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Coverage Area Decomposition Techniques</h1>
-                <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                The coverage area for the task could be any arbitrary section, either continuous or
-                sporadically distributed over the complete map. This makes robot understand the
-                complexity of the task and reduce it to simpler individually addressable sections. 
-                <br><br> The complex scenarios for coverage areas could be:</p> 
-
-
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The area is not a perfect polygon with standard angles on the edges. User inputs
-                using haptic devices and other manual inputs devices or using drawing tools
-                could form very inconsistent edges and angles. A comparative version of
-                standard computationally defined coverage area and a manual-input defined
-                coverage area is shown in ​<b>Figure 3 </b>  </li>
-                <br>    
-
-                <center>
-                    <figure>
-                        <img src="images/coverage/f3.png" style="width:435px;height:273px;">
-                        <figcaption>Figure 3 - Coverage Area With Irregular Boundaries</figcaption>
-                    </figure>
-
-                    <br><br>
-                </center>
-
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The coverage area includes voids in centers and demands robot motion in a way
-                that the robot should eventually find a way out of the area, doesn’t get stuck in it.
-                An example of such scenario can also be seen in <b>​Figure 4</b> </li>
-                <br>    
-
-
-                <center>
-                    <figure>
-                        <img src="images/coverage/f4.png" style="width:435px;height:273px;">
-                        <figcaption>Figure 4 - Coverage Area With voids within</figcaption>
-                    </figure>
-
-                    <br><br>
-                </center>
-
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The coverage area is discontinuous and distributed all over the map and the
-                robot needs to determine the optimal strategy where incorrect sequence of
-                handling the zones could trap the robot. An example of this special problem is
-                shown in <b>Figure 5</b> ​. Here the blue strips are to be painted and the robot starts at
-                one edge of the map which is its docking zone. The robot could instantly start
-                painting but would end up in trapped on the other end of the map. So, it should
-                understand that even though travelling to other end of the and then starting to
-                paint involves more work, it prevents chances of getting trapped with no rescue
-                options.</li>
-                <br>    
-
-                <center>
-                    <figure>
-                        <img src="images/coverage/f5.png" style="width:435px;height:273px;">
-                        <figcaption>Figure 5 - Coverage Area with Discontinuities</figcaption>
-                    </figure>
-
-                    <br><br>
-                </center>
-
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> The coverage zones are smaller than the robot footprint and navigation to such
-                zones has only one approach. Such a problem could be seen in ​ <b>Figure 6</b> ​.</li>
+                </p>
                 <br>
 
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Nuances of SLAM</h1>                
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                SLAM techniques run with only certain physical parameters. It includes <b><i>u</i></b> - the robot control input, <b><i>z</i></b> - the sensor observations, <b><i>m</i></b> - the environment map and <b><i>x</i></b> - the robot pose or path.
+
+                <br><br>
+                Feature-based SLAM methods analyze the surroundings, create the maps, obtain close-to-accurate robot poses and thus converge onto motion tasks. It needs absolute robot poses, absolute positions of the landmarks but only relative measurement of the landmarks.
+                <br><br>
+                Measurements and estimations in SLAM are cyclic. So, an error in robot pose leads to an imperfect estimate of the map that eventually results in a poor robot pose calculated thereafter; eventually, showing that they are correlated. Also, the mappings between the observations and the actual landmarks are unknown. 
+                <br><br>
+                SLAM could be operational as full SLAM, online SLAM and integral SLAM. Full SLAM estimates the complete path(sequence of poses) and the full environment map while online SLAM estimates pose for the latest time stamp using the old information and the complete map. Integral SLAM does recursive computations, one at a time. Thus, full SLAM computes sets of <b><i>u, z, x</i></b> and final <b><i>m</i></b> while online SLAM computes <b><i>u<sub>last</sub></i></b>, <b><i>z<sub>last</sub></i></b>, and the complete map <b><i>m</i></b>.
+
+                </p> 
+
                 <center>
                     <figure>
-                        <img src="images/coverage/f6.png" style="width:435px;height:273px;margin-left:50px;">
-                        <figcaption>Figure 6 - Coverage Area With zones with area less than robot footprint</figcaption>
+                        <img src="images/blogs/slam/slam_types.png" style="width:900px;height:390px;">
+                        <figcaption>Figure 3 - Full SLAM vs Online SLAM </figcaption>
                     </figure>
 
                     <br><br>
                 </center>
 
-
-
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Sensors in SLAM</h1>                
+                <br>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                All such special problems of coverage firstly need the robot to have a clear
-                understanding of the mapping information and then start the decomposition into viable,
-                individually approachable zones.
-                <br><br> The different mapping techniques include:</p>
 
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Metric or Topological maps where the complete area is placed on a 2D
-                coordinate frame and any point in the area is mapped with a particular position in
-                the frame, either using cartesian or polar representation. While Cartesian
-                presentation helps represent discrete points, polar representation helps in
-                comparing robot’s current heading and distance with respect to origin with that of
-                the target and thus aligns with navigation tasks’ necessities</li>
-                <br>                 
+                Interoceptive and exteroceptive are two broad categories of sensors comprising of onboard sensors like wheel encoders, IMUs and GPS and cameras and laser scanners respectively. Interoceptive sensors are supposed to measure the physical quantities of the robot itself while the exteroceptive sensors observe the outer world and each of them thus contribute towards robot's pose estimation. Sonars, lasers and cameras are the three most used exteroceptive sensing systems used in SLAM.
 
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Grid based maps are where the complete are is divided into several square grids
-                of predefined size, generally equal to the robot footprint. Since areas need not be
-                perfectly rectangular and thus can’t have finite grids; the smaller sections are
-                represented as a part of the grid with smaller sections of varying granularity that
-                cover all tiny zones.</li>
-                <br>                 
+                <br><br>
+                Sonars and lasers use time of flight and phase-shift based computations to determine the contents and the structure of the environment, the map. LiDARs rangefinders have long ranges and high operational speeds to determine planar features like walls in the environment. 2D LiDARs can only determine planar features while 3D LiDARs can determine the complete environment due to the highly dense information available. However, LiDARs cannot observe  surface properties to localize and identify objects. Thus, LiDARs are more emphatically used to determine locations of obstacles and bounds of the environment.
 
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;">Certain maps could also be built to overlay on the standard maps. Such a
-                representation would be having the distances between landmarks as certain
-                nodes on the map while the obstacle free path between them represents a
-                traversable path called an arc. </li>
-                <br>                 
+                <br><br>
+                Visual sensing using monocular cameras, stereocameras and RGB-D cameras suffice to compensate for the limitations of the LiDARs. While cameras can provide rich information, processing the same is computationally expensive and needs more time and more complex algorithms to obtain computer legible data. Visual Odometry estimation and visual landmark estimation are the most useful SLAM applications for camera information. Monocular vision lacks depth information for the contents in the image thus making 3D map reconstruction very difficult. While there have been attempts are obtaining depth information based on robot motion and consecutive frames of images, it is still limited by complex algorithms and real-time computations. The depth information even obtained after this is associated with an unknown or probably incorrect scaling factor that mars the direct use in motion.
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                Based on the mapping used, the robot needs to identify the best decomposition of the
-                coverage area such that each smaller version is individually addressable and it
-                encompasses the complete coverage area without missing zones. Following techniques
-                are proposed to reduce the coverage area into simpler accessible zones.</p>
+                <br><br>
+                Stereovision is today's easiest option to obtain the depth information for the surroundings. It uses the triangulation method on two monocular cameras of known focal lengths, setup at a known distance and that determines the depth of any pixel in real-world physical quantities.
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>Boustrophedon Decomposition</b></p>
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Here, the complete map is subdivided into several parallel strips that can be covered
-                using the zig-zag motion that covers area equal to the width of the robot footprint. This
-                eases out robot’s motion in each individual strip as it simply supposed to cover each
-                strip once and that zone of the coverage area is worked upon.
-                However, this is easily applicable easily to polygonal areas with right-angled edges no
-                awkwardly angled edges exist on the strip. ​Figure 7 shows a comparative illustration of
-                where this decomposition would work or where it might not work.</li>
-                <br>                 
+                </p> 
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>Trapezoidal Decomposition</b></p>
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> Just like the above decomposition, here we could use trapezoidal shapes to divided the
-                coverage area into simpler zones that can be traversed using the zig-zag motion.
-                However, this tends to create several unnecessary smaller sections that could have
-                been essentially merged and used in the above technique.</li>
-                <br>                 
+                <center>
+                    <figure>
+                        <img src="images/blogs/slam/sensors.png" style="width:600px;height:390px;">
+                        <figcaption>Figure 4 - Different Sensors on a mobile robot</figcaption>
+                    </figure>
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>Rectangular sub-sections with grids of variable granularity for remaining zones of non-standard dimensions - A subclass of Boustrophedon Decomposition</b></p>
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> As the heading suggest, we try to break the coverage area into large unoccupied with
-                obstacle zones that can be covered easily by the robot’s sweeping or cyclic motion(to
-                be discussed later). It is tried that such sections’ edges align with the polygonal edges
-                and the broken zones allow traversal with between adjacent ones. There should exist a
-                path that connects adjacent sections</li>
-                <br>                 
+                    <br><br>
+                </center>
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <b>4. Random zones for random motion</b></p>
-                <li style="text-align:left;margin-left:200px;margin-right:200px;text-align:justify;"> This is the easiest technique to be implemented in coverage problems where the map is
-                divided into random zones or shapes larger than the robot footprint and the robot could
-                make random sweeps within each of them. Theoretically, as time tends to infinity(very
-                large time span of operation), all points would have been covered. This technique is the
-                most extravagant one and just a theoretical approach to improve upon.</li>
-                <br>                 
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Sensor Fusion</b></i> </p>
+
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Both pose estimation techniques are mutually exclusive but several sensor-fusion techniques are used to compensate for the limitations in the individual sensors. Sensor fusion can be performed at sensor level as well as at the approach level. Multiple sensor data feed can be either fused together before estimating the pose or individual estimations can be fused later on. 
+
+                <br><br>
+
+                The position measure can be fused using a probabilistic framework like Markov Localization or Kalman Localization. Markov Localization predicts(using the several sensors and their relative and/or absolute measurements) the pose information as a probability over all possible locations while Kalman localization predicts the same as a probability over the complete map thus making the location with highest chances have the largest probability. 
+
+                <br><br>
+
+                Given the pose of a robot is 6DOF (x, y, z position coordinates and alpha, beta and gamma orientation coordinates), it becomes really difficult to estimate each of them accurately and their corelation makes accuracy challenging.
+
+
+                <br><br>
+
+ 
+                </p>
 
             </div>
             </div>

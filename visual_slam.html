@@ -1,0 +1,243 @@
+    <!DOCTYPE HTML>
+
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #f5f5ef;
+  /*border: 1px black;*/
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+</style>
+</head>
+
+<html>
+    <head>
+        <title>AKSHAY  KUMAR</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+            
+            <!-- Header -->
+
+                <div id="header">
+                    <div class="container">
+                            
+                        <!-- Logo -->
+                            <h1><a href="#" id="logo">Solarize</a></h1>
+                        
+                        <!-- Nav -->
+                            <nav id="nav">
+                                <ul>
+                                    <li class="active"><a href="portfolio.html">PORTFOLIO</a></li>                                  
+                                    <li class="active"><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf">RESUME</a></li>
+
+                                    <li class="active"><a href="index.html">WELCOME</a></li>
+                                    <li>
+                                        <a href="">NAVIGATE</a>
+                                        <ul>
+                                            <li><a href="portfolio.html">PORTFOLIO</a></li>
+                                            <li><a href="http://www.zine.co.in" target="_blank">ZINE RESEARCH GROUP</a></li>
+                                            <li><a href="posts.html">POSTS</a></li>
+                                            <li><a href="contact.html">CONTACT</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+    
+                    </div>
+                </div>
+                
+            <!-- Banner -->
+    <!--                <div id="banner">
+                        <section class="container">
+                            <span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+                            <span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+                            <span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+                            </section>
+                    </div>
+ -->
+            </div>          
+
+            <!-- Introduction -->
+            <div class="wrapper style5" align="justify" >
+
+            <br>
+
+            <div class="column">
+                <div class="blog_box" align="justify" >
+                    <center>
+                    <br>
+                    <p style="font-size:20px;">LATEST POSTS</p>
+                    </center>
+
+                    <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%">&#128462 Simulataneous Localization and Mapping - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="mp_intro.html">
+                        <p style="margin-right:2%">&#128462 Motion Planning in Robotics - Yet Another Introduction!</p>
+                        <br>
+                    </a>
+                    <br>
+                </div>
+                
+            </div>
+
+            <div class="blog_box" align="justify" >
+                    <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+                <br>
+                    <h2 style="font-size:40px">VISUAL SLAM</h2>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                <b>Visual SLAM</b> is the most researched topic in all of SLAM technology today. Visual sensing has made feature extraction extremely easy and provided rich information for autonomous navigation. Visual SLAM techniques generally track features in images over successive frames and use the triangulation or other techniques to obtain their 3D position which thus helps create the map while also working backwards to predict the camera pose(eventually the robot pose) that observed the map features. 
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/slam/visual_slam.png" style="width:622px;height:390px;">
+                        <figcaption>Figure 1 - Sample of Visual SLAM features</figcaption>
+                    </figure>
+
+
+                    <br><br>
+                </center>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                The observation point, properties of the camera and the estimation of  camera motion is used to reconstruct the 3D scene of the environment, i.e. the map.
+
+                <br><br>
+
+                SLAM has two components - a sensor data processing and modeling system and secondly the observed data inference system. Using corresponding frames of images, the map features are discovered and created while during the complete run, the features are compared with each other for loop closure(event of the robot revisiting an old location)
+
+                <br><br>
+
+                Visual SLAM also has several methods and employs different technologies in conjunction for autonomous navigation. Visual odometry, visual data usage and camera type and type of image processing are parts of the complete SLAM puzzle wherein specific algorithms for each of them are used to implement an end-to-end SLAM setup.
+
+                </p> 
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Visual SLAM Nuances</h1>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Visual SLAM has different kinds of data interpretation and data processing methods. A camera sees a lot of information but needs a trade-off between the quantity of pixel information to be used, information that can be encapsulated and how computationally viability of the involved processes can be ensured.      
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Map Data Quality</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+
+                <b>Sparse visual SLAM</b> utilizes only a portion of the complete image pixels while <b>dense visual SLAM</b> utilizes almost all of the pixels of the incoming image. Given the difference in quantity of pixels used and thus the quality of features observed, sparse and dense visual SLAM methods generate very different maps.
+
+                <br><br>
+                Sparse methods generate point cloud maps that are basically points in 3D space at a depth suggesting the presence of an obstacle in the environment. Point clouds are coarse representations of the environment with very limited information and thus, post processing of information is computationally expensive. Dense maps on the other hand have loads of pixels to use, so their handling and interpretation needs more powerful hardware.  
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Direct & Indirect Methods</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                <b>Indirect methods</b> also called feature-based for SLAM use the input images, obtain a few sparse features from them and then compare the features to solve for SLAM. <b>SIFT</b>(Scale-invariant feature transform), <b>SURF</b>(Speeded up robust feature), <b>BRIEF</b>(Binary Robust Independent Elementary Features) and <b>ORB</b>(Oriented FAST and rotated BRIEF) are some of those algorithms that are used to extract features for images and compare them against the different features from different poses. Finally, tracking procedures are used to minimize the error in a the pose of a feature as tracked and the expected pose from the camera estimate, i.e. feature reprojection error, over all the points. - NEEDS TO BE REWORDED
+
+                <br><br>
+                Feature extraction obtains the useful information in images. Generally these features could be corners of walls or objects like tables and chairs in the scene or windows and doors around. All features observed are converted into compact descriptors to be matched against other descriptors. These descriptors are generally the appearance, pixel gradient around the feature or otherwise, nearby the feature. 
+
+                <br><br>
+                After the features are extracted, feature matching/comparison for the descriptors is done. Features are matched over several frames and tracking different features over long sequences helps in understanding motion. Matching of features uing techniques like RANSAC(RANdom SAmple Consensus) eventually leads to pose estimation for the robot. 
+
+                <br><br>
+                Cameras can see everything and a lot more. Wide angle cameras include even more information. Images with features/interesting information concentrated in a small area of the image canvas are difficult to use for feature matching than others with features spread all over the canvas. While storage requirements make it difficult  maintain a database of all the features, it is still better than the direct methods as it still discards the larger parts of the images, the non-feature parts of the image. 
+
+                <br><br>
+                <b>Direct Methods</b> compare complete images against each other and then find the overlapping parts to observe motion. Several semi-dense 3D maps can be created using semi-dense filtering algorithms and thus provide more information about the environment. However, they can't handle intermittent noise because those noisy pixels would also be considered as regular parts of the image and thus possibly presented in the final map. Given that they compare complete images, they are slower than the feature-based version as well.
+                </p>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Loop Closure</h1>
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                Loop Closure is one of the most important aspects of SLAM that ensures that the solutionsa are consistent over the complete work area and  over long durations of operation. Loop closure refers to the processing of comparing previously visited scenes/features with the ones from the incoming scenes such that the pose estimation errors are corrected.
+
+                <br><br>
+
+                The easiest form of loop closure is  matching the incoming image frame with all the previous ones for similar features. However, the storage and computational requirements make it very difficult for real-time applications. Defining key frames( frames of high interest and with more information enclosed within) from the previous frames helps in reducing this computational needs.
+
+                <br><br>
+
+                Out of the several frames, for a frame to be selected as key frame, the feature descriptors are hierarchically quantized and represented by a Bag of Visual Words (BOW) called a vocabulary tree. Thereafter, a place recognition approach based on this vocabulary tree is used. Clustering of feature descriptors makes comparison a mere step of observing the frequency and comparing the similarity of the histogram of frequencies.
+
+                <br><br>
+
+                False positive and false negative are two kinds of loop closure problems better known as perceptual aliasing and perceptual variability respectively. Perceptual aliasing declares two different places, to be the same while perceptual variability is where one same place is thought of as two different places.  
+
+                Precision-recall curves are useful when predicting the probability of a binary outcome (here if frames match or not) and using the same here in loop closure helps define the performance better. 
+                <br><br> 
+                </p> 
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Back-End Optimization</h1>                
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Camera pose optimization is an obvious process to obtain camera motion while dealing with drift pose estimation. EKF is used to minimize the noise in motion prediction and motion observation. 
+
+                <br><br>
+                Bundle adjustment or graph optimization is another method that combinedly optimizes the pose of the camera(hence the robot pose) and the 3D structure paraneters viewed in multiple frames, by minimizing a cost function. Inconsistency in models and processing of filtering techniques make way for this method.
+
+                </p> 
+
+                <br><br>
+
+            </div>
+            </div>
+    
+        <!-- Section One -->
+            <div class="wrapper style2">
+
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+
+            </div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script></div>
+
+    </body>
+</html>
