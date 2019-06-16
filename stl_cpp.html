@@ -145,6 +145,11 @@ code {
                 This list of algorithms is not exhaustive yet contains the most common and# useful C++ native algorithms in the STL library. Any of these algorithms can be written again though the efficiency of the same would atmost be comparable to the same available in the STL libraries.
 
                 <br><br>
+
+                <b>NOTE: </b> <br>
+
+                    <code>vector.begin(), vector.end()</code> can also be replaced by <code>std::begin(vector)</code> and <code>std::end(vector)</code> respectively as <code>std::begin(vector)</code> was only introduced in C++ 11 to allow easy coding for generic templated structures that support C-style arrays (that do not have methods like <code>.begin()</code>) as well as STL containers. 
+
                 <h1 style="text-align:left;margin-left:200px;font-size:20px ">HEAPS</h1>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
@@ -167,30 +172,30 @@ code {
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <i> <b>Algorithms for Heaps</b></i> </p>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
                         
-                    &#8658 Create a heap from vector of numbers <br>
+                    <b>&#8658</b> Create a heap from vector of numbers <br>
                     <code> 
                         std::make_heap(vector.begin(), vector.end())
                     </code><br><br>
 
-                    &#8658 Add contents to a heap (it handles the pushing of numbers and arranges them in the heap based on the comparison) <br>
+                    <b>&#8658</b> Add contents to a heap (it handles the pushing of numbers and arranges them in the heap based on the comparison) <br>
                     <code> 
                         std::push_heap(vector.begin(), vector.end())
                     </code><br><br>
 
 
-                    &#8658 Pop out the highest number
+                    <b>&#8658</b> Pop out the highest number
                     <br>
                     <code> 
                         std::pop_heap(vector.begin(), vector.end())
                     </code><br><br>
 
-                    &#8658 Reverse the order of the heap (Applicable to other containers as well )<br>
+                    <b>&#8658</b> Reverse the order of the heap (Applicable to other containers as well )<br>
                     <code> 
                         std::reverse(vector.begin(), vector.end())
                     </code><br><br>
 
 
-                    &#8658 Sort the elements of the heap in ascending order and the range is no longer a heap
+                    <b>&#8658</b> Sort the elements of the heap in ascending order and the range is no longer a heap
                     <br>
                     <code> 
                         std::sort_heap(vector.begin(), vector.end())
@@ -211,7 +216,7 @@ code {
                 <center>
                     <figure>
                         <img src="images/sorting.png" style="width:622px;height:390px;">
-                        <figcaption>Data Structure - Heaps</figcaption>
+                        <figcaption>Sorting</figcaption>
                     </figure>
 
                     <br><br>
@@ -220,31 +225,136 @@ code {
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <i> <b>Algorithms for Sorting</b></i> </p>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    &#8658 Sorting of numbers in ascending order. If function is provided then it is used for sorting comparison. If fucntion returns <b>true</b>, then first element ordered before second.<br>
+                    <b>&#8658</b> Sorting of numbers in ascending order. If function is provided then it is used for sorting comparison. If fucntion returns <b>true</b>, then first element ordered before second.<br>
                     <code> 
                         std::sort(vector.begin(), vector.end(), function)
                     </code><br><br>
 
-                    &#8658 Sorting of numbers in the range [first, last) only for specified middle values. If function provided then it is used for sorting comparison. If fucntion returns **true**, then first element ordered before second.<br>
+
+                    <b>&#8658</b> Sorting of numbers in ascending order. If function is provided then it is used for sorting comparison. If fucntion returns <b>true</b>, then first element ordered before second.
+                    <br>
+                    <b>Different from <code><it>sort</it></code> because it preserves the order of elements that have the same values, thus called stable.</b>
+                    <br>
+                    <code> 
+                        std::stable_sort(vector.begin(), vector.end(), function)
+                    </code><br><br>
+
+
+                    <b>&#8658</b> Sorting of numbers in the range [first, last) only for specified middle values. If function provided then it is used for sorting comparison. If fucntion returns **true**, then first element ordered before second.<br>
                     <code> 
                         std::partial_sort(vector.begin(), middle, vector.end())
                     </code><br><br>
 
 
-                    &#8658 Rearrange the list such that the nth element has the value that should have existed there if the list was sorted. The nth element has all preceding elements lesser than it and succeeding elements larger than it.
+                    <b>&#8658</b> Rearrange the list such that the nth element has the value that should have existed there if the list was sorted. The nth element has all preceding elements lesser than it and succeeding elements larger than it.
                     <br>
                     <code> 
                         std::nth_element(vector.begin(), nth_element, vector.end())
                     </code><br><br>
 
-                    &#8658 Reverse the order of the heap (Applicable to other containers as well )<br>
+                </p> 
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">PERMUTATIONS</h1>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    Elements of a container are required to be shuffled in different orders as per need.
+                    <br><br>
+                    The Standard Template Library in C++ provides in-built implementations for different kinds of permutation/re-arranging operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <i> <b>Algorithms for Permutations</b></i> </p>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    <b>&#8658</b> Reverse the order of elements in the container<br>
                     <code> 
                         std::reverse(vector.begin(), vector.end())
+                    </code><br><br>
+
+                    <b>&#8658</b> Create a new copy of the container to a <code><b>new_vector</b></code> with reversed order of elements<br>
+                    <code> 
+                        std::reverse_copy(vector.begin(), vector.end(), new_vector.begin())
+                    </code><br><br>
+
+                    <b>&#8658</b> Rotate the container about the middle element such that the middle element becomes the first element of the new rotated vector. Possible applications are found in insertion sort or order reshuffling<br>
+                    <code>
+                        std::rotate(vector.begin(), vector.middle(), vector.end())
+                    </code><br><br>
+
+                    <b>&#8658</b> Reshuffle the elements of the container based on using the <code>std::rand</code> as the random seed generator function<br>
+                    <code>
+                        std::random_shuffle(vector.begin(), vector.end())
+                    </code><br><br>
+
+                    <b>&#8658</b> Reshuffle the elements of the container based on a seed obtained via URBG (Uniform Random Bit Generator). More efficient that the <code>std::random_shuffle</code><br>
+                    <code>
+                        std::shuffle(vector.begin(), vector.end(), random_number_generator)
+                    </code><br><br>
+
+                    <b>&#8658</b> Rearrange the elements of the container into a permutation higher up in the lexicographical order.<br>
+                    <code>
+                        std::next_premutation(vector.begin(), vector.end())
+                    </code><br><br>
+
+                    <b>&#8658</b> Rearrange the elements of the container into a permutation lower down in the lexicographical order.<br>
+                    <code>
+                        std::prev_premutation(vector.begin(), vector.end())
                     </code><br><br>
 
                 </p> 
 
 
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">QUERYING RANGES</h1>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    Several queries about the features of containers are made, either for one single container or multiple ones.
+                    <br><br>
+                    The Standard Template Library in C++ provides in-built implementations for several such querying operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;"> <i> <b>Algorithms for Querying Containers</b></i> </p>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    <b>&#8658</b> Counts the number of occurences of the <code>value</code> in the container<br>
+                    <code> 
+                        std::count(vector.begin(), vector.end(), value)
+                    </code><br><br>
+
+                    <b>&#8658</b> Compute the sum of the contents of the container and store it to the value <code>init</code>. If binary method <code>function</code> is provided, then the method is used for accumulation.<br>
+                    <code> 
+                        std::accumulate(vector.begin(), vector.end(), init)<br>
+
+                        std::accumulate(vector.begin(), vector.end(), init, function)                        
+                    </code><br><br>
+
+                    <b>&#8658</b> Compute the partial sum of the contents of the container iteratively and store the it to container with <code>result</code> interator as the beginning. If binary method <code>function</code> is provided, then the method is used for the partial operation.<br>
+                    <code> 
+                        std::partial_sum(vector.begin(), vector.end(), result) <br>
+                        std::partial_sum(vector.begin(), vector.end(), result, function)                        
+                    </code><br><br>
+
+
+                    <b>&#8658</b> Checks for all the elements of the container returning <code>true</code> for the given unary operator.<br><br> If all elements return <code>true</code>, the function returns <code>true</code> else returns <code>false</code>. It returns <code>false</code>  for an empty range.<br>
+                    <code> 
+                        std::all_of(vector.begin(), vector.end(), unary_function)
+                    </code><br><br>
+
+
+                    <b>&#8658</b> Checks for all the elements of the container returning <code>true</code> for the given unary operator.<br><br> If at least one of the elements return <code>true</code>, the function returns <code>true</code> else returns <code>false</code>. It returns <code>false</code>  for an empty range.<br>
+                    <code> 
+                        std::any_of(vector.begin(), vector.end(), unary_function)
+                    </code><br><br>
+
+                    <b>&#8658</b> Checks for all the elements of the container returning <code>true</code> for the given unary operator.<br><br> If none of the elements return <code>true</code>, the function returns <code>true</code> else returns <code>false</code>. It returns <code>true</code>  for an empty range.<br>
+                    <code> 
+                        std::none_of(vector.begin(), vector.end(), unary_function)
+                    </code><br><br>
+
+
+                </p> 
 
 
             </div>
