@@ -10,7 +10,7 @@
 /* Basic */
 
 	body {
-		background: #222222;
+		background: #FFFFFF;
 	}
 
 		body.loading * {
@@ -62,6 +62,7 @@
 	h1, h2, h3, h4, h5, h6 {
 		color: inherit;
 		font-weight: 700;
+		line-height: 1.2em;
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -485,6 +486,7 @@
 
 	.wrapper {
 		padding: 6em 0em 4em 0em;
+		background-color: #FFFFFF;
 	}
 
 		.wrapper.style1 {
@@ -548,13 +550,41 @@
 			background: #FFFFFF;
 			
 		}
-
+/*
 		.wrapper.style5 {
 			background: #FFFFFF;
 			text-align: center;
 			color: black;
 			text-color: black;
 		}
+*/
+		.wrapper.style5 {
+			background: #FFFFFF;
+			text-align: center;
+			color: black;
+			text-color: black;
+		    margin-left: 15%;
+		    margin-right: 15%;
+	      overflow-wrap: break-word;
+
+		}
+
+
+		.wrapper.style6 {
+			background: #FFFFFF;
+			text-align: center;
+			color: black;
+			text-color: black;
+
+		}
+
+
+
+/*  background-color: #f5f5ef;
+  /*border: 1px black;
+  opacity: 1.0;
+  filter: alpha(opacity=100); 
+*/
 
 			.wrapper.style5 .image {
 				display: block;
@@ -568,6 +598,7 @@
 					border-color: #959499;
 					border-radius: 20px;
 				}
+
 
 		.button.medium { width: 150px; height: 60px; }
 
@@ -792,7 +823,7 @@
 		display: block;
 		margin-bottom: 1em;
 		letter-spacing: 1px;
-		line-height: 1.4em;
+		line-height: 4.0em;
 		text-transform: uppercase;
 		font-size: 1.8em;
 		font-weight: 400;
