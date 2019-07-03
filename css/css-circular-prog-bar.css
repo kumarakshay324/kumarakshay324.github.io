@@ -25,6 +25,7 @@
 }
 /* Text inside the control */
 .progress-circle span {
+    font-size: 20px;
     position: absolute;
     line-height: 5em;
     width: 5em;
