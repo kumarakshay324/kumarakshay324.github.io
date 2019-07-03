@@ -33,7 +33,7 @@
 						<!-- Nav -->
 							<nav id="nav">
 								<ul>
-									<li class="active"><a href="index.html">WELCOME</a></li>
+									<li class="active"><a href="index.html">HOME</a></li>
 									<li>
 										<a href="">NAVIGATE</a>
 										<ul>
@@ -76,5 +76,28 @@
 			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
 			<p style="margin-bottom:0;padding-bottom:0;"><center>Copyright @2016 ZINE | Akshay Kumar</center></p>
 			</div>
-	</body>
-</html>	
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+                    <a href="http://www.facebook.com/singhakshay324" target="_blank" id="social"><img src="images/contacts/fb.png" style="width:50px;height:50px;;"></a>
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+
+
+    </body>
+</html>
