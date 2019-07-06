@@ -920,3 +920,27 @@
 	  opacity: 1.0;
 	  /*filter: alpha(opacity=100); /* For IE8 and earlier */*/
 	}
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #f5f5ef;
+  border: 1px solid #dbdbd5;;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+/*blog
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+*/
+
+	

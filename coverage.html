@@ -13,11 +13,34 @@ div.blog_box {
   filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
+div.blog_box_sidenav {
+  margin-left: 8%;
+  margin-right: 10%;
+  position: fixed;
+  background-color: #f5f5ef;
+  border: 1px solid #dbdbd5;
+  height: auto;
+  width: 350px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
 div.column{
   /*float: right;*/
   margin-right: 0%;
+  margin-left: 0%;  
   width: 30%;
+  /*width*/: 30%;
   position: fixed;
+}
+
+.blog_box_sidenav p:hover{
+  color: #140440;
+  font-weight: 500;
+  /*text-decoration: bold;*/
+  /*background-color: #cfc ;*/
+
 }
 
 </style>
@@ -93,32 +116,35 @@ div.column{
 
 			<br>
 
-			<div class="column">
-				<div class="blog_box" align="justify" >
-					<center>
-					<br>
-					<p style="font-size:20px;">LATEST POSTS</p>
-					</center>
+            <!-- <div class="column"> -->
+                <div class="blog_box_sidenav" align="left" >
+                    <center>
+                    <br>
+                    <span style="font-size:25px;text-decoration: none;">LATEST POSTS</span>
+                    </center><br>
 
-					<a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
-					href="slam_intro.html">
-						<p style="margin-right:5%">&#128462 Simulataneous Localization and Mapping - An Introduction</p>
-					</a>
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="mp_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Motion Planning in Robotics</p>
+                    </a>
 
-					<a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
-					href="mp_intro.html">
-						<p style="margin-right:5%">&#128462 Motion Planning in Robotics - Yet Another Introduction!</p>
-						<br>
-					</a>
-					<br>
-				</div>
-				
-			</div>
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Visual SLAM - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Simulataneous Localization and Mapping - An Introduction</p>
+                        <br>
+                    </a>
+                    <br>
+                </div>
 
 			<div class="blog_box" align="justify" >
 					<!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
 				<br>
-					<h2 style="font-size:40px">COVERAGE PROBLEM IN MOBILE ROBOTICS</h2>
+					<h2 style="font-size:40px;font-weight: 500">COVERAGE PROBLEM IN MOBILE ROBOTICS</h2>
 				<br>
 
 
