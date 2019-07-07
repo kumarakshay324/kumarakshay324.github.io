@@ -13,13 +13,6 @@ div.blog_box {
   filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
-div.column{
-  /*float: right;*/
-  margin-right: 0%;
-  width: 30%;
-  position: fixed;
-}
-
 div.code_box {
   margin-left: 20%;
   margin-right: 10%;
@@ -28,6 +21,36 @@ div.code_box {
   /*border: 1px black;*/
   opacity: 1.0;
   filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.blog_box_sidenav {
+  margin-left: 8%;
+  margin-right: 10%;
+  position: fixed;
+  background-color: #f5f5ef;
+  border: 1px solid #dbdbd5;
+  height: auto;
+  width: 350px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+.blog_box_sidenav p:hover{
+  color: #140440;
+  font-weight: 500;
+  /*text-decoration: bold;*/
+  /*background-color: #cfc ;*/
+
 }
 
 
@@ -83,28 +106,33 @@ code {
 
             <br>
 
-            <div class="column">
-                <div class="blog_box" align="justify" >
+                <div class="blog_box_sidenav" align="left" >
                     <center>
                     <br>
-                    <p style="font-size:20px;">LATEST POSTS</p>
-                    </center>
+                    <span style="font-size:25px;text-decoration: none;">LATEST POSTS</span>
+                    </center><br>
 
-                    <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
-                    href="slam_intro.html">
-                        <p style="margin-right:5%">&#128462 Simulataneous Localization and Mapping - An Introduction</p>
-                    </a>
-
-                    <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
                     href="coverage.html">
-                        <p style="margin-right:5%">&#128462 Coverage Problems in Mobile Robotics</p>
+                        <p style="margin-right:2%; margin-left: 2%">  Coverage Problem in Mobile Robotics</p>
                     </a>
 
-                    <a style="display:block;font-size:13px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
                     href="mp_intro.html">
-                        <p style="margin-right:5%">&#128462 Motion Planning in Robotics - Yet Another Introduction!</p>
-                        <br>
+                        <p style="margin-right:2%; margin-left: 2%">  Motion Planning in Robotics</p>
                     </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Simulataneous Localization and Mapping - An Introduction</p>
+                        <!-- <br> -->
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Visual SLAM</p>
+                        <br>
+                    </a>                    
                     <br>
                 </div>
                 
@@ -113,7 +141,7 @@ code {
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px"> CMAKE - THE INEVITABLE!</h2>
+                    <h2 style="font-size:40px; font-weight: 500"> CMAKE - THE INEVITABLE!</h2>
                 <br>
 
 
@@ -473,6 +501,29 @@ code {
             </div>
             </div>
     
+
+            <div id="disqus_thread" style="column-width: 1000px;margin-left: 570px;margin-right: 200px;"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+            var disqus_config = function () {
+            this.page.url = "http://kumarakshay.me/cmake.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 126; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://kumarakshay-me.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
         <!-- Section One -->
             <div class="wrapper style2">
 
