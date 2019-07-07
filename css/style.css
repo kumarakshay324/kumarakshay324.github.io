@@ -855,7 +855,7 @@
   /*top: 1px;*/
   margin-top: 250px;
   position: fixed; /* Position them relative to the browser window */
-  right: -20px; /* Position them outside of the screen */
+  right: -60px; /* Position them outside of the screen */
   transition: 0#3s; /* Add transition on hover */
   padding: 15px; /* 15px padding */
   width: 90px; /* Set a specific width */
