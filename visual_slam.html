@@ -108,7 +108,7 @@ div.column{
                     </center><br>
 
                     <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
-                    href="sampling_mp.html">
+                    href="sampling.html">
                         <p style="margin-right:2%; margin-left: 2%">  Sampling-based Motion Planners</p>
                     </a>
 
@@ -192,10 +192,14 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
-                <b>Indirect methods</b> also called feature-based for SLAM use the input images, obtain a few sparse features from them and then compare the features to solve for SLAM. <b>SIFT</b>(Scale-invariant feature transform), <b>SURF</b>(Speeded up robust feature), <b>BRIEF</b>(Binary Robust Independent Elementary Features) and <b>ORB</b>(Oriented FAST and rotated BRIEF) are some of those algorithms that are used to extract features for images and compare them against the different features from different poses. Finally, tracking procedures are used to minimize the error in a the pose of a feature as tracked and the expected pose from the camera estimate, i.e. feature reprojection error, over all the points. - NEEDS TO BE REWORDED
+                <b>Indirect methods</b> also called feature-based methods for SLAM use the input images, obtain a few sparse features from them and then compare the features to solve for SLAM. <b>SIFT</b>(Scale-invariant feature transform), <b>SURF</b>(Speeded up robust feature), <b>BRIEF</b>(Binary Robust Independent Elementary Features) and <b>ORB</b>(Oriented FAST and rotated BRIEF) are some of those algorithms that are used to extract features for images and compare them against the different features from different poses. Finally, tracking procedures are used to minimize the error in a the pose of a feature as tracked and the expected pose from the camera estimate, i.e. feature reprojection error, over all the points.
 
                 <br><br>
-                Feature extraction obtains the useful information in images. Generally these features could be corners of walls or objects like tables and chairs in the scene or windows and doors around. All features observed are converted into compact descriptors to be matched against other descriptors. These descriptors are generally the appearance, pixel gradient around the feature or otherwise, nearby the feature. 
+                <b style="font-weight: 500"> Features are those special regions in an image that tend to be present uniquely/distinctively in the canvas. Generally these features could be corners of walls or objects like tables and chairs in the scene or windows and doors around.   
+                </b>
+
+                <br><br>
+                Feature extraction obtains the useful information in images. All features observed are converted into compact descriptors to be matched against other descriptors. These descriptors are generally the appearance, pixel gradient around the feature or otherwise, nearby the feature. 
 
                 <br><br>
                 After the features are extracted, feature matching/comparison for the descriptors is done. Features are matched over several frames and tracking different features over long sequences helps in understanding motion. Matching of features uing techniques like RANSAC(RANdom SAmple Consensus) eventually leads to pose estimation for the robot. 
