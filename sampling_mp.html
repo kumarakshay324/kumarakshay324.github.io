@@ -302,13 +302,13 @@ div.column{
                         </li> <br>
                     </ul>
 
-                            <center>
-                                <figure>
-                                    <img src="images/blogs/sampling_mp/prm_exp.png" style="width:580px;height:290px;">
-                                    <figcaption>Figure 6 - Missing Connections during the Construction Phase </figcaption>
-                                </figure>
-                                <br><br>
-                            </center>
+                        <center>
+                            <figure>
+                                <img src="images/blogs/sampling_mp/prm_exp.png" style="width:580px;height:290px;">
+                                <figcaption>Figure 6 - Missing Connections during the Construction Phase </figcaption>
+                            </figure>
+                            <br><br>
+                        </center>
 
                 <b  style="font-weight: 500">
                     <center>Learning Phase - Part II - Expansion</center>
@@ -370,98 +370,154 @@ div.column{
                                     <img src="images/blogs/sampling_mp/expansion.jpg" style="width:580px;height:290px;">
                                     <figcaption>Figure 7 - Enhanced Connectivity in Expansion Phase </figcaption>
                                 </figure>
-                                <br><br>
+                                <br>
                             </center>                                        
                 </p>
 
                 <center>
                     <b style="font-weight: 600"><u>QUERY PHASE</u></b> </p>
                 </center>
+
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
-                The <b style="font-weight: 500">Query Phase</b> is a relatively easier phase with all the bulk computational processing already done. It accepts a start <b>s</b> and a goal <b>g</b> configuration and attempts to find a path between them.
-                <br><br>
-                 Ideally, a path exists in the roadmap connecting the two and the query returns that path (a collection of all intermediate edges passing through other intermittent nodes that eventually establish connectivity between <b>s</b> and <b>g</b>)  
+                    The <b style="font-weight: 500">Query Phase</b> is a relatively easier phase with all the bulk computational processing already done. It accepts a start <b>s</b> and a goal <b>g</b> configuration and attempts to find a path between them.
+                    <br><br>
+                     Ideally, a path exists in the roadmap connecting the two and the query returns that path (a collection of all intermediate edges passing through other intermittent nodes that eventually establish connectivity between <b>s</b> and <b>g</b>)  
 
                 <br><br>
-                Sampling algorithms are apt for even high-dimensional robot state-space and also suitable for real-time applications. <b>Randomly Growing Rapi Trees(RRT) or PRM(Probabilistic Roadmaps)</b> are the commmon sampling-based algorithms. 
+
+                    <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                        <li>
+                            If the start <b>s</b> and goal <b>g</b> are points not already sampled and existing in the roadmap <b>R</b>, they are connected to the closest nodes in <b>R</b>, through paths <b>P<sub>s</sub></b> and <b>P<sub>g</sub></b>. If these two connections are not possible, the complete query fails for path the between <b>s</b> and <b>g</b> does not exist.
+                        </li><br>
+                        <li>
+                            Starting with <b>s</b>, new nodes with increasing distance from it are added to the path <b>P</b> being derived, using a local planner again.
+                        </li><br>
+                        <li>
+                            Finally, the complete path connecting is given as <b>P<sub>complete</sub></b> =  <b>P<sub>s</sub></b> + <b>P</b> + <b>P<sub>g</sub></b>
+                        </li> <br>
+                    </ul>
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+                    Given that there are several parameters, assumptions and challenges like number of samples, number of retries, sampling techniques, local planners, narrow passages in the map and sampling near obstacles; there are chances of the query failing.
+                    <br><br>
+                     However, limited connectivity in the roadmap and all problems are attempted to be resolved by retrying Learning Phase, exhaustively running Expansion Phase and concurrently operational Learning & Query Phases.
+
+                    <br><br>
+                    There are several enhanced PRM techniques like Obstacle-Based PRM, Medial-Axis PRM and Simplified PRM among others used to address specific challenges for sampling near obstacles, sampling in narrow passages and sampling problems in general. 
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <b>RAPIDLY-EXPLORING RANDOM TREES</b></p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Rapidly-Exploring Random Trees (RRT) is the most famous family of sampling-based  motion planning algorithms. While PRMs or Potential Field methods are probabilistic in nature and have limitations with substantial effect on planning, RRTs can solve better for lots of constraints.    
+                 <br><br>
+                The algorithm basically starts at some location in the map and starts branching out in random directions, sampling new points at pre-defined distance from the initial location. After an edge is established between the initial point and the new sampled point, the latter becomes the initial location for the next step of branching out.   
+                <br><br>
+                Using appropriate values for step size, number of sampels to drawn, initial point and other parameters, a densely connected tree-structured map is promised.
 
                 </p>
 
                 <center>
-                    <figure>
-                        <img src="images/blogs/mp/rrt_star.gif" style="width:350;height:250;">
-                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
-                        <!-- <br><br> -->
-                        &emsp;&emsp;
-                        <img src="images/blogs/mp/prm.gif" style="width:250;height:250px;">
-                        <figcaption>RRT* and PRM Algorithms </figcaption>
-                        <br>
-                    </figure>
+                    <b style="font-weight: 600"><u>The Algorithm</u></b> </p>
                 </center>
 
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Exact Planning Algorithms</b></i> </p>
+                    <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
 
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
-
-                Certain planning algorithms try to solve for motion planning problems directly. Exact algorithms are thorough in their approach and thus find a solution if it exists, for sure. It computes exact path of motion between any two points (terminal or intermittent) that are supposed to solve a part of the problem. 
-                <br><br>
-
-                <b>Cellular decomposition or visibility graphs</b> are the most common examples of such algorithms. They are however intractable and computationally expensive, thus not really extensible for high-dimensional problems.
-
-                </p>
+                        <li>
+                            Setup the planner with an initial point <b>x<sub>init</sub></b>, the number of points to be sampled <b>k</b> and the step size <b>&#916<sub>t</sub></b>
+                        </li><br>
+                        <li>                                                       
+                            Initialze a tree <b>&#964</b> that shall contain sampled points, with the initial point <b>x<sub>init</sub></b>
+                        </li><br>
+                        <li>                           
+                            Sample a random point <b>x<sub>rand</sub></b> in the workspace
+                        </li><br>
+                        <li>                           
+                            Obtain the nearest neighbor <b>x<sub>near</sub></b> for the <b>x<sub>rand</sub></b> point from the list of points in <b>&#964</b>
+                        </li><br>
+                        <li>                           
+                            Finally, derive a new point <b>x<sub>new</sub></b> and add it to the tree <b>&#964</b> <br>
+                            <i>
+                                If <b>distance(x<sub>near</sub></b> , <b>x<sub>rand</sub></b> )</b> is less than step size <b>&#916</b>, then <b>x<sub>new</sub></b> = <b>x<sub>near</sub></b>, else <b>x<sub>new</sub></b> is an intermittent point at a distance of <b>&#916</b> from <b>x<sub>near</sub></b> on the line joining <b>x<sub>near</sub></b> and <b>x<sub>rand</sub></b>.
+                            </i>
+                        </li><br>
+                        <li>
+                            The edge <b>e(x<sub>near</sub>, x<sub>new</sub>)</b> is an intermittent path in the tree. Several short paths like these ensure connectivity throughout the map
+                        </li><br>
+                        <li>
+                            If the <b>distance(x<sub>new</sub></b>, <b>x<sub>goal</sub>)</b> is less than the step size <b>&#916</b>, the edge <b>e(x<sub>near</sub>, x<sub>new</sub>)</b> is also stored as a path.
+                        </li><br>    
+                        <li>
+                            Final points in <b>&#964</b> are all possible nodes in the map. <br>                            
+                        </li><br>
+                    </ul>
 
                 <center>
-                    <figure>
-                        <img src="images/blogs/mp/cells.gif" style="width:350;height:250;">
-                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
-                        <!-- <br><br> -->
-                        &emsp;&emsp;
-                        <img src="images/blogs/mp/visibilitygraph.png" style="width:220;height:220px;">
-                        <figcaption>Cellular Decomposition and Visibility Graphs </figcaption>
-                        <br>
-                    </figure>
+                    <b style="font-weight: 600"><u>Subtle Features of RRTs</u></b> </p>
                 </center>
 
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Search-based Planning Algorithms</b></i> </p>
+
+                    <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                        <li>
+                            RRTs can solve for holonomic, nonholonomic and kinodynamic situations. Kinodynamic planning is when the robot planning is done within the kinematic constraints of velocity, acceleration, joint angle limits and obstacle avoidance.
+                        </li><br>
+                        <li>                            
+                            In cases where a naive random tree is generated out of incrementally selecting random points and adding it to the vertices, it heavily explores an already clustered environment.
+                        </li><br>
+                        <li>
+                            Even a random walk shows bias towards already explored places. Since, RRT is generated by selection of the nearest vertex, it ensures unexplored sections of the configuratio space are considerably seen.
+                        </li><br>
+                        <li>                             
+                            RRTs do not form closed loops and thus, the map it decides is near optimal if not completely optimal. 
+                        </li><br>
+                        <li>
+                            Initially, the vertices are not uniformly distributed but the probability of a random point lying withing the step size delta_t of a vertex of a tree(the x_near point) eventually tends to 1
+                        </li><br>
+                        <li>                            
+                            If the random points generated are uniform, then such a setting would be independent of x_init and would defy the purpose of RRTs. 
+                        </li><br>
+                        <li>
+                            Also, if the points are sampled from some pre-defined PDF (probability distribution function), then the RRT vertices would be accordingly. Such a setup can be used to device biased schemes which might be difficult and time taking to converge.
+                        </li><br>
+                        <li>
+                            Ideal performance of a RRT is defined by the distance parameter <b>&#916</b> - which determines the shortest distance between two states. 
+                        </li><br>
+                        <li>
+                            For constrained path planning, the optimal path would be the one with the least cost function and the cost function would be its metric.
+                        </li><br>
+                        <li>
+                            Probabilistic approach creates too many extra edges and also depends upon k-nearest neighbors as compared to a single neihbor for the RRTs. 
+                        </li><br>
+                        <li>
+                            RRT is probabilistically complete and relatively easier to implement.
+                        </li><br>
+                        <li>                            
+                            RRT maps always remain connected even in cases of less vertices and can be applied to a broad range of planning algorithms.
+                        </li><br>
+                    </ul>
+
+                <br><br>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+                    Given the advantages of the basic RRT algorithm, several enhancements like Bidirectional RRT, RRT*, RRT-Connect and RRT*-Smart among others have been used to optimize the solutions and get better performance.
+                    <br><br>
 
-                Search-based algorithms employ general computer-science search algorithms and solve the motion planning task as optimization tasks. Generally, the MP problem is represented as a graph with several grids/lattices and then optimal connections/nodes between the grids that connect the start and desired end points are derived. 
-                <br><br>
-
-                <b>Dijkstra, A* and other A* variants</b> are the most common examples of search-based algorithms. While they are again not apt for high-dimensional solutions, they can be applicable to certain tasks like coverage problems and vehicle planning.
+                    Recently, lots of efforts have been put into using RRT with better hardware (like GPUs), using other search algorithms in conjunction and hand-crafted optimizations for certain operational constraints/desires have fetched roboticists enhanced performance and usage. 
                 </p>
 
-                <center>
-                    <figure>
-                        <img src="images/blogs/mp/a_star.gif" style="width:250px;height:250px;">
-                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
-                        <!-- <br><br> -->
-                        &emsp;&emsp;
-                        <img src="images/blogs/mp/djikstra.gif" style="width:250;height:250px;">
-                        <figcaption>A* and Dijkstra Algorithms </figcaption>
-                        <br>
-                    </figure>
-                </center>
 
-                <br>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Other Planning Algorithms</b></i> </p>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
-
-                The above-mentioned algorithms are all model-based operations that  need the robot model to determine the feasibility of the algorithm. There has been recent research done in <b>reinforcement learning and other AI technology</b> for motion planning. 
-                <br><br>
-
-                <br>
-
-                </p>
-
-                <br><br>
             </div>
             </div>
 
+            <p style="column-width:1000px;margin-left:550px;margin-right:200px;text-align:center;font-size: 22px;font-weight: 500;color: red">
+                <i>
+                IF YOU LIKED THE ARTICLE, DON'T FORGET TO LEAVE A REACTION OR A COMMENT!                         
+                </i>
+            </p>
 
             <div id="disqus_thread" style="column-width: 1000px;margin-left: 570px;margin-right: 200px;"></div>
             <script>
@@ -472,7 +528,7 @@ div.column{
 
             var disqus_config = function () {
             this.page.url = "http://kumarakshay.me/sampling_mp.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 123; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.identifier = 132; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
@@ -483,7 +539,6 @@ div.column{
             })();
             </script>
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
 
     
         <!-- Section One -->
@@ -515,6 +570,5 @@ div.column{
               <a href="#" id="projects">Projects</a>
               <a href="#" id="contact">Contact</a>
  -->            </div>
-<script id="dsq-count-scr" src="//kumarakshay-me.disqus.com/count.js" async></script>
     </body>
 </html>
