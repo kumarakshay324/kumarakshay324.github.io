@@ -3,16 +3,46 @@
 <head>
 <style>
 
-div.whitebox {
-  margin-left: 15%;
-  margin-right: 15%;
-
-  background-color: #f5f5ef;
-  border: 1px solid #dbdbd5;
+div.multiple_columns {
+  /*margin-right: 5%;*/
+  width: 30%;
+  height: auto;
+  float:left;
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
   /*opacity: 1.0;*/
   filter: alpha(opacity=100); /* For IE8 and earlier */
+  margin-bottom: 10px;
 }
 
+div.whitebox {
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 96%;
+  height: auto;
+  /*height: 350px;*/
+  float:left;
+  background-color: #f5f5f0;
+  border: 1px solid #ebebe0;
+  /*opacity: 1.0;*/
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+  margin-bottom: 10px;
+}
+div.whitebox p{
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.whitebox:hover {
+  border: 1px solid #140440;
+}
+
+div.footerr{
+	position:fixed;
+	bottom: 00;
+	/*margin-top: f5f5f0
+	width: 100%;
+}
 div.br {
    display: block;
    margin: 3px;
@@ -81,12 +111,12 @@ div.br {
 			<div class="wrapper style5">
 				
 						
-					<center><img src="images/my_image.JPG" style="width:375px;height:505px;float:left;margin-left:5%;margin-right:4%"></center>
+					<center><img src="images/my_image.JPG" style="width:345px;height:460px;float:left;margin-left:5%;margin-right:4%"></center>
 					
-					<p style="margin-right:3%;text-align:center;font-size:50px"> Hi, I am Akshay </p>
+					<p style="margin-right:3%;text-align:center;font-size:40px"> Hi, I am Akshay! </p>
 					<p style="margin-right:3%;text-align:justify"><b>I am a Spring 2019 Masters in Robotics Engineering graduate from Worcester Polytechnic Institute, MA, USA.</b> I have an undergraduate degree in Electrical Engineering (Spring 2017) from Malaviya National Institute Of Technology Jaipur, India <br><br>
 						
-						<b>At present, I am an incoming Robotics Software Engineer at <a href="www.modbot.com">Modbot</a>, San Fracisco, CA in July 2019.</b>
+						<b>I am an incoming Robotics Software Engineer at <a href="www.modbot.com">Modbot</a>, San Fracisco, CA</b>
 
 						<br><br>
 
@@ -134,10 +164,6 @@ div.br {
 
 		<!-- Section One -->
 			<div class="wrapper style1">
-				<section class="container">
-					<div class="row double">
-						
-						<div class="12u" >
 
 							<center>
 								<br><br>
@@ -147,17 +173,18 @@ div.br {
 							<p style="font-size:17px;text-align:justify;color:black;margin-right:15%;margin-left:15%;text-decoration:none;font-weight: 500"> These blogs are more of a collection of my personal learnings/understandings assimilated from various other websites, courses, projects and experience and less of polished blogs or tutorials! <br><br>But, hey if I do anyone any good with these, I don't mind! You can hit me up to talk more about them!</p>
 
 							</center>
-							<br>
-							<center><p><a style="font-size:35px;color:#140440;margin-right:22%;margin-left:21%;text-decoration:none;font-weight: 400">&#129302 ROBOTICS</a></p></center>
+						<div class="multiple_columns" style=" margin-left: 5%;">
+							<br><br>
+							<center><p><a style="font-size:25px;color:#140440;margin-right:10%;margin-left:10%;text-decoration:none;font-weight: 400">&#129302 ROBOTICS</a></p></center>
 
 
 								<a style="display:block;font-size:17px;color:black;;text-decoration:none;margin-top:5%" 
 								href="slam_intro.html">
-									<div class="whitebox" align="left" >
+									<div class="whitebox" align="left">
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Simulataneous Localization and Mapping - An Introduction</b></p>
-									<p style="margin:2%" align="justify">SLAM for robot navigation is one of the most challenging concepts of robotics to understand and implement with deterministic nature... <u style="color:#140440;font-weight: 500">READ MORE</u> </p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> June 15, 2019 &emsp;&emsp;&#9202 10 mins &emsp;&emsp; Level: Beginner</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Simulataneous Localization and Mapping - An Introduction</p>
+									<p  align="justify">SLAM for robot navigation is one of the most challenging concepts of robotics to understand and implement with deterministic nature... <u style="font-weight: 500">READ MORE</u> </p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> June 15, 2019 &emsp;&emsp;&#9202 10 mins &emsp;&emsp; Level: Beginner</p>
 									
 									</div>
 								</a>
@@ -166,9 +193,9 @@ div.br {
 								href="mp_intro.html">
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Motion Planning in Robotics - Yet Another Introduction!</b></p>
-									<p style="margin:2%" align="justify">Making a robot go where one wants to - be it a manipulator arm or a mobile robot or a different kind is of utmost importance in robotics... <u style="color:#140440;font-weight: 500">READ MORE</u> </p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> June 25, 2019 &emsp;&emsp; 	&#9202 15 mins &emsp;&emsp; Level: Intermediate</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Motion Planning in Robotics - Yet Another Introduction!</p>
+									<p  align="justify">Making a robot go where one wants to - be it a manipulator arm or a mobile robot or a different kind is of utmost importance in robotics... <u style="font-weight: 500">READ MORE</u> </p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> June 25, 2019 &emsp;&emsp; 	&#9202 15 mins &emsp;&emsp; Level: Intermediate</p>
 									
 									</div>
 								</a>
@@ -177,10 +204,10 @@ div.br {
 								href="sampling.html"> 
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Sampling-based Motion Planning - All robots do it!</b></p>
-									<p style="margin:2%" align="justify">While robotic systems are continuously evolving in control and performance, motion planning is yet governed by sampling-based algorithms that ... <u style="color:#140440;font-weight: 500">COMING SOON</u> </p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Sampling-based Motion Planning - All robots do it!</p>
+									<p  align="justify">While robotic systems are continuously evolving in control and performance, motion planning is yet governed by sampling-based algorithms that ... <u style="font-weight: 500">READ MORE</u> </p>
 									<br>
-									<p style="font-size:18px;text-align:center;color:#140440"> July 6, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Intermediate</p>
+									<p style="font-size:15px;text-align:center;color:#999999"> July 6, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Intermediate</p>
 									
 									</div>
 								</a>
@@ -189,9 +216,9 @@ div.br {
 								href="coverage.html">
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Coverage Problems in Mobile Robots</b></p>
-									<p style="margin:2%" align="justify">Mobile robots find major applications in warehouse management, indoor/outdoor goods transporation tasks ... <u style="color:#140440;font-weight: 500">READ MORE</u> </p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> June 25, 2019 &emsp;&emsp;&#9202 12 mins &emsp;&emsp; Level: Intermediate</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Coverage Problems in Mobile Robots</p>
+									<p  align="justify">Mobile robots find major applications in warehouse management, indoor/outdoor goods transporation tasks ... <u style="font-weight: 500">READ MORE</u> </p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> June 25, 2019 &emsp;&emsp;&#9202 12 mins &emsp;&emsp; Level: Intermediate</p>
 									
 									</div>
 								</a>
@@ -200,15 +227,17 @@ div.br {
 								href="visual_slam.html">
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Visual SLAM - An Introduction</b></p>
-									<p style="margin:2%" align="justify">Visual SLAM is the most researched topic in all of SLAM technology today. Visual sensing has made feature extraction extremely easy ... <u style="color:#140440;font-weight: 500">READ MORE</u> </p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> June 25, 2019 &emsp;&emsp;&#9202 8 mins &emsp;&emsp; Level: Beginner</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Visual SLAM - An Introduction</p>
+									<p  align="justify">Visual SLAM is the most researched topic in all of SLAM technology today. Visual sensing has made feature extraction extremely easy ... <u style="font-weight: 500">READ MORE</u> </p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> June 25, 2019 &emsp;&emsp;&#9202 8 mins &emsp;&emsp; Level: Beginner</p>
 									
 									</div>
 								</a>
+						</div>
 
-							<br><br><br>
-							<center><p><a style="font-size:35px;color:#140440;margin-right:22%;margin-left:21%;text-decoration:none;font-weight: 400">&#128187 COMPUTER PROGRAMMING</a></p> </center>
+						<div class="multiple_columns" >
+							<br><br>
+							<center><p><a style="font-size:25px;color:#140440;margin-right:10%;margin-left:10%;text-decoration:none;font-weight: 400">&#128187 COMPUTER PROGRAMMING</a></p> </center>
 
 								<!-- <div class="whitebox" align="left"> -->
 
@@ -216,9 +245,9 @@ div.br {
 								href="stl_cpp.html">
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Commmon Algorithms from the STL Library in C++</b></p>
-									<p style="margin:2%" align="justify">The Standard Template Library is HUGE and heavily underutilized by noobs like me! We need to learn more about what already exists such that we don't reinvent the wheel ... <u style="color:#140440;font-weight: 500">READ MORE</u></p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> June 25, 2019 &emsp;&emsp;&#9202 10 mins &emsp;&emsp; Level: Beginner</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Commmon Algorithms from the STL Library in C++</p>
+									<p  align="justify">The Standard Template Library is heavily underutilized. We need to learn more about what already exists such that we don't reinvent the wheel ... <u style="font-weight: 500">READ MORE</u></p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> June 25, 2019 &emsp;&emsp;&#9202 10 mins &emsp;&emsp; Level: Beginner</p>
 									
 									</div>
 								</a>
@@ -228,10 +257,9 @@ div.br {
 								href="#"><!-- cmake.html"> -->
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center">  CMake - The Inevitable!</b></p>
-									<p style="margin:2%" align="justify">Cmake is a cross-platform system designed to create projects. It is not a direct build system, but a meta build system that uses a script called <it>CMakeLists.txt</it> ... <u style="color:#140440;font-weight: 500">COMING SOON</u></p>
-<!-- 									<br><p style="font-size:18px;text-align:center;color:#140440"> June 15, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Intermediate</p>
- -->									
+									<p style="font-size: 20px;font-weight: 500" align="center">  CMake - The Inevitable!</p>
+									<p  align="justify">Cmake is a cross-platform system designed to create projects. It is not a direct build system, but a meta build system that uses a script called <it>CMakeLists.txt</it> ... <u style="font-weight: 500">COMING SOON</u></p>
+									
 									</div>
 								</a>
 
@@ -240,9 +268,9 @@ div.br {
 								href="#"> <!-- smart_pointers_nn.html"> --> 
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Smart Pointers - The non-nerdy version</b></p>
-									<p style="margin:2%" align="justify">Mobile robots find major applications in warehouse management, indoor/outdoor goods transporation tasks. ... <u style="color:#140440;font-weight: 500">COMING SOON</u> </p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> May 25, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Beginner</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Smart Pointers - The non-nerdy version</p>
+									<p  align="justify">Mobile robots find major applications in warehouse management, indoor/outdoor goods transporation tasks. ... <u style="font-weight: 500">COMING SOON</u> </p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> May 25, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Beginner</p>
 									
 									</div>
 								</a>
@@ -251,52 +279,72 @@ div.br {
 								href="#"> lambda_cpp.html"
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> C++ Lambdas</b></p>
-									<p style="margin:2%" align="justify">The syntax for using lambda functions in C++ is pretty intimidating and frankly, they are actually way more intimidating ... <u style="color:#140440;font-weight: 500">COMING SOON </u> </p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> May 25, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Intermediate</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> C++ Lambdas</b></p>
+									<p  align="justify">The syntax for using lambda functions in C++ is pretty intimidating and frankly, they are actually way more intimidating ... <u style="font-weight: 500">COMING SOON </u> </p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> May 25, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Intermediate</p>
 									
 									</div>
-								 --></a>
+								 </a>-->
 
 <!-- 								<a style="display:block;font-size:17px;color:black;;text-decoration:none;margin-top:5%" 
 								href="#"> "mp_intro.html"
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> Installation managers in Ubuntu</b></p>
-									<p style="margin:2%" align="justify">Making a robot go where one wants to - be it a manipulator arm or a mobile robot or a different kind is of utmost importance in robotics... <u style="color:#140440;font-weight: 500">COMING SOON </u> </p>
-									<br><p style="font-size:18px;text-align:center;color:#140440"> May 25, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Beginner</p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> Installation managers in Ubuntu</b></p>
+									<p  align="justify">Making a robot go where one wants to - be it a manipulator arm or a mobile robot or a different kind is of utmost importance in robotics... <u style="font-weight: 500">COMING SOON </u> </p>
+									<br><p style="font-size:15px;text-align:center;color:#999999"> May 25, 2019 &emsp;&emsp;&#9202 15 mins &emsp;&emsp; Level: Beginner</p>
 									
 									</div>
 								</a>
 
- -->
-							<br><br><br>
-							<center><p ><a style="font-size:35px;color:#140440;margin-right:22%;margin-left:21%;text-decoration:none;font-weight: 400 ">&#9982 PERSONAL</a></p></center>
+ -->					
+						</div>
+
+						<div class="multiple_columns" >
+							<br><br>
+							<center><p ><a style="font-size:25px;color:#140440;margin-right:10%;margin-left:10%;text-decoration:none;font-weight: 400 ">&#9982 PERSONAL</a></p></center>
 
 								<a style="display:block;font-size:17px;color:black;;text-decoration:none;margin-top:5%" 
 								href="#"> <!-- sf.html"> -->
 									<div class="whitebox" align="left" >
 									<br>	
-									<p style="margin-left:1%;font-size: 25px;font-weight: 500" align="center"> The Oblivious Gems Of San Francisco</b></p>
-									<p style="margin:2%" align="justify">The unique, not so famous places and things to do in San Francisco that you might not find in every blog out there! ... <u style="color:#140440;font-weight: 500">COMING SOON </u> </p>
+									<p style="font-size: 20px;font-weight: 500" align="center"> The Oblivious Gems Of San Francisco</p>
+									<p  align="justify">The unique, not so famous places and things to do in San Francisco that you might not find in every blog out there! ... <u style="font-weight: 500">COMING SOON </u> </p>
 									<br>
-									<!-- <br><p style="font-size:18px;text-align:center;color:#140440"> May 25, 2019 &emsp;&emsp; You Can Take Your Time To Read This One &emsp;&emsp; Level: Literally Anyone!</p> -->
-																		</div>
+									<!-- <br><p style="font-size:15px;text-align:center;color:#999999"> May 25, 2019 &emsp;&emsp; You Can Take Your Time To Read This One &emsp;&emsp; Level: Literally Anyone!</p> -->
+									</div>
 								</a>
-							
-							<br><br><br>
-							<hr width="50%">
-						</div>
-								
-				</div>
-				</section>
-				
-				<p style="margin-bottom:0;padding-bottom:0;"><center>Copyright @Akshay Kumar | Last Updated on 05/30/2019</center></p>
 
-			</div>			
+								<a style="display:block;font-size:17px;color:black;;text-decoration:none;margin-top:5%" 
+								href="#"> <!-- sf.html"> -->
+									<div class="whitebox" align="left" >
+									<br>	
+									<p style="font-size: 20px;font-weight: 500" align="center"> How Was My Grad School?!</p>
+									<p  align="justify">Masters  in Robotics Engineering at WPI - roller coaster ride that gave some hopes, some disappointments and lots of lessons in between! ... <u style="font-weight: 500">COMING SOON </u> </p>
+									<br>
+									<!-- <br><p style="font-size:15px;text-align:center;color:#999999"> May 25, 2019 &emsp;&emsp; You Can Take Your Time To Read This One &emsp;&emsp; Level: Literally Anyone!</p> -->
+									</div>
+								</a>							
+							<br><br>
+						</div>	
+
+			</div>
+
+			
+		<div class="row">
+			
+		</div>			
 		
 
-<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-BxBB6yD0waBYZ7DZ-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=BxBB6yD0waBYZ7DZ'></script></div>
+<div align=center style="margin-top: 50px">
+
+			<hr width="50%">
+			<p style="margin-bottom:0;padding-bottom:0;"><center>Copyright @Akshay Kumar | Last Updated on 05/30/2019</center></p>
+			<a href='https://www.counter12.com'><img src='https://www.counter12.com/img-BxBB6yD0waBYZ7DZ-50.gif' border='0' alt='counter'></a>
+			<script type='text/javascript' src='https://www.counter12.com/ad.js?id=BxBB6yD0waBYZ7DZ'>
+				
+			</script>
+</div>
 
 	</body>
 </html>
