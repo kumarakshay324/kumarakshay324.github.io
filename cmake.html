@@ -17,8 +17,8 @@ div.code_box {
   margin-left: 20%;
   margin-right: 10%;
 
-  background-color: #ffffff;
-  /*border: 1px black;*/
+  background-color: #000000;
+  color: green;
   opacity: 1.0;
   filter: alpha(opacity=100); /* For IE8 and earlier */
 }
@@ -141,21 +141,21 @@ code {
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px; font-weight: 500"> CMAKE - THE INEVITABLE!</h2>
+                    <h2 style="font-size:40px; font-weight: 500"> CMAKE META BUILD SYSTEM</h2>
                 <br>
 
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    CMake is a cross-platform system designed to create projects. It is not a direct build system, but a meta build system that uses a script called <i><b>CMakeLists.txt</b></i> to generate input files for build systems called <i><b>project files</b></i> (could be Unix Makefiles or MinGW Makefiles or others, discussed later) that support different kinds of compilation, configuration, testing and packaging options. 
+                    CMake is a cross-platform generator system designed to create projects. It is not a direct build system, but a meta build system that uses a script with defined rules, called <i><b>CMakeLists.txt</b></i> to generate input files for build systems called <i><b>project files</b></i> (could be Unix Makefiles or MinGW Makefiles or others, discussed later) that support different kinds of compilation, configuration, testing and packaging options. 
 
                     <br><br>
-                    This article talks about the general commands, options and tags to be used to write <i><b>CMakeLists.txt</b></i> as per desired requirements. 
+                    This article explains the reasoning behind using C++, related terminology used in C++ code compilation and general commands, options and tags to be used to write <i><b>CMakeLists.txt</b></i> as per desired requirements. 
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/cmake/cmake.png" style="width:622px;height:390px;">
+                        <img src="images/blogs/cmake/cmake.png" style="width:622px;height:390px;">
                         <figcaption>STL Overview</figcaption>
                     </figure>
 
@@ -167,7 +167,7 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                C/C++ is an extremely useful language used for innumerable number of applications. However, with several compilers, operating systems and hardware platforms, it becomes essential to package an optimized C++ project comptabile accross such various platforms and for different desired uses. 
+                C/C++ is an extremely useful language used for innumerable number of applications. However, with several compilers, operating systems and hardware platforms, it becomes essential to package an optimized C++ project comptabile accross various such platforms and for different desired uses. 
 
                 <br><br>
 
@@ -177,10 +177,72 @@ code {
 
                 <b>Build systems</b> are a collection of tools that compile the source code, execute all linking and other secondary tasks. They could be configured to not only compile source codes but also synchronise builds in multi-stage build systems. CMake uses the specified <b>generators</b> like Unix Makefiles, Ninja, MinGW Makefiles, Visual Studio and Codeblocks among others and writes the input files for the native build system. Exactly one build system is used at once.
 
+                <br><br>                
+                <b style="font-weight: 500">Note:</b>
+                <br>
+                <b style="font-weight: 500">gcc</b> and <b style="font-weight: 500">g++</b> are the compiler-drivers of the GNU Compiler Collection. While gcc can compile .c and .cpp files as C and C++ language files respectively, g++ considers both of them to be C++ files. Also, unlike gcc, g++ compilation automatically links all STL C++ libraries.
+
+                <br><br>                
+                For ease of understanding, here we can consider using them interchangeably.
+                </p>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Is CMake really needed?!</h1>                
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                C++ is a widely used programming language owing to its powerful capabilities and fast operation. Among several other things, being a compiled language makes C++ really really fast.
+
+                <br><br>
+                While <b style="font-weight: 500">compilation</b> is a topic for later, it can be understood naively as breaking down a code to its almost machine-level version and preprocessing parts as much as possible such that when executed, considerable sections of the code already have prepared answers or execute immediately on the processor and no time is spent in conversion of human-readable code into machine-compatible code at runtime.
+
+                <br><br>
+
+                The most common and rudimentary <b style="font-weight: 500">Hello World</b> C++ program has one <b style="font-weight: 500">main.cpp</b> file and it can be compiled using the following terminal command to obtain the 
+                <br><br>
+                <code>
+                    ~$ g++ main.cpp -o main  // Compile
+                    <br>
+                    ~$ ./main // Execute
+                </code>
+                <br><br>
+
+                If there are 3 files, namely <b style="font-weight: 500">si_int.cpp</b>, <b style="font-weight: 500">com_int.cpp</b> and the <b style="font-weight: 500">main.cpp</b> where the two former files have functions to compute simple interest and compound interest, used(by importing) in the last <b style="font-weight: 500">main.cpp</b> file to calculate results; they could be compiled using terminal command (for C++11)
+                <br><br>
+                <code>
+                    ~$ g++ si_int.cpp com_int.cpp main.cpp -o main -std=c++11 // Compile
+                    <br>
+                    ~$ ./main // Execute
+                </code>
+                <br><br>                
+
+                The two examples are indicative of the cumbersome process that could shape if there are more files, more dependencies, more libraries to link and other such unique requirements while code compilation; command-line compilation is certainly not the way to go.
+
+                <br><br>
+                For reassurance, here are some tags needed for g++ to achieve more features.
+                &emsp; <br>
+                &emsp; <b style="font-weight: 500">-I&ltinclude path&gt </b> - Specify a directory (to include files from)
+                &emsp; <br>
+                &emsp; <b style="font-weight: 500">-L&ltlibrary path&gt</b> - Specify a library directory
+                &emsp; <br>
+                &emsp; <b style="font-weight: 500">-0</b> - Turn ON optimizations by the compiler
+                &emsp; <br>
+                &emsp; <b style="font-weight: 500">-l&ltlibrary&gt</b> - Link with library lib&ltlibrary&gt.a
+                &emsp; <br>
+                &emsp; <b style="font-weight: 500">-Wall</b> - Turn on Warnings during compilations
+                &emsp; <br>
+                &emsp; <b style="font-weight: 500">-g</b> - Generate flags for debugging during compilation (Used by GDB)
+                &emsp; <br><br>
+
+                Considering the challenges in compilation, CMake provides options to the user to configure the complete project and package it as per need be. The conditions, compilation tags, machine dependencies, language versions and many such parameters.
+                <br><br>
+
+                CMake is a high-level build-system customized for C++. CMake tracks and stores all flags and conditions that should be followed when the code is finally compiled and run. The liberty of allowing extensibility in code compilation conditions and external libraries/resources used makes CMake a very useful tool.
+
                 </p>
 
                 <h1 style="text-align:left;margin-left:200px;font-size:20px ">Nuances of CMake</h1>                
-                <br><br>
+                <br>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
@@ -285,10 +347,23 @@ code {
                     &emsp; include_directories(&ltinclude_header_locations&gt)
                 </code><br><br>
 
+                <b>&#8658</b> While to set source code files to a string value, all files need to be mentioned manually, GLOB or GLOB_RECURSE allows for searching and selecting multiple source code files<br>
+                <code> 
+                    &emsp; file(GLOB SOURCES "src/*.cpp")
+                </code><br><br>
+
+                <b>&#8658</b> Several properties need to define for the executable binary<br>
+                An example would be setting the language as CXX(for C++).
+                <code> 
+                    &emsp; set_target_properties(cmake_usage_example PROPERTIES LINKER_LANGUAGE CXX)
+                </code><br><br>                
+
                 <b>&#8658</b> Defining the location in the system for installation of the library.<br>
                 <code> 
                     &emsp; install(TARGET &ltlibray_name&gt DESTINATION &ltdestination_location&gt)
                 </code><br><br>
+
+
 
                 <b>&#8658</b> Find the location of a library and store its reference in a temporary <i>VARIABLE</i> cache. <br>
                 <code> 
@@ -319,183 +394,84 @@ code {
                             &emsp; :~/$<b>sudo apt-get install cmake</b> // Install CMake<br>
                             &emsp; :~/$<b>cmake --version</b> // Check CMake version<br> 
                         </code>
+                        <br>
                     </div>
                 </p>   
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;font-weight: 500">
                     The following example is a simple C++ application. It has a class with functions for a few mathematical operations. The main script to be executed uses this class as need be.
                     Finally, the <em>Unix Makefiles</em> CMake generator will be used to create the build system Makefile. <br>
-                </p>
-
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;">
-
-                    <u>Example C++ Application - Source Code <b>computations.cpp</b> file</u>  <br>
-                    
-                    <div class="code_box">
-                        <br>
-<!--                         <code>
-
-                                &emsp; #include&ltiostream&gt <br>
-                                &emsp; #include"Computations.h" <br> 
-                                &emsp; <br>                                                                
-
-                                &emsp; namespace maths { <br><br>
-
-                                &emsp;&emsp;       Computations::Computations() {}<br> 
-
-                                &emsp;&emsp;       double Computations::calcPower(double input, int power) { <br> 
-                                &emsp;&emsp;&emsp; return input^power;  <br>                                                                 
-                                &emsp;&emsp; }<br>
-
-                                &emsp;&emsp;              double Computations::convTemp(double input, int f=0) { <br>
-                                &emsp;&emsp;&emsp;                if (f) <br>
-                                &emsp;&emsp;&emsp;&emsp;             return (input - 32) / 1.8; // Fahrenheit to Celsius<br>
-                                &emsp;&emsp;&emsp;                else<br>
-                                &emsp;&emsp;&emsp;&emsp;                    return (1.8 * input + 32 ); // Celsius to Fahrenheit<br>
-                                &emsp;&emsp; }<br>
-
-                                &emsp;&emsp;              double Computations::convDistance(double input, int miles=0) { <br>
-                                &emsp;&emsp;&emsp;                if (miles) <br>
-                                &emsp;&emsp;&emsp;&emsp;             return (input / 1.60934); // Kilometers to Miles <br>
-                                &emsp;&emsp;&emsp;                else <br>
-                                &emsp;&emsp;&emsp;&emsp;                    return (1.60934 * input); // Miles to Kilometers <br>
-                                &emsp;&emsp; }<br>                                
-
-                                &emsp; }<br>                                
-                        </code>
--->                 
-<pre style='color:#000000;background:#ffffff;'>  #include&lt;<span style='color:#7f0055; font-weight:bold; '>iostream</span>> 
-  #include<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>computations.h</span><span style='color:#2a00ff; '>"</span> 
-  
-  <span style='color:#7f0055; font-weight:bold; '>namespace</span> maths { 
-
-   Computations::Computations() {}
-   <span style='color:#7f0055; font-weight:bold; '>double</span> Computations::calcPower(<span style='color:#7f0055; font-weight:bold; '>double</span> input, <span style='color:#7f0055; font-weight:bold; '>int</span> power) { 
-    <span style='color:#7f0055; font-weight:bold; '>return</span> input^power; 
-   }
-   <span style='color:#7f0055; font-weight:bold; '>double</span> Computations::convTemp(<span style='color:#7f0055; font-weight:bold; '>double</span> input, <span style='color:#7f0055; font-weight:bold; '>int</span> f=0) { 
-    <span style='color:#7f0055; font-weight:bold; '>if</span> (f) 
-     <span style='color:#7f0055; font-weight:bold; '>return</span> (input - 32) / 1.8; <span style='color:#3f7f59; '>// Fahrenheit to Celsius</span>
-    <span style='color:#7f0055; font-weight:bold; '>else</span>
-     <span style='color:#7f0055; font-weight:bold; '>return</span> (1.8 * input + 32 ); <span style='color:#3f7f59; '>// Celsius to Fahrenheit</span>
-   }
-   <span style='color:#7f0055; font-weight:bold; '>double</span> Computations::convDistance(<span style='color:#7f0055; font-weight:bold; '>double</span> input, <span style='color:#7f0055; font-weight:bold; '>int</span> miles=0) { 
-    <span style='color:#7f0055; font-weight:bold; '>if</span> (miles) 
-     <span style='color:#7f0055; font-weight:bold; '>return</span> (input / 1.60934); <span style='color:#3f7f59; '>// Kilometers to Miles </span>
-    <span style='color:#7f0055; font-weight:bold; '>else</span> 
-     <span style='color:#7f0055; font-weight:bold; '>return</span> (1.60934 * input); <span style='color:#3f7f59; '>// Miles to Kilometers </span>
-   }
-  }
-</pre>    
-                    <!-- <br> -->
-
-                    </div>
-
-
-                    <!-- <br><br> -->
-                </p>
-
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;">
-
-                    <br>
-                    <u>Example C++ Application - Header File <b>computations.h</b> file</u>  <br>
-                    
-                    <div class="code_box">
-                        <br>
-<!--                         <code >
-
-                                &emsp; #include&ltiostream&gt <br>
-                                &emsp; <br>                                                                
-
-                                &emsp; namespace maths { <br><br>
-
-                                &emsp;&emsp;         public: <br>   
-                                &emsp;&emsp;&emsp;      class Computations: {<br> 
-
-                                &emsp;&emsp;&emsp;&emsp;      Computations(void); <br> 
-                                &emsp;&emsp;&emsp;&emsp;      ~Computations(void); <br> 
-
-                                &emsp;&emsp;&emsp;&emsp;      double calcPower(double input, int power);<br> 
-
-                                &emsp;&emsp;&emsp;&emsp;      double convTemp(double input, int f=0);<br>
-
-                                &emsp;&emsp;&emsp;&emsp;      double convDistance(double input, int miles=0); <br>
-
-                                &emsp; };<br>                                
-                        </code>
- --> 
-
-<pre style='color:#000000;background:#ffffff;'>  #include&lt;<span style='color:#7f0055; font-weight:bold; '>iostream</span>> 
-  
-  <span style='color:#7f0055; font-weight:bold; '>namespace</span> maths { 
-
-   <span style='color:#7f0055; font-weight:bold; '>public</span>: 
-    <span style='color:#7f0055; font-weight:bold; '>class</span> Computations: {
-     Computations(<span style='color:#7f0055; font-weight:bold; '>void</span>); 
-     ~Computations(<span style='color:#7f0055; font-weight:bold; '>void</span>); 
-     <span style='color:#7f0055; font-weight:bold; '>double</span> calcPower(<span style='color:#7f0055; font-weight:bold; '>double</span> input, <span style='color:#7f0055; font-weight:bold; '>int</span> power);
-     <span style='color:#7f0055; font-weight:bold; '>double</span> convTemp(<span style='color:#7f0055; font-weight:bold; '>double</span> input, <span style='color:#7f0055; font-weight:bold; '>int</span> f=0);
-     <span style='color:#7f0055; font-weight:bold; '>double</span> convDistance(<span style='color:#7f0055; font-weight:bold; '>double</span> input, <span style='color:#7f0055; font-weight:bold; '>int</span> miles=0); 
-  };
-</pre>
                 <br>
-                </p>        
-                </div>  
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;">
-                    <br>
-                    <u>Example C++ Application - Main Executable File <b>maincpp.cpp</b> file</u>  <br>
-                    
-                    <div class="code_box">
-                        <br>
-<!--                         <code >
+                cpp-cmake-example <br>
+                    ├── CMakeLists.txt<br>
+                    ├── include<br>
+                    │   &emsp;└── computations.h<br>
+                    └── src<br>
+                        &emsp;&emsp;&emsp;└── computations.cpp<br>
+                        &emsp;&emsp;&emsp;└── main,cpp<br>
 
-                                &emsp; #include&ltiostream&gt <br>
-                                &emsp; #include&ltcomputations.h&gt <br>                                                                
-
-                                &emsp; namespace maths { <br><br>
-
-                                &emsp;&emsp;           int main(int argc, char *argv[]) {   <br>   
-                                &emsp;&emsp;&emsp;        std::unique_ptr&ltComputations&gt comp = std::make_unique&ltComputations&gt();<br>
-                                &emsp;&emsp;&emsp;        float cube = comp->calcPower(2.1, 3); <br> 
-                                &emsp;&emsp;&emsp;        std::cout << "2.1 raise to power 3 is " << cube;  <br>
-                                &emsp;&emsp;&emsp;      <br> 
-
-                                &emsp;&emsp;&emsp;        float temp = comp->calcTemp(60, 1); <br> 
-                                &emsp;&emsp;&emsp;        std::cout << "60 degrees fahrenheit is " << temp << " degree Celsius  ";  <br>
-                                                        <br>
-                                &emsp;&emsp;&emsp;        float dist = comp->calcDistance(5);    <br> 
-                                &emsp;&emsp;&emsp;        std::cout << "5 miles is " << dist << " kilometers  ";  <br>
-
-                                &emsp;&emsp;      return 0;<br> 
-
-                                &emsp; };<br>                                
-                        </code>
- -->
-<pre style='color:#000000;background:#ffffff;'>  #include&lt;<span style='color:#7f0055; font-weight:bold; '>iostream</span>> 
-  #include&lt;computations.h> 
-  <span style='color:#7f0055; font-weight:bold; '>namespace</span> maths { 
-
-   <span style='color:#7f0055; font-weight:bold; '>int</span> <span style='color:#7f0055; font-weight:bold; '>main</span>(<span style='color:#7f0055; font-weight:bold; '>int</span> argc, <span style='color:#7f0055; font-weight:bold; '>char</span> *argv[]) { 
-    std::<span style='color:#7f0055; font-weight:bold; '>unique_ptr</span>&lt;Computations> comp = std::make_unique&lt;Computations>();
-    <span style='color:#7f0055; font-weight:bold; '>float</span> cube = comp->calcPower(2.1, 3); 
-    std::<span style='color:#7f0055; font-weight:bold; '>cout</span> &lt;&lt; <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>2.1 raise to power 3 is </span><span style='color:#2a00ff; '>"</span> &lt;&lt; cube; 
-    
-    <span style='color:#7f0055; font-weight:bold; '>float</span> temp = comp->calcTemp(60, 1); 
-    std::<span style='color:#7f0055; font-weight:bold; '>cout</span> &lt;&lt; <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>60 degrees fahrenheit is </span><span style='color:#2a00ff; '>"</span> &lt;&lt; temp &lt;&lt; <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '> degree Celsius </span><span style='color:#2a00ff; '>"</span>; 
-
-    <span style='color:#7f0055; font-weight:bold; '>float</span> dist = comp->calcDistance(5); 
-    std::<span style='color:#7f0055; font-weight:bold; '>cout</span> &lt;&lt; <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>5 miles is </span><span style='color:#2a00ff; '>"</span> &lt;&lt; dist &lt;&lt; <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '> kilometers </span><span style='color:#2a00ff; '>"</span>; 
-   <span style='color:#7f0055; font-weight:bold; '>return</span> 0;
-  };
-</pre>
-
-                        <br>
-
-
-
-                    </div>
-                    <br><br>
                 </p>
+
+                <center>
+                <p style="column-width:1000px;">
+
+                    <u style="font-weight: 500; align=center">Example C++ Application - Source Code <b>computations.cpp</b> file</u>
+                            <figure>
+                                <img src="images/blogs/cmake/comp_cpp.png" >
+                            </figure>
+                        <!-- </center>                     -->
+                    <br>
+                </p>
+                <p style="column-width:1000px;">
+
+                    <u style="font-weight: 500; align=center">Example C++ Application - Header File <b>computations.h</b> file</u>  <br>
+                            <figure>
+                                <img src="images/blogs/cmake/comp_h.png">
+                            </figure>
+                        <!-- </center>                     -->
+                        <br>
+                </p>
+                <p style="column-width:1000px;">                
+                    <u style="font-weight: 500; align=center">Example C++ Application - Main file <b>main.h</b> file</u>  <br>
+                            <figure>
+                                <img src="images/blogs/cmake/main.png">
+                            </figure>
+                        <!-- </center>                     -->
+                        <br>
+                </p>
+                <p style="column-width:1000px;">                
+                    <u style="font-weight: 500; align=center">Example C++ Application - CMake file <b>CMakeLists.txt</b> file</u>  <br>
+                            <figure>
+                                <img src="images/blogs/cmake/main.png">
+                            </figure>
+                        <br>
+                </p>
+                </center>                    
+
+                <center>
+                    <a style="font-size: 20px" href="images/blogs/cmake/cpp-cmake-example.zip" download><b>DOWNLOAD EXAMPLE SOURCE CODE</b></a>
+                </center>
+
+                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;font-weight: 500">
+ 
+                    <br>
+                    Finally, the project is executed using the steps shown in the image below.
+
+                    <ul style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;list-style-type: disc">
+                     <li> We create a build folder to avoid cluttering built files with source code </li>
+                     <li> <code>cd</code> into the folder and then run <code>cmake ..</code> where the two dots represent the presence of CMakeLists.txt in one folder prior; to generate the project files</li>
+                     <li> Run <code>make</code> or <code>make &ltexecutable&gt</code> to compile the source code</li>
+                     <li> <code>./cmake_usage_example</code> to run the compiled sample code</li>
+                    </ul> 
+                        <center>
+                            <figure>
+                                <img src="images/blogs/cmake/execute.png">
+                            </figure>
+                        </center>                    
+
+                </p>
+        </div>
+                    <br><br>
 
 
             </div>
