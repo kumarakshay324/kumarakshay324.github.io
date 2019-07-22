@@ -144,7 +144,7 @@ code {
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px; font-weight: 500;">ROBOT OPERATING SYSTEM - USAGE </h2>
+                    <h2 style="font-size:35px; font-weight: 500;">ROBOT OPERATING SYSTEM - COMMAND LINE TOOLS </h2>
                 <br>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
@@ -274,7 +274,7 @@ code {
                         <code>
                             &emsp;~$ roslaunch &ltpackage_name&gt &ltlaunch_file.launch&gt <br>
                         </code><br>
-                        Example - To run ROS node that navigated the Turtlebot robot manually using inputs from the keyboard and also run the roscore from within the launch file
+                        Example - To run ROS node that navigates the Turtlebot robot manually using inputs from the keyboard and also runs the roscore from within the launch file (basically multiple nodes run from the same launch file).
                         <br>
                         <code>
                             &emsp; ~$ roslaunch turtlebot_teleop keyboard_teleop.launch
@@ -402,27 +402,60 @@ code {
                     <br><hr width=50%><br>
                     <li>
                         <center><b style="font-weight: 500;font-size: 20px;"><u>PARAMETER SERVER</u></center></b><br>
-                        Parameter server is a location to allow data storage in a central memory location for ROS. It is generally suitable for static data that is not modified frequently but only accessed at runtime for values like configuration parameters. 
+                        Parameter server is a dictionary that allows data storage in a central memory location for ROS accessible via network APIs. It is generally suitable for static data that is not modified frequently but only accessed at runtime by ROS nodes for values like configuration parameters.
+                        It supports all basic data types like integers, boolean, string and doubles among several others.
                         <br>
-                        <br>
+                        <code>rosparam</code> is another ROS package for command-line interface for interaction with the ROS parameters.
+                        <br><br>
                         <center><b style="font-weight: 500;">Usage</center></b><br>                        
-                        <b>&#8658</b> Run the ROS master and the ecosystem to support topics, messages, nodes and all other ROS infrastructure <br>
+                        <b>&#8658</b> Get the list of ROS parameters on the server by name <br>
                         <code> 
-                            &emsp;~$ roscore
+                            &emsp;~$ rosparam list
+                        </code><br><br>
+                        <b>&#8658</b> Get the value of a ROS parameter <br>
+                        <code> 
+                            &emsp;~$ rosparam get &ltparameter_name&gt
+                        </code><br><br>
+                       <b>&#8658</b> Set the value of a ROS parameter on the server <br>
+                        <code> 
+                            &emsp;~$ rosparam set &ltparameter_name&gt &ltparameter_value&gt 
+                        </code><br><br>
+                       <b>&#8658</b> Delete a ROS parameter from the server <br>
+                        <code> 
+                            &emsp;~$ rosparam delete &ltparameter_name&gt
+                        </code><br><br>
+                       <b>&#8658</b> Dump or download the parameters from the server to a file in the YAML format <br>
+                        <code> 
+                            &emsp;~$ rosparam dump &ltfile_name.yaml&gt
+                        </code><br><br>
+                       <b>&#8658</b> Upload the parameters from a YAML file on to server <br>
+                        <code> 
+                            &emsp;~$ rosparam load &ltfile_name.yaml&gt
                         </code><br>
                     </li>
                     <br>
                     <br><hr width=50%><br>
                     <li>
                         <center><b style="font-weight: 500;font-size: 20px;"><u>MESSAGES</u></center></b><br>
-                        Fundamental building block of the communication setup between nodes. Its a generally data structure formed out standard primitive data types. For example, pose message has the data structure <code>(float x, float y, float z)</code> and orientation <code>(float rw, float rx, float ry, float rz)</code>
+                        Fundamental component of the communication setup between nodes is the data. ROS messages are essentially data structures formed out standard primitive data types. For example, pose message has the data structure <code>(float x, float y, float z)</code> and orientation <code>(float rw, float rx, float ry, float rz)</code>. ROS allows defining messages composed of a collection of different data types.
+                        <br><br>
+                        A detailed list of data types for the messages is found on the ROS Wiki <a href="http://wiki.ros.org/rosmsg">here</a> 
                         <br>
+                        <code>rosmsg</code> is the ROS package that provides support for messages types and service types.
                         <br>
                         <center><b style="font-weight: 500;">Usage</center></b><br>
-                        <b>&#8658</b> Run the ROS master and the ecosystem to support topics, messages, nodes and all other ROS infrastructure <br>
+                        <b>&#8658</b> Obtain the details of a ROS message type <br>
                         <code> 
-                            &emsp;~$ roscore
-                        </code><br><br>                        
+                            &emsp;~$ rosmsg show &ltmessage_type&gt
+                        </code><br><br>
+                        <b>&#8658</b> Obtain the list of messages from the current packages and libraries <br>
+                        <code> 
+                            &emsp;~$ rosmsg list
+                        </code><br><br>         
+                        <b>&#8658</b> Obtain the details of all ROS messages in a package <br>
+                        <code> 
+                            &emsp;~$ rosmsg package &ltpackage_name&gt
+                        </code><br><br>                                                               
                     </li>
                     <br>
                         <center>
@@ -431,13 +464,7 @@ code {
                                 <figcaption>Figure 3 - ROS messages & topics </figcaption>
                             </figure>
                             <br>
-                        </center>                    
-                        <br>
-                        <center><b style="font-weight: 500;">Usage</center></b><br>
-                        <b>&#8658</b> Run the ROS master and the ecosystem to support topics, messages, nodes and all other ROS infrastructure <br>
-                        <code> 
-                            &emsp;~$ roscore
-                        </code><br><br>                        
+                        </center>                       
                         <br><hr width=50%><br>
                     <li>
                         <center><b style="font-weight: 500;font-size: 20px;"><u>TOPICS</u></center></b><br>
@@ -529,14 +556,28 @@ code {
 
 
                     <li>
-                        <center><b style="font-weight: 500;font-size: 20px"><u>BAGS</u></center></b><br> Format for saving and replaying the ROS messages. Can be used to store data from sensors/other factors that need to be stored and post-processing is to be done
+                        <center><b style="font-weight: 500;font-size: 20px"><u>BAGS</u></center></b><br> Format for saving and replaying the ROS messages. Can be used to store data from sensors/other factors that need post-processing or to reuse. ROS bags can virtually simulate sensor data or basically a robot behavior by publishing to the topic.
                         <br>
+                        <code>rosbag</code> is command-line tool providing inteface with the bags with options to view, modify and observer stored information. 
                         <center><b style="font-weight: 500;">Usage</center></b><br>                        
                         <br>
-                        <b>&#8658</b> Run the ROS master and the ecosystem to support topics, messages, nodes and all other ROS infrastructure <br>
+                        <b>&#8658</b> Record information from a topic to a ROS bag <br>
                         <code> 
-                            &emsp;~$ roscore
+                            &emsp;~$ rostopic record &lttopic_name&gt
                         </code><br><br>                        
+                        <b>&#8658</b> Compress the information in a ROS bag to save space <br>
+                        <code> 
+                            &emsp;~$ rostopic compress &ltrosbag_filename.bag&gt
+                        </code><br><br>                        
+                        <b>&#8658</b> Publish the contents of a ROS bag onto the topic as per the timestamps from the initial recording <br>
+                        <code> 
+                            &emsp;~$ rostopic play &ltrosbag_filename.bag&gt
+                        </code><br><br>                        
+                        <b>&#8658</b> Check if a ROS bag file shall work on playback <br>
+                        <code> 
+                            &emsp;~$ rostopic check &ltrosbag_filename.bag&gt
+                        </code><br><br>                        
+
                     </li>                                                                                                                                                                
                 </ul>
                 </center>
