@@ -220,7 +220,9 @@ div.column{
                 </p>
 
                 <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
-                    <li> <b style="font-weight: 500">P( z | X = x<sub>i</sub> )</b>  is causal while <b style="font-weight: 500">P( X = x<sub>i</sub> | z )</b> is diagnostic. Causal systems are easier to obtain because it represents the reliability of a sensor (that obtains the observation <b style="font-weight: 500">z</b>) which can be obtained manually.
+                    <li> <b style="font-weight: 500">P( z | X = x<sub>i</sub> )</b>  is causal (given that the state <b style="font-weight: 500">x</b> is known, what could the observation <b style="font-weight: 500">z</b> predict  ) while <b style="font-weight: 500">P( X = x<sub>i</sub> | z )</b> is diagnostic (given that the observation <b style="font-weight: 500">z</b> is known, what would the actual state <b style="font-weight: 500">x</b> be).
+                        <br><br>
+                        Causal systems are easier to obtain because it represents the reliability of a sensor (that obtains the observation <b style="font-weight: 500">z</b>) which can be obtained manually.
                         <br><br>
                     The Bayes filter gives us <br>
                     <center> <b style="font-weight: 500">
@@ -240,10 +242,10 @@ div.column{
                         </center>
                     </li><br>
                     <li>
-                        Markov assumption says current observation <b style="font-weight: 500">z<sub>t</sub></b> at timestamp t is independent of all prior observations <b style="font-weight: 500">z<sub>t-1</sub>, z<sub>t-2</sub> ...z<sub>0</sub></b> given the state <b style="font-weight: 500">x<sub>t</sub></b> is given. 
+                        Markov assumption says current observation <b style="font-weight: 500">z<sub>t</sub></b> at timestamp <b style="font-weight: 500">t</b> is independent of all prior observations <b style="font-weight: 500">z<sub>1:t-1</sub></b> and all prior input signals <b style="font-weight: 500">u<sub>1:t</sub></b> given the state <b style="font-weight: 500">x<sub>t</sub></b> is available. 
 
                         <br><br>                            
-                        If the connection is established between two nodes (the path being collision-free), the edge <b>E(node<sub>1</sub>, node<sub>2</sub>)</b> is saved. Generally, connectivity between the nodes is inversely proportional to the distance between them.
+                        Markov assumption also states that the current state <b style="font-weight: 500">x<sub>t</sub></b> at timestamp <b style="font-weight: 500">t</b> is independent of all prior observations <b style="font-weight: 500">z<sub>1:t-1</sub></b> given the state at the previous timestamp <b style="font-weight: 500">x<sub>t-1</sub></b> and input signal at the current timestamp u<sub>t</sub></b> are given.
                     </li> <br>
                     <li>
                         A sensor model is the mathematical representation of the belief in the accuracy of a sensor's estimate of the parameter. The action model is the mathematical representation of the belief in the ability of the inputs given to the robot to actually drive the robot to the expected(mathematicall derived) final configuration.
@@ -275,7 +277,7 @@ div.column{
                     For a mobile robot, it can be intuitively understood that the current best estimate of its pose will be dependent upon how well does the sensor model observe its pose and how well does the robot model implement the action on the robot.
                     <br><br>
                     Thus, the probabilistic representation of the robot's pose, i.e. the localization process should be dependent on the sensor model and the action model.
-                    <br><br>
+
                     <center style="column-width:1000px;margin-left:200px;margin-right:200px;">
                     <b style="font-weight: 500">
                     Sensor model =  P(z<sub>t</sub> | x<sub>t</sub> ) 
