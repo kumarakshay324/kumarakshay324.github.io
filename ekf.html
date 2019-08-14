@@ -102,8 +102,8 @@ div.column{
                     </center><br>
 
                     <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
-                    href="#">
-                        <p style="margin-right:2%; margin-left: 2%">  Extended Kalman Filters in Robotics</p>
+                    href="bayesian.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Bayesian Methods in Robotics</p>
                     </a>
 
                     <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
@@ -139,23 +139,22 @@ div.column{
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px; font-weight: 500;">BAYESIAN METHODS IN ROBOTICS</h2>
+                    <h2 style="font-size:40px; font-weight: 500;">EXTENDED KALMAN FILTERS IN ROBOTICS</h2>
                 <br>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                The domain of robotics has exploded over the past couple of decades. Robots have evolved from being manipulators employed in manufacturing factories to personal robots, humanoids, mobile robots, robot vacuum cleaners and a lot more. 
+                <a href="bayesian.html">Bayesian methods</a> discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the different steps involved in the process of state-estimation by using the action and the model of the system 
+
                 <br><br>
-                With all different kinds of robots coming up, considerable stochasticity is introduced due to the sensors for perception, model and measurement inaccuracies and computational uncertainties. Sensors are generally noisy and known to be performing reliably only within a certain expected accuracy. The physical robot models, size measurements, actuator configuration and manufacturing also carry certain imperfections.
-                <br><br>
-                There are several probabilisitic techniques employed to represent and model these inaccuracies in order to ensure that the final state estimations are closest to ideal. While probabilistic methods try to enhance the accuracy, the stochastic nature of the system with approximations and inaccurate assumptions still deters usage of the technique for critical applications that need to be ideally deterministic in behavior.
+                The Kalman filters family is used for linear as well as non-linear models with gaussian noise distribution assumption. While Kalman filter works well for linear models, the Extended Kalman filter is capable of working on non-linear models by potential use of linearization of the models.
                 <br><br>
 
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/bayesian/overview.jpg" style="width:330px;height:247px;">
+                        <img src="images/blogs/ekf/full_eq.png" style="width:630px;height:126px;">
                     </figure>
                     <br>
                 </center>
