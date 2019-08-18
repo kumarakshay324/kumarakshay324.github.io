@@ -427,10 +427,11 @@
 		appearance: none;
 		background-color: #FFFFFF ;
 		width: 250px;
-		border-radius: 20px;
+		border-radius: 5px;
+		margin-bottom: 2%;
 		border: 2px solid;
-		border-color: #000000;
-		color: #000000;
+		border-color: #757372;
+		color: #757372;
 		cursor: pointer;
 		display: inline-block;
 		padding: 0.90em 1.2em;
@@ -450,7 +451,7 @@
 		input[type="reset"]:hover,
 		input[type="button"]:hover,
 		.button:hover {
-			background: #000000;
+			background: #757372;
 			color: white;
 		}
 
@@ -467,7 +468,7 @@
 			input[type="button"].alt:hover,
 			.button.alt:hover {
 				background: white;
-				color: #000000;
+				color: #757372;
 			}
 
 		input[type="submit"].fit,
@@ -907,6 +908,7 @@
 		top: none;
 		height: 75px;
 		width: 100%;
+		z-index: 2;
 
 		display: block;
 		/*background-color: rgba(0,0,0,0.5);*/
