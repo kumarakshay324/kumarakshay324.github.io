@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------
+logic converter - bi directional - converts 5 V logic to 3.3 V or vice-vesa - multi channel and cheap
+-------------------------------------------------------------------------
+rplidar is 360 degrees - uses the principle of laser triangulation -  8000 points at 10 Hz - internal wireless connection and no slip rings
+
+-------------------------------------------------------------------------
+
+setup ssh -
+
+installation - sudo apt-get install openssh-server
+checking - sudo systemctl status ssh 
+connection - ssh username@IPaddress
+use ifconfig to get the IP adddress
+
+
+sudo systemctl start/stop ssh 
+sudo systemctl enable/disable ssh - for  operation during startup 
+
+https://linuxize.com/post/how-to-enable-ssh-on-ubuntu-18-04/
+
+-------------------------------------------------------------------------
+
