@@ -74,7 +74,7 @@ div.column{
                         
                         <!-- Nav -->
                             <div class="navbox">
-                                <ul style="white-space:nowrap;"><br>
+                                <ul style="white-space:nowrap;margin-top: 10px">
                                     <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
                                     <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
 
@@ -177,7 +177,7 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Visual servoing is dependent on robot pose estimation, robot control and realtime image processing. The kinematics and dynamics of robots vary depending on the model but the concepts of image processing largely remain constant. Image processing represents the physical state of the object in the world such that it can be related to the robot pose.
+                Visual servoing is dependent on robot pose estimation, robot control and realtime image processing. The kinematics and dynamics of robots vary depending on the model but the concepts of image processing largely remain constant. Image processing represents the physical state of the object in the world such that it can be related to the robot pose. The fundamental geometric relationship between an object in 3D space and its projection in an image helps connect the visual feed to the world and the robot.
                 <br><br>
                 Image processing is used for extraction of several features like points, edges and gradients in images. Such features help in segmentation, object detection and recognition. Such image features are macro level properties that are obtained after batch operations on individual image pixels. The higher the pixel resolution of the image, the better are algorithms at processing the image and obtaining accurate features at the expense of increased computational expense. <b style="font-weight: 500">Visual servoing is a realtime operation and thus involves interpretation of features in one still image, multiple consecutive images, streo images or image flows.</b>               
                 <br><br>
@@ -277,8 +277,40 @@ div.column{
                 <h1 style="text-align:left;margin-left:200px;font-size:20px ">Image Processing Aspects of Visual Servoing</h1>
                 <br>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    The most basic concepts of image processing and computer vision in visual servoing are camera calibration, .
+                    The most basic concepts of image processing and computer vision in visual servoing are camera calibration, color manipulation, feature definition and extraction.
+                    <br><br>
+                    For speedy pro
                 </p> 
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">CAMERA MODEL & CALIBRATION</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+                    An image is a 2D array of pixels, the smallest unit of predefined dimensions representing a particular color. Every camera has a 2D array of sensing elements that capture the light falling on it. In a digital camera, the frame grabber writes the digital data to an image plane with each pixel having a gray value of 0-255 representing the intensity of light on the sensing element. 
+
+                    <br><br>
+                    Geometric relationship between the contents of an image and the real world is the most fundamental concept of visual servoing. It is important to understand the camera coordinate frame thus understanding the relationship between its trasnformation to other frames.
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/visual_servoing/camera_coordinates.png" style="width:490;height:240px;">
+                        <figcaption>Camera Coordinate System</figcaption>
+                    </figure>
+                </center>
+
+                </p>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
+                    The camera plane carrying the 2D sensing array is called the image plane and is situated at a distance &#955; ahead of the <b style="font-weight: 500">center of projection</b>. The optical axis is the central axis along the Z direction that contains the center of projection and the principal point (point of intersection of the optical axis and the image plane).
+                    <br><br>
+                    The concept of perspective projection defines the relationship between the actual object coordinates and its representation in the image plane. Using the pinhole camera approximation, the lens is assumed to be an ideal pinhole located at the focal point of the lens. It casts the light falling onto it, onto the image plane. The world coordinates of a point <b style="font-weight: 500"><i>P(x, y, z)</i></b>, its image plane equivalent and the camera origin are believed to be collinear and give the following relationship between the coordinates.
+                </p>                
+                <center>
+                    <figure>
+                        <img src="images/blogs/visual_servoing/camera_coordinates.png" style="width:490;height:240px;">
+                        <figcaption>Camera Coordinate System</figcaption>
+                    </figure>
+                </center>
 
             </div>
             </div>
