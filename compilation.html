@@ -43,6 +43,21 @@ div.column{
 
 }
 
+code { 
+  font-family: monospace;
+}
+
+.gist {
+   max-width:60%;
+   overflow:auto;
+   text-align: center;
+}
+
+.gist .blob-wrapper.data {
+   max-height:auto;
+   overflow:auto;
+}
+
 </style>
 </head>
 
@@ -99,6 +114,16 @@ div.column{
                     </center><br>
 
                     <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="cmake.html">
+                        <p style="margin-right:2%; margin-left: 2%"> CMake Meta Build System</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="stl_cpp.html">
+                        <p style="margin-right:2%; margin-left: 2%"> Common Algorithms from the STL Library in C++</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
                     href="advanced_conntrol.html">
                         <p style="margin-right:2%; margin-left: 2%"> Control Techniques for Robot Manipulators</p>
                     </a>
@@ -152,162 +177,190 @@ div.column{
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px;font-weight: 500">CODE COMPILATION IN C++</h2>
+                    <h2 style="font-size:40px;font-weight: 500"> FROM CODE TO EXECUTABLE in C++ !</h2>
                 <br>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                C++ is one of the most widely used programming languages .
+                C++ is one of the most widely used general-purpose programming languages. Advanced memory management, RAII, pointers, low-level memory manipulation and many more features make C++ one of the most sought after languages. It provides a developer, all the tools needed to code features closest to the hardware. Thread manipulation, atomicity of operations and data synchronization are some of the few low-level tasks that C++ is best at.
+
+                <br><br>
+                C++ is a high-level language written in plain English and the source code needs to be converted into machine-readable code because the CPU does not understand anything but binary 0s and 1s which are essentially digital voltage signals. <b style="font-weight: 500"> The process of conversion of high-level code to machine readable language is called compilation.</b>Unlike interpreted languages that convert code sequentially to machine level language at runtime (and just in time), compiled languages like C++ convert the complete code, at once, into machine level code, ready to execute and thus fairly faster than the interpreted languages.
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/visual_servoing/visual_servoing.gif" style="width:500;height:370px;">
-                        <figcaption>Visual Servoing - Source (Google)</figcaption>
+                        <img src="images/blogs/compilation/compiler.png" style="width:500;height:370px;">
+                        <figcaption>Executable Code Generation Process</figcaption>
                         <br>
                     </figure>
                 </center>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
-                <br>
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">INTRODUCTION</b> </p>
+                </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Visual servoing is dependent on robot pose estimation, robot control and realtime image processing. The kinematics and dynamics of robots vary depending on the model but the concepts of image processing largely remain constant. Image processing represents the physical state of the object in the world such that it can be related to the robot pose. The fundamental geometric relationship between an object in 3D space and its projection in an image helps connect the visual feed to the world and the robot.
+                C++ can be called a fairly strictly-typed language but can also have templated code which is converted to actual code and then to machine code during compilation. Code compilation does all the needed effort upfront to generate immediately executable code after checking the same for syntactical errors. However, the process of conversion of source code into a valid executable binary is much more than only compilation. It involves a preprocessing phase before compilation and a phase of linking multiple libraries and third-party resources/binaries afterwards.
                 <br><br>
-                Image processing is used for extraction of several features like points, edges and gradients in images. Such features help in segmentation, object detection and recognition. Such image features are macro level properties that are obtained after batch operations on individual image pixels. The higher the pixel resolution of the image, the better are algorithms at processing the image and obtaining accurate features at the expense of increased computational expense. <b style="font-weight: 500">Visual servoing is a realtime operation and thus involves interpretation of features in one still image, multiple consecutive images, streo images or image flows.</b>               
-                <br><br>
-                Visual servoing for robot manipulators has two main paradigms based on camera positioning; <b style="font-weight: 500">eye-in-hand and eye-to-hand</b>. Eye-in-hand paradigm has the camera mounted on the end-effector of the robot and moves around with it and thus, everything that the robot sees in the world is with reference to the end-effector cartesian pose. The eye-to-hand paradigm has the camera fixed in the world and all observations from the camera are transformed to robot frame.
+                The main steps of generating an executable from a source code are <b style="font-weight: 500">pre-processing, compilation and linking.</b>
+
+                The following C++ code is used as an example to explain each of these 3 phases.
+                </p>
+                <center>
+                    <script src="https://gist.github.com/kumar-akshay324/68894e273b628c7fb2b36345fa9aab6f.js"></script>
+                    <figcaption> Example Header File - <code>compiler_example.h</code></figcaption>
+                    <br><br>
+                </center>
+
+                <center>
+                    <script src="https://gist.github.com/kumar-akshay324/8a1d6542dce5a2429310b6d4ae60c5ef.js"></script>
+                    <figcaption> Example Source Code File - <code>compiler_example.cpp</code></figcaption>
+                </center>
+                <br>
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">PRE-PROCESSING</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Before the user written high-level code is converted to machine code, it is important to aggregate code and run some precompilation instructions for different header files(.h) or source code files(.cpp). Any such instructions starting with <code>#</code> are called directives and are executed during this preprocessing phase.
+                </p>
+
+                <table style="width:700px;margin-left:200px;margin-right:200px;text-align:left; margin-right:50px;">
+                  <tr>
+                    <td><b>Directive</b></td>
+                    <td><b>Explanation</b></td> 
+                  </tr>
+                  <tr>
+                    <td>&emsp;<code>&emsp;#include</code>&emsp;</td>
+                    <td>&emsp;Used to import other headers from local user defined source code or from native C++ code like <code>#include &lt;iostreamm&gt;</code> reads the code from input-output library provided by C++ and copies the content into a new temporary source file </td>
+                  </tr>
+                  <tr>
+                    <td><code>#ifdef</code></td>
+                    <td>If macro is defined, returns true, else false</td>
+                  </tr>
+                  <tr>
+                    <td><code>#ifndef</code></td>
+                    <td>If macro is not defined, returns true, else false</td>
+                  </tr>
+                  <tr>
+                    <td><code>#endif</code></td>
+                    <td>End the if condition preprocessor</td>
+                  </tr>
+                  <tr>
+                    <td><code>#error</code></td>
+                    <td>Prints out the error message on a stderr</td>
+                  </tr>
+                  <tr>
+                    <td><code>#undef</code></td>
+                    <td>Removes the definition of a macro</td>
+                  </tr>
+                  <tr>
+                    <td><code>#pragma</code></td>
+                    <td>Special commands to the compiler</td>
+                  </tr>
+                </table>
+
+                <center>
+                    <caption><b style="font-weight: 500">Preproccesor directives and their Significance</b></caption>
+                </center>
+
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    The keywords <code>#ifdef and #ifndef</code> are usually used as header guards that avoid duplicate code declarations from multiple header files.
+                    <br><br>
+                    The <code>#define</code> keyword defines some concise functions or variables or other macros for reuse. The preprocessing phase replaces all instances of the symbolic code to actual values. An example can be seen from the compiler_example.h file shown above.
+                    <br><br>
+                    Keywords <code>#if, #else</code> and <code>#elif</code> are used for conditional statements that decide a few compilation during the precompilation. 
+                </p> 
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">CODE COMPILATION</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Compilation is most important step of creating an executable binary from the source code. This conversion from the code generated after preprocessing to machine level code is done by a compiler.
+                    <br><br>
+                    A compiler is just another computer program like the user written code to be compiled. It reads the complete source code and converts it to the machine level code as per the language syntax. This conversion is done in several steps which involves understanding the user written characters, syntactical checks, assembly-level conversion and final conversion to machine-level code equivalent.
+                    <br><br>
+                    There are several C++ compilers like <b style="font-weight: 500">g++</b>, <b style="font-weight: 500">minGW</b> and <b style="font-weight: 500">clang</b> among others. GNU Compiler Collection provides <b style="font-weight: 500">g++</b>, one of the most used compiler drivers for C++ code. It also works on C code but considers the files as C++ source code. It thereafter automatically decides the backend as <b style="font-weight: 500">cc1</b> or <b style="font-weight: 500">cc1plus</b> depening on the file type.
+
+                    <br><br>
+                    The compilation steps are shown in the figure below and each of the steps has its own significance in ensuring that the executable being created is free of all preemptible errors, developer mistakes and logical inconsistencies.
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/visual_servoing/paradigm.png" style="width:561;height:214px;">
-                        <figcaption>Eye-in-hand and Eye-to-hand paradigms</figcaption>
+                        <img src="images/blogs/compilation/compiler-steps.png" style="width:531;height:547px;">
+                        <figcaption>Different aspects of a Compiler</figcaption>
                     </figure>
                     <br>
                 </center>
 
+                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                        The <b style="font-weight: 500"> lexical analyzer</b> splits the source code character-by-character and segregates it into words, operators, numbers and symbols. Thereafter, it creates tokens for the same as per the syntax of the language, C++ in this case.  
+                        <br><br>
+                        In the above example, in the source file <code>compiler_example.cpp</code> line 11, the lexical analyzer understands that the variable <code>summ</code> is an integer which equal to integer <code>a</code> SUM integer <code>b</code>.
+                        <br><br>
+                        A tokenized representation of the line would be:
+                        <code>
+                            <br>
+                                [KEYWORD, "int"] [ID, "summ"] [EQUALS] [ID, "a"] [SUM] [ID, "b"] [SEMICOLON]
+                        </code>
+                        <br><br>
+                    </li>
+                    <li>
+                        The <b style="font-weight: 500">syntax analyzer</b> or parser confirms that the keywords generated in the tokens, the variables(ID) generated and the logical operations being performed on them are all supported and allowed for by the particular language. It takes the token collection and the context-free grammar for C++ and derives an abstract-syntax tree (AST).
+                        <br><br>
+                        AST is a tree representation of the syntactic structure of the source code. The tree has expressions and control statements. Usually, the operator is an interior node and the operands are leaves.<b style="font-weight:500">Bison</b> is a famous parser generator for C++. The AST describes the flow od instructions defined in the source code.
+                        <br><br>
+                       <center>
+                            <figure>
+                                <img src="images/blogs/compilation/ast.png" style="width:490;height:350px;">
+                                <figcaption>Example Abstract Syntax Tree</figcaption>
+                                <br>
+                            </figure>
+                        </center>
+                    </li> 
+                    <li>
+                        The <b style="font-weight: 500">semantic analyzer</b> confirms that the written code has clear meaning and consistent with expected usage. It analyzes errors like out of scope variable access, type mismatch and undeclared variable and missing a semi-colon among others. 
+                    </li>
+                    <li>
+                        Finally, the code generation phase traverses through the AST, called walking the tree, and converts the instructions into assembly code. The <b style="font-weight: 500">intermediate code generator</b> generates the assembly code which is independent of the machine architecture. The assembly language code is represented by a <b style="font-weight: 500">.s</b> file extension in C++, for instance <b  style="font-weight: 500">compiler_example.s</b> for the source code above.
+                    </li>
+                    <li>
+                        Finally, the <b style="font-weight: 500">code optimizer and code generator</b> convert the <b style="font-weight: 500">.s</b> assembly code to machine-level code for a particular machine and architecture as a <b style="font-weight: 500">.o</b> executable file. It is an <b  style="font-weight: 500">assembler</b> that converts the assembly code to executable binary which is basically huge set of 0s and 1s.
+                    </li>
+                </ul>
+
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    Another feedback-interpretation based category of visual servoing has two <b style="font-weight: 500">direct and indirect servoing types that generate cartesian poses for the robot and joint angles for online motion respectively.</b> The direct method is easy to use but slow while the latter is complex and fast.
+                    These mentioned steps above are very brief explanation and have more sophisticated steps within. The scope of this article is largely to understand how the user written code is converted into a code that the integrated circuits execute. It helps understand the reason for errors that come up during code compilation and steps to avoid the same with appropriate code reuse, imports, library usage and executable configuration.
                 </p>
-                <br>
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Visual Servoing Schemes</h1>
-                <br>
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">LINKING PHASE</b> </p>
+                </center>
+
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    There are two most important visual servoing schemes - <b style="font-weight: 500"> position-based visual servoing(PBVS) and image-based visual servoing(IBVS). </b> PBVS uses the visual features to reconstruct the 3D pose of objects of interest and compare it with the current pose to generate a cartesian error that the robot needs to operate on and converge onto the goal. IBVS scheme uses the 2D image of the world, obtains values of the relevant features on them and then manipulates the robot around until the values converge to the desired ones.
-                </p> 
+                    While compilation phase generates the executable, the complete project being worked on may have static libraries. There may be several executables that are inter-dependent, multiple object files that are linked together to ensure that the executable works at runtime.
+                </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/visual_servoing/schemes.jpg" style="width:353px;height:295px;">
-                        <figcaption>PBVS and IBVS </figcaption>
+                        <img src="images/blogs/compilation/linker.png" style="width:523px;height:246px;">
+                        <figcaption>Linking of C++ code</figcaption>
                     </figure>
-                    <br>
                 </center>
-
-                <center>
-                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">POSITION-BASED VISUAL SERVOING</b> </p>
-                </center>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
-
-                The two main components of PBVS high-level operation are computer vision and robot kinematics. Computer vision is responsible for intepretation of the scene, extract features and represent the same in 3D space. Thereafter, the attempt to diminish the cartesian error is translated into robot control instructions.
+                </p>
+                <br>
+                <hr width="50%">
                 <br><br>
-                3D scene reconstruction from visual information makes it important to have accurate camera calibration and pose information such that information about the world is correct and directs the robot to the right location in space. It is important to have accurate transformation between the camera and the world and the camera and the robot end-effector.  
-                <center>
-                    <figure>
-                        <img src="images/blogs/visual_servoing/pbvs.png" style="width:640px;height:130px;">
-                        <figcaption>PBVS</figcaption>
-                    </figure>
-                </center>
-                </p>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
-                    In the PBVS architecture, feature extraction from images is an easy step but 3D pose estimation from the visual feed is sophisticated and is very susceptible to many factors. This desired pose is generally derived based on the pose of the object to be operated on, by the robot. For instance, a pick-and-place task with static start and end poses defines the approach pose of the robot end-effector
-                    <br><br>
-                    The reference control signal for the robot is the desired pose (<b style="font-weight: 500"><i> p<sub>desired</sub> = (x<sub>des</sub>, y<sub>des</sub>, z<sub>des</sub>, &#945;<sub>des</sub>, &#946;<sub>des</sub>, &#947;<sub>des</sub>)</i></b>), comprising of the position and the orientation.
-                </p>
-
-                <center>
-                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">IMAGE-BASED VISUAL SERVOING</b> </p>
-                </center>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
-
-                IBVS paradigm of visual servoing generates errors between desired and actual state/values of features in 2D images. Thereafter, the error is translated into robot relevant control commands.
-                <br><br>
-                Given that IBVS does error computation and online feedback within the image plane, it is immune to the calibration parameters and inaccuracies. Contender image features that are to be converged to, could be as simple as positioning of the object of interest in the center of the image canvas or presence of edges in image.
-
-                <center>
-                    <figure>
-                        <img src="images/blogs/visual_servoing/ibvs.png" style="width:640px;height:130px;">
-                        <figcaption>IBVS</figcaption>
-                    </figure>
-                </center>
-                </p>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
-                    Steps involves in IBVS have several sophistications and challenges. The repercussions involve delayed processing, computational limitations and image resolution. 
-
-                    <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
-                        <li>
-                            Frame rates, noisy information, ambient-lighting inconsistencies and latency are the most challenging aspects of image acquisition and online processing step. Feature extraction
-                        </li>
-                        <li>
-                            Real-time image processing and feature extraction is a very computationally expensive process. Implementation of machine learning and deep learning steps enhance the efficiency of these operations at the expense of additional processing time overheads.
-                        </li>
-                        <li>
-                            The comparison between desired feature values and current image features derives the error in the image plane. 
-                        </li>
-                        <li>
-                            Final transformation of image plane error to robot level generates the reference signals for the robot.
-                        </li>
-                        <li>
-                            The generated reference signals are used by the robot to implement the <a href="advanced_conntrol.html">control techniques.</a>
-                        </li>
-                    </ul>
-  
-                </p>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Image Processing Aspects of Visual Servoing</h1>
-                <br>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    The most basic concepts of image processing and computer vision in visual servoing are camera calibration, color manipulation, feature definition and extraction.
-                    <br><br>
-                    For speedy pro
-                </p> 
-
-                <center>
-                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">CAMERA MODEL & CALIBRATION</b> </p>
-                </center>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
-                    An image is a 2D array of pixels, the smallest unit of predefined dimensions representing a particular color. Every camera has a 2D array of sensing elements that capture the light falling on it. In a digital camera, the frame grabber writes the digital data to an image plane with each pixel having a gray value of 0-255 representing the intensity of light on the sensing element. 
-
-                    <br><br>
-                    Geometric relationship between the contents of an image and the real world is the most fundamental concept of visual servoing. It is important to understand the camera coordinate frame thus understanding the relationship between its trasnformation to other frames.
-
-                <center>
-                    <figure>
-                        <img src="images/blogs/visual_servoing/camera_coordinates.png" style="width:490;height:240px;">
-                        <figcaption>Camera Coordinate System</figcaption>
-                    </figure>
-                </center>
-
+                    As mentioned earlier, C++ is an amazing language but delving into the intricacies exposes multiple layers of the language that are intimidating to understand but worth applauding at the same time. The developers and the community does a great job at making this convoluted language be a high-performance platform while also not being impossible t decipher.
                 </p>
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
-                    The camera plane carrying the 2D sensing array is called the image plane and is situated at a distance &#955; ahead of the <b style="font-weight: 500">center of projection</b>. The optical axis is the central axis along the Z direction that contains the center of projection and the principal point (point of intersection of the optical axis and the image plane).
-                    <br><br>
-                    The concept of perspective projection defines the relationship between the actual object coordinates and its representation in the image plane. Using the pinhole camera approximation, the lens is assumed to be an ideal pinhole located at the focal point of the lens. It casts the light falling onto it, onto the image plane. The world coordinates of a point <b style="font-weight: 500"><i>P(x, y, z)</i></b>, its image plane equivalent and the camera origin are believed to be collinear and give the following relationship between the coordinates.
-                </p>                
-                <center>
-                    <figure>
-                        <img src="images/blogs/visual_servoing/camera_coordinates.png" style="width:490;height:240px;">
-                        <figcaption>Camera Coordinate System</figcaption>
-                    </figure>
-                </center>
-
             </div>
             </div>
 
@@ -325,8 +378,8 @@ div.column{
             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
             var disqus_config = function () {
-            this.page.url = "http://kumarakshay.me/visual_servoing.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 170; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = "http://kumarakshay.me/compilation.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 200; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
