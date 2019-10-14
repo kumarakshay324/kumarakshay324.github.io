@@ -48,7 +48,7 @@ div.column{
 
 <html>
     <head>
-        <title>Kinematics of Mobile Robots - AKSHAY KUMAR</title>
+        <title>Mobile Robots Kinematics - AKSHAY KUMAR</title>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -176,56 +176,58 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Mobile robots is a blanket category of robots that are capable of locomotion. Mobile robots have been evolving over time and engineers developed several new locomotion strategies. Wheeled mobile robots are one of the first ones developed and been used consistently since long. Several other motion mechanisms are biologically inspired mechanisms. Quadrapeds, bipeds and hexapods are among few of the most used designs. Bipeds and quadrupeds like Agility Robotics' Cassie and Boston Dynamics' Spot Mini are the commericial versions of these robots.
+                Mobile robots is a blanket category of robots that are capable of locomotion. Mobile robots have been evolving over time and engineers developed several new locomotion strategies. Wheeled mobile robots are one of the first ones developed and been used consistently since long. Several other motion mechanisms are biologically inspired mechanisms. Quadrapeds, bipeds and hexapods are among few of the most used designs. Bipeds and quadrupeds like Agility Robotics' Cassie and Boston Dynamics' Spot Mini are the commericially available versions of these robots. Such intricate designs are highly appreciated by the robotics society.
                 <br><br>
 
-                While biologically inspired designs are very agile and well suitable for inaccessible areas with uneven terrain or varying climate, wheeled robots have been continuously deployed in flat surface settings. Wheeled mobile robots are the spearheads of the warehouses, security/survelliance, 
-                 
+                While biologically inspired designs are very agile and well suitable for inaccessible areas with uneven terrain or varying climate, wheeled robots have been continuously deployed in flat terrain settings. Wheeled mobile robots are the spearheads of the warehouses, security/survelliance robots and recently found applications in delivery robots as well. Several wheeled robots with enhanced agility like the segways, belt drives and multi-wheel custom designs also exist but within limited scope.
+                <br><br>
+                <b style="font-weight: 500">The scope of this article is to discuss the kinematics of wheeled mobile robots and provide some insights into the complex kinematics of a few biologically inspired mobile robots.</b>
                 </p>
 
-
                 <center>
                     <figure>
-                        <img src="images/blogs/mobile_robot/rov.jpg" style="width:200px;height:200px;">
-                        <img src="images/blogs/mobile_robot/biped.jpg" style="width:200px;height:200px;">
-                        <img src="images/blogs/mobile_robot/quad.jpg" style="width:200px;height:200px;">
-                        <img src="images/blogs/mobile_robot/seg.jpg" style="width:200px;height:200px;">
-                        <img src="images/blogs/mobile_robot/hexa.jpg" style="width:200px;height:200px;">
+                        <img src="images/blogs/mobile_robot/rov.jpg" style="width:150px;height:150px;">
+                        <img src="images/blogs/mobile_robot/biped.jpg" style="width:150px;height:150px;">
+                        <img src="images/blogs/mobile_robot/quad.jpg" style="width:150px;height:150px;">
+                        <img src="images/blogs/mobile_robot/seg.jpg" style="width:150px;height:150px;">
+                        <img src="images/blogs/mobile_robot/hexa.jpg" style="width:150px;height:150px;">
                     </figure>
+                    <figcaption>Different Types of Mobile Robotics!</figcaption>
                 </center>
 
+                <br><br>
                 <center>
-                    <figure>
-                        <img src="images/blogs/mobile_robot/ackerman.jpg" style="width:200px;height:200px;">
-                        <img src="images/blogs/mobile_robot/diff.jpg" style="width:200px;height:200px;">
-                        <img src="images/blogs/mobile_robot/omni.jpg" style="width:200px;height:200px;">
-                        <figcaption>Ackerman, differential and Omni wheel drive robot</figcaption>
-                    </figure>
-
-
-                    <br><br>
+                <p style="text-align:center;font-size:30px; "> <b style="font-weight: 500">INTRODUCTION</b> </p>
                 </center>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
-                <br>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                SLAM is used for locomotion tasks in indoor as well as outdoor applications. Moroever, there are applications of the same in robotic manipulation and humanoids. The robot pose is the robot's position (x, y, z) coordinates with reference to the origin and the orientation of robot's heading. Mapping is modeling of the environment in different ways. Estimating one among the pose or the map when the other is given is easy but simultaneous estimations with uncertain priori is extremely difficult. So, the results obtained are highly stochastic and thus the entire process is aimed at making decisions that enhance the probabilities. 
-
+                Deployment of different mobile robots is mainly dependent on stability, surface contact characteristics and environment type. Dynamic or static stability is dependent on the robot's center of gravity, terrain inclination and flatness, contact points and actuator power. Nature of the surface (hard ground, grass, indoor wooden floor, rocky terrain), friction with the ground and size of contact with the ground decide the applicaibility of a particular type of robot.
                 <br><br>
-                Using observed landmarks, estimates of maps and sensor-based information; the complete navigation SLAM is implemented. The sensor-based information includes deriving landmarks in the scene (like edges of the wall as seen by a camera) or other features of the map like the possible relative positioning of landmarks or otherwise.
+                Wheeled mobile robots have different various designs with varying degrees of freedom, mobility possibilities and terrain requirements. Wheeled robots are usually frowned upon due to their limited adaptibility towards different terrains. Conventional wheeled mobile robots are also unable to traverse through stairs, terrain with variable friction coefficients and uuneven terrain. However, the wheeled robot applications are way easier due to simplified kinematics, minimal dynamics and very few degrees of freedom. They are most suitable robots foor flat surfaces, the most common application terrain.
                 
                 <br><br>                 
-                SLAM as expected is a highly stochastic setup and probabilistic techniques are largely used. The stochasticity in solutions is reduced by using closed-loop solutions, i.e. relating the landmarks and features by comparing it against the ones that the robot has already visited. Meticulous perception systems are needed to establish relationships between unknown map elements, features and landmarks.
+                Biologically inspired mobile robots are difficult to build from mechanical design, feasibility and stability perspective. However, legged robots like bipeds and quadrupeds have several advantages like adaptability to the terrain, high maneuverability and ability to manipulate the objects in the environment. High degrees of freedom, typically 12 (6 in each leg) for a biped or 16 in a quadruped make the kinematics and control difficult but provide very agile and dexterous motion at the same time. Static and dynamic stability requirements for 2, 4 or 6 legged robots differ due to different configuration of the center of gravity and convex hulls.
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mobile_robot/legged.jpeg" style="width:620px;height:300px;">
+                        <figcaption> Different legged robots</figcaption>
+                    </figure>
+                </center>
                 </p>
 
-                <br>
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Mapping</h1>                
-                <br>
+                <center>
+                <p style="text-align:center;font-size:30px; "> <b style="font-weight: 500">WHEELED MOBILE ROBOTS</b> </p>
+                </center>
+
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Maps are representations of a scene and can be done in several ways for robot to interpret. For instance, a human-readable definition of a map for a desert would be sand all around, then an oasis in the center and then a few bushes around; a robot needs to know a lot more and the nuances and in a computationally defined format. These maps are generally 2D and can be easily extensible to 3D format.
+                As mentioned, despite of several limitations, the simplicity and large scope of applcations make wheeled robots the most favorable mobile robots. Wheeled robots are largely classified into two categories, holonomic and non-holonomic drives.
+                <br><br>
+                <b style="font-weight: 500"> Holonomic robots are such that their constraints are all integratable to position constraints. It simpistic terms, the number of controllable degrees of freedom of the robot is equal to the total number of degrees of freedom.</b> Mecanum and omni wheel drive robots are holonomic drives.
+                <br><br>
+                <b style="font-weight: 500">Non-holonomic drives are such that they</b>
 
 
                 There are two main categories of maps - metric maps and topological maps. Metric maps are analogous to political maps of a city while topological maps are the physical maps of the same place.
@@ -237,6 +239,18 @@ div.column{
                         <img src="images/blogs/slam/occup.png" style="width:622px;height:390px;">
                         <figcaption>Figure 2 - Sample Robot Map - Occupany Grid Map </figcaption>
                     </figure>
+
+                    <br><br>
+                </center>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mobile_robot/ackerman.jpg" style="width:200px;height:200px;">
+                        <img src="images/blogs/mobile_robot/diff.jpg" style="width:200px;height:200px;">
+                        <img src="images/blogs/mobile_robot/omni.jpg" style="width:200px;height:200px;">
+                        <figcaption>Ackerman, differential and Omni wheel drive robot</figcaption>
+                    </figure>
+
 
                     <br><br>
                 </center>
@@ -387,7 +401,7 @@ div.column{
 
             var disqus_config = function () {
             this.page.url = "http://kumarakshay.me/mobile_robot.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 187; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.identifier = 191; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
