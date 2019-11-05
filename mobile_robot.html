@@ -49,6 +49,7 @@ div.column{
 <html>
     <head>
         <title>Mobile Robots Kinematics - AKSHAY KUMAR</title>
+        <link rel="icon" href="images/profile.jpg">
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -225,23 +226,13 @@ div.column{
 
                 As mentioned, despite of several limitations, the simplicity and large scope of applcations make wheeled robots the most favorable mobile robots. Wheeled robots are largely classified into two categories, holonomic and non-holonomic drives.
                 <br><br>
-                <b style="font-weight: 500"> Holonomic robots are such that their constraints are all integratable to position constraints. It simpistic terms, the number of controllable degrees of freedom of the robot is equal to the total number of degrees of freedom.</b> Mecanum and omni wheel drive robots are holonomic drives.
+                <b style="font-weight: 500"> Holonomic robots are such that their constraints are all integratable to position constraints. It simpistic terms, the number of controllable degrees of freedom of the robot is equal to the total number of degrees of freedom.</b> Mecanum and omni wheel drive robots are holonomic drives. They allow the robot to move in any direction instantly without any turning radius or realignment.
                 <br><br>
-                <b style="font-weight: 500">Non-holonomic drives are such that they</b>
+                <b style="font-weight: 500">Non-holonomic systems are systems with controllable degrees of freedom less than than the total degrees of freedom.</b> Ackerman, differential and belt drives are all such non-holonomic systems. Such mobile robots are incapable of instantaneous motion in a desired direction.
 
-
-                There are two main categories of maps - metric maps and topological maps. Metric maps are analogous to political maps of a city while topological maps are the physical maps of the same place.
-
+                <br><br>
+                Each of these drives have their own significance in indoor or outdoor applications. The forward and inverse kinematics models of these drives are used to control the motion. The wheels are   
                 </p> 
-
-                <center>
-                    <figure>
-                        <img src="images/blogs/slam/occup.png" style="width:622px;height:390px;">
-                        <figcaption>Figure 2 - Sample Robot Map - Occupany Grid Map </figcaption>
-                    </figure>
-
-                    <br><br>
-                </center>
 
                 <center>
                     <figure>
@@ -250,12 +241,10 @@ div.column{
                         <img src="images/blogs/mobile_robot/omni.jpg" style="width:200px;height:200px;">
                         <figcaption>Ackerman, differential and Omni wheel drive robot</figcaption>
                     </figure>
-
-
                     <br><br>
                 </center>
 
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Metric Maps</b></i> </p>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:center;font-size:25px"> <b style="font-weight: 500">Differential Drive Model</b></p>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
 
@@ -266,7 +255,14 @@ div.column{
 
                 </p>
 
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Topological Maps</b></i> </p>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:center;font-size:25px"> <b style="font-weight: 500">Ackerman Drive Model</b></p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Topological maps are description of the robot environment in terms of physical features. For an indoor environment, it would be landmarks and features like rooms, electrical appliances and furniture. The path to locations are proposed as sections in the map that can be accessed by the robot. The features are called nodes while the connecting paths are called edges or connections. These maps require verbose knowledge of the environment and are generally used in visual SLAM.
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:center;font-size:25px"> <b style="font-weight: 500">Mecannum Drive Model</b></p>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
