@@ -261,26 +261,37 @@ code {
                     &emsp; git diff <br>
                 </code><br><br>
 
-                <b>&#8658</b> Finally add staged changes to the current branch<br>
+                <b>&#8658</b> Get the list of branches available<br>
                 <code> 
-                    &emsp; git commit -m &ltmessage to notify commit log&gt
+                    &emsp; git branch
                 </code><br><br>
 
-                <b>&#8658</b> Push the new commits on a local branch to remote repository<br>
-                <code>
-                    &emsp; git push origin &ltbranch&gt     // 
+                <b>&#8658</b> Get the list of tags available <br>
+                <code> 
+                    &emsp; git tag
                 </code><br><br>
 
+                <b>&#8658</b> Reset the all changes and get to master branch <br>
+                <code> 
+                    &emsp; git reset --hard <br>
+                </code><br><br>
 
-git branch // Check the branches available
-git tag // Check the tags available
-git reset --hard // Reset the all changes and get to master branch
-git log // See history for commits, messages and authors
-git blame <file_name> // List the changes, date and authors for the file
+                <b>&#8658</b> See history for commits, messages and authors<br>
+                <code> 
+                    &emsp; git log
+                </code><br><br>
 
+                <b>&#8658</b> List the changes, date and authors for the file<br>
+                <code> 
+                    &emsp; git blame &ltfile_name&gt
+                </code><br><br>
+
+                </p>
 
                 <h1 style="text-align:left;margin-left:200px;font-size:20px ">Branch Commands</h1>
                 <br>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
                 <b>&#8658</b> Switch to the specified branch <br>
                 <code> 
@@ -292,7 +303,7 @@ git blame <file_name> // List the changes, date and authors for the file
                     &emsp; git checkout -b &ltnew_branch_name&gt &ltbase_branch_name&gt
                 </code><br><br>
 
-                <b>&#8658</b> Delete a branch<br>
+                    <b>&#8658</b> Delete a branch<br>
                 <code> 
                     &emsp; git branch -d &ltbranch_name&gt
                 </code><br><br>
@@ -301,9 +312,12 @@ git blame <file_name> // List the changes, date and authors for the file
                 <code>
                     &emsp; git checkout &ltcommit_id&gt
                 </code><br><br>
+                </p>
 
                 <h1 style="text-align:left;margin-left:200px;font-size:20px ">Discard or archive edits</h1>
                 <br>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
                 <b>&#8658</b> Remove all new unwanted edits <br>
                 <code> 
@@ -327,17 +341,20 @@ git blame <file_name> // List the changes, date and authors for the file
 
                 <b>&#8658</b> Apply a particular set of stashed changes to the current branch<br>
                 <code>
-                    &emsp; git stash apply stash@{&ltstash&gt}  // After looking at the stash number from the list
+                    &emsp; git stash apply stash@{&ltstash_number&gt}  //Stash number from the list
                 </code><br><br>
 
+                </p>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Configure user credentials</h1>
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">User Credentials Configuration</h1>
                 <br>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
                 <b>&#8658</b> Add username for remote git service account <br>
                 <code> 
                     &emsp; git config --global user.name "&ltgithub/bitbucket user_name&gt"<br>
-                </code><br><br>
+                </code><br>
 
                 <b>&#8658</b> Add email ID for remote git service account<br>
                 <code> 
@@ -358,10 +375,6 @@ git blame <file_name> // List the changes, date and authors for the file
                 <code>
                     &emsp;  git set-url remote origin "&ltgithub/bitbucket repository URL&gt"
                 </code><br><br>
-
-
-
-
 
                 </p>
 
