@@ -201,7 +201,7 @@ code {
 
                 There are few basic concepts of git to let user access, modify, develop and propose changes to the project source code.
 
-                <ul style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
                     <li>
                         <b style="font-weight: 500">Repository</b> - Project source code folder
                     </li>
@@ -214,241 +214,157 @@ code {
                     <li>
                         <b style="font-weight: 500">Commit</b> - Add the new changes to the source code, to the current version aka branch and log it with a message and a timestamp 
                     </li>
+                    <li>
+                        <b style="font-weight: 500">Remote</b> - Online repository storage 
+                    </li>
                 </ul>
-
-                
-
                 </p>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Nuances of CMake</h1>                
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">GENERAL GIT COMMANDS</b></p>
+                </center>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">General Commands</h1>
                 <br>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
-                The <i><b>CMakeLists.txt</b></i> has instructions that help developers design different build scenarios and conditional usage of generators, versions and more. Certain general CMake commands are used for some common operations. 
+                <b>&#8658</b> Initialize the git control system inside the project source code folder <br>
+                <code> 
+                    &emsp; git init .
+                </code><br><br>
+
+                <b>&#8658</b> Stage the new addtional changes completely or partially to commit to the branch <br>
+                <code> 
+                    &emsp; git add .                    // Stage all changes <br>
+                    &emsp; git add --all                // Stage changes including deleted files <br>
+                    &emsp; git add &ltindividual files or folder&gt                 // Stage all changes
+                </code><br><br>
+
+                <b>&#8658</b> Finally add staged changes to the current branch<br>
+                <code> 
+                    &emsp; git commit -m &ltmessage to notify commit log&gt
+                </code><br><br>
+
+                <b>&#8658</b> Push the new commits on a local branch to remote repository<br>
+                <code>
+                    &emsp; git push origin &ltbranch&gt     // 
+                </code><br><br>
+
+                <b>&#8658</b> Clone a remote repository to a local location <br>
+                <code> 
+                    &emsp; git clone remote_git_url
+                </code><br><br>
+
+                <b>&#8658</b> Check the difference and edits in new uncommitted files <br>
+                <code> 
+                    &emsp; git diff <br>
+                </code><br><br>
+
+                <b>&#8658</b> Finally add staged changes to the current branch<br>
+                <code> 
+                    &emsp; git commit -m &ltmessage to notify commit log&gt
+                </code><br><br>
+
+                <b>&#8658</b> Push the new commits on a local branch to remote repository<br>
+                <code>
+                    &emsp; git push origin &ltbranch&gt     // 
+                </code><br><br>
+
+
+git branch // Check the branches available
+git tag // Check the tags available
+git reset --hard // Reset the all changes and get to master branch
+git log // See history for commits, messages and authors
+git blame <file_name> // List the changes, date and authors for the file
+
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Branch Commands</h1>
                 <br>
 
-                The common parameters, description and command to configure the same in a <i>CMakeLists.txt</i> are summarized here. <br><br>
-
-                <b>NOTE: </b> <br>
-
-                    Most of the command signatures are only short-hand signatures and do not show all the options and configurable parameters that CMake actually suppports.
-                    <br>More detailed explanation(generally needed only if a very complex setup is employed) can be found on the <a href="https://cmake.org/documentation"> official website of CMake.</a>  
-                <br><br>
-
-                <b>&#8658</b> Set string variables using actual string values <br>
+                <b>&#8658</b> Switch to the specified branch <br>
                 <code> 
-                    &emsp; set(&ltvariable_identifier&gt &ltstring_value&gt)
+                    &emsp; git checkout &ltbranch_name&gt // <br>
                 </code><br><br>
 
-                <b>&#8658</b> Set string variables using another variable value <br>
+                <b>&#8658</b> Create a new branch<br>
                 <code> 
-                    &emsp; set(&ltvariable_identifier&gt &lt${another_variable_identifier}&gt)
+                    &emsp; git checkout -b &ltnew_branch_name&gt &ltbase_branch_name&gt
                 </code><br><br>
 
-
-                <b>&#8658</b> Append string variables using another variable value <br>
+                <b>&#8658</b> Delete a branch<br>
                 <code> 
-                    &emsp; string(APPEND &ltvariable_identifier&gt &ltstring_value&gt)
+                    &emsp; git branch -d &ltbranch_name&gt
                 </code><br><br>
 
-                <b>&#8658</b> Set list variables using actual string values <br>
-                <code> 
-                    &emsp; set(&ltlist_identifier&gt &ltstring_value1&gt &ltstring_value2&gt)
+                <b>&#8658</b> Switch to a particular commit ID of the code if it exists on the branch<br>
+                <code>
+                    &emsp; git checkout &ltcommit_id&gt
                 </code><br><br>
 
-                <b>&#8658</b> Set list variables using another list value <br>
-                <code> 
-                    &emsp; set(&ltlist_identifier&gt &lt${another_list_identifier}&gt)
-                </code><br><br>
-
-                <b>&#8658</b> Append list variables using another list value <br>
-                <code> 
-                    &emsp; list(APPEND &ltlist_identifier&gt &ltstring_value&gt)
-                </code><br><br>
-
-                The <code>&ltstring_value&gt</code> variable can be a file name as well. The identifiers can either be user defined for later use the script or from the common list of CMake supported variables like <code>CMAKE_BUILD_TYPE</code> and <code>PROJECT_LINK_LIBS</code> among others. 
-
-                <br><br>
-                <b>&#8658</b> CMake Package version to be used. Versions > 3.0.0 are generally used though. <br>
-                <code> 
-                    &emsp; cmake_minimum_required(VERSION 2.8.9)
-                </code><br><br>
-
-               <b>&#8658</b> Operations dependent on OS type. CMake can generate different configurations depending on Linux/Apple/Windows OS. <br>
-                <code> 
-                        &emsp;if(APPLE)<br>
-                            &emsp;// do something for APPLE OS<br> &emsp;
-                        endif()<br> &emsp;
-                                <br> &emsp;
-                        if(UNIX AND LINUX) <br> &emsp;
-                            // do something for LINUX<br> &emsp;
-                        endif())<br> &emsp;
-                                <br> &emsp;
-                        if(WIN32)<br> &emsp;
-                            // do something for WINDOWS OS <br> &emsp;
-                        endif()
-                </code><br><br>
-
-                <b>&#8658</b> Software build type<br>
-                <code> 
-                    &emsp; set(CMAKE_BUILD_TYPE Release/Debug)
-                </code><br><br>
-
-                <b>&#8658</b> C++ Version. For instance, C++11 in this case <br>
-                <code> 
-                    &emsp; set(CMAKE_CXX_STANDARD 11)
-                </code><br><br>
-
-                <b>&#8658</b> Give a name to the project<br>
-                <code> 
-                    &emsp; project(&ltstring_value&gt)
-                </code><br><br>
-
-                <b>&#8658</b> An executable is built from the source file and assign the <code>string_value</code> as the name of the executable<br>
-                <code> 
-                    &emsp; add_executable(&ltstring_value&gt &ltcode_file_name&gt)
-                </code><br><br>
-
-                <b>&#8658</b> Add the executable library to the compilation sequence<br>
-                <code> 
-                    &emsp; add_library(&ltstring_value&gt &ltlibrary_type&gt &ltfile_location&gt) <br>
-                </code>
-                    &emsp; For example, <br>
-                <code> 
-                    &emsp; add_library_(&ltlibName&gt SHARED/STATIC src/lib_executable.cpp)<br>
-                </code>
-                    &emsp; <i>If STATIC, then the name of the library is libName.a and it is libName.so if SHARED </i>
-                <br><br>
-
-                <b>&#8658</b> Include the header files from the source code into the build environment <br>
-                <code> 
-                    &emsp; include_directories(&ltinclude_header_locations&gt)
-                </code><br><br>
-
-                <b>&#8658</b> While to set source code files to a string value, all files need to be mentioned manually, GLOB or GLOB_RECURSE allows for searching and selecting multiple source code files<br>
-                <code> 
-                    &emsp; file(GLOB SOURCES "src/*.cpp")
-                </code><br><br>
-
-                <b>&#8658</b> Several properties need to define for the executable binary<br>
-                An example would be setting the language as CXX(for C++).
-                <code> 
-                    &emsp; set_target_properties(cmake_usage_example PROPERTIES LINKER_LANGUAGE CXX)
-                </code><br><br>                
-
-                <b>&#8658</b> Defining the location in the system for installation of the library.<br>
-                <code> 
-                    &emsp; install(TARGET &ltlibray_name&gt DESTINATION &ltdestination_location&gt)
-                </code><br><br>
-
-
-
-                <b>&#8658</b> Find the location of a library and store its reference in a temporary <i>VARIABLE</i> cache. <br>
-                <code> 
-                    &emsp; find_package(&ltVARIABLE&gt &ltlibrary_name&gt &ltpath_to_library&gt)
-                </code><br><br>
-
-                <b>&#8658</b> Link an already extant library (either native library or third-party installed library or custom-built one ) to the current executable or library being created <br>
-                <code> 
-                    &emsp; target_link_libraries(&ltto_be_linked&gt options &ltto_link_ref&gt)
-                </code><br>
-                    &emsp; For example
-                <code><br>
-                    &emsp; target_link_libraries(libApp LINK_PUBLIC ${VARIABLE})
-                </code><br>
-                    &emsp; <code>&ltlib_to_link_ref&gt</code> can be found from something like <code>find_package</code>
-                <br><br>
-
-                </p>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Example C++ Application & CMakeLists.txt</h1>
-
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;">
-                    <br>
-                    <u>Install <b>CMake</b> and check version</u>                    
-                    <div class="code_box">
-                        <br>
-                        <code>
-                            &emsp; :~/$<b>sudo apt-get install cmake</b> // Install CMake<br>
-                            &emsp; :~/$<b>cmake --version</b> // Check CMake version<br> 
-                        </code>
-                        <br>
-                    </div>
-                </p>   
-
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;font-weight: 500">
-                    The following example is a simple C++ application. It has a class with functions for a few mathematical operations. The main script to be executed uses this class as need be.
-                    Finally, the <em>Unix Makefiles</em> CMake generator will be used to create the build system Makefile. <br>
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Discard or archive edits</h1>
                 <br>
-                cpp-cmake-example <br>
-                    ├── CMakeLists.txt<br>
-                    ├── include<br>
-                    │   &emsp;└── computations.h<br>
-                    └── src<br>
-                        &emsp;&emsp;&emsp;└── computations.cpp<br>
-                        &emsp;&emsp;&emsp;└── main,cpp<br>
+
+                <b>&#8658</b> Remove all new unwanted edits <br>
+                <code> 
+                    &emsp; git stash<br>
+                </code><br><br>
+
+                <b>&#8658</b> Obtain the list of stashed or archived changes<br>
+                <code> 
+                    &emsp; git stash list
+                </code><br><br>
+
+                <b>&#8658</b> Archive the current uncommitted changes to stash<br>
+                <code> 
+                    &emsp; git stash save "&ltmessage_to_save_edit&gt"
+                </code><br><br>
+
+                <b>&#8658</b> Apply last stashed set of changes to edits<br>
+                <code>
+                    &emsp; git stash apply
+                </code><br><br>
+
+                <b>&#8658</b> Apply a particular set of stashed changes to the current branch<br>
+                <code>
+                    &emsp; git stash apply stash@{&ltstash&gt}  // After looking at the stash number from the list
+                </code><br><br>
+
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Configure user credentials</h1>
+                <br>
+
+                <b>&#8658</b> Add username for remote git service account <br>
+                <code> 
+                    &emsp; git config --global user.name "&ltgithub/bitbucket user_name&gt"<br>
+                </code><br><br>
+
+                <b>&#8658</b> Add email ID for remote git service account<br>
+                <code> 
+                    &emsp; git config --global user.email "&ltgithub/bitbucket user_mail_id&gt"
+                </code><br><br>
+
+                <b>&#8658</b> Archive the current uncommitted changes to stash<br>
+                <code> 
+                    &emsp; git stash save "&ltmessage_to_save_edit&gt"
+                </code><br><br>
+
+                <b>&#8658</b> Connect a local repository to remote git service URL<br>
+                <code>
+                    &emsp;  git remote add origin "&ltgithub/bitbucket repository URL&gt"
+                </code><br><br>
+
+                <b>&#8658</b> Set the origin/remote git service URL to current local repository<br>
+                <code>
+                    &emsp;  git set-url remote origin "&ltgithub/bitbucket repository URL&gt"
+                </code><br><br>
+
+
+
+
 
                 </p>
 
-                <center>
-                <p style="column-width:1000px;">
-
-                    <u style="font-weight: 500; align=center">Example C++ Application - Source Code <b>computations.cpp</b> file</u>
-                            <figure>
-                                <img src="images/blogs/cmake/comp_cpp.png" >
-                            </figure>
-                        <!-- </center>                     -->
-                    <br>
-                </p>
-                <p style="column-width:1000px;">
-
-                    <u style="font-weight: 500; align=center">Example C++ Application - Header File <b>computations.h</b> file</u>  <br>
-                            <figure>
-                                <img src="images/blogs/cmake/comp_h.png">
-                            </figure>
-                        <!-- </center>                     -->
-                        <br>
-                </p>
-                <p style="column-width:1000px;">                
-                    <u style="font-weight: 500; align=center">Example C++ Application - Main file <b>main.h</b> file</u>  <br>
-                            <figure>
-                                <img src="images/blogs/cmake/main.png">
-                            </figure>
-                        <!-- </center>                     -->
-                        <br>
-                </p>
-                <p style="column-width:1000px;">                
-                    <u style="font-weight: 500; align=center">Example C++ Application - CMake file <b>CMakeLists.txt</b> file</u>  <br>
-                            <figure>
-                                <img src="images/blogs/cmake/main.png">
-                            </figure>
-                        <br>
-                </p>
-                </center>                    
-
-                <center>
-                    <a style="font-size: 20px" href="images/blogs/cmake/cpp-cmake-example.zip" download><b>DOWNLOAD EXAMPLE SOURCE CODE</b></a>
-                </center>
-
-                <p style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;font-weight: 500">
- 
-                    <br>
-                    Finally, the project is executed using the steps shown in the image below.
-
-                    <ul style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;list-style-type: disc">
-                     <li> We create a build folder to avoid cluttering built files with source code </li>
-                     <li> <code>cd</code> into the folder and then run <code>cmake ..</code> where the two dots represent the presence of CMakeLists.txt in one folder prior; to generate the project files</li>
-                     <li> Run <code>make</code> or <code>make &ltexecutable&gt</code> to compile the source code</li>
-                     <li> <code>./cmake_usage_example</code> to run the compiled sample code</li>
-                    </ul> 
-                        <center>
-                            <figure>
-                                <img src="images/blogs/cmake/execute.png">
-                            </figure>
-                        </center>                    
-
-                </p>
         </div>
                     <br><br>
 
