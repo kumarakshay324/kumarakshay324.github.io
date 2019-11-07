@@ -168,10 +168,10 @@ code {
                     Version control is the most important system for managing code bases. Version control is the system of recording different versions of files, usually source code files, changing over time. It allows users to track changes in code over time and helps collaborative code development. Tracking and unique identification of every different change posted to a code enables users to completely or selectively revert to older versions when and if necessary.
 
                     <br><br>
-                    Version control system (VCS) is a very handy software for code organization, multiple developer collaboration and code sharing. 
+                    Version control system (VCS) is a very handy software for code organization, multiple developer collaboration and code sharing. VCS allows parallel code development/testing/deployment for several programmers spread across multiple large teams.
                     <!-- restricted  modification access, automated build/test/deployment   -->
                     <br><br>
-                    Git is one of the best and most widely used distributed version control system to handle projects. It is a free and open-source tool shipped natively with most of the linux distros.
+                    Git is one of the best and most widely used distributed version control system to handle projects. It was developed by Linus Torvalds during the development of the Linux kernel. It is a free and open-source tool shipped natively with most of the linux distros. While local installtion of git is sufficient for individual purpose, the true essence of VCS lies in remote collaboration.
                 </p>
 
                 <center>
@@ -183,82 +183,40 @@ code {
 
                     <br><br>
                 </center>
-                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
-                <br>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">INTRODUCTION</b></p>
+                </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                While local repository management tools are useful . 
-
-                <br><br>
-
-                CMake makes it possible for developers to generate the <i><b>project makefiles</b></i> to be used by the build system to build the software. CMake does not compile or link any source (C/C++ code files here) itself but only creates configuration files for a build system. The build system thereafter uses the configurations to compile and link the source files as desired.
-
-                <br><br>
-
-                <b>Build systems</b> are a collection of tools that compile the source code, execute all linking and other secondary tasks. They could be configured to not only compile source codes but also synchronise builds in multi-stage build systems. CMake uses the specified <b>generators</b> like Unix Makefiles, Ninja, MinGW Makefiles, Visual Studio and Codeblocks among others and writes the input files for the native build system. Exactly one build system is used at once.
-
-                <br><br>                
-                <b style="font-weight: 500">Note:</b>
-                <br>
-                <b style="font-weight: 500">gcc</b> and <b style="font-weight: 500">g++</b> are the compiler-drivers of the GNU Compiler Collection. While gcc can compile .c and .cpp files as C and C++ language files respectively, g++ considers both of them to be C++ files. Also, unlike gcc, g++ compilation automatically links all STL C++ libraries.
-
-                <br><br>                
-                For ease of understanding, here we can consider using them interchangeably.
+                Git is a decentralized version control system where all users can have their individual versions of the code. Also, git allows offline code development while network connectivity and online VCS hosts are needed for collaboration.  Online platforms like <b style="font-weight: 500">Github, Gitlab and Bitbucket</b> are the most widely used ones. Git keeps variations in code over time by recording and tracking only the difference in code and not maintaining multiple code copies. 
                 </p>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Is CMake really needed?!</h1>                
-                <br>
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">GIT CONCEPTS</b></p>
+                </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                C++ is a widely used programming language owing to its powerful capabilities and fast operation. Among several other things, being a compiled language makes C++ really really fast.
+                There are few basic concepts of git to let user access, modify, develop and propose changes to the project source code.
 
-                <br><br>
-                While <b style="font-weight: 500">compilation</b> is a topic for later, it can be understood naively as breaking down a code to its almost machine-level version and preprocessing parts as much as possible such that when executed, considerable sections of the code already have prepared answers or execute immediately on the processor and no time is spent in conversion of human-readable code into machine-compatible code at runtime.
+                <ul style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    <li>
+                        <b style="font-weight: 500">Repository</b> - Project source code folder
+                    </li>
+                    <li>
+                        <b style="font-weight: 500">Branch</b> - Different version of the same source code that can different users can use, modify and makes changes to, independently
+                    </li>
+                    <li>
+                        <b style="font-weight: 500">Fork/Clone</b> - Create a personal copy of the project source code, essentially from an online hosting platform
+                    </li>
+                    <li>
+                        <b style="font-weight: 500">Commit</b> - Add the new changes to the source code, to the current version aka branch and log it with a message and a timestamp 
+                    </li>
+                </ul>
 
-                <br><br>
-
-                The most common and rudimentary <b style="font-weight: 500">Hello World</b> C++ program has one <b style="font-weight: 500">main.cpp</b> file and it can be compiled using the following terminal command to obtain the 
-                <br><br>
-                <code>
-                    ~$ g++ main.cpp -o main  // Compile
-                    <br>
-                    ~$ ./main // Execute
-                </code>
-                <br><br>
-
-                If there are 3 files, namely <b style="font-weight: 500">si_int.cpp</b>, <b style="font-weight: 500">com_int.cpp</b> and the <b style="font-weight: 500">main.cpp</b> where the two former files have functions to compute simple interest and compound interest, used(by importing) in the last <b style="font-weight: 500">main.cpp</b> file to calculate results; they could be compiled using terminal command (for C++11)
-                <br><br>
-                <code>
-                    ~$ g++ si_int.cpp com_int.cpp main.cpp -o main -std=c++11 // Compile
-                    <br>
-                    ~$ ./main // Execute
-                </code>
-                <br><br>                
-
-                The two examples are indicative of the cumbersome process that could shape if there are more files, more dependencies, more libraries to link and other such unique requirements while code compilation; command-line compilation is certainly not the way to go.
-
-                <br><br>
-                For reassurance, here are some tags needed for g++ to achieve more features.
-                &emsp; <br>
-                &emsp; <b style="font-weight: 500">-I&ltinclude path&gt </b> - Specify a directory (to include files from)
-                &emsp; <br>
-                &emsp; <b style="font-weight: 500">-L&ltlibrary path&gt</b> - Specify a library directory
-                &emsp; <br>
-                &emsp; <b style="font-weight: 500">-0</b> - Turn ON optimizations by the compiler
-                &emsp; <br>
-                &emsp; <b style="font-weight: 500">-l&ltlibrary&gt</b> - Link with library lib&ltlibrary&gt.a
-                &emsp; <br>
-                &emsp; <b style="font-weight: 500">-Wall</b> - Turn on Warnings during compilations
-                &emsp; <br>
-                &emsp; <b style="font-weight: 500">-g</b> - Generate flags for debugging during compilation (Used by GDB)
-                &emsp; <br><br>
-
-                Considering the challenges in compilation, CMake provides options to the user to configure the complete project and package it as per need be. The conditions, compilation tags, machine dependencies, language versions and many such parameters.
-                <br><br>
-
-                CMake is a high-level build-system customized for C++. CMake tracks and stores all flags and conditions that should be followed when the code is finally compiled and run. The liberty of allowing extensibility in code compilation conditions and external libraries/resources used makes CMake a very useful tool.
+                
 
                 </p>
 
