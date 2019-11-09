@@ -248,8 +248,24 @@ code {
 
                 <b>&#8658</b> Push the new commits on a local branch to remote repository<br>
                 <code>
-                    &emsp; git push origin &ltbranch&gt     // 
+                    &emsp; git push origin &ltbranch&gt
                 </code><br><br>
+
+                <b>&#8658</b> Fetch or obtain the updated codes in the different branches from the remote repositories<br>
+                <code>
+                    &emsp; git fetch
+                </code><br><br>
+
+                <b>&#8658</b> Embed or merge the changes from a different branch to the current branch<br>
+                <code>
+                    &emsp; git merge &ltbranch&gt
+                </code><br><br>
+
+                <b>&#8658</b> Pull and the changes made to the branch and updated to the remote repository from a differnt user. It is a fetch + merge <br>
+                <code>
+                    &emsp; git push origin &ltbranch&gt
+                </code><br><br>
+
 
                 <b>&#8658</b> Clone a remote repository to a local location <br>
                 <code> 
@@ -258,7 +274,7 @@ code {
 
                 <b>&#8658</b> Check the difference and edits in new uncommitted files <br>
                 <code> 
-                    &emsp; git diff <br>
+                    &emsp; git diff
                 </code><br><br>
 
                 <b>&#8658</b> Get the list of branches available<br>
@@ -273,7 +289,7 @@ code {
 
                 <b>&#8658</b> Reset the all changes and get to master branch <br>
                 <code> 
-                    &emsp; git reset --hard <br>
+                    &emsp; git reset --hard
                 </code><br><br>
 
                 <b>&#8658</b> See history for commits, messages and authors<br>
@@ -295,7 +311,7 @@ code {
 
                 <b>&#8658</b> Switch to the specified branch <br>
                 <code> 
-                    &emsp; git checkout &ltbranch_name&gt // <br>
+                    &emsp; git checkout &ltbranch_name&gt
                 </code><br><br>
 
                 <b>&#8658</b> Create a new branch<br>
@@ -321,17 +337,12 @@ code {
 
                 <b>&#8658</b> Remove all new unwanted edits <br>
                 <code> 
-                    &emsp; git stash<br>
+                    &emsp; git stash
                 </code><br><br>
 
                 <b>&#8658</b> Obtain the list of stashed or archived changes<br>
                 <code> 
                     &emsp; git stash list
-                </code><br><br>
-
-                <b>&#8658</b> Archive the current uncommitted changes to stash<br>
-                <code> 
-                    &emsp; git stash save "&ltmessage_to_save_edit&gt"
                 </code><br><br>
 
                 <b>&#8658</b> Apply last stashed set of changes to edits<br>
