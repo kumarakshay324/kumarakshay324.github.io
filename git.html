@@ -168,15 +168,14 @@ code {
                     Version control is the most important system for managing code bases. Version control is the system of recording different versions of files, usually source code files, changing over time. It allows users to track changes in code over time and helps collaborative code development. Tracking and unique identification of every different change posted to a code enables users to completely or selectively revert to older versions when and if necessary.
 
                     <br><br>
-                    Version control system (VCS) is a very handy software for code organization, multiple developer collaboration and code sharing. VCS allows parallel code development/testing/deployment for several programmers spread across multiple large teams.
-                    <!-- restricted  modification access, automated build/test/deployment   -->
+                    <b style="font-weight: 500">Version control system (VCS)</b> is a very handy software for code organization, multiple developer collaboration and code sharing. VCS allows parallel code development/testing/deployment for several programmers spread across multiple large teams.
                     <br><br>
                     Git is one of the best and most widely used distributed version control system to handle projects. It was developed by Linus Torvalds during the development of the Linux kernel. It is a free and open-source tool shipped natively with most of the linux distros. While local installtion of git is sufficient for individual purpose, the true essence of VCS lies in remote collaboration.
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/git/tree.png" style="width:480px;height:280px;">
+                        <img src="images/blogs/git/tree2.png" style="width:639px;height:364px;">
                         <figcaption>Version Control Tree Structure</figcaption>
                     </figure>
 
@@ -194,19 +193,19 @@ code {
                 </p>
 
                 <center>
-                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">GIT CONCEPTS</b></p>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">GIT CONCEPTS & TERMINOLOGY</b></p>
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                There are few basic concepts of git to let user access, modify, develop and propose changes to the project source code.
+                Following are the  basic concepts and git terminology for access, modification and development of the project source code.
 
                 <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
                     <li>
                         <b style="font-weight: 500">Repository</b> - Project source code folder
                     </li>
                     <li>
-                        <b style="font-weight: 500">Branch</b> - Different version of the same source code that can different users can use, modify and makes changes to, independently
+                        <b style="font-weight: 500">Branch</b> - Different version of the same source code that can different users can use, modify and makes changes to, independently. The <code>master</code> branch is usually the main branch that every other individual <code>feature</code>, <code>bug-fix</code> or <code>release</code> branch merges to.
                     </li>
                     <li>
                         <b style="font-weight: 500">Fork/Clone</b> - Create a personal copy of the project source code, essentially from an online hosting platform
@@ -215,19 +214,34 @@ code {
                         <b style="font-weight: 500">Commit</b> - Add the new changes to the source code, to the current version aka branch and log it with a message and a timestamp 
                     </li>
                     <li>
-                        <b style="font-weight: 500">Remote</b> - Online repository storage 
+                        <b style="font-weight: 500">Remote</b> - Online repository storage. It works for collaboration with multiple developers and backup storage.
                     </li>
+                    <li>
+                        <b style="font-weight: 500">.gitignore</b> - Text file with names or regex rules for files and folders that should not be considered for tracking via VCS. These could be compiled files, executables, binaries. Standard rules and common templates can be fetched online here at <a href="https://github.com/github/gitignore">Github Online Repository</a>
+                    </li>
+                    <li>
+                        <b style="font-weight: 500">README.md</b> - A markdown file that usually carries description of the project, instructions for usage, development and installation of the project.
+                    </li>
+
                 </ul>
                 </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/git/commit_process.png" style="width:589px;height:349px;">
+                        <figcaption>Basic Concept of Git VCS</figcaption>
+                    </figure>
+                    <br>
+                </center>
 
                 <center>
                 <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">GENERAL GIT COMMANDS</b></p>
                 </center>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">General Commands</h1>
-                <br>
-
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+                
+                <b style="font-weight: 600; font-size:20px ">General Commands</b> <br><br>
+
 
                 <b>&#8658</b> Initialize the git control system inside the project source code folder <br>
                 <code> 
@@ -261,23 +275,37 @@ code {
                     &emsp; git merge &ltbranch&gt
                 </code><br><br>
 
-                <b>&#8658</b> Pull and the changes made to the branch and updated to the remote repository from a differnt user. It is a fetch + merge <br>
+                <b>&#8658</b> Pull and merge the changes made to the current branch on the remote repository from a differnt user. It is a fetch + merge <br>
                 <code>
-                    &emsp; git push origin &ltbranch&gt
+                    &emsp; git pull origin &ltbranch&gt
                 </code><br><br>
 
-
-                <b>&#8658</b> Clone a remote repository to a local location <br>
+                <b>&#8658</b> Clone a remote repository to the local machine <br>
                 <code> 
-                    &emsp; git clone remote_git_url
+                    &emsp; git clone &ltremote_git_url&gt
                 </code><br><br>
+
+                <b>&#8658</b> Reset the all changes and get to master branch <br>
+                <code> 
+                    &emsp; git reset --hard <br>
+                    &emsp; git reset --hard &ltcommit_id&gt
+
+                    &emsp; git reset // &emsp; &emsp; &emsp; Undo the staging command for the currently uncommitted changes
+
+                </code><br><br>
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                <b style="font-weight: 600; font-size:20px ">Diagnostics</b> <br><br>
 
                 <b>&#8658</b> Check the difference and edits in new uncommitted files <br>
                 <code> 
                     &emsp; git diff
                 </code><br><br>
 
-                <b>&#8658</b> Get the list of branches available<br>
+                <b>&#8658</b> Get the list of branches on the local machine <br>
                 <code> 
                     &emsp; git branch
                 </code><br><br>
@@ -285,11 +313,6 @@ code {
                 <b>&#8658</b> Get the list of tags available <br>
                 <code> 
                     &emsp; git tag
-                </code><br><br>
-
-                <b>&#8658</b> Reset the all changes and get to master branch <br>
-                <code> 
-                    &emsp; git reset --hard
                 </code><br><br>
 
                 <b>&#8658</b> See history for commits, messages and authors<br>
@@ -302,12 +325,17 @@ code {
                     &emsp; git blame &ltfile_name&gt
                 </code><br><br>
 
+                <b>&#8658</b> Show the changes made in particular commit<br>
+                <code> 
+                    &emsp; git show &ltcommit_id&gt
+                </code><br><br>
+
                 </p>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Branch Commands</h1>
-                <br>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                <b style="font-weight: 600; font-size:20px ">Branch Commands</b> <br><br>
 
                 <b>&#8658</b> Switch to the specified branch <br>
                 <code> 
@@ -328,12 +356,19 @@ code {
                 <code>
                     &emsp; git checkout &ltcommit_id&gt
                 </code><br><br>
+
                 </p>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Discard or archive edits</h1>
-                <br>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                <b style="font-weight: 600; font-size:20px ">Discard or archive uncommitted changes</b> <br><br>
+
+                <b>&#8658</b> Restore a particular file to the last committed version. All uncommited local changes are lost<br>
+                <code>
+                    &emsp; git checkout &ltfile_name&gt
+                </code><br><br>
+
 
                 <b>&#8658</b> Remove all new unwanted edits <br>
                 <code> 
@@ -357,10 +392,9 @@ code {
 
                 </p>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">User Credentials Configuration</h1>
-                <br>
-
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                <b style="font-weight: 600; font-size:20px ">User Credentials' Configuration</b> <br><br>
 
                 <b>&#8658</b> Add username for remote git service account <br>
                 <code> 
@@ -389,7 +423,36 @@ code {
 
                 </p>
 
-        </div>
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">BENEFITS OF GIT</b></p>
+                </center>
+
+                <p >
+                    <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                        <li>
+                            Automated code release, build, testing and deployment schedules triggered on commmits, tags or merges can be run from third party softwares like Jenkins that enhances efficiency during code development.
+                        </li>
+                        <li>
+                            Streamlined code development with discete feature/bug-fixing/refactor branches
+                        </li>
+                        <li>
+                            Multiple backups of codes in local or remote storage
+                        </li>
+                        <li>
+                            Pull requests from feature branches to main branches allow code reviews to maintain code quality and functionality
+                        </li>
+                        <li>
+                            Hierarchy in permissions for code merge to particular branches or creating tags helps avoid mistakes from newer developers and maintain code quality
+                        </li>
+                    </ul>
+                </p>
+
+                <hr width="25%">
+                <br>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+                Git is one of the most sought after technical skill in the software development industry. It has made collaboration more systematic and synchronized. While this list of git commands is only the ones used most commonly, <code>man git</code> can be used to learn more detailed description of git commands.
+                </p>
+            </div>
                     <br><br>
 
 
