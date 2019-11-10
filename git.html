@@ -250,9 +250,9 @@ code {
 
                 <b>&#8658</b> Stage the new addtional changes completely or partially to commit to the branch <br>
                 <code> 
-                    &emsp; git add .                    // Stage all changes <br>
-                    &emsp; git add --all                // Stage changes including deleted files <br>
-                    &emsp; git add &ltindividual files or folder&gt                 // Stage all changes
+                    &emsp; git add .   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;// Stage all changes <br>
+                    &emsp; git add --all &emsp;&nbsp;               // Stage changes including deleted files <br>
+                    &emsp; git add &ltfile_name/folder_name&gt &emsp; // Stage all changes
                 </code><br><br>
 
                 <b>&#8658</b> Finally add staged changes to the current branch<br>
@@ -270,15 +270,16 @@ code {
                     &emsp; git fetch
                 </code><br><br>
 
-                <b>&#8658</b> Embed or merge the changes from a different branch to the current branch<br>
+                <b>&#8658</b> Merge the changes from a different branch to the current branch<br>
                 <code>
                     &emsp; git merge &ltbranch&gt
                 </code><br><br>
 
                 <b>&#8658</b> Pull and merge the changes made to the current branch on the remote repository from a differnt user. It is a fetch + merge <br>
                 <code>
-                    &emsp; git pull origin &ltbranch&gt
-                </code><br><br>
+                    &emsp; git pull origin &ltbranch&gt <br>
+                </code><br>
+                Pull before push is a standard protocol for collaboration. Changes to a local branch can't be merged to the same online unless the updates to the remote(made probably by a different collaborator) are absorbed in the local branch. <br><br>
 
                 <b>&#8658</b> Clone a remote repository to the local machine <br>
                 <code> 
@@ -288,9 +289,8 @@ code {
                 <b>&#8658</b> Reset the all changes and get to master branch <br>
                 <code> 
                     &emsp; git reset --hard <br>
-                    &emsp; git reset --hard &ltcommit_id&gt
-
-                    &emsp; git reset // &emsp; &emsp; &emsp; Undo the staging command for the currently uncommitted changes
+                    &emsp; git reset --hard &ltcommit_id&gt <br>
+                    &emsp; git reset &emsp; // Undo the staging command for the currently uncommitted changes
 
                 </code><br><br>
 
@@ -300,7 +300,7 @@ code {
 
                 <b style="font-weight: 600; font-size:20px ">Diagnostics</b> <br><br>
 
-                <b>&#8658</b> Check the difference and edits in new uncommitted files <br>
+                <b>&#8658</b> Check the difference and edits in new uncommitted and unstaged files <br>
                 <code> 
                     &emsp; git diff
                 </code><br><br>
@@ -320,12 +320,12 @@ code {
                     &emsp; git log
                 </code><br><br>
 
-                <b>&#8658</b> List the changes, date and authors for the file<br>
+                <b>&#8658</b> List the changes, timestamps and authors for the file<br>
                 <code> 
                     &emsp; git blame &ltfile_name&gt
                 </code><br><br>
 
-                <b>&#8658</b> Show the changes made in particular commit<br>
+                <b>&#8658</b> Show the changes made in a particular commit<br>
                 <code> 
                     &emsp; git show &ltcommit_id&gt
                 </code><br><br>
@@ -370,9 +370,14 @@ code {
                 </code><br><br>
 
 
-                <b>&#8658</b> Remove all new unwanted edits <br>
+                <b>&#8658</b> Remove all new uncommitted edits and restore the project to the last commit<br>
                 <code> 
                     &emsp; git stash
+                </code><br><br>
+
+                <b>&#8658</b> Archive the current uncommitted changes to stash<br>
+                <code> 
+                    &emsp; git stash save "&ltmessage_to_save_edit&gt"
                 </code><br><br>
 
                 <b>&#8658</b> Obtain the list of stashed or archived changes<br>
@@ -387,7 +392,7 @@ code {
 
                 <b>&#8658</b> Apply a particular set of stashed changes to the current branch<br>
                 <code>
-                    &emsp; git stash apply stash@{&ltstash_number&gt}  //Stash number from the list
+                    &emsp; git stash apply stash@{&ltstash_number&gt}  // Stash number from the list
                 </code><br><br>
 
                 </p>
@@ -404,11 +409,6 @@ code {
                 <b>&#8658</b> Add email ID for remote git service account<br>
                 <code> 
                     &emsp; git config --global user.email "&ltgithub/bitbucket user_mail_id&gt"
-                </code><br><br>
-
-                <b>&#8658</b> Archive the current uncommitted changes to stash<br>
-                <code> 
-                    &emsp; git stash save "&ltmessage_to_save_edit&gt"
                 </code><br><br>
 
                 <b>&#8658</b> Connect a local repository to remote git service URL<br>
@@ -430,7 +430,7 @@ code {
                 <p >
                     <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
                         <li>
-                            Automated code release, build, testing and deployment schedules triggered on commmits, tags or merges can be run from third party softwares like Jenkins that enhances efficiency during code development.
+                            Automated code release, build, testing and deployment schedules triggered on commits, tags or merges can be run from third party softwares like Jenkins to enhance efficiency during code development.
                         </li>
                         <li>
                             Streamlined code development with discete feature/bug-fixing/refactor branches
@@ -439,10 +439,10 @@ code {
                             Multiple backups of codes in local or remote storage
                         </li>
                         <li>
-                            Pull requests from feature branches to main branches allow code reviews to maintain code quality and functionality
+                            Pull requests from feature branches usually incorporate code reviews and testing to maintain code quality and functionality
                         </li>
                         <li>
-                            Hierarchy in permissions for code merge to particular branches or creating tags helps avoid mistakes from newer developers and maintain code quality
+                            Hierarchy in permissions for code merging or modification to particular branches or creating tags helps avoid mistakes from newer developers and maintain code quality
                         </li>
                     </ul>
                 </p>
@@ -474,8 +474,8 @@ code {
             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
             var disqus_config = function () {
-            this.page.url = "http://kumarakshay.me/cmake.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 126; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = "http://kumarakshay.me/git.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 269; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
