@@ -165,12 +165,12 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    Version control is the most important system for managing code bases. Version control is the system of recording different versions of files, usually source code files, changing over time. It allows users to track changes in code over time and helps collaborative code development. Tracking and unique identification of every different change posted to a code enables users to completely or selectively revert to older versions when and if necessary.
+                    Version control is the most important system for managing code bases. It is the system for recording different versions of files, usually source code files, changing over time. It allows users to track changes in code over time and helps collaborative code development. Tracking and unique identification of every change posted to a code enables users to monitor progress, mark particular states of the code and completely or selectively revert to older versions if needed.
 
                     <br><br>
-                    <b style="font-weight: 500">Version control system (VCS)</b> is a very handy software for code organization, multiple developer collaboration and code sharing. VCS allows parallel code development/testing/deployment for several programmers spread across multiple large teams.
+                    <b style="font-weight: 500">Version control system (VCS)</b> is a very handy software for code organization, multiple developer collaboration and code sharing. VCS allows parallel code development/testing/deployment for several programmers spread across multiple large teams. The most common version control tools used are git, cvs, mercurial and svn.
                     <br><br>
-                    Git is one of the best and most widely used distributed version control system to handle projects. It was developed by Linus Torvalds during the development of the Linux kernel. It is a free and open-source tool shipped natively with most of the linux distros. While local installtion of git is sufficient for individual purpose, the true essence of VCS lies in remote collaboration.
+                    Git is one of the best and most widely used distributed version control system to handle big projects. It was developed by Linus Torvalds during the development of the Linux kernel. It is a free and open-source tool shipped natively with most of the linux distros. While locally installed git is sufficient for individual purpose, the true essence of VCS lies in remote collaboration.
                 </p>
 
                 <center>
@@ -189,7 +189,7 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Git is a decentralized version control system where all users can have their individual versions of the code. Also, git allows offline code development while network connectivity and online VCS hosts are needed for collaboration.  Online platforms like <b style="font-weight: 500">Github, Gitlab and Bitbucket</b> are the most widely used ones. Git keeps variations in code over time by recording and tracking only the difference in code and not maintaining multiple code copies. 
+                Git is a decentralized version control system where all users can have their individual versions of the code. Also, git allows offline code development while network connectivity and online VCS hosts are needed for remote collaboration. Online platforms like <b style="font-weight: 500">Github, Gitlab and Bitbucket</b> are the most widely used ones and serve for code sharing within between the VCS framework. Git keeps variations in code over time by recording and tracking only the difference in code and not maintaining multiple code copies. All these differences are sorted and stored, as per different branches of the git tree, in a hidden <b style="font-weight: 500">.git</b> folder inside the porject source code.
                 </p>
 
                 <center>
@@ -205,7 +205,7 @@ code {
                         <b style="font-weight: 500">Repository</b> - Project source code folder
                     </li>
                     <li>
-                        <b style="font-weight: 500">Branch</b> - Different version of the same source code that can different users can use, modify and makes changes to, independently. The <code>master</code> branch is usually the main branch that every other individual <code>feature</code>, <code>bug-fix</code> or <code>release</code> branch merges to.
+                        <b style="font-weight: 500">Branch</b> - Different version of the same source code that different users can use, add and makes changes to, independently. The <code>master</code> branch is usually the main branch that every other individual <code>feature</code>, <code>bug-fix</code> or <code>release</code> branch merges to.
                     </li>
                     <li>
                         <b style="font-weight: 500">Fork/Clone</b> - Create a personal copy of the project source code, essentially from an online hosting platform
@@ -217,10 +217,10 @@ code {
                         <b style="font-weight: 500">Remote</b> - Online repository storage. It works for collaboration with multiple developers and backup storage.
                     </li>
                     <li>
-                        <b style="font-weight: 500">.gitignore</b> - Text file with names or regex rules for files and folders that should not be considered for tracking via VCS. These could be compiled files, executables, binaries. Standard rules and common templates can be fetched online here at <a href="https://github.com/github/gitignore">Github Online Repository</a>
+                        <b style="font-weight: 500">.gitignore</b> - Text file with names or regex rules for files and folders that should not be considered for tracking via VCS. These could be compiled files, executables, binaries or keys that don't need to be put on online platforms or shared. Standard rules and common templates can be fetched online here at <a href="https://github.com/github/gitignore">Github Online Repository</a>
                     </li>
                     <li>
-                        <b style="font-weight: 500">README.md</b> - A markdown file that usually carries description of the project, instructions for usage, development and installation of the project.
+                        <b style="font-weight: 500">README.md</b> - A markdown file that usually carries description of the project, performance results, instructions for usage, development and installation of the project.
                     </li>
 
                 </ul>
@@ -245,7 +245,7 @@ code {
 
                 <b>&#8658</b> Initialize the git control system inside the project source code folder <br>
                 <code> 
-                    &emsp; git init .
+                    &emsp; git init
                 </code><br><br>
 
                 <b>&#8658</b> Stage the new addtional changes completely or partially to commit to the branch <br>
