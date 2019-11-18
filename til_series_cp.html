@@ -155,11 +155,32 @@ code {
                 </center>
                 <br><br>
                 <hr width="25%">
-                <center>
-                <p style="text-align:center;font-size:30px; "> <b style="font-weight: 500">dpkg</b> </p>
-                </center>
+
+
+
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    <b style="font-weight: 500; font-size:25px ">friend in C++ </b>(November 18, 2019) <br><br>
+
+                    A friend class in C++ can access the private and protected member variables of a different class. The <code>friend</code> class just needs to be declared in the concerned different class. Similarly, a friend method in C++ can access either protected/private methods or even global methods and use them within the class they are declared in.
+                    <br><br>
+                    A <code>friend</code> can be declared as private or protected or public in the class while the behavior remains unaffected. Friend behavior is neither mutual nor can be inherited. It only establishes access from the class declared in to the class being declared.
+                    <br><br>
+                    However, <code>friend</code> methods or variables should not be used extensively unless necessary as it defies the purpose of encapsulation in OOP. At the same time, it limits the extent of interaction permitted between two classes.
+                    <br><br>
+                    Declarations:
+                    <br>
+                    <code>friend class Alpha;</code>
+                    <br>
+                    <code>friend int Alpha::search();</code>
+                    <br><br>
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    <b style="font-weight: 500; font-size: 25px ">dpkg </b>(November 17, 2019) <br><br>
+
                     <code>dpkg</code> is a package manager for Debian-based systems(Linux-based open source softwares). It is a low level tool which can only install and uninstall packages asked explicitly. It is not intelligent enough to run automatic updates or manage dependencies. <code>dpkg</code> is very simple to use and useful for terminal based interaction with packages. Advanced Package Tool(<code> apt</code>) is the command line tool that uses <code>dpkg</code> as the backend. It is advanced in the sense that it can find the dependencies of the package being installed and uses <code>dpkg</code> to install them automatically, as well.
                     <br><br>
                     The <code>-i</code> argument is used to install packages, either from compressed <b style="font-weight: 500">zip</b> files or <b style="font-weight: 500">.deb</b>
