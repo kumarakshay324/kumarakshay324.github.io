@@ -216,10 +216,10 @@ div.column{
                 <br><br>
                 <b style="font-weight: 500"> Holonomic robots are such that their constraints are all integratable to position constraints. It simpistic terms, the number of controllable degrees of freedom of the robot is equal to the total number of degrees of freedom.</b> Mecanum and omni wheel drive robots are holonomic drives. They allow the robot to move in any direction instantly without any turning radius or realignment.
                 <br><br>
-                <b style="font-weight: 500">Non-holonomic systems are systems with controllable degrees of freedom less than than the total degrees of freedom.</b> Ackerman, differential and belt drives are all such non-holonomic systems. Such mobile robots are incapable of instantaneous motion in a desired direction.
+                <b style="font-weight: 500">Non-holonomic systems are systems with controllable degrees of freedom less than than the total degrees of freedom.</b> Ackerman, differential and belt drives are all such non-holonomic systems. Such mobile robots are incapable of instantaneous motion in a desired direction and always move on a circular trajectory.
 
                 <br><br>
-                Each of these drives have their own significance in indoor or outdoor applications. The forward and inverse kinematics models of these drives are used to control the motion. The wheels are most important in defining the nature of motion.
+                Each of these drives have their own significance in indoor or outdoor applications. The forward and inverse kinematics models of these drives are used to control the motion. Forward kinematics establishes the relationship between the joints and physical space while inverse kinematics is needed to convert task space trajectory obtained from motion planning algorithms to joint space for motion control. For mobile robots, it is safe to restrict motion only in the XY plane with +X protruding out along the robot heading while the Y axis is perpendicular to the heading as per the right-hand rule.
                 </p> 
 
                 <center>
@@ -237,135 +237,51 @@ div.column{
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px; text-align:justify;">
 
                 Differential drive is one of the most common drive mechanisms in delivery or warehouse robots. They have standard geometric wheels and one or more free passive wheels. The robot has a pair of parallel wheels placed on the same axis, on either sides of robot body. Relative motion in the wheels on either sides makes it move along different curves. Because of the relative motion, it doesn't need special powered wheels for steering. Instead, it just needs free wheels like castor or ball wheel that can align in any direction.
+                </p>
+                <center>
+                    <figure>
+                        <img src="images/blogs/mobile_robot/differential_drive_kinematics.png" style="width:458px;height:308px;">
+                        <figcaption>Differential Drive Kinematics</figcaption>
+                    </figure>
+                </center>
 
-                <br>
-                Differential drive has 
-
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+                    Because the differential drive is a non-holonomic drive, the differential drive kinematics defining its motion are not integrable to the final pose of the robot. The distances traveled by the two indvidual wheels are not enough and needs the time sequence of motion to obtain the final robot pose. The <b style="font-weight: 500">linear and angular velocities</b> of the wheels are used to derive the robot position and orientation in the physical space.
                 </p>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:center;font-size:25px"> <b style="font-weight: 500">Ackerman Drive Model</b></p>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
-                Ackerman drive is the special steering geometry that solves the problem of wheel slippage and difference in distancce to be travelled by the inside and outside wheels while moving along a curve. All commercial vehicles are build on this drive mechanism. This mechanism has a powered pair of rear wheels. The 
+                Ackerman drive is the special steering geometry that solves the problem of wheel slippage and difference in distance to be travelled by the inside and outside wheels while moving along a curve. All commercial vehicles are build on this drive mechanism. This mechanism has a powered pair of rear wheels while the front wheels are used to steering.  The front wheels of the drive have a common instantaneous center of rotation that lies on the line joining the two rear wheels.
                 </p>
+                <br>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mobile_robot/ackerman_drive_kinematics.png" style="width:560px;height:320px;">
+                        <figcaption>Ackerman Drive Kinematics</figcaption>
+                    </figure>
+                </center>
+                <br>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:center;font-size:25px"> <b style="font-weight: 500">Mecannum Drive Model</b></p>
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
 
-                Topological maps are description of the robot environment in terms of physical features. For an indoor environment, it would be landmarks and features like rooms, electrical appliances and furniture. The path to locations are proposed as sections in the map that can be accessed by the robot. The features are called nodes while the connecting paths are called edges or connections. These maps require verbose knowledge of the environment and are generally used in visual SLAM.
+                Mecannum wheel drive is the special category of holonomic drive that can drive in any direction, instantaneously. The standard drive has 4 individually powered mecannum wheels. Mecannum wheels have small roller wheels aligned at 45&#176 along the periphery an individual wheels. Different configurations of speeds and directions of the wheels make it possible to travel along specific directions.
                 </p>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Localization</h1>
-                <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                Localization is a map dependent definition of robot's pose that determines. For a known map, known sensor observations and location estimates, robot localization is very much possible. The quality of localization with higher probabilities for correctness highly depends on sensor readings. Thus, more the sensors, better the localization sensing.
-                <br><br>
-                A robot can bes easily localized using information from exteroceptive and interoceptive sensors like range finders and IMUs respectively, processed over time.
-
-                <br><br> 
-                </p> 
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Localization Algorithms</b></i> </p>
-
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
-
-                Robot localization is generally solved using algorithms like Kalman Filter, Extended Kalman Filter and Particle Filters. KF and EKF solve for linear and non-linear systems respectively, by using the system model and the related covariances. Extended Kalman Filtering is generally the most used algorithm that supports multiple sensor data usage and provides accurate robot pose.
-
-                <br><br>
-                Particle filter is a setup where each unique particle represents a probable robot pose with some associated probability of being the robot's actual pose. Thereafter, the SLAM algorithm can use the mean, average or highest probability value as the robot pose. Large number of particles results in more computational overhead.
-
-
-                </p>
-                <br>                 
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Robot Pose Types</b></i> </p>
-
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
-
-                A robot's pose is generally defined in a frame of reference, i.e. the origin of a map. 
-
-                Onboard sensors are good for measuring the robot's own motion and thus the <b>relative pose estimation</b> of the robot with reference to the previous can be obtained. Wheel encoders are used for odometry estimation. They measure the rotations in each motor and use the robot's model to obtain the motion information (change in position and change in orientation). The other way is using inertial measurement units that use accelerometers, gyroscopes andd magnetometers and integrate the measurements to estimate the motion. However, each of these sensing options have their own limitations. Wheel encoder based odometry are prone to huge errors due to slipping, uneven ground and drifting as well as inherent sensor inefficiencies. IMUs are prone to drift and bias accumulation over time. The estimations are made based on integrations and thus prone drift
-
-                <br><br>
-
-                Given the volatality of maps and thus everything derived from it, <b>absolute pose estimation</b> of a robot in a map is extremely difficult and inextensible as the map is still in evolution. The unknown nature of surroundings makes it difficult to localize on the absolute level. Absolute positioning is done by laser rangefinders or GPS, both of which are very limited in scope and usage. While it is not prone to any accumulating errors, the absolute estimations can be marred by sensor issues and limited sensors.
-
-                </p>
-                <br>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Nuances of SLAM</h1>                
-                <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-
-                SLAM techniques run with only certain physical parameters. It includes <b><i>u</i></b> - the robot control input, <b><i>z</i></b> - the sensor observations, <b><i>m</i></b> - the environment map and <b><i>x</i></b> - the robot pose or path.
-
-                <br><br>
-                Feature-based SLAM methods analyze the surroundings, create the maps, obtain close-to-accurate robot poses and thus converge onto motion tasks. It needs absolute robot poses, absolute positions of the landmarks but only relative measurement of the landmarks.
-                <br><br>
-                Measurements and estimations in SLAM are cyclic. So, an error in robot pose leads to an imperfect estimate of the map that eventually results in a poor robot pose calculated thereafter; eventually, showing that they are correlated. Also, the mappings between the observations and the actual landmarks are unknown. 
-                <br><br>
-                SLAM could be operational as full SLAM, online SLAM and integral SLAM. Full SLAM estimates the complete path(sequence of poses) and the full environment map while online SLAM estimates pose for the latest time stamp using the old information and the complete map. Integral SLAM does recursive computations, one at a time. Thus, full SLAM computes sets of <b><i>u, z, x</i></b> and final <b><i>m</i></b> while online SLAM computes <b><i>u<sub>last</sub></i></b>, <b><i>z<sub>last</sub></i></b>, and the complete map <b><i>m</i></b>.
-
-                </p> 
 
                 <center>
                     <figure>
-                        <img src="images/blogs/slam/slam_types.png" style="width:900px;height:390px;">
-                        <figcaption>Figure 3 - Full SLAM vs Online SLAM </figcaption>
+                        <img src="images/blogs/mobile_robot/mecannum_drive_kinematics.png" style="width:584px;height:342px;">
+                        <figcaption>Mecannum Wheel Drive Kinematics</figcaption>
                     </figure>
-
-                    <br><br>
                 </center>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Sensors in SLAM</h1>                
                 <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-
-                Interoceptive and exteroceptive are two broad categories of sensors comprising of onboard sensors like wheel encoders, IMUs and GPS and cameras and laser scanners respectively. Interoceptive sensors are supposed to measure the physical quantities of the robot itself while the exteroceptive sensors observe the outer world and each of them thus contribute towards robot's pose estimation. Sonars, lasers and cameras are the three most used exteroceptive sensing systems used in SLAM.
-
-                <br><br>
-                Sonars and lasers use time of flight and phase-shift based computations to determine the contents and the structure of the environment, the map. LiDARs rangefinders have long ranges and high operational speeds to determine planar features like walls in the environment. 2D LiDARs can only determine planar features while 3D LiDARs can determine the complete environment due to the highly dense information available. However, LiDARs cannot observe  surface properties to localize and identify objects. Thus, LiDARs are more emphatically used to determine locations of obstacles and bounds of the environment.
-
-                <br><br>
-                Visual sensing using monocular cameras, stereocameras and RGB-D cameras suffice to compensate for the limitations of the LiDARs. While cameras can provide rich information, processing the same is computationally expensive and needs more time and more complex algorithms to obtain computer legible data. Visual Odometry estimation and visual landmark estimation are the most useful SLAM applications for camera information. Monocular vision lacks depth information for the contents in the image thus making 3D map reconstruction very difficult. While there have been attempts are obtaining depth information based on robot motion and consecutive frames of images, it is still limited by complex algorithms and real-time computations. The depth information even obtained after this is associated with an unknown or probably incorrect scaling factor that mars the direct use in motion.
-
-                <br><br>
-                Stereovision is today's easiest option to obtain the depth information for the surroundings. It uses the triangulation method on two monocular cameras of known focal lengths, setup at a known distance and that determines the depth of any pixel in real-world physical quantities.
-
-                </p> 
-
-                <center>
-                    <figure>
-                        <img src="images/blogs/slam/sensors.png" style="width:600px;height:390px;">
-                        <figcaption>Figure 4 - Different Sensors on a mobile robot</figcaption>
-                    </figure>
-
-                    <br><br>
-                </center>
-
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Sensor Fusion</b></i> </p>
 
 
-                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
-
-                Both pose estimation techniques are mutually exclusive but several sensor-fusion techniques are used to compensate for the limitations in the individual sensors. Sensor fusion can be performed at sensor level as well as at the approach level. Multiple sensor data feed can be either fused together before estimating the pose or individual estimations can be fused later on. 
-
-                <br><br>
-
-                The position measure can be fused using a probabilistic framework like Markov Localization or Kalman Localization. Markov Localization predicts(using the several sensors and their relative and/or absolute measurements) the pose information as a probability over all possible locations while Kalman localization predicts the same as a probability over the complete map thus making the location with highest chances have the largest probability. 
-
-                <br><br>
-
-                Given the pose of a robot is 6DOF (x, y, z position coordinates and alpha, beta and gamma orientation coordinates), it becomes really difficult to estimate each of them accurately and their corelation makes accuracy challenging.
-
-
-                <br><br>
-
- 
-                </p>
+            </p>    
 
             </div>
             </div>
