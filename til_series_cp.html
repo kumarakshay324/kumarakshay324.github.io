@@ -156,7 +156,21 @@ code {
                 <br><br>
                 <hr width="25%">
 
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
+                    <b style="font-weight: 500; font-size:25px ">cron jobs </b>(December 9, 2019) <br><br>
+
+                    A cron job is a sofware utility to schedule tasks by the clock and save repetitive manual runs. Cron jobs can be used to setup shell scripts or commands for system maintenance, data handling, emails, automated cache handling and many more mundane tasks.
+                    <br><br>
+                    A <b style="font-weight: 500">crontab</b> is a special cron file with all commands and jobs and related instructions to be automated. A cron daemon is only started at boot and usually never automatically restarted thereafter.
+                    <br><br>
+                    <code>crontab -e</code> is the command used to edit the crontab configuration file. It provides standard options for scheduling the job by the minute, hour, day, month and day of the week. The cron job configuration also needs the exact command to be executed
+                    <br><br>
+                    This command runs the user-defined shell script at the beginning of each hour and could be as simple as setting a reminder to drink water!
+                    <br>
+                    <code>0 * * * * /home/cron_job_script/execute.sh </code>
+                    <br><br>
+                </p>
 
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
