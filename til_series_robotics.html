@@ -52,7 +52,7 @@ code {
 
 <html>
     <head>
-        <title>Today I learned a thing in Computer Programming- AKSHAY KUMAR</title>
+        <title>Today I learned a thing in Robotics - AKSHAY KUMAR</title>
         <link rel="icon" href="images/profile.jpg">
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
@@ -134,75 +134,40 @@ code {
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px;font-weight: 500">TIL Series - Computer Programming</h2>
+                    <h2 style="font-size:40px;font-weight: 500">TIL Series - Robotics</h2>
                 <br>
 
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    I realized that either at work or while surfing the internet; I come across something trending or something I never knew about in the tech-industry. I curiously read about it or use it if needed and then move on and unfortunately forget it over time.
+                    I browse tons of robotics and related stuff everyday and now I will be dumping a short description of all that interesting stuff here!
                     <br><br>
-                    Finally, I decided to create a space where I journal my learnings, as frequently as possible. <b style="font-weight: 500"> This "Today I learned" </b> series is a very raw brain-dump write-up (no glorification, please!) of these learnings, largely to ensure that I record things that I come across.
-                    <br><br>
-                    <b style="font-weight: 500">  Because this might have tons of stuff from different sub sections of Computer Programming, I might sort them out later and organize categories better - One Day!</b>
+                    <b style="font-weight: 500">  Robotics is huge and I am not efficient enough to sort these topics appropriately until the D-Day is here!</b>
                 </p>
 
 
                 <center>
                     <figure>
-                        <img src="images/blogs/til/til_art.jpg" style="width:300px;height:300px;">
+                        <img src="images/blogs/til/til_robotics.jpg" style="width:509px;height:340px;">
                     </figure>
                 </center>
                 <br><br>
                 <hr width="25%">
-
+                <br><br>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    <b style="font-weight: 500; font-size:25px ">cron jobs </b>(December 9, 2019) <br><br>
+                    <b style="font-weight: 500; font-size:25px ">impedance control </b>(December 10, 2019) <br><br>
 
-                    A cron job is a sofware utility to schedule tasks by the clock and save repetitive manual runs. Cron jobs can be used to setup shell scripts or commands for system maintenance, data handling, emails, automated cache handling and many more mundane tasks.
+                    Robots and specially manipulators often interact with the environment and the nature of interaction is to be modeled for efficient robot performance. Knowledge of how the environment is going to react if the robot approaches it helps the robot decide its actions better.
                     <br><br>
-                    A <b style="font-weight: 500">crontab</b> is a special cron file with all commands and jobs and related instructions to be automated. A cron daemon is only started at boot and usually never automatically restarted thereafter.
+                    <b style="font-weight: 500">Impedance control</b> is a robot control technique where the force-position relationship is defined for the interaction. The end of the manipulator is considered to have a virtual impedance defined by a spring-mass-damper system related by force and mass while the environment is considered to a have an admittance.
                     <br><br>
-                    <code>crontab -e</code> is the command used to edit the crontab configuration file. It provides standard options for scheduling the job by the minute, hour, day, month and day of the week. The cron job configuration also needs the exact command to be executed
+                    For the manipulator, the end-effector force and cartesian coordinate positions are related by this equation to model the impedance <br>
+                    <code>F<sub>ext</sub> = K(X<sub>desired</sub> - X) + D(X&#775<sub>desired</sub> - X&#775) + M(X&#776<sub>desired</sub> - X&#776) </code>
                     <br><br>
-                    This command runs the user-defined shell script at the beginning of each hour and could be as simple as setting a reminder to drink water!
-                    <br>
-                    <code>0 * * * * /home/cron_job_script/execute.sh </code>
-                    <br><br>
+                    This external force is added to the dynamics model of the manipulator(in cartesian space) to selectively control positions and forces in different directions while robot-environment interaction.
                 </p>
 
-
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-
-                    <b style="font-weight: 500; font-size:25px ">friend in C++ </b>(November 18, 2019) <br><br>
-
-                    A friend class in C++ can access the private and protected member variables of a different class. The <code>friend</code> class just needs to be declared in the concerned different class. Similarly, a friend method in C++ can access either protected/private methods or even global methods and use them within the class they are declared in.
-                    <br><br>
-                    A <code>friend</code> can be declared as private or protected or public in the class while the behavior remains unaffected. Friend behavior is neither mutual nor can be inherited. It only establishes access from the class declared in to the class being declared.
-                    <br><br>
-                    However, <code>friend</code> methods or variables should not be used extensively unless necessary as it defies the purpose of encapsulation in OOP. At the same time, it limits the extent of interaction permitted between two classes.
-                    <br><br>
-                    Declarations:
-                    <br>
-                    <code>friend class Alpha;</code>
-                    <br>
-                    <code>friend int Alpha::search();</code>
-                    <br><br>
-                </p>
-
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-
-                    <b style="font-weight: 500; font-size: 25px ">dpkg </b>(November 17, 2019) <br><br>
-
-                    <code>dpkg</code> is a package manager for Debian-based systems(Linux-based open source softwares). It is a low level tool which can only install and uninstall packages asked explicitly. It is not intelligent enough to run automatic updates or manage dependencies. <code>dpkg</code> is very simple to use and useful for terminal based interaction with packages. Advanced Package Tool(<code> apt</code>) is the command line tool that uses <code>dpkg</code> as the backend. It is advanced in the sense that it can find the dependencies of the package being installed and uses <code>dpkg</code> to install them automatically, as well.
-                    <br><br>
-                    The <code>-i</code> argument is used to install packages, either from compressed <b style="font-weight: 500">zip</b> files or <b style="font-weight: 500">.deb</b>
-                    <br>
-                    For example: <code> dpkg -i &ltsoftware.&gtdeb</code>
-                    <br><br>
-                    The <a href="https://help.ubuntu.com/lts/serverguide/dpkg.html">Ubuntu Help Website</a>  provides very comprehensive information about <code>dpkg</code> and more command line options can be looked up using <code> man dpkg</code> command.
-                </p>
 
             </div>
             </div>
@@ -221,8 +186,8 @@ code {
             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
             var disqus_config = function () {
-            this.page.url = "http://kumarakshay.me/til_series_cp.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 199; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = "http://kumarakshay.me/til_series_robotics.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 179; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
