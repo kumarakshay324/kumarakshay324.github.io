@@ -998,8 +998,8 @@ div.blog_box_sidenav {
 }
 
 div.blog_box_index {
-  margin-left: 3%;
-  margin-right: 3%;
+  margin-left: 0%;
+  margin-right: 0%;
   position: fixed;
   background-color: white;
   border: none;

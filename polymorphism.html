@@ -1,0 +1,408 @@
+    <!DOCTYPE HTML>
+
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #f5f5ef;
+  /*border: 1px black;*/
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.blog_box_sidenav {
+  margin-left: 8%;
+  margin-right: 10%;
+  position: fixed;
+  background-color: #f5f5ef;
+  border: 1px solid #dbdbd5;
+  height: auto;
+  width: 350px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+.blog_box_sidenav p:hover{
+  color: #140440;
+  font-weight: 500;
+  /*text-decoration: bold;*/
+  /*background-color: #cfc ;*/
+
+}
+
+code { 
+  font-family: monospace;
+}
+
+.gist {
+   max-width:60%;
+   overflow:auto;
+   text-align: center;
+}
+
+.gist .blob-wrapper.data {
+   max-height:auto;
+   overflow:auto;
+}
+
+</style>
+</head>
+
+<html>
+    <head>
+        <title>Polymorphism  in C++ - AKSHAY KUMAR</title>
+        <link rel="icon" href="images/profile.jpg">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+            
+            <!-- Header -->
+
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>
+                </div>
+                
+            </div>          
+
+            <!-- Introduction -->
+            <div class="wrapper style6" align="justify" >
+
+            <br>
+
+            <!-- <div class="column"> -->
+                <div class="blog_box_sidenav" align="left" >
+                    <center>
+                    <br>
+                    <span style="font-size:25px;text-decoration: none;">LATEST POSTS</span>
+                    </center><br>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="til_series_robotics.html">
+                        <p style="margin-right:2%; margin-left: 2%"> TIL in Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="cmake.html">
+                        <p style="margin-right:2%; margin-left: 2%"> CMake Meta Build System</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="stl_cpp.html">
+                        <p style="margin-right:2%; margin-left: 2%"> Common Algorithms from the STL Library in C++</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="advanced_conntrol.html">
+                        <p style="margin-right:2%; margin-left: 2%"> Control Techniques for Robot Manipulators</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="ros.html">
+                        <p style="margin-right:2%; margin-left: 2%"> Robot Operating System (ROS) - Command Line Tools</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="sampling.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Sampling-based Motion Planners</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="mp_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Motion Planning in Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Visual SLAM - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="coverage.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Coverage Problem in Mobile Robotics</p>
+                        <br>
+                    </a>
+                    <br>
+                </div>
+
+            <div id="mySidenav" class="sidenav">
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+                    <a href="http://www.facebook.com/singhakshay324" target="_blank" id="social"><img src="images/contacts/fb.png" style="width:50px;height:50px;;"></a>
+
+            </div>
+
+            <div class="blog_box" align="justify" >
+                    <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+                <br>
+                    <h2 style="font-size:40px;font-weight: 500"> Polymorphism in C++ !</h2>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Object oriented programming or OOP is perhaps the most used programming paradigm used in the industry today. OOP allows for desird levels for abstraction, modularity, safety and management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, ober operational principles of OOP that makes it so famous. 
+
+                <br><br>
+                C++ is a high-level language written in plain English and the source code needs to be converted into machine-readable code because the CPU does not understand anything but binary 0s and 1s which are essentially digital voltage signals. <b style="font-weight: 500"> The process of conversion of high-level code to machine readable language is called compilation.</b>Unlike interpreted languages that convert code sequentially to machine level language at runtime (and just in time), compiled languages like C++ convert the complete code, at once, into machine level code, ready to execute and thus fairly faster than the interpreted languages.
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/compilation/compiler.png" style="width:500;height:370px;">
+                        <figcaption>Executable Code Generation Process</figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">INTRODUCTION</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                C++ can be called a fairly strictly-typed language but can also have templated code which is converted to actual code and then to machine code during compilation. Code compilation does all the needed effort upfront to generate immediately executable code after checking the same for syntactical errors. However, the process of conversion of source code into a valid executable binary is much more than only compilation. It involves a preprocessing phase before compilation and a phase of linking multiple libraries and third-party resources/binaries afterwards.
+                <br><br>
+                The main steps of generating an executable from a source code are <b style="font-weight: 500">pre-processing, compilation and linking.</b>
+
+                The following C++ code is used as an example to explain each of these 3 phases.
+                </p>
+                <center>
+                    <script src="https://gist.github.com/kumar-akshay324/68894e273b628c7fb2b36345fa9aab6f.js"></script>
+                    <figcaption> Example Header File - <code>compiler_example.h</code></figcaption>
+                    <br><br>
+                </center>
+
+                <center>
+                    <script src="https://gist.github.com/kumar-akshay324/8a1d6542dce5a2429310b6d4ae60c5ef.js"></script>
+                    <figcaption> Example Source Code File - <code>compiler_example.cpp</code></figcaption>
+                </center>
+                <br>
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">PRE-PROCESSING</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Before the user written high-level code is converted to machine code, it is important to aggregate code and run some precompilation instructions for different header files(.h) or source code files(.cpp). Any such instructions starting with <code>#</code> are called directives and are executed during this preprocessing phase.
+                </p>
+
+                <table style="width:700px;margin-left:200px;margin-right:200px;text-align:left; margin-right:50px;">
+                  <tr>
+                    <td><b>Directive</b></td>
+                    <td><b>Explanation</b></td> 
+                  </tr>
+                  <tr>
+                    <td>&emsp;<code>&emsp;#include</code>&emsp;</td>
+                    <td>&emsp;Used to import other headers from local user defined source code or from native C++ code like <code>#include &lt;iostreamm&gt;</code> reads the code from input-output library provided by C++ and copies the content into a new temporary source file </td>
+                  </tr>
+                  <tr>
+                    <td><code>#ifdef</code></td>
+                    <td>If macro is defined, returns true, else false</td>
+                  </tr>
+                  <tr>
+                    <td><code>#ifndef</code></td>
+                    <td>If macro is not defined, returns true, else false</td>
+                  </tr>
+                  <tr>
+                    <td><code>#endif</code></td>
+                    <td>End the if condition preprocessor</td>
+                  </tr>
+                  <tr>
+                    <td><code>#error</code></td>
+                    <td>Prints out the error message on a stderr</td>
+                  </tr>
+                  <tr>
+                    <td><code>#undef</code></td>
+                    <td>Removes the definition of a macro</td>
+                  </tr>
+                  <tr>
+                    <td><code>#pragma</code></td>
+                    <td>Special commands to the compiler</td>
+                  </tr>
+                </table>
+
+                <center>
+                    <caption><b style="font-weight: 500">Preproccesor directives and their Significance</b></caption>
+                </center>
+
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    The keywords <code>#ifdef and #ifndef</code> are usually used as header guards that avoid duplicate code declarations from multiple header files.
+                    <br><br>
+                    The <code>#define</code> keyword defines some concise functions or variables or other macros for reuse. The preprocessing phase replaces all instances of the symbolic code to actual values. An example can be seen from the compiler_example.h file shown above.
+                    <br><br>
+                    Keywords <code>#if, #else</code> and <code>#elif</code> are used for conditional statements that decide a few compilation during the precompilation. 
+                </p> 
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">CODE COMPILATION</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Compilation is most important step of creating an executable binary from the source code. This conversion from the code generated after preprocessing to machine level code is done by a compiler.
+                    <br><br>
+                    A compiler is just another computer program like the user written code to be compiled. It reads the complete source code and converts it to the machine level code as per the language syntax. This conversion is done in several steps which involves understanding the user written characters, syntactical checks, assembly-level conversion and final conversion to machine-level code equivalent.
+                    <br><br>
+                    There are several C++ compilers like <b style="font-weight: 500">g++</b>, <b style="font-weight: 500">minGW</b> and <b style="font-weight: 500">clang</b> among others. GNU Compiler Collection provides <b style="font-weight: 500">g++</b>, one of the most used compiler drivers for C++ code. It also works on C code but considers the files as C++ source code. It thereafter automatically decides the backend as <b style="font-weight: 500">cc1</b> or <b style="font-weight: 500">cc1plus</b> depening on the file type.
+
+                    <br><br>
+                    The compilation steps are shown in the figure below and each of the steps has its own significance in ensuring that the executable being created is free of all preemptible errors, developer mistakes and logical inconsistencies.
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/compilation/compiler-steps.png" style="width:531;height:547px;">
+                        <figcaption>Different aspects of a Compiler</figcaption>
+                    </figure>
+                    <br>
+                </center>
+
+                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                        The <b style="font-weight: 500"> lexical analyzer</b> splits the source code character-by-character and segregates it into words, operators, numbers and symbols. Thereafter, it creates tokens for the same as per the syntax of the language, C++ in this case.  
+                        <br><br>
+                        In the above example, in the source file <code>compiler_example.cpp</code> line 11, the lexical analyzer understands that the variable <code>summ</code> is an integer which equal to integer <code>a</code> SUM integer <code>b</code>.
+                        <br><br>
+                        A tokenized representation of the line would be:
+                        <code>
+                            <br>
+                                [KEYWORD, "int"] [ID, "summ"] [EQUALS] [ID, "a"] [SUM] [ID, "b"] [SEMICOLON]
+                        </code>
+                        <br><br>
+                    </li>
+                    <li>
+                        The <b style="font-weight: 500">syntax analyzer</b> or parser confirms that the keywords generated in the tokens, the variables(ID) generated and the logical operations being performed on them are all supported and allowed for by the particular language. It takes the token collection and the context-free grammar for C++ and derives an abstract-syntax tree (AST).
+                        <br><br>
+                        AST is a tree representation of the syntactic structure of the source code. The tree has expressions and control statements. Usually, the operator is an interior node and the operands are leaves.<b style="font-weight:500">Bison</b> is a famous parser generator for C++. The AST describes the flow od instructions defined in the source code.
+                        <br><br>
+                       <center>
+                            <figure>
+                                <img src="images/blogs/compilation/ast.png" style="width:490;height:350px;">
+                                <figcaption>Example Abstract Syntax Tree</figcaption>
+                                <br>
+                            </figure>
+                        </center>
+                    </li> 
+                    <li>
+                        The <b style="font-weight: 500">semantic analyzer</b> confirms that the written code has clear meaning and consistent with expected usage. It analyzes errors like out of scope variable access, type mismatch and undeclared variable and missing a semi-colon among others. 
+                    </li>
+                    <li>
+                        Finally, the code generation phase traverses through the AST, called walking the tree, and converts the instructions into assembly code. The <b style="font-weight: 500">intermediate code generator</b> generates the assembly code which is independent of the machine architecture. The assembly language code is represented by a <b style="font-weight: 500">.s</b> file extension in C++, for instance <b  style="font-weight: 500">compiler_example.s</b> for the source code above.
+                    </li>
+                    <li>
+                        Finally, the <b style="font-weight: 500">code optimizer and code generator</b> convert the <b style="font-weight: 500">.s</b> assembly code to machine-level code for a particular machine and architecture as a <b style="font-weight: 500">.o</b> executable file. It is an <b  style="font-weight: 500">assembler</b> that converts the assembly code to executable binary which is basically huge set of 0s and 1s.
+                    </li>
+                </ul>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    These mentioned steps above are very brief explanation and have more sophisticated steps within. The scope of this article is largely to understand how the user written code is converted into a code that the integrated circuits execute. It helps understand the reason for errors that come up during code compilation and steps to avoid the same with appropriate code reuse, imports, library usage and executable configuration.
+                </p>
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">LINKING PHASE</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    While compilation phase generates the executable, the complete project being worked on may have static libraries. There may be several executables that are inter-dependent, multiple object files that are linked together to ensure that the executable works at runtime.
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/compilation/linker.png" style="width:523px;height:246px;">
+                        <figcaption>Linking of C++ code</figcaption>
+                    </figure>
+                </center>
+                </p>
+                <br>
+                <hr width="50%">
+                <br><br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    As mentioned earlier, C++ is an amazing language but delving into the intricacies exposes multiple layers of the language that are intimidating to understand but worth applauding at the same time. The developers and the community does a great job at making this convoluted language be a high-performance platform while also not being impossible t decipher.
+                </p>
+            </div>
+            </div>
+
+            <p style="column-width:1000px;margin-left:550px;margin-right:200px;text-align:center;font-size: 22px;font-weight: 500;color: red">
+                <i>
+                IF YOU LIKED THE ARTICLE, DON'T FORGET TO LEAVE A REACTION OR A COMMENT!                         
+                </i>
+            </p>
+
+            <div id="disqus_thread" style="column-width: 1000px;margin-left: 570px;margin-right: 200px;"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+            var disqus_config = function () {
+            this.page.url = "http://kumarakshay.me/compilation.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 200; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://kumarakshay-me.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+        <!-- Section One -->
+            <div class="wrapper style2">
+
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+
+            </div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script></div>
+
+
+    </body>
+</html>
