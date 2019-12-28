@@ -203,17 +203,16 @@ code {
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                <br>
 
                 OOP concepts are applicable at the class level and not at the object level in C++. Classes are the user-defined data types with member functions and variables and they C++ form the backbone of all OOP programming. Inheritance is defining classes that could derive/inherit properties from other base classes. The <i>derived</i> class inherits from the <i>base</i> class and is used when the derived class IS-A base class. Inheritance using classes in C++ lays the foundation of implementation of all other OOP princicples.
 
-
+                <br><br>
                 Abstraction is essentially limiting the data visibility and is achieved by access modifiers like <code>public</code>, <code>protected</code> and <code>private</code>. Encapsulation refers to wrappig up information and functions together. It is basically implemented to allow programs to access data while hiding the manipulation of data.
 
                 <br><br>
-                Finally, <b style="font-weight: 500">polymorphism</b> is the feature that allows different behavior execution of a function in the inheritance hierarchy. Polymorphism executes different function implementations depending on the type of object that calls the method.
+                Finally, <b style="font-weight: 500">polymorphism</b> is the feature that can invoke different behavior of a function in the inheritance hierarchy. Polymorphism executes different function implementations depending on the type of object that calls the method. It is basically about which kind of object(base or derived class object) calls a method defined in multiple classes throughout the hierarchy.
                 <br><br>
-                Function overriding and overloading are special features of C++ only. Virtual and pure-virtual functions are the correct implementations of polymorphism.
+                Function overriding and overloading are special features of C++. Virtual and pure-virtual functions are the correct implementations of polymorphism.
                 </p>
 
                 <center>
@@ -221,38 +220,53 @@ code {
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                <br><br>
                     Function overloading is a C++ feature that allows defining multiple functions with the same name but different signatures i.e., different arguments, can be defined in the same class. When called with different arguments, the compiler resolves which function is to be called. Function overloading is not possible depending on the return type.
+                    <br><br>
                     <code>
                       int sum(int a, int b) { return a + b;  } <br>
                       float sum(float a, float b) { return a + b;  } <br>
                       float sum(float a, float b, float c) { return a + b + c; }
                     </code>
+                    <br><br>
+                    It is not an implementation of polymorphism in C++.
                 </p>
 
                 <center>
                 <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">POLYMORPSHISM</b> </p>
                  </center>
  
+               <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                  Polymorphism resolves the correct function being called, at runtime; via the process called dynamic linking. A function declared in the base class using the <code>virtual</code> prefix is a virtual function and its definitions in base class as well as derived class informs the compiler to avoid static compile-time linkage.If the base class has a pure virtual function, i.e. the function signature has <code> = 0</code>  in the end, then it is mandatory to define it in the derived class and override the base class implementation. 
+                  <br><br>
+
+                  The base class shall have <code>virtual</code> functions that are redefined in the derived classes. 
+
+                </p>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                  <script src="https://gist.github.com/kumar-akshay324/5a830045bbb6f2909a49633c9af06bb1.js"></script>
+                  <center>
+                    <script src="https://gist.github.com/kumar-akshay324/5a830045bbb6f2909a49633c9af06bb1.js"></script>
+                    <figcaption>Example Code</figcaption>
+                  </center>
                 </p>
 
-               <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                  Polymorphism resolves the correct function being called, at runtime; via the process called dynamic linking. The base class shall have <code>virtual</code> functions that are redefined in the derived class. If the base class has a pure virtual function, i.e. the function signature has <code> = 0</code>  in the end, then it is mandatory to define it in the derived class and override the base class implementation. Simple virtual functions may or may not be defined.
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                  <br><br>
-                  The output of the above code is:
+                  Output of the above code is:
+                  <br>
                   <code>
                     Square area:      <br>
                     Pentagon area:    <br>
                     Dummy called in base class <br>
                     Dummy called in base class <br>
                   </code>
+                  <br>
+                  In the code, the <code>area()</code> function is a pure virtual method in the base class <code>RegularPolygon</code> and has overriding definitions in derived classes. Even though the calls to the <code>area()</code> function are made from base class pointer <code>poly</code> (that stores the derived object pointers), it still resolves to the implementations from the individual derived classes via dynamic linking at runtime, using <a href="til_series_cp.html#vtables"><b style="font-weight: 500">vtables</b></a>. Here, the compiler looks inside the contents of the pointer to know the type of object calling the method and resolves it correctly. It is all because the function was declared with the <code>virtual</code> keyword indicating polymorphism.
                   <br><br>
-                  In the code, the <code>area()</code> function is a pure virtual method in the base class <code>RegularPolygon</code> and has overriding definitions in derived classes. Even though the calls to the <code>area()</code> function are made from the derived object pointers stored in the base class pointer type, it still resolves to the implementations from the individual derived classes via dynamic linkage at runtime, after the <a href="">vtables</a> are created
-                  <br><br>
-                  In the code above, the <code>dummy()</code> method is a normal method with definitions in the base as well as derived classes. However, calls to such methods depend on the type of pointer making the call and thus, when the <code>poly</code> object of <code>RegularPolygon</code> type calls the method, it only calls the implementation from the base <code>RegularPolygon</code> class. This happens due to static linking.
+                  On the other hand, the <code>dummy()</code> method is a normal method with definitions in the base as well as derived classes. However, calls to such methods depend on the type of pointer making the call and thus, when the <code>poly</code> object of <code>RegularPolygon</code> type calls the method, it only calls the implementation from the base <code>RegularPolygon</code> class and not from their individual derived classes due to static linking.
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Polymorphism is a very useful tool to implement abstract classes (classes with atleast one pure virtual function) or interfaces. They are helpful in architecting the fundamental structure of base classes correctly. Virtual methods are useful to avoid incorrect pointer handling. 
                 </p>
 
             </div>
