@@ -213,23 +213,7 @@ code {
                 <br><br>
                 Finally, <b style="font-weight: 500">polymorphism</b> is the feature that allows different behavior execution of a function in the inheritance hierarchy. Polymorphism executes different function implementations depending on the type of object that calls the method.
                 <br><br>
-                There are three similar concepts that have slightly different behavior and 
-
-                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
-                  <li>
-                    Function Overriding
-                  </li>
-                  <li>
-                    Function Overloading
-                  </li>
-                  <li>
-                    Virtual & Pure Virtual Funnctions
-                  </li>
-                </ul>
-
                 Function overriding and overloading are special features of C++ only. Virtual and pure-virtual functions are the correct implementations of polymorphism.
-
-                <br>
                 </p>
 
                 <center>
@@ -238,26 +222,38 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
                 <br><br>
-                    Function overloading is a C++ feature that allows defining multiple functions with the same name but different arguments can be defined in the same class. When called with different arguments, the compiler resolves which function is to be called. Function overloading is not possible depending on the return type.
+                    Function overloading is a C++ feature that allows defining multiple functions with the same name but different signatures i.e., different arguments, can be defined in the same class. When called with different arguments, the compiler resolves which function is to be called. Function overloading is not possible depending on the return type.
                     <code>
                       int sum(int a, int b) { return a + b;  } <br>
                       float sum(float a, float b) { return a + b;  } <br>
-                      float sum(float a, float b, float c) { return a + b + c;  }
+                      float sum(float a, float b, float c) { return a + b + c; }
                     </code>
                 </p>
 
                 <center>
-                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">FUNCTION OVERRIDING</b> </p>
-                </center>
-
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">POLYMORPSHISM</b> </p>
+                 </center>
+ 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                <br><br>
-                    Function overriding in C++ is when different implementations of the same function are done through the inheritance hierarchy. Overriding is implemented based on the type of pointer calling the function.
-                    <code>
-
-                    </code>
+                  <script src="https://gist.github.com/kumar-akshay324/5a830045bbb6f2909a49633c9af06bb1.js"></script>
                 </p>
 
+               <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                  Polymorphism resolves the correct function being called, at runtime; via the process called dynamic linking. The base class shall have <code>virtual</code> functions that are redefined in the derived class. If the base class has a pure virtual function, i.e. the function signature has <code> = 0</code>  in the end, then it is mandatory to define it in the derived class and override the base class implementation. Simple virtual functions may or may not be defined.
+
+                  <br><br>
+                  The output of the above code is:
+                  <code>
+                    Square area:      <br>
+                    Pentagon area:    <br>
+                    Dummy called in base class <br>
+                    Dummy called in base class <br>
+                  </code>
+                  <br><br>
+                  In the code, the <code>area()</code> function is a pure virtual method in the base class <code>RegularPolygon</code> and has overriding definitions in derived classes. Even though the calls to the <code>area()</code> function are made from the derived object pointers stored in the base class pointer type, it still resolves to the implementations from the individual derived classes via dynamic linkage at runtime, after the <a href="">vtables</a> are created
+                  <br><br>
+                  In the code above, the <code>dummy()</code> method is a normal method with definitions in the base as well as derived classes. However, calls to such methods depend on the type of pointer making the call and thus, when the <code>poly</code> object of <code>RegularPolygon</code> type calls the method, it only calls the implementation from the base <code>RegularPolygon</code> class. This happens due to static linking.
+                </p>
 
             </div>
             </div>
