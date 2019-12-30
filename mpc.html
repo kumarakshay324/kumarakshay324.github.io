@@ -181,21 +181,21 @@ code {
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px;font-weight: 500"> MODEL PREDICTIVE CONTROL</h2>
+                    <h2 style="font-size:40px;font-weight: 500"> MODEL PREDICTIVE CONTROL IN ROBOTICS</h2>
                 <br>
 
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+              <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Object oriented programming(OOP) is perhaps the most used programming paradigm used in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous.
-
+                Control techniques in robotics can largely be classified as <b style="font-weight: 500">model-based</b> and <b style="font-weight: 500">model-free</b>. The most common control techniques include PID, gain-scheduling, cruise-control, adaptive control, robust control and reinforcemment learning-based control among others. Majority of the model-based control techniques have an upper-hand over the model-free techniques as the former estimate control signals with some information about the response expected from the plant.
                 <br><br>
-                C++ is a special language where the OOP concepts are applicable at the class level and not at the object level. Inheritance using classes in C++ lay the foundation of other OOP features. Access modifiers like <code>public</code>, <code>protected</code>  and <code>private</code> control data access through the class hierarchy and using functions to manipulate and access the data 
-                </p>
+                The model-free techniques like PID or other ML and AI based techniques, need a lot of training to develop the same extent of fidelity as model-based techniques. However, model-based techniques are prone to modeling errors while system identification and modeling in itself is a very strenous process and model-free techniques do not have such requirements. Model-free techniques deriving the tuning parameters during the training procedure are essentially deriving a pseudo-plant model in the backend that helps them know the correct relationshop between the input and output. 
+ 
+              </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/polymorphism/poly.png" style="width:411;height:261px;">
-                        <figcaption>Polymorphism</figcaption>
+                        <img src="images/blogs/mpc/controls.png" style="width:411;height:261px;">
+                        <figcaption>Examples of Control Techniques</figcaption>
                         <br>
                     </figure>
                 </center>
@@ -206,23 +206,39 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                C++ can be called a fairly strictly-typed language but can also have templated code which is converted to actual code and then to machine code during compilation. Code compilation does all the needed effort upfront to generate immediately executable code after checking the same for syntactical errors. However, the process of conversion of source code into a valid executable binary is much more than only compilation. It involves a preprocessing phase before compilation and a phase of linking multiple libraries and third-party resources/binaries afterwards.
+                Model predictive control is an advanced control technique that manipulates the plant output while also satisfying the set of constraints and handling disturbances. MPC is an online technique which is essentially an optimization problem for the objective function defined for the desired plant output. MPC uses the plant model and predicts the control signals for a finite set of future timestamps corresponding to the desired output. However, it only implements/executes inputs only for a small fraction of the predicted timestamps and repeats the process at the next prediction timestamp.
                 <br><br>
-                The main steps of generating an executable from a source code are <b style="font-weight: 500">pre-processing, compilation and linking.</b>
-
-                The following C++ code is used as an example to explain each of these 3 phases.
+                MPC handles the dynamics of the high non-linear robotic system and the unanticipated disturbances. It can hanle MIMO(multi-input multi-output) systems with constraints on the system properties. As MPC can look into the future predictions, it can also handle unexpected disturbances.
                 </p>
+
                 <center>
-                    <script src="https://gist.github.com/kumar-akshay324/68894e273b628c7fb2b36345fa9aab6f.js"></script>
-                    <figcaption> Example Header File - <code>compiler_example.h</code></figcaption>
-                    <br><br>
+                    <figure>
+                        <img src="images/blogs/mpc/mpc_plant.png" style="width:510;height:130px;">
+                        <figcaption>MPC Flowchart</figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mpc/mpc_signals.png" style="width:411;height:261px;">
+                        <figcaption>MPC Time Graph</figcaption>
+                        <br>
+                    </figure>
                 </center>
 
                 <center>
-                    <script src="https://gist.github.com/kumar-akshay324/8a1d6542dce5a2429310b6d4ae60c5ef.js"></script>
-                    <figcaption> Example Source Code File - <code>compiler_example.cpp</code></figcaption>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">FUNCTIONAL ASPECTS OF MPC</b> </p>
                 </center>
-                <br>
+
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                  
+                </p>
+
+
 
                 <center>
                 <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">PRE-PROCESSING</b> </p>
@@ -382,8 +398,8 @@ code {
             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
             var disqus_config = function () {
-            this.page.url = "http://kumarakshay.me/compilation.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 200; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = "http://kumarakshay.me/mpc.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 331; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
