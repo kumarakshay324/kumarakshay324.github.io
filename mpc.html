@@ -181,7 +181,7 @@ code {
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px;font-weight: 500"> MODEL PREDICTIVE CONTROL IN ROBOTICS</h2>
+                    <h2 style="font-size:40px;font-weight: 500"> MODEL PREDICTIVE CONTROL IN ROBOTICS - PART I</h2>
                 <br>
 
               <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
@@ -208,7 +208,10 @@ code {
 
                 Model predictive control is an advanced control technique that manipulates the plant output while also satisfying the set of constraints and handling disturbances. MPC is an online technique which is essentially an optimization problem for the objective function defined for the desired plant output. MPC uses the plant model and predicts the control signals for a finite set of future timestamps corresponding to the desired output. However, it only implements/executes inputs only for a small fraction of the predicted timestamps and repeats the process at the next prediction timestamp.
                 <br><br>
-                MPC handles the dynamics of the high non-linear robotic system and the unanticipated disturbances. It can hanle MIMO(multi-input multi-output) systems with constraints on the system properties. As MPC can look into the future predictions, it can also handle unexpected disturbances.
+                MPC can handle the dynamics of the highly non-linear systems and the unanticipated disturbances as well. It can operate on MIMO (multi-input multi-output) systems with constraints on the system properties. As MPC can look into the future predictions, it can also handle unexpected disturbances. However, it is a computationally expensive method and with increasing system complexity, the compute power requirement can increase exponentially.
+                <br><br>
+                It is often known as <b style="font-weight: 500">receding horizon control</b> or <b style="font-weight: 500">dynamical matrix control</b>or <b style="font-weight: 500">generalized predictive control</b>.
+
                 </p>
 
                 <center>
@@ -220,12 +223,48 @@ code {
                 </center>
 
                 <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">COMMON APPLICATIONS OF MPC</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                  MPC is  straightforward genralized control technique that can handle a lot of constraints, variations, disturbances and almost all system given the model, thus making it suitable control technique for a lot of applications from industry and products to academia and more.
+                  <br><br>
+                  Common applications of MPC include:
+                  <ul style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                      Trajectory Control for vehicles
+                    </li>
+                    <li>
+                      Process Control for manufacturing factories
+                    </li>
+                    <li>
+                      Missile guidance systems
+                    </li>
+                    <li>
+                      Space navigation
+                    </li>
+                  </ul>
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mpc/trajectory_control.png" style="width:174;height:138px;">
+                        <img src="images/blogs/mpc/spacecraft.jpeg" style="width:90;height:138px;">
+                        <img src="images/blogs/mpc/manufacturing.jpg" style="width:185;height:138px;">
+                        <figcaption>MPC Applications</figcaption>
+                        <br>
+                    </figure>
+                </center>
+ 
+                <center>
                 <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">FUNCTIONAL ASPECTS OF MPC</b> </p>
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                  MPC uses the model of the system and solves an optimization problem attempting to find the global minima for the defined objective function also called cost function. The optimization task is an interative process that finds the most favorable set of input signals that minimize the error in desired and predicted output while also satisyfing the set of constraints. The sequence of control inputs steer the system towards the desired setpoint response.
+                  MPC uses the model of the system and solves an optimization problem attempting to find the global minima for the defined objective function also called cost function. The optimization task is an interative process that finds the most favorable set of input signals that minimize the error in desired and predicted output while also satisyfing the set of constraints. The sequence of control inputs steer the system towards the desired setpoint response. At each timestep, the controller solves an open-loop optimization problem and after it applies the first control signal generated, the output is fedback as system state for optimization for the next timestep. 
+                  <br><br>
+                  An MPC may not necessarily be optimal as the optimization solvers are prone to local-minimas but it ensures that the system converges to the best possible and feasible solution. 
                   <br><br>
                   MPC has a few design parameters which need to be either selected carefully or learned by experience to obtain the best performance of the controller.
                   <ul style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;list-style-type:disc;">
@@ -240,7 +279,7 @@ code {
                       There could several physical limits on the different inputs and outputs as well as their rate of change, in the system that the optimization should take into consideration. Such constraints are useful in maintaining smooth response, non-impulsive and infeasible behavior of the system.  
                     </li>
                     <li>
-                      <b style="font-weight: 500"> Weights to different components of the object function </b>
+                      <b style="font-weight: 500"> Weights for different components of the objective function </b>
                       <br>
                       Because there are several constraints and goals to be achieved, it is difficult to quantitatively present the goal priority in the optimization task. In an MPC, weights are defined for ratio between different output goals, or between the outputs and the inputs or between different soft constraints that could be bent a little. 
                     </li>
@@ -256,10 +295,24 @@ code {
                     </li>
                   </ul>
                 </p>
+
+                <center>
+                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">SAMPLE MPC PROBLEM</b> </p>
+                </center>
+
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                  A typical multivariate control system using an MPC controller operates on the system model, usually non-linear, a cost function and an optimization algorithm. Usually, the problem is a convex optimization task and that should be optimized for prediction horizon.
-                  <br><br>
-                  A typical cost function for an MPC problemt is:
+                  A typical multivariate control system using an MPC controller operates on the system model, usually non-linear, a cost function and an optimization algorithm. Usually, the problem is a convex optimization task and that should be optimized for prediction horizon. 
+                </p>
+                  <center>
+                      <figure>
+                          <img src="images/blogs/mpc/state_space.png" style="width:480;height:92px;">
+                          <figcaption>State-Space Model of Control System</figcaption>
+                          <br>
+                      </figure>
+                  </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                  For a given discrete time state-space model like shown above, the typical cost function could be:
                 </p>
                   <center>
                       <figure>
@@ -296,44 +349,32 @@ code {
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    MPC is largely dependent on the model of the system and while it may be easy to model simple automation model, it gets extremely complicated to design dynamic systems like robots and their non-linearity is difficult to solver for the MPC.
+                    MPC is largely dependent on the model of the system and while it may be easy to model simple automation systems, it gets extremely complicated to design dynamic systems like robots and their non-linearity is difficult to solve for the MPC. There are several complexities in systems as well, which tend to disturb the dynamics and expected responses from it. To accomodate such variations or adapt to changing operational evnironment or to ease the MPC implementation, different types of MPC are deployed.
+
+                  <ul style="column-width:1000px;margin-left:220px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                      <b style="font-weight: 500"> Linear MPC </b> - The simplest implementation of an MPC where if the model is linea and the constraints are linear, then  MPC optimization cost function could be a QP problem and be solved easily using a linear time-invariant MPC. The  problem becomes a simple convex optimization task with a global minima and no more complexities.
+                      <br>
+                    </li>
+                    <li>
+                      <b style="font-weight: 500"> Adaptive MPC </b> - If the system model is non-linear, while the constraints and the cost function are still linear, the model can be linearized at each operating point (computationally expensive step though) and same method as above could be implemented. Because the MPC adapts to the system at each time step, this is called adaptive MPC.   
+                      <br>
+                    </li>
+                    <li>
+                      <b style="font-weight: 500"> Gain Scheduling MPC </b> - It is more coarse version of the adaptive MPC and analogous in behavior to the gain scheduling used in PID contro. Instead of the system being linearized at each operating point, gain-scheduling MPC linearizes the function over diffeerent segments in the operational range offline and then implements a linear MPC switching between the different linearized models depending on the system state.
+                      <br>
+                    </li>
+                    <li>
+                      <b style="font-weight: 500"> Nonlinear MPC </b> - If the cost function, system model and the constraints are all non-linear, non-linear MPC is deployed. It is very prone to local minimas due to the non-convex optimization task and may result in sub-optimal solutions. 
+                      <br>
+                    </li>
+                  </ul>
                 </p>
 
-
-                <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    The keywords <code>#ifdef and #ifndef</code> are usually used as header guards that avoid duplicate code declarations from multiple header files.
-                    <br><br>
-                    The <code>#define</code> keyword defines some concise functions or variables or other macros for reuse. The preprocessing phase replaces all instances of the symbolic code to actual values. An example can be seen from the compiler_example.h file shown above.
-                    <br><br>
-                    Keywords <code>#if, #else</code> and <code>#elif</code> are used for conditional statements that decide a few compilation during the precompilation. 
-                </p> 
-
-                <center>
-                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">CODE COMPILATION</b> </p>
-                </center>
-
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    Compilation is most important step of creating an executable binary from the source code. This conversion from the code generated after preprocessing to machine level code is done by a compiler.
-                    <br><br>
-                </p>
-
-
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    These mentioned steps above are very brief explanation and have more sophisticated steps within. The scope of this article is largely to understand how the user written code is converted into a code that the integrated circuits execute. It helps understand the reason for errors that come up during code compilation and steps to avoid the same with appropriate code reuse, imports, library usage and executable configuration.
-                </p>
-
-                <center>
-                <p style="text-align:center;font-size:20px; "> <b style="font-weight: 500">LINKING PHASE</b> </p>
-                </center>
-
-
-                </p>
-                <br>
                 <hr width="50%">
                 <br><br>
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    As mentioned earlier, C++ is an amazing language but delving into the intricacies exposes multiple layers of the language that are intimidating to understand but worth applauding at the same time. The developers and the community does a great job at making this convoluted language be a high-performance platform while also not being impossible t decipher.
+                    Model Predictive Control is a very powerful tool for controling the system response and is widely used in robotics. It finds major applications in autonomous vehicle trajectory tracking and control. It has also been researched for, in manipulation and aerial navigation. <a href="#"><b style="font-weight: 500">Part II</b></a> of this series explains the application of MPC in robotics with an implementation for the same, in C++. Stay tuned!
                 </p>
             </div>
             </div>
