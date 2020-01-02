@@ -159,14 +159,11 @@ code {
 
                     <b style="font-weight: 500; font-size:25px; color: red ">null space optimization </b>(December 31, 2019) <br><br>
 
-                    Robots and specially manipulators often interact with the environment and the nature of interaction is to be modeled for efficient robot performance. Knowledge of how the environment is going to react if the robot approaches it helps the robot decide its actions better.
+                    Manipulator arms have several degrees of freedom, usually 6 or more. To attain a desired 3D cartesian pose, a robot arm needs to have atleast 6 degrees of freedom. Often the task may require using less than the 6 DoFs or a redundant manipulator may have spare DoFs not used actively. In either cases, the robot could use the remaining degrees of freedom to achieve secondary tasks and the possible motion space for the secondary task is called the robot null space.
                     <br><br>
-                    <b style="font-weight: 500">Impedance control</b> is a robot control technique where the force-position relationship is defined for the interaction. The end of the manipulator is considered to have a virtual impedance defined by a spring-mass-damper system related by force and mass while the environment is considered to a have an admittance.
+                    <b style="font-weight: 500">Null Space Optimization</b> refers to the process of using the null space to augment the primary controller solution towwards a more refined solutions with secondary benefits. If a robot is supposed to obtain a 3D pose from the current pose, the null space optimization could be used to find the IK solution that minimizes amount of energy the robot uses during the motion or find the IK solution that doesn't need the robot to flip over the elbow joint. For redundant robots, the second case is largely obsvered and null space optimization is employed to avoid singularities or other mischieveous IK moves.
                     <br><br>
-                    For the manipulator, the end-effector force and cartesian coordinate positions are related by this equation to model the impedance <br>
-                    <code>F<sub>ext</sub> = K(X<sub>desired</sub> - X) + D(X&#775<sub>desired</sub> - X&#775) + M(X&#776<sub>desired</sub> - X&#776) </code>
-                    <br><br>
-                    This external force is added to the dynamics model of the manipulator(in cartesian space) to selectively control positions and forces in different directions while robot-environment interaction.
+                    However, it is important to ensure that the secondary null space optimizer does not affect the primary controller and inhibit the attempt to achieve the primary goals. Hopefully I will soon read and write something more elaborate on this topic!
                 </p>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
