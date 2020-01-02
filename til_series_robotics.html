@@ -157,11 +157,11 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    <b style="font-weight: 500; font-size:25px; color: red ">null space optimization </b>(December 31, 2019) <br><br>
+                    <b style="font-weight: 500; font-size:25px; color: red ">null space optimization </b>(December 1, 2020) <br><br>
 
                     Manipulator arms have several degrees of freedom, usually 6 or more. To attain a desired 3D cartesian pose, a robot arm needs to have atleast 6 degrees of freedom. Often the task may require using less than the 6 DoFs or a redundant manipulator may have spare DoFs not used actively. In either cases, the robot could use the remaining degrees of freedom to achieve secondary tasks and the possible motion space for the secondary task is called the robot null space.
                     <br><br>
-                    <b style="font-weight: 500">Null Space Optimization</b> refers to the process of using the null space to augment the primary controller solution towwards a more refined solutions with secondary benefits. If a robot is supposed to obtain a 3D pose from the current pose, the null space optimization could be used to find the IK solution that minimizes amount of energy the robot uses during the motion or find the IK solution that doesn't need the robot to flip over the elbow joint. For redundant robots, the second case is largely obsvered and null space optimization is employed to avoid singularities or other mischieveous IK moves.
+                    <b style="font-weight: 500">Null Space Optimization</b> refers to the process of using the null space to augment the primary controller solution towwards a more refined solutions with secondary benefits. If a robot is supposed to obtain a 3D pose from the current pose, null space optimization could be used to find the IK solution that minimizes amount of energy the robot uses during the motion or find the IK solution that doesn't need the robot to flip over the elbow joint. For redundant robots, the second case is largely obsvered and null space optimization is employed to avoid singularities or other mischievous IK solutions.
                     <br><br>
                     However, it is important to ensure that the secondary null space optimizer does not affect the primary controller and inhibit the attempt to achieve the primary goals. Hopefully I will soon read and write something more elaborate on this topic!
                 </p>

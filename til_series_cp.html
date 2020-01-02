@@ -148,6 +148,20 @@ code {
 
                 <p id="vtables" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
+                    <b style="font-weight: 500; font-size:25px; color: red; ">single responsibility principle </b>(January 1, 2020) <br><br>
+
+                    Writing clean, extensible, legible and flexible code is quite a challenging task. Collaborative coding is even more difficult and several computer programming principles urge developers to KISS (keep it simple stupid!).
+                    <br><br>
+                    In a similar approach, the single responsibility princple suggests designing modules, functions and classes with only one responsibility or behavior. While this may result in bloating the code base and files, it maintains a highly modular and very extensible code base.
+                    <br><br>
+                    The function/method implementation should reflect its name and it should implement no more.
+                    <br><br>
+                    For example, a function <code>computeSurfaceArea()</code> should only compute the surface area of a sphere not be updating the cost of painting it as an additional step, even if it is the next logical step. The step of updating the cost should be explicity made where the code really wants it to be done and not hidden. This shall avoid issues with tracking flow of execution and instructions while debugging.
+                </p>
+
+
+                <p id="vtables" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
                     <b style="font-weight: 500; font-size:25px; color: red; ">vtables in C++ </b>(December 14, 2019) <br><br>
 
                     One of the most useful aspects of OOP is polymorphism and allows for inheritance structure to relate functions between the base and derived classes as desired.
