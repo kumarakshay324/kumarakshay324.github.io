@@ -165,10 +165,10 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Mobile robots is a blanket category of robots that are capable of locomotion via different strategies. They have been evolving over time and several new locomotion strategies have been developed. Wheeled mobile robots are one of the first ones developed and been used consistently since long. Several other motion techniques are biologically inspired mechanisms. Quadrupeds, bipeds and hexapods are among few of the most used designs. Bipeds and quadrupeds like Agility Robotics' Cassie and Boston Dynamics' Spot Mini are the commericially available versions of these robots. Such intricate designs are highly appreciated by the robotics society.
+                Mobile robots is a blanket category of robots that are capable of locomotion via different strategies. They have been evolving over time and several new locomotion strategies have been developed. Wheeled mobile robots are one of the first ones developed and been used consistently since long. Several other motion techniques are biologically inspired mechanisms. Quadrupeds, bipeds and hexapods are among few of the most used designs. <b style="font-weight: 500">Bipeds and quadrupeds like Agility Robotics' Cassie and Boston Dynamics' Spot Mini are the commericially available versions of these robots. Such intricate designs are highly appreciated by the robotics society.</b>
                 <br><br>
 
-                While biologically inspired designs are very agile and well suitable for inaccessible areas with uneven terrain or varying climate, wheeled robots have been continuously deployed in flat terrain settings. Wheeled mobile robots are the spearheads of the warehouses, security/survelliance robots and recently found applications in delivery robots as well. Several wheeled robots with enhanced agility like the segways, belt drives and multi-wheel custom designs also exist but within limited scope. All kinds of underwater, amphibious and aerial robots can also be considered as mobile robots but for the sake of exclusivity, mobile robots refer to terrestrial robots in this article. 
+                While biologically inspired designs are very agile and well suitable for inaccessible areas with uneven terrain or varying climate, wheeled robots have been continuously deployed in flat terrain settings. Wheeled mobile robots are the spearheads of the warehouses, security/survelliance robots and recently found applications in delivery robots as well. Several wheeled robots with enhanced agility like the segways, belt drives and multi-wheel custom designs also exist but have limited scope. All kinds of underwater, amphibious and aerial robots can also be considered as mobile robots but for the sake of exclusivity, mobile robots refer to terrestrial robots in this article. 
                 <br><br>
                 <b style="font-weight: 500">The scope of this article is to discuss the kinematics of wheeled mobile robots and provide some insights into the complex kinematics of a few biologically inspired mobile robots.</b>
                 </p>
@@ -184,7 +184,7 @@ div.column{
                     <figcaption>Different Types of Mobile Robots!</figcaption>
                 </center>
 
-                <br><br>
+                <br>
                 <center>
                 <p style="text-align:center;font-size:30px; "> <b style="font-weight: 500">INTRODUCTION</b> </p>
                 </center>
@@ -193,10 +193,10 @@ div.column{
 
                 Mobile robots are largely selected depending on stability, surface contact characteristics and environment type. Dynamic or static stability is dependent on the robot's center of gravity, terrain inclination and flatness, contact points and actuator power. Nature of the surface (hard ground, grass, indoor wooden floor, rocky terrain, deformable surface, snow) and reaction force, friction with the ground and size of contact with the ground decide the applicability of a particular type of robot.
                 <br><br>
-                Wheeled mobile robots have different designs with varying degrees of freedom, mobility possibilities and terrain requirements. Wheeled robots are usually frowned upon due to their limited adaptibility towards different terrains. Conventional wheeled mobile robots are also unable to traverse through stairs, terrain with variable friction coefficients and uneven terrain. However, the wheeled robot applications far outnumber the other mechanisms due. Wheel robots are easy to develop and deploy due to their simplified kinematics, minimal dynamics and very few degrees of freedom. They are most suitable robots for flat surfaces, the most common application terrain.
+                <b style="font-weight: 500">Wheeled mobile robots</b> have different designs with varying degrees of freedom, mobility possibilities and terrain requirements. Wheeled robots are usually frowned upon due to their limited adaptibility towards different terrains. Conventional wheeled mobile robots are also unable to traverse through stairs, terrain with variable friction coefficients and uneven terrain. However, the wheeled robot applications far outnumber the other mechanisms due to the sheer volume of possibilities. Wheel robots are easy to develop and deploy due to their simplified kinematics, minimal dynamics and very few degrees of freedom. They are most suitable robots for flat surfaces, the most common application terrain.
                 
                 <br><br>                 
-                Biologically inspired mobile robots are difficult to build from mechanical design, feasibility and stability perspective. However, legged robots like bipeds and quadrupeds have several advantages like adaptability to the terrain, high maneuverability and ability to manipulate the objects in the environment. High degrees of freedom, typically 12 (6 in each leg) for a biped or 16 in a quadruped make the kinematics and control difficult but provide very agile and dexterous motion at the same time. Static and dynamic stability requirements for 2, 4 or 6 legged robots differ due to different configuration of the center of gravity and convex hulls.
+                <b style="font-weight: 500">Biologically-inspired mobile robots</b> are difficult to build from mechanical design, feasibility and stability perspective. However, legged robots like bipeds and quadrupeds have several advantages like adaptability to the terrain, high maneuverability and ability to manipulate the objects in the environment. High degrees of freedom, typically 12 (6 in each leg) for a biped or 16 in a quadruped make the kinematics and control difficult but provide very agile and dexterous motion at the same time. Static and dynamic stability requirements for 2, 4 or 6 legged robots differ due to different configuration of the center of gravity and convex hulls.
 
                 <center>
                     <figure>
@@ -212,7 +212,7 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                As mentioned, despite of several limitations, the simplicity and large scope of applcations make wheeled robots the most favorable mobile robots. Wheeled robots are largely classified into two categories, holonomic and non-holonomic drives.
+                As mentioned, despite of several limitations, the simplicity and large scope of applcations make wheeled robots the most favorable mobile robots. Wheeled robots are largely classified into two categories, <b style="font-weight: 500">holonomic and non-holonomic drives</b>.
                 <br><br>
                 <b style="font-weight: 500"> Holonomic robots are such that their constraints are all integratable to position constraints. It simpistic terms, the number of controllable degrees of freedom of the robot is equal to the total number of degrees of freedom.</b> Mecanum and omni wheel drive robots are holonomic drives. They allow the robot to move in any direction instantly without any turning radius or realignment.
                 <br><br>
@@ -240,10 +240,28 @@ div.column{
                 </p>
                 <center>
                     <figure>
-                        <img src="images/blogs/mobile_robot/differential_drive_kinematics.png" style="width:458px;height:308px;">
+                        <!-- <img src="images/blogs/mobile_robot/differential_drive_kinematics.png" style="width:458px;height:308px;"> -->
+                        <img src="images/blogs/mobile_robot/axes.png" style="width:320px;height:320px;">
                         <figcaption>Differential Drive Kinematics</figcaption>
                     </figure>
                 </center>
+
+                <br>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+                There are only certain motion types possible with a differential drive robot.
+                <ul style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;list-style-type: disc">
+                    <li>
+                        If both wheels have the same speed and same direction of rotation, the robot goes in a straight line, either forward or reverse                        
+                    </li>
+                    <li>
+                        If both wheels have the same speed and opposite directions of rotation, the robot does a zero turn. It is basically a zero radius turn where the robot rotates about the center of the line joining the two wheels.
+                    </li>
+                    <li>
+                        If wheels have unequal speeds, the robot makes a radial turn about an instantaneous center of curvature (ICC).
+                    </li>
+                </ul>
+                </p>                
+<!--                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:left;font-size:25px"> <b style="font-weight: 500">Differential Drive Model</b></p> -->
 
                 <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
                     Because the differential drive is a non-holonomic drive, the differential drive kinematics defining its motion are not integrable to the final pose of the robot. The distances traveled by the two indvidual wheels are not enough and needs the time sequence of motion to obtain the final robot pose. The <b style="font-weight: 500">linear and angular velocities</b> of the wheels are used to derive the robot position and orientation in the physical space.

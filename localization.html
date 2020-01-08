@@ -48,7 +48,7 @@ div.column{
 
 <html>
     <head>
-        <title>Mobile Robots Kinematics - AKSHAY KUMAR</title>
+        <title>Robots Localization - AKSHAY KUMAR</title>
         <link rel="icon" href="images/profile.jpg">
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="description" content="" />
@@ -165,24 +165,21 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                SLAM(Simulataneous Localization and Mapping) is the core of all autonomous mobile navigation in the robotics space. A mobile robot operating autonomously in the environment runs four fundamental modules, namely perception, cognition, localization and mapping. Perception and cognition help the robot get information about the surroundings and use the same to generate control actions respectively. Localization and mapping refer to robot's placement in space with respect to a standard reference and the map of traversible and restricted paths in the environment respectively.
+                SLAM (Simulataneous Localization and Mapping) is the core of all autonomous mobile navigation in the robotics space. A mobile robot operating autonomously in the environment runs four fundamental modules, namely <b  style="font-weight: 500">perception, cognition, localization and mapping</b>. Perception and cognition help the robot get information about the surroundings and use the same to generate control actions respectively. Localization and mapping refer to robot's placement in space with respect to a standard reference and the map of traversible and restricted paths in the environment respectively.
                 <br><br>
 
-                Of all the modules, localization is the most challenging due to high performance and high fidelity requirements for successful SLAM. Localization   
-
+                It needs synergistic operation of all these four modules to execute successful SLAM applications. Modern robotics techniques salvage the advances in machine learning and artificial intelligence in <b style="font-weight: 500">perception</b> tasks like computer vision, odometry estimation, lidar data, sensor fusion and more. <b style="font-weight: 500">Cognition</b> and robot control is largely conventional model-based techniques with some online model enhancement and techniques. AI-based control techniques have not transitioned from academia to the industry yet.
                 <br><br>
-                <b style="font-weight: 500">The scope of this article is to discuss the kinematics of wheeled mobile robots and provide some insights into the complex kinematics of a few biologically inspired mobile robots.</b>
+                <b style="font-weight: 500">Mapping and localization</b> are essentially two sides of the same coin. Mapping is largely done offline and then loop closure and feature matching is done during navigation for localization and mapping enhancement in the process.
+                <br><br>
+                <b style="font-weight: 500">The scope of this article is to discuss a general pipeline towards solving a localization problem.</b>
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/mobile_robot/rov.jpg" style="width:150px;height:150px;">
-                        <img src="images/blogs/mobile_robot/biped.jpg" style="width:150px;height:150px;">
-                        <img src="images/blogs/mobile_robot/quad.jpg" style="width:150px;height:150px;">
-                        <img src="images/blogs/mobile_robot/seg.jpg" style="width:150px;height:150px;">
-                        <img src="images/blogs/mobile_robot/hexa.jpg" style="width:150px;height:150px;">
+                        <img src="images/blogs/localization/localization.png" style="width:456px;height:200px;">
                     </figure>
-                    <figcaption>Different Types of Mobile Robots!</figcaption>
+                    <figcaption>SLAM Modules</figcaption>
                 </center>
 
                 <br><br>
@@ -192,19 +189,24 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Mobile robots are largely selected depending on stability, surface contact characteristics and environment type. Dynamic or static stability is dependent on the robot's center of gravity, terrain inclination and flatness, contact points and actuator power. Nature of the surface (hard ground, grass, indoor wooden floor, rocky terrain, deformable surface, snow) and reaction force, friction with the ground and size of contact with the ground decide the applicability of a particular type of robot.
+                Of all the modules, localization is the most challenging due to high performance and high fidelity requirements for successful SLAM. Localization is largely dependent on sensors, mapping and the system response. For Mobile robots, localization refers to determining the pose of the robot, usually relative to the map but very often also relative to other components like humans and other static elements, in a dynamic environment.
+
                 <br><br>
-                Wheeled mobile robots have different designs with varying degrees of freedom, mobility possibilities and terrain requirements. Wheeled robots are usually frowned upon due to their limited adaptibility towards different terrains. Conventional wheeled mobile robots are also unable to traverse through stairs, terrain with variable friction coefficients and uneven terrain. However, the wheeled robot applications far outnumber the other mechanisms due. Wheel robots are easy to develop and deploy due to their simplified kinematics, minimal dynamics and very few degrees of freedom. They are most suitable robots for flat surfaces, the most common application terrain.
-                
-                <br><br>                 
-                Biologically inspired mobile robots are difficult to build from mechanical design, feasibility and stability perspective. However, legged robots like bipeds and quadrupeds have several advantages like adaptability to the terrain, high maneuverability and ability to manipulate the objects in the environment. High degrees of freedom, typically 12 (6 in each leg) for a biped or 16 in a quadruped make the kinematics and control difficult but provide very agile and dexterous motion at the same time. Static and dynamic stability requirements for 2, 4 or 6 legged robots differ due to different configuration of the center of gravity and convex hulls.
+                Localization is a difficult task owing to several limitations in sensing technologies and environment dependencies. While localization in outdoor environments with GPS facility may be considered enough, it is often not for mobile robots. GPS is prone to poor resolution (like a few meters) and inaccuracies while autonomous robot navigation in unstructured environment needs very precise pose estimation. Outdoor applications like last-mile delivery, search-and-rescue, security need robot localization to be very accurate for successful task completion.
+ 
+                <br><br>
+                Additionally, mobile robots deployed in indoor applications, essentially GPS-denied environment like warehouses, retail stores and factories render the GPS obsolete. This leads to the requirement of a reliable and robust sensor suite. A typical mobile robot can have any or all of <b style="font-weight: 500">inertial, visual and distance</b> sensors like lidar, ultrasonic rangefinder, camera, GPS, accelerometer, gyroscope, magnetometer and more. 
+
+                <br><br>
+                As visible in the localization pipeline, the localization problem has two most important steps - the prediction step that guesses the pose of the robot based on the motion information (actuator encoder information used with the robot motion model) and the update step that utilizes the estimates of pose from external sensors and improves the result obtained during the prediction.
 
                 <center>
                     <figure>
-                        <img src="images/blogs/mobile_robot/legged.jpeg" style="width:620px;height:300px;">
-                        <figcaption> Different legged robots</figcaption>
+                        <img src="images/blogs/localization/pipeline.png" style="width:476px;height:351px;">
                     </figure>
+                    <figcaption>Localization Pipeline</figcaption>
                 </center>
+
                 </p>
 
                 <center>
