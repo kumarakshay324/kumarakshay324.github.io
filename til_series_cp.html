@@ -148,11 +148,26 @@ code {
 
                 <p id="dmesg" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
+                    <b style="font-weight: 500; font-size:25px; color: red; ">condition variable in C++ </b>(January 9, 2020) <br><br>
+
+                    C++ is a very efficient language that supports highly flexible and robust multi-threading procedures. C++ provides condition variable, an object that is capable of blocking the callee thread for pre-defined time period or online event.
+                    <br><br>
+                    The condition variable acquires a <code>unique_lock</code> on the thread and it can only be unlocked when the notification method is called on it from another thread.
+                    <br><br>
+                    <code>
+                        std::condition_variable cv; // Declaration<br>
+                        cv.wait(thread);            // Lock the thread <br>
+                        cv.notify_all();            // Release the lock  <br>
+                    </code>
+                </p>
+
+                <p id="dmesg" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
                     <b style="font-weight: 500; font-size:25px; color: red; ">dmesg </b>(January 2, 2020) <br><br>
 
                     While I have been using for a little over 4 years now, I still can't the depth of its tools, techniques and uses. <code>dmesg</code> is one such tool that prints out the message buffer of the kernel which usually has the data from device managers/drivers.
                     <br><br>
-                    Kernel is the application that controls the complete system and facilitates the interaction between the hardware and software. It is loaded as soon as the bootloader loads and handles memory, task and disk management tasks. It also handles interaction between applications, external hardware and peripherals, and the IO interfaces.
+                    The command <code>dmesg</code> helps maintain a log of messages from device drivers, which may roll away quickly during boot or be supressed during some other activity. It helps track messages regarding compatibility, functionality and more. 
                 </p>
 
                 <p id="srp" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
