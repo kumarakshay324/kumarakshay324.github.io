@@ -148,6 +148,17 @@ code {
 
                 <p id="dmesg" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
+                    <b style="font-weight: 500; font-size:25px; color: red; ">semaphores in C++ </b>(January 12, 2020) <br><br>
+
+                    Synchronization features like mutexes/locks and semaphores are kernel level features. A semaphore is a counting and signalling mechanism. It informs threads if a resource it is seeking, that was previously unavailable is now available or not. When multiple items are being managed, a semaphore can have a maximum count value that limits how many signals will to catered to. 
+                    <br><br>
+                    Waiting on a semaphore reduces the count, not beyond zero and signalling one increases the count, not beyond the maximum.
+                    <br><br>
+                    Good Read: <a href="https://www.bogotobogo.com/cplusplus/multithreading_pthread.php">https://www.bogotobogo.com/cplusplus/multithreading_pthread.php</a>
+                </p>
+
+                <p id="dmesg" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
                     <b style="font-weight: 500; font-size:25px; color: red; ">condition variable in C++ </b>(January 9, 2020) <br><br>
 
                     C++ is a very efficient language that supports highly flexible and robust multi-threading procedures. C++ provides condition variable, an object that is capable of blocking the callee thread for pre-defined time period or online event.
