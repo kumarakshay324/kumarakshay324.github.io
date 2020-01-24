@@ -371,7 +371,7 @@ div.column{
                     <li>
                     <b style="font-weight: 500">A: Prediction Model Jacobian</b>
                     <br>
-                    The <b style="font-weight: 500">prediction model</b> is responsible to use the old positions, control inputs and odometry information to compute the expected new position of the robot.
+                    The <b style="font-weight: 500">prediction model</b> is responsible for using the old positions, control inputs and odometry information to compute the expected new position of the robot.
                     <b style="font-weight: 500">A</b> is the prediction model matrix used in the EKF process for the process covariance.
                     <br><br>
 
@@ -382,7 +382,7 @@ div.column{
                         </figure>
                     </center>
                     <br>
-                    Now, the jacobian of this measurement model is A and each coloumn how the robot's pose (x, y ) and bearing changes with respect to the robot state parameters x, y and &#952 using partial differentiation.
+                    Now, the jacobian of this measurement model is A and each coloumn how the robot's pose parameters (x, y and &#952) change with respect to the same parameters using partial differentiation.
 
                     <center>
                         <figure>
@@ -392,7 +392,7 @@ div.column{
                     </center>
 
                     <br>
-                    <b style="font-weight: 500">Similar to the measurement model jacobian H, A here is only when applicable for state estimation. The introduction landmarks introduces a new component of jacobians for the prediction of the landmarks. Thus, the SLAM specific jacobians are J<sub>xr</sub> and J<sub>z</sub> that define the jacobian of prediction model for the landmark position wrt to the robot state R and jacobian model for the landmark position wrt to the range and bearing.</b>
+                    <b style="font-weight: 500">Similar to the measurement model jacobian H, A here is only when applicable for state estimation. The introduction of landmarks brings a new set of jacobians components for the prediction of the landmarks. Thus, the SLAM specific jacobians are J<sub>xr</sub> and J<sub>z</sub> that define the jacobian of the prediction model for the landmark position wrt to the robot state R and jacobian model for the landmark position wrt to the range and bearing.</b>
                     <br><br>
                     <center>
                         <figure>
@@ -421,13 +421,13 @@ div.column{
                     <li>
                     <b style="font-weight: 500">R: Measurement Noise Matrix</b>
                     <br>
-                    For the measurements done with the laser scanner, it is expected that the noise again is Gaussian and while the noise in range depeneds on or is proportional to the actual range while the noise is bearing is expected to be constant.
+                    For the measurements done with the laser scanner, it is expected that the noise again is Gaussian and while the noise in range depends on or is proportional to the actual range while the noise is bearing is expected to be constant.
                     <br>
                     The noise matrix is given as <b style="font-weight: 500">VRV<sup>T</sup></b>.
                     <br>
                     <b style="font-weight: 500">The matrix R is a 2 x 2 matrix with diagonal elements rc and bd where c and d are constants.</b>
                     <br>
-                    As mentioned earlier, the component of bearing noise b is also constant because the bearing is noise independent of the value .
+                    As mentioned earlier, the component of bearing noise b is also constant because the bearing is noise independent of the value.
                     </li><br>
                 </ul>
                 </p>
@@ -439,7 +439,7 @@ div.column{
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                As mentioned earlier, the three most important steps of EKF localization are prediction, udpate and landmark addition. We discuss how the matrices and sub-matrices mentioned above are used to execute these steps.
+                As mentioned earlier, the three most important steps of EKF localization are prediction, udpate, and landmark addition. We discuss how the matrices and sub-matrices mentioned above are used to execute these steps.
                 <br>
                 Initially, the robot starts with a known state and a default initialization of the covariance matrix P (usually just small non-zero values of the diagonal elements). The P matrix starts off as a 3 x 3 matrix because no landmarks exist yet.
                 </p>
@@ -450,7 +450,7 @@ div.column{
                         <br>
                         The current state is predicted using the control signal, the previous robot state and the odometry information. It is the same as the <b style="font-weight: 500">prediction model f</b> shown in image above.
                         <br>
-                        A simplified version could be f = [x + &#916x y + &#916y q + &#916q]<sup>T</sup> where the &#916 is computed depending on the kinematics of the robot motion model, be it differential or ackerman or a holonomic model.
+                        A simplified version could be f = [x + &#916x y + &#916y q + &#916q]<sup>T</sup> where the &#916 is computed depending on the kinematics of the robot motion model, be it differential or Ackerman or a holonomic model.
                         <br>
                         After the robot state has been predicted, the other matrices Q and P are also updated.
                         <br>
@@ -461,7 +461,7 @@ div.column{
                             </figure>
                         </center>
                         <br>
-                        Now, the covariance matrix P's top left corner has the covariance only for the robot state and is revised using thhe updated Q as:
+                        Now, the covariance matrix P's top left corner has the covariance only for the robot state and is revised using the updated Q as:
                         <br>
                         <b style="font-weight: 500">&#8658 P<sup>rr</sup> = A P<sup>rr</sup> A + Q</b>
                         <br>
@@ -476,9 +476,9 @@ div.column{
                     <li>
                         <b style="font-weight: 500;font-size: 25">UPDATE STEP</b><br>
                         <br>
-                        As already known errors in robot position estimate exist due to odometry errors, model inaccuracies and more, landmarks are used to compensate them.
+                        As already known errors in robot position estimate exist due to odometry errors, model inaccuracies, and more, landmarks are used to compensate them.
                         <br>
-                        Landmarks are first observed using feature extraction techniques and data association methods are attempted to compare it to the existing landmarks. Using associated landmarks, the displacement is found and robot position is udpated. However, this is done for each re-observed landmark and not just one. A new landmark is not used in this update procedure. 
+                        Landmarks are first observed using feature extraction techniques and data association methods are attempted to compare it to the existing landmarks. Using associated landmarks, the displacement is found and robot position is udpated. This is done for each re-observed landmark and not just one. A new landmark is not used in this update procedure. 
                         <br>
                         We can populate the measurement model jacobian matrix H and the measurement noise matrices V and R.
                         <br>
@@ -517,7 +517,7 @@ div.column{
                         <br>
                         <b style="font-weight: 500"> &#8658 Pr <sup>N+1</sup> = P<sup>rr </sup>J<sub>xr</sub><sup>T</sup></b>
                         <br>
-                        while the landmark to robot covariance component ( a 2 x 3 matrix is the lower left corner of the larger P matrix shown above) is transpose of the above matrix.
+                        while the landmark to robot covariance component ( a 2 x 3 matrix is the lower-left corner of the larger P matrix shown above) is the transpose of the above matrix.
                         <br><br>
                         The last step in this process is to add the covariance component P<sup>N+1</sup> i for the new landmark against the other existing landmarks (a 2 last rows x all remaining columns matrix on the lowest row) and the tranpose populates the (2 right-most coloumns X all remaining rows) sub matrix.
                         <br>
