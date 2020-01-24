@@ -140,149 +140,38 @@ div.column{
             <div class="blog_box" align="justify" >
                     <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
                 <br>
-                    <h2 style="font-size:40px; font-weight: 500;">EXTENDED KALMAN FILTERS IN ROBOTICS</h2>
+                    <h2 style="font-size:35px; font-weight: 500;">EXTENDED KALMAN FILTERS FOR ROBOT LOCALIZATION</h2>
                 <br>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                <a href="bayesian.html">Bayesian methods</a> discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the different steps involved in the process of state-estimation by using the action and the model of the system 
+                <a href="bayesian.html">Bayesian methods</a> discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the various steps involved in the process of state-estimation by using the action and the model of the system.
 
                 <br><br>
-                The Kalman filters family is used for linear as well as non-linear models with gaussian noise distribution assumption. While Kalman filter works well for linear models, the Extended Kalman filter is capable of working on non-linear models by potential use of linearization of the models.
+                The Kalman filters family is used for linear as well as non-linear models with Gaussian noise distribution assumption. This family of filters is most widely used for non-critical tasks where several assumptions and relaxed approximations can be used during noise or system modeling. While Kalman filter works well for linear models, the Extended Kalman filter is capable of working on non-linear models by the potential use of linearization of the models.
                 <br><br>
-
+                <b style="font-weight: 500">This article is a walkthrough of the application of the Extended Kalman Filter for robot localization. The content is primarily derived from the excellent tutorial <a href="https://dspace.mit.edu/bitstream/handle/1721.1/119149/16-412j-spring-2005/contents/projects/1aslam_blas_repo.pdf">SLAM for Dummies by Søren Riisgaard and Morten Rufus Blas</a></b>
                 </p>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/ekf/full_eq.png" style="width:630px;height:126px;">
+                        <img src="images/blogs/ekf/kalman_family.png" style="width:551px;height:201px;">
+                        <figcaption>Family of Kalman Filters</figcaption>
                     </figure>
                     <br>
                 </center>
+
 
                 <center>
-                    <figure>
-                        <img src="images/blogs/ekf/kalman.jpg" style="width:640px;height:360px;">
-                        <figcaption>Gaussian Visualization Of Kalman Filters </figcaption>
-                    </figure>
-                    <br>
+                <p style="text-align:center;font-size:25px; "> <b style="font-weight: 500">INTRODUCTION</b> </p>
                 </center>
 
-                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
-                <br>
-
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                Probabilistic techiques are largely deployed in robotics for two tasks to tackle uncertainties in state estimation and action ultilization. While state estimation incurs inaccuracies due to noisy sensors, robot action has uncertain behavior due to imperfect physical model and operational environment inflicted errors( like wheel slippage) thereby necissating the mathematical representation of these tentative uncertaintiies and their inclusion in the system model.
+                The Extended Kalman Filter is the go-to algorithm for state estimation for non-linear models with well-defined transition models. It works on non-linear state transition and observation models while assuming the process and observation noise both to be multivariate Gaussians.
                 <br><br>
-                While these uncertainties can be modeled numerically, state estimation repeatedly uses this model along with the incoming sensor measurements to derive the final probability density for the state at the each consecutive timestamp, using several probabilisitic computations. <b style="font-weight: 500">Recursive Bayesian estimation</b>, also called Bayes filter is this probabilisitic technique for sequential state estimation.
+                <a href="#">Robot localization</a> is the process of finding the robot's pose(position and orientation) with respect to a given map. Given the stochasticity in robot motion, sensors, and environment interaction, localization is a very sophisticated task. EKF is largely deployed in SLAM algorithms to use the odometry information and the landmarks in the environment for localization. The landmarks are represented as point objects with position (x<sub>l</sub>, y<sub>l</sub>) as the cartesian position coordinates.
                 <br><br>
-                Techniques like the Kalman filters and its variants and the Particle filters are the front-runners of this domain. State estimation applications often also involve a priori multi-sensor data-fusion step which also uses these filtering techniques to provide the best perception results.
-
-
-                <br><br>
-                <b style="font-weight: 500"> NOTE: Readers are expected to have basic knowledge about probability, conditional probability, probability distribution functions and their mathematical representations.</b>
-
-               <br><br> 
-                <button onclick="myFunction()" class="btn" style="background-color: #FFFFFF;border: none; text-align: center; font-size: 16px;cursor: pointer;width: auto; padding-top: 5px;padding-bottom: : 5px">
-                Basic Concepts at a glance - <b style="font-weight: 500">Click to show</b>
-
-                </button>
-
-                <div id="myDIV" style="display: none;">
-                <p style="column-width:1000px;margin-left:200px;text-align:justify;">
-                <center>
-                    <figure>
-                        <img src="images/blogs/bayesian/prob_basics.png" style="width:700px;height:500px;">
-                    </figure>
-                    <br>
-                </center>
-                </p>
-                </div>
-
-                <script>
-                function myFunction() {
-                  var x = document.getElementById("myDIV");
-                  if (x.style.display === "none") {
-                    x.style.display = "block";
-                  } else {
-                    x.style.display = "none";
-                  }
-                }
-                </script>
-
-                </p>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Bayesian Terminology and Concepts</h1>
-                <br>
-
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-
-                Probabilistic theory can get confounding when dealing with several jargons. Moreover, the complete foundation of these probabilistic techniques is built upon just a few mathematical concepts and assumptions, discussed here.
-                <br><br>
-                <i>For all discussions further;  <b style="font-weight: 500">x</b> = state, <b style="font-weight: 500">z</b> = observation,  <b style="font-weight: 500">u</b> = action and <b style="font-weight: 500">X</b> = a random variable</i>
-                </p>
-
-                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
-                    <li> <b style="font-weight: 500">P( z | X = x<sub>i</sub> )</b>  is causal (given that the state <b style="font-weight: 500">x</b> is known, what could the observation <b style="font-weight: 500">z</b> predict  ) while <b style="font-weight: 500">P( X = x<sub>i</sub> | z )</b> is diagnostic (given that the observation <b style="font-weight: 500">z</b> is known, what would the actual state <b style="font-weight: 500">x</b> be).
-                        <br><br>
-                        Causal systems are easier to obtain because it represents the reliability of a sensor (that obtains the observation <b style="font-weight: 500">z</b>) which can be obtained manually.
-                        <br><br>
-                    The Bayes rule gives us <br>
-                    <center> <b style="font-weight: 500">
-                        P( X = x<sub>i</sub> | z ) = P( z | X = x<sub>i</sub> ) * P(X = x<sub>i</sub>) / P(z)
-                    </b>
-                    </center>
-                    <br>
-                    <li>
-                        Normalization of the Bayes Filter gives
-                        <center>
-                            <b style="font-weight: 500">
-                    P( x | y ) = P( y | x ) * P( x ) / P( y ) = &#951 P( y | x ) * P( x )
-                    <br>
-                    where &#951  = P( y )<sup>-1</sup> = 1 / ( &#931 P( y | x) P( x ))
-
-                            </b>
-                        </center>
-                    </li><br>
-                    <li>
-                        Markov assumption says current observation <b style="font-weight: 500">z<sub>t</sub></b> at timestamp <b style="font-weight: 500">t</b> is independent of all prior observations <b style="font-weight: 500">z<sub>1:t-1</sub></b> and all prior input signals <b style="font-weight: 500">u<sub>1:t</sub></b>, given the state <b style="font-weight: 500">x<sub>t</sub></b> is available. 
-
-                        <br><br>                            
-                        Markov assumption also states that the current state <b style="font-weight: 500">x<sub>t</sub></b> at timestamp <b style="font-weight: 500">t</b> is independent of all prior observations <b style="font-weight: 500">z<sub>1:t-1</sub></b> given the state at the previous timestamp <b style="font-weight: 500">x<sub>t-1</sub></b> and input signal at the current timestamp <b style="font-weight: 500"> u<sub>t</sub></b> are available.
-                        <br><br>
-                        <center>
-                            <figure>
-                                <img src="images/blogs/bayesian/markov_model.png" style="width:560px;height:230px;">
-                            </figure>
-                            <br>
-                        </center>
-
-                    </li> <br>
-                    <li>
-                        A <b style="font-weight: 500">sensor model</b> is the mathematical representation of the belief in the accuracy of a sensor's estimate of the parameter. The <b style="font-weight: 500">actions model</b> is the mathematical representation of the belief in the ability of the inputs given to the robot to actually drive the robot to the expected(mathematically derived) final configuration.
-                        <br><br>
-                        For instance, in a mobile robot; the range-measurement sensor model should state the probability with which the sensor measures the distance accurately and could be affected by noise and operational limitations of the sensor. For the action model, it would be the ability of the mobile robot to move the amount of distance that it is expected to, when fed with a particular velocity/acceleration/jerk.
-                    </li> <br>
-                    <li>
-                        <b style="font-weight: 500">Transition probability</b> defines the likelihood of change from state <b style="   font-weight: 500">x<sub>a</sub></b> to state <b style="font-weight: 500">x<sub>b</sub></b>. 
-
-                        <b style="font-weight: 500">Emission probability</b> defines the likelihood of a sensor measurment of a state <b style="   font-weight: 500">z<sub>a</sub></b> accurately representing the actual state <b style="font-weight: 500">x<sub>a</sub></b>.
-                        <br>
-                        Transition Probability = <b  style="font-weight: 500">p( x<sub>t</sub> | x<sub>t-1</sub> )</b>
-                        <br>
-                        Emission Probability = <b  style="font-weight: 500">p( z<sub>t</sub> = x<sub>t</sub> | x<sub>t</sub> )</b>
-                    </li>
-                </ul>
-
-                <h1 style="text-align:left;margin-left:200px;font-size:20px ">State Estimation</h1>                
-                <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-
-                For a robot, its state could comprise of any number of parameters defining its configuration. It could be the position(x,y,z) and orientation(qw,qx,qy,qz) for the end-effector of a manipulator or the GPS coordinates of a drone or the joint angles of the legs of a biped robot.
-                <br><br>
-                <b style="font-weight: 500">For the sake of simplicity, this artcile refers to the pose of a mobile robot - position (x, y) and orientation (&#952) of the heading as the state being determined. In mobile robotics terminology, this is localization - the process of determining the location of the robot in the world given the actions that it takes and the perception model derived observations.
-                </b>
                 </p>
 
                 <center>
@@ -293,69 +182,357 @@ div.column{
                     <br>
                 </center>
 
+                <center>
+                <p style="text-align:center;font-size:25px; "> <b style="font-weight: 500">REPRESENTATION OF THE DIFFERENT COMPONENTS OF LOCALIZATION</b> </p>
+                </center>
+
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    For a mobile robot, it can be intuitively understood that the current best estimate of its pose will be dependent upon how well does the sensor model observe its pose and how well does the robot model implement the action on the robot.
-                    <br><br>
-                    Thus, the probabilistic representation of the robot's pose, i.e. the localization process should be dependent on the sensor model and the action model.
 
-                    <center style="column-width:1000px;margin-left:200px;margin-right:200px;">
-                    <b style="font-weight: 500">
-                    Sensor model =  P(z<sub>t</sub> | x<sub>t</sub> ) 
-                    </b>
-                    <br>
-                    <b style="font-weight: 500">Inference:</b> sensor observation at timestampt t is only dependent upon the state at timestamp t
-                    <br><br>
-                    <b style="font-weight: 500">
-                    Action model =  P(x<sub>t</sub> | u<sub>t</sub>, x<sub>t-1</sub> )
-                    </b>
-                    <br>
-                    <b style="font-weight: 500">Inference:</b> State at timestamp t is dependent upon the action taken at timestamp t and state at timestamp (t-1)
-                    </b>
-
-                    </center>
+                The EKF technique uses feature extraction, landmarks generation, data association, odometry, and landmark representation and sensor data concepts. Here is a glance at them individually after which, the setup should be ready to implement EKF.
                 </p>
 
+                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                        <b style="font-weight: 500">Sensor Data:</b> The laser scanner or LiDAR is used here to obtain information about the world.  The laser scan gives the range (distance between the target and the sensor) and the bearing (alignment of the corresponding line of sight for the measurement). It is usually represented as [range, bearing] and the bearing value is basically a multiple of the angular resolution of the scanner.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500"> Odometry: </b> Odometry data uses the robot's initial pose, motion information from the wheel encoders(over a finite time span) and the robot kinematic model to predict the robot's new pose. It may also use the control input or the data from an onboard IMU sensor for the same.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500"> Landmarks: </b> Landmarks are those distinct features in the environment that can be used to get a sense of the robot's pose in the environment. These are essentially re-observable features like the edge of the walls or furniture in the environment, patterns on the walls and more. Landmarks should essentially be <b style="font-weight: 500"> re-observable from different locations in the environment, distinguishable from each other, ideally stationary and enough in quantity to create a stable map covering the complete environment.</b>
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500"> Landmark Extraction: </b> Given that we are using the laser scan data to extract the landmarks in the environment, it is important to define what features we are looking for and expecting. Laser scans give the range and the bearing information over the field of view which is used in primarily two ways to determine landmarks.
+                        <ul style="margin-left:50px;text-align:justify;list-style-type:circle;">
+                            <li>If the difference in range values for two consecutive or very closely positioned readings is larger than a threshold, it suggests the presence of a small/point obstruction, which is called a <b style="font-weight: 500">spike landmark.</b> While it is easy to compute, it is prone to errors due to sensor anomalies and not feasible for surroundings with smooth curvature.
+
+                            <br><br>
+                                <center>
+                                    <figure>
+                                        <img src="images/blogs/ekf/spikes.png" style="width:350px;height:210px;">
+                                        <figcaption>Spikes in red, very prone to errors </figcaption>
+                                    </figure>
+                                <br>
+                                </center>
+
+                            </li>
+                            <li>
+                                <b style="font-weight: 500">Random Sampling Consensus (RANSAC)</b> is a more sophisticated technique used to determine patterns and curvature of the surroundings. For RANSAC, the sensor readings are converted from polar coordinates (range, bearing) to cartesian coordinates (x, y) and then; S points are randomly sampled from these and the least-squares approximation is used to fit a line on these S points. Thereafter, the proximity of the points to this line is obtained and if there is a high consensus(above a set threshold) of points close to this line, it is probably a landmark( maybe a wall), and a better fit is found for all these consensus points.
+                                <br><br>
+                                This best fit line is a landmark and the point on this line closest on the robot, is an equivalent point landmark.
+
+                                <br><br>
+                                <center>
+                                    <figure>
+                                        <img src="images/blogs/ekf/line_to_point.png" style="width:420px;height:220px;">
+                                        <figcaption>Best fit line landmark to closest point on the line landmark </figcaption>
+                                    </figure>
+                                </center>                                 
+                            </li>
+                        </ul>
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Data Association:</b> After landmarks have been extracted from the sensor readings, the most crucial step is to identify if the current landmark has already been observed or is a new one. It is crucial to associate the landmark correctly to avoid erratic beliefs in robot's pose. A new landmark is compared against all existing landmarks in the database using the neared-neighbor technique and if their proximity is within the error ellipse, they are essentially the same landmark that has been reobserved.
+                    </li>
+                </ul>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "> <b style="font-weight: 500">MAIN COMPONENTS OF EKF LOCALIZATION</b> </p>
+                </center>
+
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                The recursive Bayes estimation involves two major steps called the <b style="font-weight: 500">prediction step</b> and the <b style="font-weight: 500">correction step</b>. The prediction step involves estimating the next/current value of the state based on the previous state and accounting for the probability of transition from the previous state to the next state. The correction step involves using the sensor model probability of the current state to rectify the result obtained from the prediction step.  
-                <br><br>
-                Mathematically, the final equation for <b style="font-weight: 500">state estimation </b> is given by
+                EKF localization has three significant steps; state estimate prediction, state estimate update, and addition of landmarks. While there are several intermediate steps, these three steps are the highlight of the complete state estimation cycle.
+                </p>
+
+                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                        <b style="font-weight: 500">Prediction: </b> Estimate the current state using the information from the odometry and/or the IMU. It is considering the input to the robot and the model-based expected/observed motion to predict the robot's current state.
+                        <br><br>
+                        New pose: (x,y) --><sub>(dx, dy)</sub> (x + dx, y + dy)
+                        <br>
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Update: </b> Use the information from the landmarks to update the state estimate. This involves several intermediate steps.
+                        <br><br>
+                        When the sensors observe the world, feature extraction techniques are employed to determine if there are landmarks in the surrounding. Using data association techniques, observed landmarks are compared to existing landmarks. If a match is found, the difference in positions of the landmarks (position prediction based on the robot's pose prediction against position observed by the sensing system) acts as the innovation component. The innovation is used to update the robot pose estimate.
+                        <br><br>
+                        For re-observed landmarks, this step also updates the belief in those landmarks and updates their uncertainty matrices defined later.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Landmark Addition: </b> Based on observations in the previous step, if the landmark observed does not match any old landmark and is completely new, it is added to the database of existing landmarks.
+                    </li> <br>
+                </ul>
 
                 <center>
                     <figure>
-                        <img src="images/blogs/bayesian/final.png" style="width:450px;height:130px;">
+                        <img src="images/blogs/ekf/ekf_process.png" style="width:561px;height:371px;">
+                        <figcaption>EKF Process </figcaption>
                     </figure>
-                    <br>
+                    <br><br>
                 </center>
-                </p>    
+
+                <center>
+                <p style="text-align:center;font-size:25px; "> <b style="font-weight: 500">MATRICES USED IN EKF</b> </p>
+                </center>
+
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                As evident, the prediction step includes the action or motion model  <b style="font-weight: 500">p(x<sub>t</sub> | u<sub>t</sub>, x<sub>t-1</sub> )</b> of the system while the correction step uses the sensor model <b style="font-weight: 500">p(z<sub>t</sub> | x<sub>t</sub> )</b> and finally normalizes it with a factor <b style="font-weight: 500">&#951</b>.
+
+                Discrete-time EKF runs a loop that over every iteration updates and modifies all the values being used in the process. These are multivariate matrices whose components represent the different aspects like the system state, covariance, noises, and more in the process. 
+                <br><br>
+                Here is a list of matrices used in EKF.
+                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                    <b style="font-weight: 500">X: System State</b>
+                    <br>
+                    The system state is a (3+2n) x 1 vector comprises of the robot pose (position and orientation) and the positions of the n landmarks. While this matrix starts off with just the robot pose, over time, it accumulates the different landmarks as well.
+                    <br>
+                    &#8658 Robot State Vector <b style="font-weight: 500">R</b> = [x<sub>robot</sub> y<sub>robot</sub>  &#952<sub>robot</sub>]<sup>T</sup>
+                    <br>
+                    &#8658 Landmark Position Vector <b style="font-weight: 500">L</b> = [x<sub>landmark</sub> y<sub>landmark</sub>]<sup>T</sup>
+                    <br>
+                    &#8658 X = [x<sub>robot</sub> y<sub>robot</sub>  &#952<sub>robot</sub> x<sub>landmark_1</sub> y<sub>landmark_1</sub> x<sub>landmark_2</sub> y<sub>landmark_2</sub> ...]<sup>T</sup>
+                    <br>or
+                    <br>
+                    &#8658 X = [ R L<sub>1</sub> L<sub>2</sub> L<sub>3</sub> ...]<sup>T</sup>
+                    </li><br>
+                    <li>
+                    <b style="font-weight: 500">P: Covariance Matrix</b>
+                    <br>
+                    Covariance is the measure of the correlation between two variables. It is a representation to estimate how does variations and inaccuracies in one variable affect the other.
+                    <br>
+                    &#8658  R = [x<sub>robot</sub> y<sub>robot</sub>  &#952<sub>robot</sub>]<sup>T</sup> has a 3 x 3 covariance matrix.
+                    <br>
+                    &#8658 L = [x<sub>landmark</sub> y<sub>landmark</sub>]<sup>T</sup> has a 2 x 2 covariance matrix.
+                    <br>
+                    Futhermore, each landmark has a covariance matrix against other landmarks as well. The final <b style="font-weight: 500">P</b> matrix constitutes all these individual sub-matrices positioned appropriately in the larger matrix.
+                    <br>
+                    Initially, without any landmarks observed, <b style="font-weight: 500">P</b> only has the robot state covariance sub-matrix but is gradually populated with other sub-matrices after every iteration.
+                    </li><br>
+
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/cov.png" style="width:394px;height:253px;">
+                            <figcaption>Covariance Matrix P </figcaption>
+                        </figure>
+                    </center>
+                    <br>
+                    <li>
+                    <b style="font-weight: 500">K: Kalman Gain</b>
+                    <br>
+                    It is used to determine the confidence in the prediction step against confidence in the update state. Kalman Gain represents the weightage given to the new information about the robot pose coming from the sensors and to the prediction for robot's current pose made by the odometry and/or robot model information.
+                    <br><br>
+                    If K is high, the external measurement is good, and if K is low, it implies that the state prediction using odometry is good.
+                    <br>
+                    </li>
+
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/k.png" style="width:103px;height:246px;">
+                            <figcaption>Kalman Gain K </figcaption>
+                        </figure>
+                    </center>
+                    <br>
+                    <li>
+                    <b style="font-weight: 500">H: Measurement Model Jacobian</b>
+                    <br>
+                    A jacobian matrix is derived by partial derivation of a vector against other different variables. the The covariance matrices to be used in the EKF process are derived using the jacobians.
+                    <br><br>
+
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/model.png" style="width:482px;height:165px;">
+                            <figcaption style="font-size: 14px">Measurement Model - where (&#955<sub>x</sub>, &#955<sub>y</sub>) is the position of the landmark and (x, y) is the position of the robot and &#952 is the robot orientation </figcaption>
+                        </figure>
+                    </center>
+                    <br>
+                    Now, the jacobian of this measurement model is H and each column how the range and bearing changes with respect to the robot state parameters x, y and &#952 using partial differentiation.
+
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/H.png" style="width:299px;height:170px;">
+                            <figcaption>Measurement Model Jacobian H </figcaption>
+                        </figure>
+                    </center>
+
+                    <br><br>
+                    <b style="font-weight: 500">This is the jacobian matrix H only for state estimation. When it extends to additional components in SLAM as the partial differentiation also needs to be done with respect to the landmark positions (x<sub>landmark</sub>, y<sub>landmark</sub>)for all individual landmarks.</b>.
+                    <br><br>
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/h_slam.png" style="width:500px;height:130px;">
+                            <figcaption>Measurement Model Jacobian H for SLAM with landmark components </figcaption>
+                        </figure>
+                    </center>
+                    <br>
+                    Obviously, the jacobian components for landmarks against the other landmarks is 0 as measurement one landmark essentially should not be correlated to another landmark.
+                    </li>
+                    <br>
+                    <li>
+                    <b style="font-weight: 500">A: Prediction Model Jacobian</b>
+                    <br>
+                    The <b style="font-weight: 500">prediction model</b> is responsible to use the old positions, control inputs and odometry information to compute the expected new position of the robot.
+                    <b style="font-weight: 500">A</b> is the prediction model matrix used in the EKF process for the process covariance.
+                    <br><br>
+
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/prediction.png" style="width:578px;height:160px;">
+                            <figcaption style="font-size: 14px">Prediction Model - where (x, y) is the position of the robot, &#952 is the robot orientation and &#916t is the thrust to the robot and &#916q is the error </figcaption>
+                        </figure>
+                    </center>
+                    <br>
+                    Now, the jacobian of this measurement model is A and each coloumn how the robot's pose (x, y ) and bearing changes with respect to the robot state parameters x, y and &#952 using partial differentiation.
+
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/a.png" style="width:248px;height:146px;">
+                            <figcaption>Prediction Model Jacobian A </figcaption>
+                        </figure>
+                    </center>
+
+                    <br>
+                    <b style="font-weight: 500">Similar to the measurement model jacobian H, A here is only when applicable for state estimation. The introduction landmarks introduces a new component of jacobians for the prediction of the landmarks. Thus, the SLAM specific jacobians are J<sub>xr</sub> and J<sub>z</sub> that define the jacobian of prediction model for the landmark position wrt to the robot state R and jacobian model for the landmark position wrt to the range and bearing.</b>
+                    <br><br>
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ekf/jxr.png" style="width:220px;height:60px;">
+                            <img src="images/blogs/ekf/jz.png" style="width:370px;height:60px;">
+                            <figcaption>J<sub>xr</sub> and J<sub>z</sub> </figcaption>
+                        </figure>
+                    </center>
+                    <br>
+                    Obviously, the jacobian components for landmarks against the other landmarks is 0 as measurement one landmark essentially should not be correlated to another landmark.
+                    </li><br>
+
+                    <li>
+                    <b style="font-weight: 500">Q: Process Noise Matrix</b>
+                    <br>
+                    It is already known that the noise is supposed to be Gaussian in nature. For the localization process, it is natural to assume that the noise is proportional to the control values &#916x, &#916y and &#916t. The noise matrix Q is a 3 x 3 matrix computed using a Gaussian sample C and the component noise vector W. 
+                    <br><br>
+
+                    Q is usually only represented alone or as <b style="font-weight: 500">Q = WCW<sup>T</sup></b> but the concept of C is not very well elaborated. It is essentially the component of the sampling that defines the Gaussian nature of the noise.
+                    <br><br>
+                    <b style="font-weight: 500">&#8658 W = [&#916t cos &#952, &#916t sin &#952 &#916 &#952]</b>
+                    <br>
+                    and C is composed of diagonal components c&#916x<sup>2</sup>, c&#916y<sup>2</sup>, c&#916t<sup>2</sup>
+                    </li><br>
+
+                    <li>
+                    <b style="font-weight: 500">R: Measurement Noise Matrix</b>
+                    <br>
+                    For the measurements done with the laser scanner, it is expected that the noise again is Gaussian and while the noise in range depeneds on or is proportional to the actual range while the noise is bearing is expected to be constant.
+                    <br>
+                    The noise matrix is given as <b style="font-weight: 500">VRV<sup>T</sup></b>.
+                    <br>
+                    <b style="font-weight: 500">The matrix R is a 2 x 2 matrix with diagonal elements rc and bd where c and d are constants.</b>
+                    <br>
+                    As mentioned earlier, the component of bearing noise b is also constant because the bearing is noise independent of the value .
+                    </li><br>
+                </ul>
                 </p>
 
+
+                <center>
+                <p style="text-align:center;font-size:25px; "> <b style="font-weight: 500">STEPS OF EKF LOCALIZATION EXECUTION</b> </p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                As mentioned earlier, the three most important steps of EKF localization are prediction, udpate and landmark addition. We discuss how the matrices and sub-matrices mentioned above are used to execute these steps.
+                <br>
+                Initially, the robot starts with a known state and a default initialization of the covariance matrix P (usually just small non-zero values of the diagonal elements). The P matrix starts off as a 3 x 3 matrix because no landmarks exist yet.
+                </p>
+
+                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li>
+                        <b style="font-weight: 500;font-size: 25">PREDICTION STEP</b><br>
+                        <br>
+                        The current state is predicted using the control signal, the previous robot state and the odometry information. It is the same as the <b style="font-weight: 500">prediction model f</b> shown in image above.
+                        <br>
+                        A simplified version could be f = [x + &#916x y + &#916y q + &#916q]<sup>T</sup> where the &#916 is computed depending on the kinematics of the robot motion model, be it differential or ackerman or a holonomic model.
+                        <br>
+                        After the robot state has been predicted, the other matrices Q and P are also updated.
+                        <br>
+                        <center>
+                            <figure>
+                                <img src="images/blogs/ekf/q_updated.png" style="width:264px;height:127px;">
+                                <figcaption>Updated process noise matrix Q </figcaption>
+                            </figure>
+                        </center>
+                        <br>
+                        Now, the covariance matrix P's top left corner has the covariance only for the robot state and is revised using thhe updated Q as:
+                        <br>
+                        <b style="font-weight: 500">&#8658 P<sup>rr</sup> = A P<sup>rr</sup> A + Q</b>
+                        <br>
+                        Finally, the covariance or correlations between the robot position and the landmarks or features are also updated as:
+                        <br>
+                        <b style="font-weight: 500">&#8658 P<sup>ri</sup> = A P<sup>ri</sup></b>
+                        <br>
+                        where P<sup>ri</sup> is the fist 3 rows (corresponding to the x, y and &#952 from robot position) and all columns.
+                    </li>
+                    <br>
+
+                    <li>
+                        <b style="font-weight: 500;font-size: 25">UPDATE STEP</b><br>
+                        <br>
+                        As already known errors in robot position estimate exist due to odometry errors, model inaccuracies and more, landmarks are used to compensate them.
+                        <br>
+                        Landmarks are first observed using feature extraction techniques and data association methods are attempted to compare it to the existing landmarks. Using associated landmarks, the displacement is found and robot position is udpated. However, this is done for each re-observed landmark and not just one. A new landmark is not used in this update procedure. 
+                        <br>
+                        We can populate the measurement model jacobian matrix H and the measurement noise matrices V and R.
+                        <br>
+                        Eventually, we compute the Kalman Gain which is a measure of the amount of confidence to be shown in the measurement model's intended udpate in the robot position and the landmarks' existing position against the already made prediction in the previous step.
+                        <br><br>
+                        <b style="font-weight: 500 "> &#8658 K = P * H <sup>T</sup> * ( H * P * H<sup>T</sup> ++  V *  R * V<sup>T</sup>)<sup>-1</sup></b>
+                        <br><br>
+                        Here K has the complete set of weights affecting each individual robot or landmark position parameter.
+                        <br><br>
+                        <b style="font-weight: 500 "> ( H * P * H<sup>T</sup> ++  V *  R * V<sup>T</sup>)</b> is the innovation covariance S.
+                        <br><br>
+                        Hence, the update state vector for the process is given as:
+                        <br>
+                        <b style="font-weight: 500 "> &#8658 X = X + K(z-h)</b>
+                        <br><br>
+                        where (z-h) is the delta is robot displacement observed by the sensor using the range and the bearing value.
+                    </li>
+                    <br>
+
+                    <li>
+                        <b style="font-weight: 500;font-size: 25">LANDMARK ADDITION STEP</b><br>
+                        <br>
+                        For an observed landmark L<sub>N</sub> = (x<sub>N</sub>, y<sub>N</sub>) that does not belong to the list of available ones, the position is added to the state vector X. If there are more landmarks, it is more beneficial for the robot to use that while updating the position.
+                        <br>
+                        <b style="font-weight: 500"> &#8658 X<sub>new</sub> = [X L<sub>N</sub>]<sup>T</sup></b>
+                        <br>
+                        Now, the addition of a landmark brings about several updates to the covariance matrix P.
+                        <br><br>
+                        The first component is the 2 x 2 P<sup>N+1</sup> <sup>N+1</sup> which is the landmark's self covariance (C in the larger P matrix shown above) given by:
+                        <br><br>
+                        <b style="font-weight: 500"> &#8658 P<sup>N+1</sup> <sup>N+1</sup> = J<sub>xr</sub> P J<sub>xr</sub><sup>T</sup> + J<sub>z</sub> R J<sub>z</sub><sup>T</sup></b>
+                        <br><br>
+                        which essentially uses the jacobian sub-matrices dependent on the robot position and the measurement noise.
+                        <br>
+                        Finally the robot to landmark covariance components( a 3 x 2 matrix is the upper right corner of the larger P matrix shown above) are updated as:
+                        <br>
+                        <b style="font-weight: 500"> &#8658 Pr <sup>N+1</sup> = P<sup>rr </sup>J<sub>xr</sub><sup>T</sup></b>
+                        <br>
+                        while the landmark to robot covariance component ( a 2 x 3 matrix is the lower left corner of the larger P matrix shown above) is transpose of the above matrix.
+                        <br><br>
+                        The last step in this process is to add the covariance component P<sup>N+1</sup> i for the new landmark against the other existing landmarks (a 2 last rows x all remaining columns matrix on the lowest row) and the tranpose populates the (2 right-most coloumns X all remaining rows) sub matrix.
+                        <br>
+                        <b style="font-weight: 500"> &#8658 P<sup>N+1</sup> i = J<sub>xr</sub>(P<sup>ri</sup>)<sup>T</sup></b>
+                        <br>
+                    </li>
+                </ul>
                 <p style="text-align:center;font-size:20px "><b style="font-weight:500">CONCLUSIONS FOR RECURSIVE BAYESIAN ESTIMATION</b>  </p>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    <b style="font-weight: 500">Bayes</b> filters while computing the probabilities need to model the nature of inaccuracies and noise. Given the universal applicability, we could assume it to be a <b style="font-weight: 500">Gaussian</b>  model which, for noise in measurements would suggest that the error(essentially the probability of occurence) in measurement would be distributed around the actual value as a Gaussian centered around it.
+                    <b style="font-weight: 500">Finally, the robot should be ready to explore the world around and be able to localize itself against the world using predictions, landmarks and reobserved landmarks.
                     <br><br>
-                    Other distributions could be a uniform distribution or a special polynomial defined distribution.
-                </p>
-                <hr width="20%">
-                    <br>                
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    <b style="font-weight: 500">While</b> the underlying probabilistic concepts remain the same for all systems, the action/motion model and sensor/observation models of the system could be linear or non-linear. Kalman filter family has different variants supporting both. 
-                </p>
-                <hr width="20%">
-                    <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    <b style="font-weight: 500">The</b> distribution may or may not have a parametric representation. Basically, the Gaussian distribution can be modeled and defined using the mean and the variance while a uniform distribution would have a value and the range of extent.
-                    However, there could be arbitrary distributions not modeled by finite number of parameters and need multiple sampling instances to represent the distribution. 
-                </p>
-                <hr width="20%">
-                <br>
-                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                
-                    <b style="font-weight: 500">
-                    The different distribution mechanisms divide the broad category of filtering/recursive estimation techniques to Kalman and Particle Filters. While Kalman filters operate on parametric definitions, particle filters use sampled points/particles to model the distribution. These filters should be discussed individually in later posts.
+                    A successor to this will be a project that implements EKF for SLAM localization and navigation with ROS and C++.
                     </b>
+
                 </p>
 
             </div>
@@ -375,8 +552,8 @@ div.column{
             *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
             var disqus_config = function () {
-            this.page.url = "http://kumarakshay.me/bayesian.html";  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = 150; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            this.page.url = "http://kumarakshay.me/ekf.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 457; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
             };
 
             (function() { // DON'T EDIT BELOW THIS LINE
@@ -392,7 +569,7 @@ div.column{
         <!-- Section One -->
             <div class="wrapper style2" align="center">
 
-                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 01/22/2020</center></p> 
 
 <a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script>
             </div>
