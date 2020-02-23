@@ -148,6 +148,19 @@ code {
 
                 <p id="dmesg" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
+                    <b style="font-weight: 500; font-size:25px; color: red; ">Virtual Destructors in C++ </b>(February 22, 2020) <br><br>
+
+                    When a pointer to the base class is used for a derived class object, during the deletion of the object there could be undefined behavior if the base class destructor is NOT virtual. In order to correctly delete the base class as well as the derived class, the base class destructor is defined as virtual.
+
+                    Else, when the pointer to the base class is deleted, only the base class destructor is called while the derived class remains in a bad state causing memory leaks.
+                    <br><br>
+                    The corrrect process of object deletion is to call the destructors in reverse order, i.e. - from the last derived class (which the object actually belongs to in the hierarchy) to the base class.
+                    <br><br>
+                    <b style="font-weight: 500"> Note:</b> Often, there could be a pure virtual destructor and such destructors need to have a body to be acceptable.
+                </p>
+
+                <p id="dmesg" style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
                     <b style="font-weight: 500; font-size:25px; color: red; ">semaphores in C++ </b>(January 12, 2020) <br><br>
 
                     Synchronization features like mutexes/locks and semaphores are kernel level features. A semaphore is a counting and signalling mechanism. It informs threads if a resource it is seeking, that was previously unavailable is now available or not. When multiple items are being managed, a semaphore can have a maximum count value that limits how many signals will to catered to. 
