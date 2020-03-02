@@ -1,0 +1,417 @@
+    <!DOCTYPE HTML>
+
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #f5f5ef;
+  /*border: 1px black;*/
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.blog_box_sidenav {
+  margin-left: 8%;
+  margin-right: 10%;
+  position: fixed;
+  background-color: #f5f5ef;
+  border: 1px solid #dbdbd5;
+  height: auto;
+  width: 350px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+.blog_box_sidenav p:hover{
+  color: #140440;
+  font-weight: 500;
+  /*text-decoration: bold;*/
+  /*background-color: #cfc ;*/
+
+}
+
+code { 
+  font-family: monospace;
+}
+
+</style>
+</head>
+
+<html>
+    <head>
+        <title>STL Algorithms in C++ - AKSHAY KUMAR</title>
+        <link rel="icon" href="images/profile.jpg">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+            
+            <!-- Header -->
+
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>
+                </div>
+                
+            </div>          
+
+            <!-- Introduction -->
+            <div class="wrapper style6" align="justify" >
+
+            <br>
+
+            <!-- <div class="column"> -->
+                <div class="blog_box_sidenav" align="left" >
+                    <center>
+                    <br>
+                    <span style="font-size:25px;text-decoration: none;">LATEST POSTS</span>
+                    </center><br>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="coverage.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Coverage Problem in Mobile Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Visual SLAM - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Simulataneous Localization and Mapping - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="mp_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Motion Planning in Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="sampling.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Sampling-based Motion Planning</p>
+                    </a>
+
+                    <br>
+                </div>
+
+            <div class="blog_box" align="justify" >
+                    <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+                <br>
+                    <h2 style="font-size:40px;font-weight: 500">C++ Data Structures in Robotics</h2>
+                <br>
+
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    I have been working with C++ for a couple of years now. While I have not encountered use of a lot of off-the-shelf C++ algorithms used intensively in robot software stack development, certain data structures have definitely been very efficient for particular applications in robotics. I thought it was time to revisit the basic data structures in C++ and also, makes notes for future use.
+
+                    <br><br>
+                    <b style="font-weight: 500">The more important reason for this article is to aggregate information of how and why differrent data structures should be used in robotics algorithms.</b>
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Standard data structures in C++ STL are: </b>.
+                <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                    <li>
+                        <a href="#vectors">Vectors (std::vector)</a>
+                    </li>
+                    <li>
+                        <a href="#graphs"> Graphs</a>
+                    </li>
+                    <li>
+                        <a href="#matrices"> Matrices</a>
+                    </li>
+                    <li>
+                        <a href="#stacks"> Stacks (std::stack)</a>
+                    </li>
+                    <li>
+                        <a href="#queue"> Queues (std::queue)</a>
+                    </li>
+                    <li>
+                        List (std::list and std::forward_list)
+                    </li>
+                    <li>
+                        Heap (std::heap)
+                    </li>
+                    <li>
+                        Maps (std::map  or std::unordered_map)
+                    </li>
+                    <li>
+                        Sets (std::set)
+                    </li>
+                    <li>
+                        Miscellaneous : Priority Queue(std::priority_queue) and Deque (std::deque)
+                    </li>
+                </ul>
+                <br><br>
+                </p>
+
+                <center>
+                <p style="text-align:center;font-size:25px;" id="vectors" ><b style="font-weight: 500">VECTORS</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    A vector is used for simple storage of a collection of same data type objects. It is a sequence container that supports dynamic size modification on the fly. They are similar to arrays and store data in contiguous memory locations but additionally can change size.
+                    <br><br>
+                    Vectors are internally just simple arrays that have extra space allocations for possible growth and modification. This is because if the memory is fixed, there may be no more room for additional data when being dynamically modified and all the data has to be reallocated to a bigger memory group. Thus, to avoid such time consuming reallocation steps, vectors consume more memory but are computationally efficient is maintaining dynamic storage.
+
+                    <br><br>
+                    Most common instances to use vectors for efficiency include <b style="font-weight: 500">serialization, easy traversal, index based lookup, addiiton to the end, and conversion to C-style arrays.</b> They should be avoided for applications like <b style="font-weight:500 ">arbitrary insertion/deletion and dynamically changing the location of storage.</b> 
+
+                    <br><br>
+                    The most common operations on vectors are:
+
+                    <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                        <li>
+                            Iterators: <code> begin(), end(), rbegin(), rend(), crbegin(), crend(), cbegin(), cend()</code><br>
+                            Return the iterator or const iterator from the beginning or the reverse beginning of the vector  
+                        </li>
+                        <li>
+                            Sizing: <code>size(),  max_size(), resize(), capacity(), empty(), reserve(), shrink_to_fit()</code><br>
+                            The first four methods return the size, maximum size, the capacity and check for the emptiness of the vector. The <code>reserve(n)</code> method is used to declare that the storage is needed for n elements and the vector is reallocated only if the current capacity is lesser than that, else nothing changes.
+                        </li>
+                        <li>
+                            Modification: <code>push_back(), pop_back(), insert(), erase(), swap(), emplace(), emplace_back() </code><br>
+                            First four methods are to push or remove a value from the end of the vector. Then, insert data or a data container to one index before the specified index. Data can also be removed from a particular position (iterator value) or a length of data positions using erase.
+                            <br>
+                            <br>
+
+                        </li>                    
+                    </ul>
+                </p>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500"></b></p>
+                </center>
+
+
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    
+                    <b style="font-weight: 500; font-size:20px ">Vectors in Robotics</b> <br><br>
+                    For the majority of my applications while storing the manipulator joints' custom data types, I have used the vector. It allows easy traversal and thus makes kinematics and dynamics operations easy on each robot joint. ROS uses arrays for such storage as it is assumes the size of the containers should be fixed. For storing all physical values of the robot parameters like joint forces, torques, limits, positions and more, I have had custom data structures and then a <b style="font-weight: 500"> vector</b> storing a collection of the same.
+                    <br><br>
+                    The easy traversal through a vector makes it suitable for storing instruction sequences like trajectories. For example: <br>
+                </p>
+
+                  <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
+                    <script src="https://gist.github.com/kumar-akshay324/3843532ea8f6df156b239a71182c4b35.js"></script>
+                    <figcaption>Example Operations on Vectors</figcaption>
+                    <br>
+
+                    <script src="https://gist.github.com/kumar-akshay324/9e24df6dd2586a629fad9e97b509fb88.js"></script>
+                    <figcaption>Example Trajectory Struct using C++ Vector</figcaption>
+                  </center>
+                    <br>
+                <br><br>
+
+                <center>
+                <p style="text-align:center;font-size:25px; " id="graphs"><b style="font-weight: 500">GRAPHS</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    Graphs are one of the most important structures and used extensively in all domains of computer science. Graphs are essential for all sorts of search algorithms, tree traversals, optimized paths and more.
+
+                    <br><br>
+                    A graph is basically a collection of several vertices connected to other via links. Each vertex in a graph is called a <b style="font-weight: 500">node</b> and links are called <b style="font-weight: 500">edges</b>. The <b style="font-weight: 500">adjacent nodes</b> in a graph are those two nodes which are connected by an edge. The number of edges (essentially the other nodes) that a particular node is connected to is called <b style="font-weight: 500">degree of a node</b>. Sequence of traversal from one node to the other via edges is called a <b style="font-weight: 500">path</b>.
+                    <br><br>
+                    If all the nodes are connected to atleast one other node and no node is isolated, the graph is a <b style="font-weight: 500">connected graph</b> whereas if all nodes are connected to all other nodes resulting in a total of n(n-1)/2 nodes, it is called a <b style="font-weight: 500">complete graph</b>. If there are weights assigned for traversal via each edge, the graph is a <b style="font-weight: 500">weighted graph</b>. If the direction of edges from a node in the graph is fixed thus fixing the traversal direction, it is called a <b style="font-weight: 500">diagraph</b>.
+                    <br><br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    <b style="font-weight: 500; font-size:20px ">Graph Representation</b> <br><br>
+                    A graph data structure can be naively thought of as a collection of nodes and each node has a collection of the other nodes it is connnected. It may also need to store information about the weight and the direction of the edge.
+                    <br><br>
+                    C++ does not have an in-built data structure to represent graphs. Thus, there are different ways to represent the graph programmatically.
+                    <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                        <li>
+                            <b style="font-weight: 500">Sequential Representation:</b> Adjacency matrices are used for sequential representations of relationships between the nodes in a graph. Here, the N nodes are laid out along the rows and the columns of a N x N matrix <i>adjacency_matrix</i>. Now, for a pair of nodes that have an undirected edge, the value of <i>adjacency_matrix</i><sub>(nodeA, nodeB)</sub> and <i>adjacency_matrix</i><sub>(nodeB, nodeA)</sub>is non-zero and often used to represent the weight of the edge. For a directed graph, from node A to node B, only <i>adjacency_matrix</i><sub>(nodeA, nodeB)</sub> value is non zero and the other pair <i>adjacency_matrix</i><sub>(nodeB, nodeA)</sub>  is zero (rows and column node represents the start and end node respectively).
+                        </li>
+                        <li>
+                            <b style="font-weight: 500">Linked Representation:</b> For this representation adjacency lists are used. An adjacency list for a node represents the other nodes linked to it as a linked list. It terminates in a null. 
+                        </li>
+                    </ul>
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    
+                    <b style="font-weight: 500; font-size:20px ">Graphs in Robotics</b> <br><br>
+                    Graphs are probably the most important data structures in robotics. Almost all planning algorithms that need some kind of search or path finding employ graphs. Graphs provide for establishing directional connectivity between two positions in space and thus extremely important for mobile robots, drones, and manipulators.
+                    <br><br>
+                    Graphs used with cost functions between points determine traversal algorithms and decisions. Most path planning algorithms like <b style="font-weight: 500">A*, Dijikstra, RRT, RRT*, and PRMs</b> all operate on nodes in the configuration space and they are represented using graphs. Other general search algorithms in computer science, like breadth-first or depth-first search also use graphs along with queques and stacks respectively. 
+                </p>
+                <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
+                    <script src="https://gist.github.com/kumar-akshay324/efc3f735d2706c401baaa6e196c678c0.js"></script>
+                    <figcaption> Adjacency Matrix Based Graphs</figcaption>
+                </center>
+                    <br>
+
+                <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
+                    <script src="https://gist.github.com/kumar-akshay324/36d62facc6f7b611476424d36c6419eb.js"></script>
+                    <figcaption> Adjacency Lists Based Graphs</figcaption>
+                </center>
+                    <br>
+
+                <a href="#">LINK TO IMPLEMENTATION OF A* and other search algorithms using graphs, in C++</a>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500" id="matrices">MATRICES</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Matrices are useful data structures used to store data systematically in rows and columns. They are commonly used to represent 3D transitions, multivariate states, and covariances for systems.
+                    <br><br>
+                    All computer vision applications use matrices while performing image processing operations because they help in condensing the data and representign it more intuively. For instance, a B/W image is represented as a 3D matrix where each value for a particular (row, column) pixel position is the RGB color for that pixel. For a depth sensing camera, there is also a fourth dimension for the depth of the pixel from the camera. 
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                    
+                    <b style="font-weight: 500; font-size:20px ">Matrices in Robotics</b> <br><br>
+                    Matrices are undoubtedly the most common data structures used in robotics regardless of the domain. Robot control uses matrices for state-space definitions, kinematics of the robot use matrices for transformations and movements, dynamics used matrices to represent the physical features, state estimation uses matrices for variances, operations and more. All computer vision and machine learning applications in robotics use matrices to appropriately represent neural networks and vectors.
+                    <br><br>
+                    Matrices in C++ are either defined using 2-dimensional arrays or vectors of vectors. However, niether of are as efficient, intuitve and easy to use as the matrix support provided in <b style="font-weight: 500">numpy</b> in Python. Eigen, a header only library is the most common open-source library for matrices in C++. While it does use arrays under the hood, the templated librarry provides easy to use wrapper and implementations for almost all matrix operations like transformations and even Singular Value Decomposition (SVD).
+                </p>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500" id="stacks">STACK</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Stacks are only of the best inbuilt containers in C++. STL provides <code>std::stack</code> which is a standard stack supporting first-in last-out OR last-in first-out data handling. The methods supported by std::stack are <code>pop(), push(), and top()</code> that remove the item on the top of the stack, push the item to the top and return the item from the top of the stack respectively.
+                    <br><br>
+                    Stacks are useful for reversal of elements or search algorithms using graphs. Stacks have a constant O(1) complexity in all the three function calls.  
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                    
+                    <b style="font-weight: 500; font-size:20px ">Stacks in Robotics</b> <br><br>
+                    When a Depth-First Search is implemented, the children of the node being explored are all pushed into a stack and popped when explored.
+                    <br><br>
+                    MORE ABOUT USE OF STACKS.
+                </p>
+
+                <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
+                    <script src="https://gist.github.com/kumar-akshay324/99b1360479a3c134ca8b85daa8567e17.js"></script>
+                    <figcaption> Using stacks for a valid sequence of braces problem</figcaption>
+                </center>
+                    <br>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500" id="queue">QUEUE</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Queues, like stacks, are also one of the best inbuilt containers in C++. STL provides <code>std::queue</code> which is a standard queue supporting first-in first-out OR last-in last-out data handling. The methods supported by std::queue are <code>front(), back(), pop() and size()</code> that returns the element at the head, returns the element at the tail, removes the element at the head and returns the size of the queue respectively.
+                    <br><br>
+                    Queues are useful for any simple ordering based task. Queue can be used to store list of semaphores ( the identities that manage resource locking and availability in multi-threading systems) and execute them sequentially or for CPU scheduling operations.
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                    
+                    <b style="font-weight: 500; font-size:20px ">Queue in Robotics</b> <br><br>
+                    Queues are used in a Breadth-First Search implementation where all the children of the node being explored, i.e. all the siblings are pushed into a queue and popped sequentially before exploring the children of the individual sibling (done in stacks).
+                    <br><br>
+                    MORE ABOUT USE OF QUEUES.
+                </p>
+            </div>
+            </div>
+
+            <p style="column-width:1000px;margin-left:550px;margin-right:200px;text-align:center;font-size: 22px;font-weight: 500;color: red">
+                <i>
+                IF YOU LIKED THE ARTICLE, DON'T FORGET TO LEAVE A REACTION OR A COMMENT!                         
+                </i>
+            </p>
+
+            <div id="disqus_thread" style="column-width: 1000px;margin-left: 570px;margin-right: 200px;"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+            var disqus_config = function () {
+            this.page.url = "http://kumarakshay.me/ds_cpp_robotics.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 130; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://kumarakshay-me.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+        <!-- Section One -->
+            <div class="wrapper style2">
+
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+
+            </div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script></div>
+
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+  
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+
+
+    </body>
+</html>
+
+    </body>
+</html>

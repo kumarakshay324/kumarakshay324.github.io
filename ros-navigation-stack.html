@@ -1,0 +1,321 @@
+    <!DOCTYPE HTML>
+
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #f5f5ef;
+  /*border: 1px black;*/
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.blog_box_sidenav {
+  margin-left: 8%;
+  margin-right: 10%;
+  position: fixed;
+  background-color: #f5f5ef;
+  border: 1px solid #dbdbd5;
+  height: auto;
+  width: 350px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+.blog_box_sidenav p:hover{
+  color: #140440;
+  font-weight: 500;
+  /*text-decoration: bold;*/
+  /*background-color: #cfc ;*/
+
+}
+
+code { 
+  font-family: monospace;
+}
+
+</style>
+</head>
+
+<html>
+    <head>
+        <title>ROS Navigation Stack - AKSHAY KUMAR</title>
+        <link rel="icon" href="images/profile.jpg">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+            
+            <!-- Header -->
+
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>
+                </div>
+                
+            </div>          
+
+            <!-- Introduction -->
+            <div class="wrapper style6" align="justify" >
+
+            <br>
+
+            <!-- <div class="column"> -->
+                <div class="blog_box_sidenav" align="left" >
+                    <center>
+                    <br>
+                    <span style="font-size:25px;text-decoration: none;">LATEST POSTS</span>
+                    </center><br>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="coverage.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Coverage Problem in Mobile Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Visual SLAM - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Simulataneous Localization and Mapping - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="mp_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Motion Planning in Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="sampling.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Sampling-based Motion Planning</p>
+                    </a>
+
+                    <br>
+                </div>
+
+            <div class="blog_box" align="justify" >
+                    <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+                <br>
+                    <h2 style="font-size:40px;font-weight: 500">ROS Navigation Stack</h2>
+                <br>
+
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Robot Operating System has umpteen number of ready to use packages but the ROS navigation stack is one of the most powerful ones. The ROS navigation stack is the go-to package for autonomous navigation for mobile robots with different drives mechanisms and onboard sensing technologies using multiple high-level control and motion algorithms as well as low-level actuator control strategies.
+
+                    <br><br>
+                    <b style="font-weight: 500">This article explains all the components of the ROS navigation stack and how to configure and use its tools for autonomous robot navigation.</b>
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Salient Features about the ROS Navigation Stack: </b>.
+                <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                    <li>
+                        It only works on differential drive and holonomic drive robots with rectangular body frame. If the robot has a custom shape, a rectangular bounding box can be used.
+                    </li>
+                    <li>
+                        It needs the joint positions and the sensor positions and the relationships between them.
+                    </li>
+                    <li>
+                        The instructions for the robots are linear and angular velocities for its center.
+                    </li>
+                    <li>
+                        There should be at least one 2D LiDAR like planar scanner to create the environment map or an array of multiple range finders for the similar effect.
+                    </li>
+                    <li>
+                        It has the global and local planners as well as global and local cost maps for the paths. Additionally, there are mechanisms to address unexpected interactions with the dynamic environment.
+                    </li>
+                </ul>
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/ros_nav/overview_tf.png" style="width:700;height:300px;">
+                        <figcaption>Overview of the ROS Navigation Stack</figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    All the nodes within the white box in the image above are already provided by ROS and the ones outside it are either to be provided or configured by the user for implementation on the specific robot. The robot specific components include sensor positioning, odometry information, wheel encoder styles and more.
+                </p>
+
+
+                <center>
+                <p style="text-align:center;font-size:25px;"><b style="font-weight: 500">RIGID BODY TRANSFORMATIONS</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                    The <b style="font-weight: 500">tf</b> transforms tree that has all relative transformations between the robot base, the sensors and the actuators, forms the spine of all navigation tasks.
+                    <br><br>
+                    The standard terminology used in rigid body transformations and the coordinate frames are:
+
+                <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                    <li>
+                        <b style="font-weight: 500">Map Frame:</b> It is the static frame with origin located at the center of the map that the robot is using. The standard origin of this frame is usually the point where the robot starts at, in the map.
+                        <br><br>
+                        Position of the robot is usually represented with respect to the map frame.
+                    </li>
+                    <li>
+                        <b style="font-weight: 500">Sensor Frame:</b> The onboard sensors interpret the world with respect to their own coordinate frame, called the sensor frame. A stereo-camera measures the depth of an object with respect to its own focal center (called the sensor frame) but that is usually converted with respect to the robot base's center.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">LiDAR Frame:</b> For the LiDAR sensor, all the distance/range measurements are made with respect to the physical center of the rotating cylinder. This is an example of a sensor frame.
+                        <br><br>
+                        Like all sensor frames, the LiDAR data frame is converted to the map frame to know about the map of the world and location of obstacles and occlusions with global representation.
+                    </li><br>
+                        <center>
+                            <figure>
+                                <img src="images/blogs/ros_nav/lidar.png" style="width:300;height:300px;">
+                                <figcaption>LiDAR sensor coordinate frame</figcaption>
+                                <br>
+                            </figure>
+                        </center>
+                    <li>
+                        <b style="font-weight: 500">Body Frame:</b> All the robots have a frame attached to the themselves. It is usually centered at the center of line joining the rear wheels of a differential drive or the geometric center of the four wheels for a holonomic drive.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Homogeneous Transformations: </b> All the measurement representations can be converted from one reference frame to other using homogeneous transformations.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">tf Package: </b> The ROS <b style="font-weight: 500">tf</b> package is a standard package that tracks multiple 3D coordinate frames and maintains the tree between them. 
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Localization Engine: </b> Several localization engines like the AMCL (Adaptive Monte Carlo Localization) package utilize the complete <b style="font-weight: 500">tf tree</b> to convert various sensor measurements from their respective frames to the frame required for the computation. All localization engines provide the robot pose with respect to the map frame. 
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Odom Frame: </b> The origin of the odometry frame is the location of the point at which the robot starts motion. This is the frame with reference to which, the odometry of the robot is measured throughtout its motion. 
+                        <br><br>
+                        Odometry is used to estimate the robot pose relative to the starting location. They can be computed using <b style="font-weight: 500">a. </b>difference in wheel rotations measured using encoder counts <b style="font-weight: 500">b. </b> integrating the robot velocities instructions over time and <b style="font-weight: 500">c. </b> integrating the measurements from the IMU sensor.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Odometry: </b> All the odometry sources are prone to errors in drift in values (accelerometer values), bias (gyroscope), wheel slippage, incorrect wheel dimensions and inaccurate wheel moutings or eccentric wheel structure.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">Odometry</b> data is continuous, evolves smoothly and are short term accurate with respect to the local reference frame.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">URDF</b> files can also have definitions for the frames for the various sensors on the robot.
+                    </li><br>
+                    <li>
+                        <b style="font-weight: 500">tf debugging tools: </b> The standard commands for debugging issues in the tf tee include <code> roswtf, rosrun tf view_frames and rosrun tf view_monitor</code> used for debugging, visualization of tf tree and broken down visualization from the chain between two frames to individual transforms respectively.
+                    </li><br>
+
+                </ul>
+
+                <center>
+                <p style="text-align:center;font-size:25px;"><b style="font-weight: 500">CREATING TRANSFORMS</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    While storing the individual transforms and deriving transformations across multiple frames using hand-crafted mathematical operations is possible; the <b style="font-weight: 500">tf</b> transform package is helpful to avoid the cumbersome steps.
+
+                    <br><br>
+                    The tf library can handle all types and quantities of sensors and robot transforms. If the LiDAR is placed at the tip of the robot frame 10 cm and 5 cm ahead and above the body frame center with the same axes' orientations, the tf tree stores this as a linear transformation and can thus convert every depth reading from the sensor frame to the body frame and use it to create a map.  
+                </p>
+            </div>
+            </div>
+
+            <p style="column-width:1000px;margin-left:550px;margin-right:200px;text-align:center;font-size: 22px;font-weight: 500;color: red">
+                <i>
+                IF YOU LIKED THE ARTICLE, DON'T FORGET TO LEAVE A REACTION OR A COMMENT!                         
+                </i>
+            </p>
+
+            <div id="disqus_thread" style="column-width: 1000px;margin-left: 570px;margin-right: 200px;"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+            var disqus_config = function () {
+            this.page.url = "http://kumarakshay.me/ros-navigation-stack.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 731; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://kumarakshay-me.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+        <!-- Section One -->
+            <div class="wrapper style2">
+
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+
+            </div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script></div>
+
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+  
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+
+
+    </body>
+</html>
+
+    </body>
+</html>
