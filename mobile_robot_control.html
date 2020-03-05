@@ -187,7 +187,7 @@ div.column{
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    Mobile robot control has two components, first a robot model that implements actuator instructions to real-world motion and second, the closed-loop feedback mechanisms that provide observations of the actual situation.
+                    Mobile robot control has two components, first a robot model that implements actuator instructions corresponding to the desired real-world motion and second, the closed-loop feedback mechanisms that provide observations of the actual situation.
                     <br><br>
                     The high-level trajectory defined by the motion planners are often partially or completely infeasible. Thus, execution of desired robot motion is also dependent on if the controller is able to execute each instruction. The ability 
                 </p>
@@ -197,14 +197,52 @@ div.column{
                 <b style="font-weight: 500"> Control mechanisms for robots can be categorized into two broad categories - the high-level/robot-level control and the low-level/actuator-level control. Both levels of control are extremely important to realize the desired behavior of the robot.</b>
                 <br><br>
 
-                While the low-level control ensures that the actuators function well independently, they are susceptible to external factors like loading on actuators, dynamic-effects of the kinematic-chain and the forces arising from them. This necessitates the usage of more complicated control techniques at the robot level and account for the dynamics of the system. Majority of these robot-level control techniques use a model of the robot representing the mass and its distribution, relationship between joints and tip forces and the effect of gravity on the robot, among others.
+                The most common mobile robot control algorithms are:
+
+                <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                    <li>
+                        PID Controller
+                    </li>
+                    <li>
+                        Model Predictive Controller
+                    </li>
+                    <li>
+                        Pure Pursuit Controller
+                    </li>
+                    <li>
+                        Fuzzy Logic Controller
+                    </li>
+                    <li>
+                        Linear Quadratic Regulator
+                    </li>
+                </ul>
                 <br><br>
+                All these control techniques generate high-level instructions for mobile robot motion but it is the low level actuators that cause motion by implementing motion using the actual robot state, the environment around and the robot kinematic/dynamic model.
 
-                In essence, the robot-level control techniques govern the definition of the reference signals for the low-level actuator control loops considering the system interaction and behavior over each iteration.
-
-
-                <br><br><br>
+                <br><br>
+                <b style="font-weight: 500">Note: A trajectory is a path (collection of points) with instructions for velocity, acceleration and  </b>
                 </p>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">LINEAR QUADRATIC CONTROLLER</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    The LQR controller is a .
+                    <br><br>
+                    The high-level trajectory defined by the motion planners are often partially or completely infeasible. Thus, execution of desired robot motion is also dependent on if the controller is able to execute each instruction. The ability 
+                </p>
+
+                <center>
+                <p style="text-align:center;font-size:25px; "><b style="font-weight: 500">PURE PURSUIT CONTROL</b></p>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    Pure Pursuit control is a tracking algorithm that generates a curvature for motion, from the current state to the goal state.  .
+                    <br><br>
+                    The high-level trajectory defined by the motion planners are often partially or completely infeasible. Thus, execution of desired robot motion is also dependent on if the controller is able to execute each instruction. The ability 
+                </p>
+
             </div>
             </div>
 
