@@ -139,13 +139,23 @@ code {
 
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    SSH or secured shell is a network protocol to communicate between multiple machines securely. Any network service can be executed over SSH but the access through a command-line interface to another machine's shell (I use bash on Ubuntu) is the primary mode. It is a secure channel that commnunicates using a client-server architecture. The default TCP port used is 22 but others can also be used.
+                    SSH or secured shell is a network protocol to communicate between multiple machines securely. Any system administration service, file transfer and network applications can be performed over SSH. The access through a command-line interface to another machine's shell (I use bash on Ubuntu) is the primary mode of interaction. It is a secure channel that commnunicates using a client-server architecture. The default TCP port used is 22 but others can also be used.
 
                     <br><br>
-                    <b style="font-weight: 500">This article is a location to aggregate all the methods commonly used for shell access, SSH-key deployment for repositories and account, SSH-tunneling, file transfer over SSH and using SSH in VS Code editor for software development on other machines.</b> All discussions in this article are made for SSH protocol version 2.
+                    <b style="font-weight: 500">This article is a location to aggregate all the methods commonly used for shell access, SSH-key deployment for repositories and account, SSH-tunneling, file transfer over SSH and using SSH in VS Code IDE for software development on other machines on the local network.</b> All discussions in this article are made for SSH protocol version 2.
 
                     <br><br>
-                    The <b style="font-weight: 500">.ssh.</b> folder in Linux machines stores all the important configurations and security keys. The most common files configuration files are <b style="font-weight: 500">config, authorized_keys and known_hosts</b>. 
+                    The <b style="font-weight: 500">.ssh.</b> folder in Linux machines stores all the important configurations and security keys. The most 
+                    common files configuration files are <b style="font-weight: 500">config, authorized_keys and known_hosts</b>. 
+
+                    <center>
+                        <figure>
+                            <img src="images/blogs/ssh/architecture.jpg">
+                            <figcaption>Figure 1 - SSH Architecture (<a href="https://www.ssh.com/ssh/">SSH Website</a> ) </figcaption>
+                        </figure>
+                    </center>
+
+                </p>
 
                     <ul style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;list-style-type: disc">
                         <li> The <b style="font-weight: 500">config</b> file has configuration for different services like git that use the SSH credentials for various connections.
