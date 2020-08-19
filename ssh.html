@@ -162,7 +162,7 @@ code {
                         </li>
                         <li>The <b style="font-weight: 500">known_hosts</b> file has a list of public SSH keys of all the machines currently or previously connected to.
                         </li>
-                        <li>The <b style="font-weight: 500">authorized_keys</b> file has the public SSH keys of the machines that it shall accept incoming SSH connections from. This is a highly safe access control feature.
+                        <li>The <b style="font-weight: 500">authorized_keys</b> file has the public SSH keys of the machines that it shall accept incoming SSH connections from. This is a highly safe access control feature that ensures no unwarranted client machine can access the server machine.
                         </li>
                     </ul>
                 </p>
@@ -173,20 +173,23 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    SSH command line access is simple for machines over the same local network.
+                    SSH command line access is the simplest methods for machines to access the server machine. Common SSH client software include Putty (Windows & Linux), OpenSSH (I used this on Ubuntu), WinSCP (Windows) and CyberDuck (Mac) among others. The basic commands for command-line access are:
 
                     <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
                         <li>
                             <code> ssh &ltmachine_username&gt@&ltmachine_ip_address&gt </code><br>
-                            Access the other machine's shell directly using port 22   
+                            Access the other machine's shell directly using port 22 
+                            <br>
                         </li>
                         <li>
                             <code> ssh &ltmachine_username&gt@&ltmachine_ip_address&gt -p &ltport_number&gt</code><br>
                             Access the other machine's shell directly using any port number other than 22.
+                            <br>
                         </li>
                         <li>
                             <code> ssh &ltmachine_username&gt@&ltmachine_ip_address&gt -i &ltidentity_file&gt</code><br>
                             Access the other machine's shell directly using a specific identity file, a file with a private key. By default, a local network connection uses the <i>.ssh/id_rsa</i> private key of the machine (on Linux machines) for connections. SSH connection to online services generally uses a <b>.pem</b> file as an identity file.
+                            <br>
                         </li>
 
                     </ul>
@@ -204,22 +207,11 @@ code {
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
                     
 
-                SSH keys are primarily public and private keys with the default names <b style="font-weight: 500">id_rsa</b> and <b style="font-weight: 500"> id_rsa.pub</b>. The 
+                SSH keys are primarily public and private keys with the default names <b style="font-weight: 500">id_rsa</b> and <b style="font-weight: 500"> id_rsa.pub</b>. These keys are responsible for establishment of identity and and credential  
 
                 <br><br>
-                The easy traversal through a vector makes it suitable for storing instruction sequences like trajectories. For example: <br>
 
                 </p>
-
-                  <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
-                    <script src="https://gist.github.com/kumar-akshay324/3843532ea8f6df156b239a71182c4b35.js"></script>
-                    <figcaption>Example Operations on Vectors</figcaption>
-                    <br>
-
-                    <script src="https://gist.github.com/kumar-akshay324/9e24df6dd2586a629fad9e97b509fb88.js"></script>
-                    <figcaption>Example Trajectory Struct using C++ Vector</figcaption>
-                  </center>
-                    <br>
                 <br><br>
 
                 <center>
@@ -227,20 +219,10 @@ code {
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-
-                    Graphs are one of the most important structures and used extensively in all domains of computer science. Graphs are essential for all sorts of search algorithms, tree traversals, optimized paths and more.
-
-                    <br><br>
-                    A graph is basically a collection of several vertices connected to other via links. Each vertex in a graph is called a <b style="font-weight: 500">node</b> and links are called <b style="font-weight: 500">edges</b>. The <b style="font-weight: 500">adjacent nodes</b> in a graph are those two nodes which are connected by an edge. The number of edges (essentially the other nodes) that a particular node is connected to is called <b style="font-weight: 500">degree of a node</b>. Sequence of traversal from one node to the other via edges is called a <b style="font-weight: 500">path</b>.
-                    <br><br>
-                    If all the nodes are connected to atleast one other node and no node is isolated, the graph is a <b style="font-weight: 500">connected graph</b> whereas if all nodes are connected to all other nodes resulting in a total of n(n-1)/2 nodes, it is called a <b style="font-weight: 500">complete graph</b>. If there are weights assigned for traversal via each edge, the graph is a <b style="font-weight: 500">weighted graph</b>. If the direction of edges from a node in the graph is fixed thus fixing the traversal direction, it is called a <b style="font-weight: 500">diagraph</b>.
-                    <br><br>
+                </p>
+ 
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    <b style="font-weight: 500; font-size:20px ">Graph Representation</b> <br><br>
-                    A graph data structure can be naively thought of as a collection of nodes and each node has a collection of the other nodes it is connnected. It may also need to store information about the weight and the direction of the edge.
-                    <br><br>
-                    C++ does not have an in-built data structure to represent graphs. Thus, there are different ways to represent the graph programmatically.
                     <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
                         <li>
                             <b style="font-weight: 500">Sequential Representation:</b> Adjacency matrices are used for sequential representations of relationships between the nodes in a graph. Here, the N nodes are laid out along the rows and the columns of a N x N matrix <i>adjacency_matrix</i>. Now, for a pair of nodes that have an undirected edge, the value of <i>adjacency_matrix</i><sub>(nodeA, nodeB)</sub> and <i>adjacency_matrix</i><sub>(nodeB, nodeA)</sub>is non-zero and often used to represent the weight of the edge. For a directed graph, from node A to node B, only <i>adjacency_matrix</i><sub>(nodeA, nodeB)</sub> value is non zero and the other pair <i>adjacency_matrix</i><sub>(nodeB, nodeA)</sub>  is zero (rows and column node represents the start and end node respectively).
@@ -253,42 +235,19 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
                     
-                    <b style="font-weight: 500; font-size:20px ">Graphs in Robotics</b> <br><br>
-                    Graphs are probably the most important data structures in robotics. Almost all planning algorithms that need some kind of search or path finding employ graphs. Graphs provide for establishing directional connectivity between two positions in space and thus extremely important for mobile robots, drones, and manipulators.
-                    <br><br>
-                    Graphs used with cost functions between points determine traversal algorithms and decisions. Most path planning algorithms like <b style="font-weight: 500">A*, Dijikstra, RRT, RRT*, and PRMs</b> all operate on nodes in the configuration space and they are represented using graphs. Other general search algorithms in computer science, like breadth-first or depth-first search also use graphs along with queques and stacks respectively. 
                 </p>
-                <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
-                    <script src="https://gist.github.com/kumar-akshay324/efc3f735d2706c401baaa6e196c678c0.js"></script>
-                    <figcaption> Adjacency Matrix Based Graphs</figcaption>
-                </center>
-                    <br>
-
-                <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
-                    <script src="https://gist.github.com/kumar-akshay324/36d62facc6f7b611476424d36c6419eb.js"></script>
-                    <figcaption> Adjacency Lists Based Graphs</figcaption>
-                </center>
-                    <br>    
-
-                <center>
-                    <a href="#">LINK TO IMPLEMENTATION OF A* and other search algorithms using graphs, in C++</a>                
-                </center>
 
                 <center>
                 <p style="text-align:center;font-size:25px; "><b style="font-weight: 500" id="matrices">MATRICES</b></p>
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    Matrices are useful data structures used to store data systematically in rows and columns. They are commonly used to represent 3D transitions, multivariate states, and covariances for systems.
-                    <br><br>
-                    All computer vision applications use matrices while performing image processing operations because they help in condensing the data and representign it more intuively. For instance, a B/W image is represented as a 3D matrix where each value for a particular (row, column) pixel position is the RGB color for that pixel. For a depth sensing camera, there is also a fourth dimension for the depth of the pixel from the camera. 
+
                 </p>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                    
                     <b style="font-weight: 500; font-size:20px ">Matrices in Robotics</b> <br><br>
-                    Matrices are undoubtedly the most common data structures used in robotics regardless of the domain. Robot control uses matrices for state-space definitions, kinematics of the robot use matrices for transformations and movements, dynamics used matrices to represent the physical features, state estimation uses matrices for variances, operations and more. All computer vision and machine learning applications in robotics use matrices to appropriately represent neural networks and vectors.
-                    <br><br>
-                    Matrices in C++ are either defined using 2-dimensional arrays or vectors of vectors. However, niether of are as efficient, intuitve and easy to use as the matrix support provided in <b style="font-weight: 500">numpy</b> in Python. Eigen, a header only library is the most common open-source library for matrices in C++. While it does use arrays under the hood, the templated librarry provides easy to use wrapper and implementations for almost all matrix operations like transformations and even Singular Value Decomposition (SVD).
+
                 </p>
 
                 <center>
@@ -296,9 +255,7 @@ code {
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    Stacks are only of the best inbuilt containers in C++. STL provides <code>std::stack</code> which is a standard stack supporting first-in last-out OR last-in first-out data handling. The methods supported by std::stack are <code>pop(), push(), and top()</code> that remove the item on the top of the stack, push the item to the top and return the item from the top of the stack respectively.
-                    <br><br>
-                    Stacks are useful for reversal of elements or search algorithms using graphs. Stacks have a constant O(1) complexity in all the three function calls.  
+
                 </p>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                    
@@ -308,10 +265,6 @@ code {
                     MORE ABOUT USE OF STACKS.
                 </p>
 
-                <center style="column-width:1000px; margin-left:200px;margin-right:200px;">
-                    <script src="https://gist.github.com/kumar-akshay324/99b1360479a3c134ca8b85daa8567e17.js"></script>
-                    <figcaption> Using stacks for a valid sequence of braces problem</figcaption>
-                </center>
                     <br>
 
                 <center>
@@ -319,20 +272,14 @@ code {
                 </center>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    Queues, like stacks, are also one of the best inbuilt containers in C++. STL provides <code>std::queue</code> which is a standard queue supporting first-in first-out OR last-in last-out data handling. The methods supported by std::queue are <code>front(), back(), pop() and size()</code> that returns the element at the head, returns the element at the tail, removes the element at the head and returns the size of the queue respectively.
-                    <br><br>
-                    Queues are useful for any simple ordering based task. Queue can be used to store list of semaphores ( the identities that manage resource locking and availability in multi-threading systems) and execute them sequentially or for CPU scheduling operations.
+
                 </p>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                    
-                    <b style="font-weight: 500; font-size:20px ">Queue in Robotics</b> <br><br>
-                    Queues are used in a Breadth-First Search implementation where all the children of the node being explored, i.e. all the siblings are pushed into a queue and popped sequentially before exploring the children of the individual sibling (done in stacks).
-                    <br><br>
-                    Queues are used in several filtering applications to pop the first-in item and add the new incoming data for moving average filter, exponential filter and more.
+
                 </p>
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    THIS ARTICLE IS GETTING PRETTY LONG, SO TO SIMPLIFY - I AM MOVING REST OF THE TOPICS TO A <a href="#">PART II</a> COMING SOON!
                 </p>
 
             </div>
