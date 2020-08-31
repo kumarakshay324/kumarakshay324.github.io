@@ -139,14 +139,13 @@ code {
 
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
-                    SSH or secured shell is a network protocol to communicate between multiple machines securely. Any system administration service, file transfer and network applications can be performed over SSH. The access through a command-line interface to another machine's shell (I use bash on Ubuntu) is the primary mode of interaction. It is a secure channel that commnunicates using a client-server architecture. The default TCP port used is 22 but others can also be used.
+                    SSH or secured shell is a network protocol to communicate between multiple machines securely. Any system administration service, data transfer and control operation can be performed over SSH. The access through a command-line interface to another machine's shell (I use bash on Ubuntu) is the most general mode of interaction. It is a secure channel that commnunicates using a client-server architecture. The default TCP port used is 22 but others can also be used.
 
                     <br><br>
                     <b style="font-weight: 500">This article is a location to aggregate all the methods commonly used for shell access, SSH-key deployment for repositories and account, SSH-tunneling, file transfer over SSH and using SSH in VS Code IDE for software development on other machines on the local network.</b> All discussions in this article are made for SSH protocol version 2.
 
                     <br><br>
-                    The <b style="font-weight: 500">.ssh.</b> folder in Linux machines stores all the important configurations and security keys. The most 
-                    common files configuration files are <b style="font-weight: 500">config, authorized_keys and known_hosts</b>. 
+                    The <b style="font-weight: 500">home/user/.ssh.</b> folder in Linux machines stores all the important configurations and security keys. The most common files configuration files are <b style="font-weight: 500">config, authorized_keys and known_hosts</b>. 
 
                     <center>
                         <figure>
@@ -162,7 +161,7 @@ code {
                         </li>
                         <li>The <b style="font-weight: 500">known_hosts</b> file has a list of public SSH keys of all the machines currently or previously connected to.
                         </li>
-                        <li>The <b style="font-weight: 500">authorized_keys</b> file has the public SSH keys of the machines that it shall accept incoming SSH connections from. This is a highly safe access control feature that ensures no unwarranted client machine can access the server machine.
+                        <li>The <b style="font-weight: 500">authorized_keys</b> file has the public SSH keys of the machines that it shall accept incoming SSH connections from. This is a highly safe access control feature that ensures no unwarranted client machine can access the server machine. The SSH software compares the public SSH against the private key from the incoming connection machine to establish the secure connection.
                         </li>
                     </ul>
                 </p>
@@ -173,7 +172,7 @@ code {
 
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
 
-                    SSH command line access is the simplest methods for machines to access the server machine. Common SSH client software include Putty (Windows & Linux), OpenSSH (I used this on Ubuntu), WinSCP (Windows) and CyberDuck (Mac) among others. The basic commands for command-line access are:
+                    SSH command line access is the simplest method for machines to communiate. Common SSH client software include Putty (Windows & Linux), OpenSSH (I used this on Ubuntu), WinSCP (Windows) and CyberDuck (Mac) among others. The basic commands for command-line access are:
 
                     <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
                         <li>
@@ -207,9 +206,29 @@ code {
                 <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
                     
 
-                SSH keys are primarily public and private keys with the default names <b style="font-weight: 500">id_rsa</b> and <b style="font-weight: 500"> id_rsa.pub</b>. These keys are responsible for establishment of identity and and credential  
+                SSH keys are primarily public and private keys with the default names <b style="font-weight: 500">id_rsa</b> and <b style="font-weight: 500"> id_rsa.pub</b>. These keys are responsible for establishment of the identity and and credentials of the machine. 
 
                 <br><br>
+                The basic commands to manage SSH keys are:
+
+                    <ul style="column-width:1000px;margin-left:270px;margin-right:200px;text-align:justify;list-style-type: disc">
+                        <li>
+                            <code> ssh-keygen</code><br>
+                            The keygen program is used to generate the SSH key pair - one public key and another private key. It uses the RSA algorithm by default and saves the <b style="font-weight: 500">id_rsa</b> and <b style="font-weight: 500">id_rsa.pub</b> private and public files in the location <b style="font-weight: 500">/home/user/.ssh</b>. Unless specified, the software asks the user for a paraphrase to generate the keys from.
+                        </li>
+                        <li>
+                            <code> ssh-keygen -t &ltrsa | dsa | ecdsa | ed25519&gt -b &ltnumber bits&gt</code><br>
+                            The key can be generated using different algorithms like Rivest-Shamir-Adleman(RSA), Digital Signature Algorithm(DSA), Elliptic Curve Sigital Signature Algorithm(ECDSA)) and ED25519 (specially available on OpenSSH) among others. Usually, at least 2048 or 4096 bits should be used for the RSA algorithm, which is widely supported but very old.
+                        </li>
+                        <li>
+                            <code> ssh-keygen -f &ltfilename&gt</code><br>
+                            Save the SSH keypair in a particular location of the system.
+                        </li>
+                        <li>
+                            <code> ssh-keygen -f &ltfilename&gt</code><br>
+                            Save the SSH keypair in a particular location of the system.
+                        </li>
+                    </ul>
 
                 </p>
                 <br><br>
