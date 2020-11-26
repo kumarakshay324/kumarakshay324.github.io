@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Robot Operating System - Command Line Tools | ThatRobotBoy</title>
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Robot Operating System - Command Line Tools | ThatRobotBoy</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Robot Operating System - Command Line Tools" />
 <meta name="author" content="akshay" />
 <meta property="og:locale" content="en_US" />
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-01-23T00:00:00-08:00" />
 <script type="application/ld+json">
-{"description":"ROS is an opensource middleware framework providing seamless interaction between software-software and hardware-software components of robots. With features like package management, hardware-level abstraction and support for almost all kinds of software tools and packages needed for robotics; ROS creates a language agnostic environment that allows development under the same umbrella.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/ros/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"datePublished":"2019-01-23T00:00:00-08:00","headline":"Robot Operating System - Command Line Tools","dateModified":"2019-01-23T00:00:00-08:00","url":"http://localhost:4000/home/ros/","@context":"http://schema.org"}</script>
+{"description":"ROS is an opensource middleware framework providing seamless interaction between software-software and hardware-software components of robots. With features like package management, hardware-level abstraction and support for almost all kinds of software tools and packages needed for robotics; ROS creates a language agnostic environment that allows development under the same umbrella.","headline":"Robot Operating System - Command Line Tools","dateModified":"2019-01-23T00:00:00-08:00","datePublished":"2019-01-23T00:00:00-08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/ros/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"author":{"@type":"Person","name":"akshay"},"url":"http://localhost:4000/home/ros/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -191,7 +191,7 @@
 
 <ul>
   <li>Create a ROS catkin_workspace 
-<br /> <code class="highlighter-rouge">~$ mkdir -p catkin_workspace &amp;&amp; cd catkin_workspace &amp;&amp; mkdir -p src &amp;&amp; catkin_make </code></li>
+<br /> <code class="language-plaintext highlighter-rouge">~$ mkdir -p catkin_workspace &amp;&amp; cd catkin_workspace &amp;&amp; mkdir -p src &amp;&amp; catkin_make </code></li>
 </ul>
 
 <p>Now the ROS workspace is created and the directory structure looks like</p>
@@ -208,10 +208,10 @@
   </li>
   <li>
     <p>Source the ROS workspace to make the ROS ecosystem recognize and search the packages define within the package
-<br /> <code class="highlighter-rouge">~$ source catkin_workspace/devel/setup.bash </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ source catkin_workspace/devel/setup.bash </code></p>
   </li>
   <li>Create a ROS package
-<br /> <code class="highlighter-rouge">~$ cd catkin_workspace &amp;&amp; src &amp;&amp; catkin_create_pkg &lt;package_name&gt;     std_msgs roscpp rospy &lt;ros_dependency&gt; </code></li>
+<br /> <code class="language-plaintext highlighter-rouge">~$ cd catkin_workspace &amp;&amp; src &amp;&amp; catkin_create_pkg &lt;package_name&gt;     std_msgs roscpp rospy &lt;ros_dependency&gt; </code></li>
 </ul>
 
 <p>Remember to source the workspace after building the package to register the new developments with the ROS ecosystem.</p>
@@ -235,24 +235,24 @@
 <ul>
   <li>
     <p>Run the ROS master and the ecosystem to support topics, messages, nodes and all other ROS infrastructure 
-<br /> <code class="highlighter-rouge">~$ roscore</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ roscore</code></p>
   </li>
   <li>
     <p>Launch multiple ROS nodes with certain properties, setting features on the parameter server locally or remotely via SSH. 
-<br /> <code class="highlighter-rouge">~$ roslaunch &lt;package_name&gt; &lt;launch_file.launch&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ roslaunch &lt;package_name&gt; &lt;launch_file.launch&gt;</code></p>
   </li>
 </ul>
 
 <p>Example - To run ROS node that navigates the Turtlebot robot manually using inputs from the keyboard and also runs the roscore from within the launch file (basically multiple nodes run from the same launch file). 
-<br /> <code class="highlighter-rouge">~$ roslaunch turtlebot_teleop keyboard_teleop.launch</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ roslaunch turtlebot_teleop keyboard_teleop.launch</code></p>
 
 <ul>
   <li>Run a particular node in the package directly without launch file 
-<br /> <code class="highlighter-rouge">~$ rosrun &lt;package_name&gt; &lt;executable_binary&gt;</code></li>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosrun &lt;package_name&gt; &lt;executable_binary&gt;</code></li>
 </ul>
 
 <p>Example: To run the keyboard_teleop 
-<br /> <code class="highlighter-rouge">~$ rosrun &amp;turtlebot_teleop&gt; &lt;turtlebot_joy&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosrun &amp;turtlebot_teleop&gt; &lt;turtlebot_joy&gt;</code></p>
 
 <h3 id="packages">Packages</h3>
 
@@ -266,15 +266,15 @@ are generally collections of softwares for defined for particular robotic task o
 <ul>
   <li>
     <p>Display the list of packages currently installed 
-<br /> <code class="highlighter-rouge">~$ rospack list</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rospack list</code></p>
   </li>
   <li>
     <p>Find a particular package from the list of packages currently installed 
-<br /> <code class="highlighter-rouge">~$ rospack find &lt;package_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rospack find &lt;package_name&gt;</code></p>
   </li>
   <li>
     <p>Displays the list of packages that take maximum time to crawl and displays the time taken as well. It helps optimize the usage understanding if the location of the package is too deep sub-directory.
-<br /> <code class="highlighter-rouge">~$ rospack profile --length=&lt;number_of_packages&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rospack profile --length=&lt;number_of_packages&gt;</code></p>
   </li>
 </ul>
 
@@ -284,19 +284,19 @@ are generally collections of softwares for defined for particular robotic task o
 <strong>rosbash</strong> is a package with bash/terminal commands and allows for tab-completion and these commands are largely a part of this suite.</p>
 
 <p>*Enter a ROS package 
-<br /> <code class="highlighter-rouge">~$ roscd &lt;package_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ roscd &lt;package_name&gt;</code></p>
 
 <p>*View the contents of a ROS package 
-<br /> <code class="highlighter-rouge">~$ rosls &lt;package_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosls &lt;package_name&gt;</code></p>
 
 <p>*ROS equivalent of pushd to access multiple directories and switch between them seamlessly while also keeping them in the stack 
-<br /> <code class="highlighter-rouge">~$ rospd &lt;package_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rospd &lt;package_name&gt;</code></p>
 
 <p>*List the ROS package directories in the directory stack 
-<br /> <code class="highlighter-rouge">~$ rosd</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosd</code></p>
 
 <p>*Edit any file of a ROS package in the terminal with default vim or other user specified editor 
-<br /> <code class="highlighter-rouge">~$ rosed &lt;package_name&gt; &lt;filename&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosed &lt;package_name&gt; &lt;filename&gt;</code></p>
 
 <h3 id="nodes">Nodes</h3>
 
@@ -306,23 +306,23 @@ Data Exchange Structure - Laser Scanner Node -&gt; Localization Node -&gt; Motio
 <strong>rosnode</strong> is the package that provides command-line interface to investigate and debug the ROS nodes currently running.</p>
 
 <p>*List the current ROS nodes
-<br /> <code class="highlighter-rouge">~$ rosnode list</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosnode list</code></p>
 
 <p>*Obtain information about a ROS node’s publications, subscriptions, services and process ID 
-<br /> <code class="highlighter-rouge">~$ rosnode info &lt;ros_node_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosnode info &lt;ros_node_name&gt;</code></p>
 
 <p>*Obtain information about a ROS node’s publications, subscriptions, services and process ID 
-<br /> <code class="highlighter-rouge">~$ rosnode info &lt;ros_node_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosnode info &lt;ros_node_name&gt;</code></p>
 
 <p>*Kill a ROS node or all nodes
-<br /> <code class="highlighter-rouge">~$ rosnode kill &lt;ros_node_name&gt;</code>
-<br /> <code class="highlighter-rouge">~$ rosnode kill -a</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosnode kill &lt;ros_node_name&gt;</code>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosnode kill -a</code></p>
 
 <p>*Check the connectivity of a ROS node - Returns the time taken to get a reply with the XML RPC(remote procedure call)
-<br /> <code class="highlighter-rouge">~$ rosnode ping &lt;ros_node_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosnode ping &lt;ros_node_name&gt;</code></p>
 
 <p>*Obtain the list of nodes on the particular machine
-<br /> <code class="highlighter-rouge">~$ rosnode machine &lt;machine_address&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosnode machine &lt;machine_address&gt;</code></p>
 
 <h3 id="parameter-server">Parameter Server</h3>
 
@@ -333,33 +333,33 @@ Data Exchange Structure - Laser Scanner Node -&gt; Localization Node -&gt; Motio
 <ul>
   <li>
     <p>Get the list of ROS parameters on the server by name 
-<br /> <code class="highlighter-rouge">~$ rosparam list </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosparam list </code></p>
   </li>
   <li>
     <p>Get the value of a ROS parameter 
-<br /> <code class="highlighter-rouge">~$ rosparam get &lt;parameter_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosparam get &lt;parameter_name&gt; </code></p>
   </li>
   <li>
     <p>Set the value of a ROS parameter on the server 
-<br /> <code class="highlighter-rouge">~$ rosparam set &lt;parameter_name&gt; &lt;parameter_value&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosparam set &lt;parameter_name&gt; &lt;parameter_value&gt; </code></p>
   </li>
   <li>
     <p>Delete a ROS parameter from the server 
-<br /> <code class="highlighter-rouge">~$ rosparam delete &lt;parameter_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosparam delete &lt;parameter_name&gt; </code></p>
   </li>
   <li>
     <p>Dump or download the parameters from the server to a file in the YAML format 
-<br /> <code class="highlighter-rouge">~$ rosparam dump &lt;file_name.yaml&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosparam dump &lt;file_name.yaml&gt; </code></p>
   </li>
   <li>
     <p>Upload the parameters from a YAML file on to server 
-<br /> <code class="highlighter-rouge">~$ rosparam load &lt;file_name.yaml&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosparam load &lt;file_name.yaml&gt;</code></p>
   </li>
 </ul>
 
 <h3 id="messages">Messages</h3>
 
-<p>Fundamental component of the communication setup between nodes is the data. ROS messages are essentially data structures formed out standard primitive data types. For example, pose message has the data structure <code class="highlighter-rouge">(float x, float y, float z)</code> and orientation <code class="highlighter-rouge">(float rw, float rx, float ry, float rz)</code>. ROS allows defining messages composed of a collection of different data types.</p>
+<p>Fundamental component of the communication setup between nodes is the data. ROS messages are essentially data structures formed out standard primitive data types. For example, pose message has the data structure <code class="language-plaintext highlighter-rouge">(float x, float y, float z)</code> and orientation <code class="language-plaintext highlighter-rouge">(float rw, float rx, float ry, float rz)</code>. ROS allows defining messages composed of a collection of different data types.</p>
 
 <p>A detailed list of data types for the messages is found on the ROS Wiki <a href="http://wiki.ros.org/rosmsg">here</a>.
 <strong>rosmsg</strong> is the ROS package that provides support for messages types and service types.</p>
@@ -367,15 +367,15 @@ Data Exchange Structure - Laser Scanner Node -&gt; Localization Node -&gt; Motio
 <ul>
   <li>
     <p>Obtain the details of a ROS message type 
-<br /> <code class="highlighter-rouge">~$ rosmsg show &lt;message_type&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosmsg show &lt;message_type&gt; </code></p>
   </li>
   <li>
     <p>Obtain the list of messages from the current packages and libraries 
-<br /> <code class="highlighter-rouge">~$ rosmsg list </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosmsg list </code></p>
   </li>
   <li>
     <p>Obtain the details of all ROS messages in a package 
-<br /> <code class="highlighter-rouge">~$ rosmsg package &lt;package_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosmsg package &lt;package_name&gt;</code></p>
   </li>
 </ul>
 
@@ -390,35 +390,35 @@ Data Exchange Structure - Laser Scanner Node -&gt; Localization Node -&gt; Motio
 <ul>
   <li>
     <p>List of ROS topics being published/subscribed to currently. 
-<br /> <code class="highlighter-rouge">~$ rostopic list </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic list </code></p>
   </li>
   <li>
     <p>Display the data content of the ROS topic on the terminal 
-<br /> <code class="highlighter-rouge">~$ rostopic echo &lt;topic_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic echo &lt;topic_name&gt; </code></p>
   </li>
   <li>
     <p>Find all topics with a particular message type
-<br /> <code class="highlighter-rouge">~$ rostopic find &lt;message_type&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic find &lt;message_type&gt; </code></p>
   </li>
   <li>
     <p>Display the publishing rate of the topic 
-<br /> <code class="highlighter-rouge">~$ rostopic hz &lt;topic_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic hz &lt;topic_name&gt; </code></p>
   </li>
   <li>
     <p>Display the bandwidth of the topic 
-<br /> <code class="highlighter-rouge">~$ rostopic bw &lt;topic_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic bw &lt;topic_name&gt; </code></p>
   </li>
   <li>
     <p>Obtain information about the topic - publishers, subsribers 
-<br /> <code class="highlighter-rouge">~$ rostopic info &lt;topic_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic info &lt;topic_name&gt; </code></p>
   </li>
   <li>
     <p>Display the contents of the ROS topic on the terminal 
-<br /> <code class="highlighter-rouge">~$ rostopic pub &lt;topic_name&gt; &lt;msg_type&gt; &lt;msg_data&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic pub &lt;topic_name&gt; &lt;msg_type&gt; &lt;msg_data&gt; </code></p>
   </li>
   <li>
     <p>Obtain the message type for the topic 
-<br /> <code class="highlighter-rouge">~$ rostopic type &lt;topic_name&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic type &lt;topic_name&gt;</code></p>
   </li>
 </ul>
 
@@ -433,27 +433,27 @@ Data Exchange Structure - Laser Scanner Node -&gt; Localization Node -&gt; Motio
 <ul>
   <li>
     <p>Call a ROS service from the command line with arguments to be passed 
-<br /> <code class="highlighter-rouge">~$ rosservice call &lt;service_name&gt; &lt;arguments&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosservice call &lt;service_name&gt; &lt;arguments&gt; </code></p>
   </li>
   <li>
     <p>Display the services of a particular type 
-<br /> <code class="highlighter-rouge">~$ rosservice find &lt;service_type&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosservice find &lt;service_type&gt; </code></p>
   </li>
   <li>
     <p>Obtain the list of services 
-<br /> <code class="highlighter-rouge">~$ rosservice list </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosservice list </code></p>
   </li>
   <li>
     <p>Obtain details on a ROS service 
-<br /> <code class="highlighter-rouge">~$ rosservice info &lt;service_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosservice info &lt;service_name&gt; </code></p>
   </li>
   <li>
     <p>Obtain the arguments of a ROS service 
-<br /> <code class="highlighter-rouge">~$ rosservice args &lt;service_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosservice args &lt;service_name&gt; </code></p>
   </li>
   <li>
     <p>Obtain the URI of a ROS service 
-<br /> <code class="highlighter-rouge">~$ rosservice uri &lt;service_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rosservice uri &lt;service_name&gt; </code></p>
   </li>
 </ul>
 
@@ -466,19 +466,19 @@ Data Exchange Structure - Laser Scanner Node -&gt; Localization Node -&gt; Motio
 <ul>
   <li>
     <p>Record information from a topic to a ROS bag 
-<br /> <code class="highlighter-rouge">~$ rostopic record &lt;topic_name&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic record &lt;topic_name&gt; </code></p>
   </li>
   <li>
     <p>Compress the information in a ROS bag to save space 
-<br /> <code class="highlighter-rouge">~$ rostopic compress &lt;rosbag_filename.bag&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic compress &lt;rosbag_filename.bag&gt; </code></p>
   </li>
   <li>
     <p>Publish the contents of a ROS bag onto the topic as per the timestamps from the initial recording 
-<br /> <code class="highlighter-rouge">~$ rostopic play &lt;rosbag_filename.bag&gt; </code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic play &lt;rosbag_filename.bag&gt; </code></p>
   </li>
   <li>
     <p>Check if a ROS bag file shall work on playback 
-<br /> <code class="highlighter-rouge">~$ rostopic check &lt;rosbag_filename.bag&gt;</code></p>
+<br /> <code class="language-plaintext highlighter-rouge">~$ rostopic check &lt;rosbag_filename.bag&gt;</code></p>
   </li>
 </ul>
                 

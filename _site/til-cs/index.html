@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Computer Science | ThatRobotBoy</title>
 
-    <!-- Begin Jekyll SEO tag v2.5.0 -->
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Computer Science | ThatRobotBoy</title>
-<meta name="generator" content="Jekyll v3.8.5" />
+<meta name="generator" content="Jekyll v3.9.0" />
 <meta property="og:title" content="Computer Science" />
 <meta name="author" content="akshay" />
 <meta property="og:locale" content="en_US" />
@@ -20,7 +20,7 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2019-01-22T00:00:00-08:00" />
 <script type="application/ld+json">
-{"description":"I realized that either at work or while surfing the internet; I come across something trending or something I never knew about in the tech-industry. I curiously read about it or use it if needed and then move on and unfortunately forget it over time.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/til-cs/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"datePublished":"2019-01-22T00:00:00-08:00","headline":"Computer Science","dateModified":"2019-01-22T00:00:00-08:00","url":"http://localhost:4000/home/til-cs/","@context":"http://schema.org"}</script>
+{"description":"I realized that either at work or while surfing the internet; I come across something trending or something I never knew about in the tech-industry. I curiously read about it or use it if needed and then move on and unfortunately forget it over time.","headline":"Computer Science","dateModified":"2019-01-22T00:00:00-08:00","datePublished":"2019-01-22T00:00:00-08:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/til-cs/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"author":{"@type":"Person","name":"akshay"},"url":"http://localhost:4000/home/til-cs/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -173,7 +173,7 @@
 
 <p><img src="/home/assets/images/til/til_art.jpg" alt="" /></p>
 
-<h3 id="virtual-destructors-in-c-february-22-2020">Virtual Destructors in C++ <code class="highlighter-rouge">February 22, 2020</code></h3>
+<h3 id="virtual-destructors-in-c-february-22-2020">Virtual Destructors in C++ <code class="language-plaintext highlighter-rouge">February 22, 2020</code></h3>
 
 <p>When a pointer to the base class is used for a derived class object, during the deletion of the object there could be undefined behavior if the base class destructor is NOT virtual. In order to correctly delete the base class as well as the derived class, the base class destructor is defined as virtual. Else, when the pointer to the base class is deleted, only the base class destructor is called while the derived class remains in a bad state causing memory leaks.</p>
 
@@ -181,7 +181,7 @@
 
 <p><strong>Note: Often, there could be a pure virtual destructor and such destructors need to have a body to be acceptable.</strong></p>
 
-<h3 id="semaphores-in-c-january-12-2020">semaphores in C++ <code class="highlighter-rouge">January 12, 2020</code></h3>
+<h3 id="semaphores-in-c-january-12-2020">semaphores in C++ <code class="language-plaintext highlighter-rouge">January 12, 2020</code></h3>
 
 <p>Synchronization features like mutexes/locks and semaphores are kernel level features. A semaphore is a counting and signalling mechanism. It informs threads if a resource it is seeking, that was previously unavailable is now available or not. When multiple items are being managed, a semaphore can have a maximum count value that limits how many signals will to catered to.</p>
 
@@ -189,23 +189,23 @@
 
 <p>Good Read: <a href="https://www.bogotobogo.com/cplusplus/multithreading_pthread.php">Multi-Threading</a></p>
 
-<h3 id="dmesg-january-2-2020">dmesg <code class="highlighter-rouge">January 2, 2020</code></h3>
+<h3 id="dmesg-january-2-2020">dmesg <code class="language-plaintext highlighter-rouge">January 2, 2020</code></h3>
 
 <p>While I have been using for a little over 4 years now, I still can’t the depth of its tools, techniques and uses. <strong>dmesg</strong> is one such tool that prints out the message buffer of the kernel which usually has the data from device managers/drivers.</p>
 
 <p>The command <strong>dmesg</strong> helps maintain a log of messages from device drivers, which may roll away quickly during boot or be supressed during some other activity. It helps track messages regarding compatibility, functionality and more.</p>
 
-<h3 id="condition-variable-in-c-january-9-2020">condition variable in C++ <code class="highlighter-rouge">January 9, 2020</code></h3>
+<h3 id="condition-variable-in-c-january-9-2020">condition variable in C++ <code class="language-plaintext highlighter-rouge">January 9, 2020</code></h3>
 
 <p>C++ is a very efficient language that supports highly flexible and robust multi-threading procedures. C++ provides condition variable, an object that is capable of blocking the callee thread for pre-defined time period or online event.</p>
 
-<p>The condition variable acquires a <code class="highlighter-rouge">unique_lock</code> on the thread and it can only be unlocked when the notification method is called on it from another thread.</p>
+<p>The condition variable acquires a <code class="language-plaintext highlighter-rouge">unique_lock</code> on the thread and it can only be unlocked when the notification method is called on it from another thread.</p>
 
-<p><code class="highlighter-rouge">std::condition_variable cv; // Declaration</code>
-<code class="highlighter-rouge">cv.wait(thread); // Lock the thread</code>
-<code class="highlighter-rouge">cv.notify_all(); // Release the lock</code></p>
+<p><code class="language-plaintext highlighter-rouge">std::condition_variable cv; // Declaration</code>
+<code class="language-plaintext highlighter-rouge">cv.wait(thread); // Lock the thread</code>
+<code class="language-plaintext highlighter-rouge">cv.notify_all(); // Release the lock</code></p>
 
-<h3 id="single-responsibility-principle-january-1-2020">single responsibility principle <code class="highlighter-rouge">January 1, 2020</code></h3>
+<h3 id="single-responsibility-principle-january-1-2020">single responsibility principle <code class="language-plaintext highlighter-rouge">January 1, 2020</code></h3>
 
 <p>Writing clean, extensible, legible and flexible code is quite a challenging task. Collaborative coding is even more difficult and several computer programming principles urge developers to KISS (keep it simple stupid!).</p>
 
@@ -215,7 +215,7 @@
 
 <p>For example, a function <strong>computeSurfaceArea()</strong> should only compute the surface area of a sphere not be updating the cost of painting it as an additional step, even if it is the next logical step. The step of updating the cost should be explicity made where the code really wants it to be done and not hidden. This shall avoid issues with tracking flow of execution and instructions while debugging.</p>
 
-<h3 id="vtables-in-c-december-14-2019">vtables in C++ <code class="highlighter-rouge">December 14, 2019</code></h3>
+<h3 id="vtables-in-c-december-14-2019">vtables in C++ <code class="language-plaintext highlighter-rouge">December 14, 2019</code></h3>
 
 <p>One of the most useful aspects of OOP is polymorphism and allows for inheritance structure to relate functions between the base and derived classes as desired.</p>
 
@@ -229,35 +229,35 @@
 
 <p><strong><a href="">Polymorphism</a> in C++ explains vtables with better examples and in-depth context.</strong></p>
 
-<h3 id="cron-jobs-december-9-2019">cron jobs <code class="highlighter-rouge">December 9, 2019</code></h3>
+<h3 id="cron-jobs-december-9-2019">cron jobs <code class="language-plaintext highlighter-rouge">December 9, 2019</code></h3>
 
 <p>A cron job is a sofware utility to schedule tasks by the clock and save repetitive manual runs. Cron jobs can be used to setup shell scripts or commands for system maintenance, data handling, emails, automated cache handling and many more mundane tasks.</p>
 
-<p>A <code class="highlighter-rouge">crontab</code> is a special cron file with all commands and jobs and related instructions to be automated. A cron daemon is only started at boot and usually never automatically restarted thereafter.</p>
+<p>A <code class="language-plaintext highlighter-rouge">crontab</code> is a special cron file with all commands and jobs and related instructions to be automated. A cron daemon is only started at boot and usually never automatically restarted thereafter.</p>
 
-<p><code class="highlighter-rouge">crontab -e</code> is the command used to edit the crontab configuration file. It provides standard options for scheduling the job by the minute, hour, day, month and day of the week. The cron job configuration also needs the exact command to be executed</p>
+<p><code class="language-plaintext highlighter-rouge">crontab -e</code> is the command used to edit the crontab configuration file. It provides standard options for scheduling the job by the minute, hour, day, month and day of the week. The cron job configuration also needs the exact command to be executed</p>
 
 <p>This command runs the user-defined shell script at the beginning of each hour and could be as simple as setting a reminder to drink water! 
-<code class="highlighter-rouge">0 * * * * /home/cron_job_script/execute.sh</code></p>
+<code class="language-plaintext highlighter-rouge">0 * * * * /home/cron_job_script/execute.sh</code></p>
 
-<h3 id="friend-in-c-november-18-2019">friend in C++ <code class="highlighter-rouge">November 18, 2019</code></h3>
+<h3 id="friend-in-c-november-18-2019">friend in C++ <code class="language-plaintext highlighter-rouge">November 18, 2019</code></h3>
 
-<p>A <code class="highlighter-rouge">friend</code> class in C++ can access the private and protected member variables of a different class. The friend class just needs to be declared in the concerned different class. Similarly, a friend method in C++ can access either protected/private methods or even global methods and use them within the class they are declared in.</p>
+<p>A <code class="language-plaintext highlighter-rouge">friend</code> class in C++ can access the private and protected member variables of a different class. The friend class just needs to be declared in the concerned different class. Similarly, a friend method in C++ can access either protected/private methods or even global methods and use them within the class they are declared in.</p>
 
 <p>A friend can be declared as private or protected or public in the class while the behavior remains unaffected. Friend behavior is neither mutual nor can be inherited. It only establishes access from the class declared in to the class being declared.</p>
 
-<p>However, <code class="highlighter-rouge">friend</code> methods or variables should not be used extensively unless necessary as it defies the purpose of encapsulation in OOP. At the same time, it limits the extent of interaction permitted between two classes.</p>
+<p>However, <code class="language-plaintext highlighter-rouge">friend</code> methods or variables should not be used extensively unless necessary as it defies the purpose of encapsulation in OOP. At the same time, it limits the extent of interaction permitted between two classes.</p>
 
 <p>Declarations: 
-<code class="highlighter-rouge">friend class Alpha;</code>
-<code class="highlighter-rouge">friend int Alpha::search();</code></p>
+<code class="language-plaintext highlighter-rouge">friend class Alpha;</code>
+<code class="language-plaintext highlighter-rouge">friend int Alpha::search();</code></p>
 
-<h3 id="dpkg-november-17-2019">dpkg <code class="highlighter-rouge">November 17, 2019</code></h3>
+<h3 id="dpkg-november-17-2019">dpkg <code class="language-plaintext highlighter-rouge">November 17, 2019</code></h3>
 
 <p><strong>dpkg</strong> is a package manager for Debian-based systems(Linux-based open source softwares). It is a low level tool which can only install and uninstall packages asked explicitly. It is not intelligent enough to run automatic updates or manage dependencies. <strong>dpkg</strong> is very simple to use and useful for terminal based interaction with packages. Advanced Package Tool( <strong>apt</strong>) is the command line tool that uses <strong>dpkg</strong> as the backend. It is advanced in the sense that it can find the dependencies of the package being installed and uses <strong>dpkg</strong> to install them automatically, as well.</p>
 
-<p>The <code class="highlighter-rouge">-i</code> argument is used to install packages, either from compressed <strong>zip</strong> files or <strong>.deb</strong> 
-For example: <code class="highlighter-rouge">dpkg -i &lt;software.&gt;deb</code></p>
+<p>The <code class="language-plaintext highlighter-rouge">-i</code> argument is used to install packages, either from compressed <strong>zip</strong> files or <strong>.deb</strong> 
+For example: <code class="language-plaintext highlighter-rouge">dpkg -i &lt;software.&gt;deb</code></p>
 
 <p>The <a href="https://help.ubuntu.com/lts/serverguide/dpkg.html">Ubuntu Help Website</a> provides very comprehensive information about <strong>dpkg</strong> and more command line options can be looked up using <strong>man dpkg</strong> command.</p>
 
