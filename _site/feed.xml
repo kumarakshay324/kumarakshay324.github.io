@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/home/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/home/" rel="alternate" type="text/html" /><updated>2020-11-26T12:50:51-08:00</updated><id>http://localhost:4000/home/feed.xml</id><title type="html">ThatRobotBoy</title><subtitle>Portfolio Website for Akshay - A colllection of his projects, blogs and other stories</subtitle><entry><title type="html">Baxter Kinematics &amp;amp; Dynamics Library</title><link href="http://localhost:4000/home/baxter/" rel="alternate" type="text/html" title="Baxter Kinematics &amp; Dynamics Library" /><published>2020-11-24T00:00:00-08:00</published><updated>2020-11-24T00:00:00-08:00</updated><id>http://localhost:4000/home/baxter</id><content type="html" xml:base="http://localhost:4000/home/baxter/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;To develop a complete Kinematics and Dynamics Library for the 7-DOF arm of the Baxter robot. The libray includes solutions to Forward and Inverse Position and Velocity Kinematics and the M, C and G matrices required to build the dynamical models of manipulator arms along with workspace analysis and building blocks for null-space optimization&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;I worked on Cyclic Coordinate Descent Inverse Kinematics Solution for the robot and computation of the Mass, Coriolis Effect and Gravity matrix via the Euler-Lagrangian methodology using the Uicker-Kahn formulation as well as the standard joint-angular velocity formulation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Real-time feasible Inverse Kinematics solutions satisfying joint-angle limits&lt;/li&gt;
+  &lt;li&gt;Developmemt of a library with direct interface to the Baxter robot&lt;/li&gt;
+  &lt;li&gt;Determination of the almost “half-a-million” coefficients of the M, C and G matrices&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/mykdl/final_flowchart.jpeg&quot; alt=&quot;FLow-Chart showing the modules of the library&quot; /&gt; &lt;br /&gt; &lt;em&gt;Flow-Chart showing the modules of the library&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The software library was developed in Python 2 with a Object-Oriented setup that has modular sections for the various applications. The flowchart shown above gives a clear view of the various dependencies within the library and how indvidual modules contribute towards different solutions for the manipulator.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Jacobian Pseudo-Inverse&lt;/strong&gt; technique for Inverse Kinematics was desgined with random restarts when it hit any joint limit constraints while looking for a solution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Cyclic Coordinate Descent&lt;/strong&gt; algorithm iteratively tries to make the end-effector first converge onto a sphere with radius equaling the distance between the base of the manipulator and the end-effector and thereafter making the same converge onto the target position. However, it only solves for the position and not the orientation of the target pose.&lt;/p&gt;
+
+&lt;p&gt;The &lt;strong&gt;Euler-Lagrangian&lt;/strong&gt; method to derive the dynamical model of a robotic manipulator incorporates the computation of Kinetic and Potential energies of the system parameterized by the joint angles, i.e. the orientation of the arm. Thereafter, computation of the Lagrangian and its derivatives with time and joint variables results in the required dynamic model.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/mykdl/fpk.png&quot; alt=&quot;Forward Position Kinematics - Implementation on real robot model and skeleton model in simulation&quot; /&gt; &lt;br /&gt; &lt;em&gt;Forward Position Kinematics - Implementation on real robot model and skeleton model in simulation&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The Forward Position Kinematics solution had very comparative performance with the PyKDL package developed by the makers of Baxter, Rethink Robotics&lt;/li&gt;
+  &lt;li&gt;The Cyclic Coordinate Descent algorithm was able to solve for any given position within ~3 seconds for any random configuration but almost real-time solutions for way-points along a given path&lt;/li&gt;
+  &lt;li&gt;Pseduo-Inverse IK solutions along a given way-point performed well in real-time&lt;/li&gt;
+  &lt;li&gt;The developed library was successfully tested on a skeletal model of the robot arm as well as the actual Baxter robot in Gazebo simulation environment using the standard ROS interface&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/Wy0hyKiDvaw&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;em&gt;Cyclic Coordinate Descent Inverse Kinematics Solution&lt;/em&gt;&lt;/p&gt;
+
+&lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/E54lb_UORLA&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;em&gt;Pseduo-Inverse Inverse Kinematics Solution&lt;/em&gt;&lt;/p&gt;
+
+&lt;iframe width=&quot;768&quot; height=&quot;434&quot; src=&quot;https://www.youtube.com/embed/PPKZ8XThTAk&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;em&gt;IK solution implemented on Baxter in Gazebo simulation&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/baxter.png" /></entry><entry><title type="html">Surface Electromyography Signal Extraction</title><link href="http://localhost:4000/home/semg/" rel="alternate" type="text/html" title="Surface Electromyography Signal Extraction" /><published>2020-11-22T00:00:00-08:00</published><updated>2020-11-22T00:00:00-08:00</updated><id>http://localhost:4000/home/semg</id><content type="html" xml:base="http://localhost:4000/home/semg/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;Electromyography refers to the procedure of extracting electrical signals from the human nervous system that flow through the various parts of the body and are intended to carry the information from the brain to the site of action. The objective of the work is to design a robust setup for efficient and accurate extraction of surface electromyographic signals that can be used to drive wearable devices as per human intent.&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Data logging was done over Serial communication with a baud-rate of 57600 to collect over 2 million samples over 30 seconds of logging&lt;/li&gt;
+  &lt;li&gt;Post processing techniques included Principle Component Analysis (PCA), data re-filtering and data gap filling&lt;/li&gt;
+  &lt;li&gt;Hardware signal were processed using high gain filter and noise attenuation circuits - Advancer Technologies Muscle Sensor V3&lt;/li&gt;
+  &lt;li&gt;GUI was capable of recording and analyzing 4 channels of electrodes simultaneously&lt;/li&gt;
+  &lt;li&gt;The software could provide real-time data across the globe&lt;/li&gt;
+  &lt;li&gt;GUI was developed over an open source platform - Processing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/e.png&quot; alt=&quot;Flow Chart&quot; /&gt; &lt;br /&gt; &lt;em&gt;Flow Chart&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;EMG signal extraction was performed using a dedicated electronic hardware. The hardware was supposed to extract the signals from the human skin using Ag-Cl surface electrodes. These signals are processed for amplification, noise reduction and filtering in order to be useful enough for study.&lt;/p&gt;
+
+&lt;p&gt;These signals were sent to an indigenously developed software for signal interpretation, data logging and analysis in real time.
+The pre-processing was data extraction involved skin preparation and electrode placement determination. The former was done by using Nuprep abrasive gel to get rid of the dead skin cells at the electrode site. To stregthen weak signals, Ten20 conductive paste was used.&lt;/p&gt;
+
+&lt;p&gt;Determing the correct muscles for electrode site was challenging as it is done solely by feel. Two electrodes are placed 0.5-1 inch apart at the terminals of the concerned muscle while the third electrode was placed at a neutral location. The resultant signal was the sum of two absolute differences between the MUAPs measured between the individual terminal electrodes with respect to the neutral electrode.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Efficiently extracted and recorded signals for more than 15 patients suffering from osteo-arthritis and analysed the results.&lt;/li&gt;
+  &lt;li&gt;Granted patent for the innovative design of cheap signal extraction setup&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/bb.jpg&quot; alt=&quot;Raw Signals For Right Thigh Muscles&quot; /&gt; &lt;br /&gt; &lt;em&gt;Raw Signals For Right Thigh Muscles&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/aa.png&quot; alt=&quot;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&quot; /&gt; &lt;br /&gt; &lt;em&gt;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/ui.png&quot; alt=&quot;UI for the Data Logger&quot; /&gt; &lt;br /&gt; &lt;em&gt;UI for the Data Logger&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/semg.jpg" /></entry><entry><title type="html">Motion Planning for Dual-Arm Manipulator</title><link href="http://localhost:4000/home/motion-planning/" rel="alternate" type="text/html" title="Motion Planning for Dual-Arm Manipulator" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/home/motion-planning</id><content type="html" xml:base="http://localhost:4000/home/motion-planning/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;Extracting trajectories for desired motion and simulating them on ROS MoveIt platform before implementation on the Yashkawa SDA10F dual-arm robot&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MoveIt motion planning framework for ROS was used for the project&lt;/li&gt;
+  &lt;li&gt;OMPL library (available in MoveIt) was used with RRT* and RRTConnect being the primary solvers&lt;/li&gt;
+  &lt;li&gt;2-finger Robotiq grippers were attached in URDF for grasping tasks&lt;/li&gt;
+  &lt;li&gt;3D Kinect Scan using Ubuntu libraries like libfreenect and OpenNI as well as Kinect SDK for Windows was used to create 3D model of real-life obstacles in simulation&lt;/li&gt;
+  &lt;li&gt;Trajectory was extracted using MoveIt commander and fed to controller for real-life motion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The project initially started with getting hold of the basic demo ROS package for the SDA10F dual-arm robot provided by Motoman. Further exploration made us understand that we had to make custom changes in the model of the robot and creating a similar ROS package needed the MoveIt Setup Assistant which was relatively easy after stitching together the components of the URDF. Further, making the robot traverse to random-valid positions generated by MoveIt was easy and extracting the time-distributed values of angular position, velocity and acceleration for all the joints of the robot was simple.&lt;/p&gt;
+
+&lt;p&gt;However, the challenge was to feed custom start and end locations and make MoveIt use its inbuilt feature to decide the best planning algorithm, derive trajectories for the traversal and execute the best sorted one. Owing to the erroneous model of the robot, task-space custom-fed start and end positions couldn’t derive trajectories but the same was possible in the joint space.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Initial simulation of robot’s demo package achieved using Rviz&lt;/li&gt;
+  &lt;li&gt;Custom robot model for MoveIt using the setup assistant and defining special links was achieved&lt;/li&gt;
+  &lt;li&gt;Manipulation of the robot in joint space achieved and simulated in Rviz&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>akshay</name></author><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/dualarm.jpg" /></entry><entry><title type="html">Control System Design for Unmanned Ground Vehicle</title><link href="http://localhost:4000/home/ugv/" rel="alternate" type="text/html" title="Control System Design for Unmanned Ground Vehicle" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/home/ugv</id><content type="html" xml:base="http://localhost:4000/home/ugv/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;The objective was to design the control system for an unmanned ground vehicle. The control system was supposed to obtain the input sequences for a DC motor powered robot using its odometry.&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The complete control system was designed on MATLAB-SIMULINK using the transfer functions obtained from the intrinsic characteristics of the motors&lt;/li&gt;
+  &lt;li&gt;The Control Systems Library of SIMULINK was used for the various control blocks&lt;/li&gt;
+  &lt;li&gt;The system was simulated on a pre-defined map where it was supposed to traverse along the same without collisions till the target&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The sample UGV had differential drive mechanism for motion with the two rear wheels powered individually and the front wheel was the castor wheel. The rear wheels had series DC motors whose speed was regulated via armature-voltage controlled. By virtue of the back emf, the motors had a closed loop control.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The simulation of the control system was successfully performed&lt;/li&gt;
+  &lt;li&gt;The system showed stable closed loop operation with easy to control feedback signals&lt;/li&gt;
+  &lt;li&gt;Awarded full score for the project work under the subject - Modern Control Theory &amp;amp; Designing Techniques&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/ugv/gallery.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/ugv.jpg" /></entry><entry><title type="html">Fuzzy Logic Controller For Robot Navigation</title><link href="http://localhost:4000/home/fuzzy-logic-controller/" rel="alternate" type="text/html" title="Fuzzy Logic Controller For Robot Navigation" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/home/fuzzy-logic-controller</id><content type="html" xml:base="http://localhost:4000/home/fuzzy-logic-controller/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;Design of a Fuzzy Logic Controller (FLC) for mobile robot navigation in an unknown, static or dynamic envinronments using the Tracking FLC and Obstacle Avoidance FLC and implementation of the same on TurtleBot2 robot.&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Accessing stereovision point-cloud data and laserscan data&lt;/li&gt;
+  &lt;li&gt;Defining membership functions for Obstacle Avoidance FLC and Tracking FLC inputs - distance between the robot and the target, distance between the robot and obstacle and the angular presence of the same&lt;/li&gt;
+  &lt;li&gt;Fuzzy Inference System design and defuzzification techniques&lt;/li&gt;
+  &lt;li&gt;Design of If-Else fuzzy rules for OAFLC and TFLC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/fuzzy/fis.png&quot; alt=&quot;Fuzzy Inference System - Controller Design&quot; /&gt; &lt;br /&gt; &lt;em&gt;Fuzzy Inference System - Controller Design&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/fuzzy/mem.png&quot; alt=&quot;Membership Function for TFLC - Distance between robot and target&quot; /&gt; &lt;br /&gt; &lt;em&gt;Membership Function for TFLC - Distance between robot and target&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The Takagi-Sugeno-Kang fuzzy inference technique and the Centroid defuzzification methods are used to implement our proposed controller&lt;/p&gt;
+
+&lt;p&gt;The TSK approach computes the output of the If-Else rules as a linear expression made up of weighted conditional components. Elaborately, the FIS setup processes all If-Else conditional statements with the weights generated on the basis of the membership functions and computes a new weight for execution of the condition&lt;/p&gt;
+
+&lt;p&gt;The Centroid defuzzification process computes a normalized weight distribution for conditions and thereafter their weighted sum to generate final numerical output values&lt;/p&gt;
+
+&lt;p&gt;The Gazebo simulation environment was used with a customized design of the world cluttered with obstacles&lt;/p&gt;
+
+&lt;p&gt;Weighted behavior fusion for both FLCs to obtain final robot commands.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/fuzzy/fusion.jpeg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt; &lt;em&gt;Behavior Fusion&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The robot was successfully able to navigate through the environment and avoid obstacles enroute reaching the target.&lt;/li&gt;
+  &lt;li&gt;The controller was tested on several terminal states as well as environments&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;iframe width=&quot;768&quot; height=&quot;432&quot; src=&quot;https://www.youtube.com/embed/GUEN4Orpb2A&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;iframe width=&quot;768&quot; height=&quot;432&quot; src=&quot;https://www.youtube.com/embed/4fj4q-swg0U&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>akshay</name></author><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/turtlebot.png" /></entry><entry><title type="html">Geofencing-based Rail Crossing Alert System</title><link href="http://localhost:4000/home/rail-alert/" rel="alternate" type="text/html" title="Geofencing-based Rail Crossing Alert System" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/home/rail-alert</id><content type="html" xml:base="http://localhost:4000/home/rail-alert/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;Building a system capable of designing a virtual perimeter-geofence around unmanned rail-road crossovers to prevent mishaps.&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Two on-board GPS to ascertain the correct current location of the moving vehicle&lt;/li&gt;
+  &lt;li&gt;Option to build geofence using co-ordinates that are either pre-fed or dynamically updated over the internet, for all the rail-road crossovers in the country&lt;/li&gt;
+  &lt;li&gt;Low power bluetooth supported system for instant update on new geofences&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/geofence/d.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;
+&lt;img src=&quot;/home/assets/images/geofence/c.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The system was designed to be mounted in vehicles and could initiate a series of warnings if in case the vehicle moves nearby any rail-road crossover. The system helped avert any inappropriate attempt at crossing the junction when there are chances of a train to cross at the same time. The setup drew several layers of concentric circles/polygons that served as multiple levels of perimeter breach. The on-board GPS from the vehicle checked for such breaches and initiated control measures depending upon the intensity of breach. The corrective measures included verbal warning, speed reduction and automatic vehicle lockdown among others.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Published a patent for the innovative technology&lt;/li&gt;
+  &lt;li&gt;The system current is being implemented into use by the North-Eastern Railways, a Government of India undertaking.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/geofence/combined.png&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/geofence.jpg" /></entry><entry><title type="html">Robot-Robot Object Handover Using Reinforcement Learning</title><link href="http://localhost:4000/home/rl/" rel="alternate" type="text/html" title="Robot-Robot Object Handover Using Reinforcement Learning" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/home/rl</id><content type="html" xml:base="http://localhost:4000/home/rl/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;Achieve mid-air robot to robot object transfer and placement at target location via Deep Reinforcement Learning using a single RL agent that drives the two manipulator arms.&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Phantom X Pincher manipulator arms were used for simulation&lt;/li&gt;
+  &lt;li&gt;Deep Q-Learning was used to solve the problem of large Q-tables that native Q-Learning can’t deal with&lt;/li&gt;
+  &lt;li&gt;Experience Replay with 128 sample experiences from memory of 3000 was used to train the DQN agent&lt;/li&gt;
+  &lt;li&gt;To prevent random sampling from skipping over important events which must be learned as soon as they happen, our training mini-batch composed of 10 recent and 118 random instances from memory&lt;/li&gt;
+  &lt;li&gt;Taking the best action (with marginally higher Q-value) resulted in a single robot acting over and over again while the next best action was neglected&lt;/li&gt;
+  &lt;li&gt;So, top two actions were taken at every time step to bring both robots into action.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;Our choice of simulator is V-REP by Coppelia Robotics to implement our experiment. V-REP’s Python remote API client provides programmatic access to the simulator. Keras provides a convenient way to design complex neural networks easily. We used Keras with TensorFlow as the backend. We developed our own wrapper around V-REP’s Python Remote API functions called vreppy which provides a simple interface between Python codes and V-REP. Using vreppy, we can load scenes, robot models, access joints, start simulations and more&lt;/p&gt;
+
+&lt;p&gt;The two PhantomX Pincher manipulators together have 10 active joints in all. Considering two actions for each joint and a do - nothing action, we end up with a total of 21 actions. Our 21-dimensional action space is discrete, with a discretization of 4◦ for revolute joints. We build our Markov state as a combination of 10 joint values and 3 object coordinates, resulting in a 13-dimensional state space. Using a DQN allows us to have a continuous state space, which can account for environment noise and limitations of simulation environment.&lt;/p&gt;
+
+&lt;p&gt;We use Deep Q Network (DQN) for our RL agent as this allows a continuous state space and a discrete action space which fits perfectly with our setup. Our neural network comprises of 4 hidden layers (32, 64, 64, 32) with a dropout of 0.15 on each layer and a ReLU activation for each layer. We use an Adam optimizer with a learning rate of 0.0005 and Mean Squared Error (MSE) as the loss function.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Custom setup of the V-REP scene using own wrapper was achieved&lt;/li&gt;
+  &lt;li&gt;Subtask 1: One manipulator achieving the task of placing the object to desired location without the second one was done&lt;/li&gt;
+  &lt;li&gt;Subtask 2: Mid-air object transfer was almost achieved with some errors due to the limitations of computation power&lt;/li&gt;
+  &lt;li&gt;Complete task where the robot achieves the two subtasks together is underway&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;iframe width=&quot;840&quot; height=&quot;472&quot; src=&quot;https://www.youtube.com/embed/te6rLAuGVdQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/handover/a.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/handover.png" /></entry><entry><title type="html">Human Motion Mimicking Robot Arm</title><link href="http://localhost:4000/home/roboarm/" rel="alternate" type="text/html" title="Human Motion Mimicking Robot Arm" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/home/roboarm</id><content type="html" xml:base="http://localhost:4000/home/roboarm/">&lt;h3 id=&quot;about-the-event&quot;&gt;About The Event&lt;/h3&gt;
+
+&lt;p&gt;The event Tech-Expo was a student innovation contest organised at MNIT JAIPUR during its anual Techno-Cultural Fest - BLitzschalg ‘14. The objective was to propose an engineering solution to any existing world problem or assist the same.&lt;/p&gt;
+
+&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;Building a robotic arm capable of replicating the motion of human arm using a sensor powered pair of gloves.&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Used adaptive local minima and maxima algorithm to map flex sensor and artifical arm motion that accounted for the erratic nature of the flex sensor&lt;/li&gt;
+  &lt;li&gt;2.2” Flex sensors used for sensing the movement of the fingers&lt;/li&gt;
+  &lt;li&gt;Low torque servo motors for actuation of the fingers of the artificial robotic arm&lt;/li&gt;
+  &lt;li&gt;Setup has 15 degrees of freedom with all the 3 joints of an individual finger steered by a single actuator using wire for power transmission&lt;/li&gt;
+  &lt;li&gt;Processing done via Arduino micro-controller&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The arm was designed just as a human arm with fingers and the palm. The fingers were powered using low power servo motors and had an actuated wrist as well. The arm was controlled using a glove with flex sensors that could map the motion of the finger to that of the motion of the fingers of the artificial robotic arm using a micro-controller based decision-making system.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The setup had mediocre efficiency and performance&lt;/li&gt;
+  &lt;li&gt;Won the runners up prize for our innovative Robotic Arm in Tech-Expo ‘14 as a freshman&lt;/li&gt;
+  &lt;li&gt;Renovated the design with better 3D printed parts for efficient and better performance&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/roboarm/all.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="undergrad" /><summary type="html">About The Event</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/roboarm.jpg" /></entry><entry><title type="html">Haptic Rehabilitation Device Using Arm Stroke Rehabilitation</title><link href="http://localhost:4000/home/haptic/" rel="alternate" type="text/html" title="Haptic Rehabilitation Device Using Arm Stroke Rehabilitation" /><published>2019-11-27T00:00:00-08:00</published><updated>2019-11-27T00:00:00-08:00</updated><id>http://localhost:4000/home/haptic</id><content type="html" xml:base="http://localhost:4000/home/haptic/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;To build two robotic manipulators that work as end-effector type rehabilitation device capable of aiding upper body stroke patients to regain motion&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;I specifically worked on DMP based formulation of the robot path and conversion of the same from task-space to joint space trajectory&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Vibrational feedback enabled end-effector gripper for haptic intimation&lt;/li&gt;
+  &lt;li&gt;Motion Capture was used to record regular exercises&lt;/li&gt;
+  &lt;li&gt;Dynamic Movement Primitives were used to formulate the trajectory for generalization&lt;/li&gt;
+  &lt;li&gt;Motion was interfaced with a two-paddle Pong game to make the exercises more interactive&lt;/li&gt;
+  &lt;li&gt;Excercise action trajectories for the wrist for shoulder abduction/rotation and elbow flexion were translated on to the rehabilation devices&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The model was made large enough to cover considerable 3D space for each exercise to be possible. Electronics used in the project included Nucleo 144 board for processing, 12-bit absolute magnetic encoder to sense joint position and velocity, 10 kgs payload load-cells at each joints to measure the torque and 22 kg-cm servo motors. Two motors were used at each joint to provide extra torque that could actually carry the stroke patient’s arm around.&lt;/p&gt;
+
+&lt;p&gt;Software part of the project, basically has two modes of operation for arms based on the stage of recovery. First is user control mode, i.e with compliant control in this mode the patient can play the pong game , this mode can be used after significant recovery is done. Second is follow path mode, in which the arm is provided with predefined path, so it basically moves the patient’s arm so the joints can get some recovery this mode can be used in the early stage of recovery. This uses the DMP generated trajectories. The other sections included developing Compliant Controller, a gravity compensation system and implementing the vibrational feedback in the in-house developed game.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Though slightly erroneous, satisfactory motion capture data was extracted for several upper body rehabilitation exercises&lt;/li&gt;
+  &lt;li&gt;DMP was successfully implemented in simulation as well as on the real robot&lt;/li&gt;
+  &lt;li&gt;Compliance control as well as gravity compensation was achieved&lt;/li&gt;
+  &lt;li&gt;Pong game with haptic feedback was achieved as well&lt;/li&gt;
+  &lt;li&gt;Non-constrained IK solvers, low communication speed, inefficient PID tuning and noisy sensors are the prominent current limitations among others&lt;/li&gt;
+  &lt;li&gt;Proof-of-concept working model was successfully achieved&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>akshay</name></author><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/haptic.jpg" /></entry><entry><title type="html">Learning From Demonstration Using DMPs</title><link href="http://localhost:4000/home/lfd/" rel="alternate" type="text/html" title="Learning From Demonstration Using DMPs" /><published>2019-11-26T00:00:00-08:00</published><updated>2019-11-26T00:00:00-08:00</updated><id>http://localhost:4000/home/lfd</id><content type="html" xml:base="http://localhost:4000/home/lfd/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+
+&lt;p&gt;To develop a &lt;strong&gt;Learning from Demonstration&lt;/strong&gt; framework using Dynamic Movement Primitives for the 5-DOF Kuka YouBot manipulator arm in V-REP simulation environment&lt;/p&gt;
+
+&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Giving demonstrations to the manipulator in task space and conducting learning experiments in joint-space&lt;/li&gt;
+  &lt;li&gt;Understanding scope of temporal and spatial scaling and how it reflects in the task space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/lfd_flow.png&quot; alt=&quot;Data FLow-Chart&quot; /&gt; &lt;br /&gt; &lt;em&gt;Data Flow-Chart&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The complete environment was setup in V-REP and Python using its Remote-API interface with Python. The demonstrations could be fed to the simulation model in task-space using a gaming controller that uses ROS based Inverse Kinematics service. The training was done in joint space considering the variations at each joint level over time. Several combinations for the number of Gaussian basis functions were tested and nfs = 150 gave most reliable results&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/dmp_flow.png&quot; alt=&quot;Dynamic Movement Primitive Training pipeline&quot; /&gt; &lt;br /&gt; &lt;em&gt;Dynamic Movement Primitive Training pipeline&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The setup was successfully trained successfully for a given demonstration&lt;/li&gt;
+  &lt;li&gt;Testing on changed terminal states and temporal scaling requirements worked fairly well. Spatial scaling was not tried to avoid reaching joint limits for the robot&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/learned.png&quot; alt=&quot;Initially learned DMP trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Initially learned DMP trajectory&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/changed_terminal.png&quot; alt=&quot;Testing for changed start and end positions for all the joints&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed start and end positions for all the joints&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/temp_terminal.png&quot; alt=&quot;Testing for changed terminal states and temporal scaling (doubled time-span)&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed terminal states and temporal scaling (doubled time-span)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/weights.png&quot; alt=&quot;Snippet of the various parameters generated in the learned trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Snippet of the various parameters generated in the learned trajectory&lt;/em&gt;&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/D7gGC7onx2g&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;em&gt;Changed Terminal States&lt;/em&gt;&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/jUWe7IzsP7M&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;em&gt;Temporal Scaling - Twice Slow&lt;/em&gt;&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/pJVwLNNWdy8&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;em&gt;DMP - Changed Terminal states as well as Temporal Scaling&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/youbot.jpg" /></entry></feed>

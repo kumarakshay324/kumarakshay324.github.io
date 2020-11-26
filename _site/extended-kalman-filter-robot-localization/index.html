@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Extended Kalman Filters for Robot Localization | ThatRobotBoy</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Extended Kalman Filters for Robot Localization | ThatRobotBoy</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Extended Kalman Filters for Robot Localization" />
+<meta name="author" content="akshay" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Bayesian methods discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the various steps involved in the process of state-estimation by using the action and the model of the system." />
+<meta property="og:description" content="Bayesian methods discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the various steps involved in the process of state-estimation by using the action and the model of the system." />
+<link rel="canonical" href="http://localhost:4000/home/extended-kalman-filter-robot-localization/" />
+<meta property="og:url" content="http://localhost:4000/home/extended-kalman-filter-robot-localization/" />
+<meta property="og:site_name" content="ThatRobotBoy" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-30T00:00:00-08:00" />
+<script type="application/ld+json">
+{"description":"Bayesian methods discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the various steps involved in the process of state-estimation by using the action and the model of the system.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/extended-kalman-filter-robot-localization/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"datePublished":"2019-01-30T00:00:00-08:00","headline":"Extended Kalman Filters for Robot Localization","dateModified":"2019-01-30T00:00:00-08:00","url":"http://localhost:4000/home/extended-kalman-filter-robot-localization/","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/home/assets/images/favicon.ico">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,400i,700" rel="stylesheet">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/home/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/home/assets/css/theme.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+
+
+</head>
+
+<body class="">
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-indigo" href="/home/index.html"><strong>ThatRobotBoy</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+<a class="nav-link" href="/home/index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/author-akshay.html">About Me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-white" href="/home/projects.html">Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/publications.html">Publications</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/skills.html">Skills</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
+</li>
+<!-- <li class="nav-item">
+<a class="nav-link" href="/home/contact.html">Contact</a>
+</li> -->
+
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/home/categories.html#robotics">robotics</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h2 class="display-4 mb-4 article-headline">Extended Kalman Filters for Robot Localization</h2>
+					<div class="d-flex align-items-center">
+						<!-- <small class="ml-3"> Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span> -->
+                            <span class="text-muted d-block mt-1">Jan 30, 2019 · <span class="reading-time">
+  
+  
+    5 mins read
+  
+</span>
+    </span>
+						<!-- </small> -->
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_linkedin"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_reddit"></a>
+						<a class="a2a_button_twitter"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8 " style="text-align: justify;">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p>Bayesian methods discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the various steps involved in the process of state-estimation by using the action and the model of the system.</p>
+
+<p>The Kalman filters family is used for linear as well as non-linear models with Gaussian noise distribution assumption. This family of filters is most widely used for non-critical tasks where several assumptions and relaxed approximations can be used during noise or system modeling. While Kalman filter works well for linear models, the Extended Kalman filter is capable of working on non-linear models by the potential use of linearization of the models.</p>
+
+<p>This article is a walkthrough of the application of the Extended Kalman Filter for robot localization. The content is primarily derived from the excellent tutorial SLAM for Dummies by Søren Riisgaard and Morten Rufus Blas.</p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>The Extended Kalman Filter is the go-to algorithm for state estimation for non-linear models with well-defined transition models. It works on non-linear state transition and observation models while assuming the process and observation noise both to be multivariate Gaussians.</p>
+
+<p>Robot localization is the process of finding the robot’s pose(position and orientation) with respect to a given map. Given the stochasticity in robot motion, sensors, and environment interaction, localization is a very sophisticated task. EKF is largely deployed in SLAM algorithms to use the odometry information and the landmarks in the environment for localization. The landmarks are represented as point objects with position (xl, yl) as the cartesian position coordinates.</p>
+
+<h3 id="representation-of-the-different-components-of-localization">Representation of the different components of localization</h3>
+<p>The EKF technique uses feature extraction, landmarks generation, data association, odometry, and landmark representation and sensor data concepts. Here is a glance at them individually after which, the setup should be ready to implement EKF.</p>
+
+<ul>
+  <li>
+    <p>Sensor Data: The laser scanner or LiDAR is used here to obtain information about the world. The laser scan gives the range (distance between the target and the sensor) and the bearing (alignment of the corresponding line of sight for the measurement). It is usually represented as [range, bearing] and the bearing value is basically a multiple of the angular resolution of the scanner.</p>
+  </li>
+  <li>
+    <p>Odometry: Odometry data uses the robot’s initial pose, motion information from the wheel encoders(over a finite time span) and the robot kinematic model to predict the robot’s new pose. It may also use the control input or the data from an onboard IMU sensor for the same.</p>
+  </li>
+  <li>
+    <p>Landmarks: Landmarks are those distinct features in the environment that can be used to get a sense of the robot’s pose in the environment. These are essentially re-observable features like the edge of the walls or furniture in the environment, patterns on the walls and more. Landmarks should essentially be re-observable from different locations in the environment, distinguishable from each other, ideally stationary and enough in quantity to create a stable map covering the complete environment.</p>
+  </li>
+  <li>Landmark Extraction: Given that we are using the laser scan data to extract the landmarks in the environment, it is important to define what features we are looking for and expecting. Laser scans give the range and the bearing information over the field of view which is used in primarily two ways to determine landmarks.</li>
+  <li>
+    <p>If the difference in range values for two consecutive or very closely positioned readings is larger than a threshold, it suggests the presence of a small/point obstruction, which is called a spike landmark. While it is easy to compute, it is prone to errors due to sensor anomalies and not feasible for surroundings with smooth curvature.</p>
+  </li>
+  <li>Random Sampling Consensus (RANSAC) is a more sophisticated technique used to determine patterns and curvature of the surroundings. For RANSAC, the sensor readings are converted from polar coordinates (range, bearing) to cartesian coordinates (x, y) and then; S points are randomly sampled from these and the least-squares approximation is used to fit a line on these S points. Thereafter, the proximity of the points to this line is obtained and if there is a high consensus(above a set threshold) of points close to this line, it is probably a landmark( maybe a wall), and a better fit is found for all these consensus points.</li>
+</ul>
+
+<p>This best fit line is a landmark and the point on this line closest on the robot, is an equivalent point landmark.</p>
+
+<ul>
+  <li>Data Association: After landmarks have been extracted from the sensor readings, the most crucial step is to identify if the current landmark has already been observed or is a new one. It is crucial to associate the landmark correctly to avoid erratic beliefs in robot’s pose. A new landmark is compared against all existing landmarks in the database using the neared-neighbor technique and if their proximity is within the error ellipse, they are essentially the same landmark that has been reobserved.</li>
+</ul>
+
+<h3 id="main-components-of-ekf-localization">Main components of EKF localization</h3>
+
+<p>EKF localization has three significant steps; state estimate prediction, state estimate update, and addition of landmarks. While there are several intermediate steps, these three steps are the highlight of the complete state estimation cycle.</p>
+
+<ul>
+  <li>Prediction: Estimate the current state using the information from the odometry and/or the IMU. It is considering the input to the robot and the model-based expected/observed motion to predict the robot’s current state.</li>
+</ul>
+
+<p>New pose: (x,y) –&gt;(dx, dy) (x + dx, y + dy)</p>
+
+<ul>
+  <li>Update: Use the information from the landmarks to update the state estimate. This involves several intermediate steps.</li>
+</ul>
+
+<p>When the sensors observe the world, feature extraction techniques are employed to determine if there are landmarks in the surrounding. Using data association techniques, observed landmarks are compared to existing landmarks. If a match is found, the difference in positions of the landmarks (position prediction based on the robot’s pose prediction against position observed by the sensing system) acts as the innovation component. The innovation is used to update the robot pose estimate.</p>
+
+<p>For re-observed landmarks, this step also updates the belief in those landmarks and updates their uncertainty matrices defined later.</p>
+
+<ul>
+  <li>Landmark Addition: Based on observations in the previous step, if the landmark observed does not match any old landmark and is completely new, it is added to the database of existing landmarks.</li>
+</ul>
+
+                
+			</article>
+			
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/home/tags.html#blog_post">blog_post</a>
+				
+				</span>
+			</div>
+ 
+            <!-- Mailchimp Subscribe Form -->
+            <!-- 
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+                            <form action="https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                            <div class="mc-field-group">
+							
+								<input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+							
+							
+								<button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+							
+                            </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+             -->
+            
+            
+             <!-- Author Box -->
+                <!-- 				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/home//assets/images/AKSHAY_KUMAR.jpg" alt="Akshay" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.					
+					</div>
+				</div>				
+                 -->
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'kumarakshay-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/home/mobile-robot-kinematics/"> Mobile Robot Kinematics</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/home/biped-robot/"> Lower Body Flat-Foot Walking Biped Robot  <img height="30px" class="ml-1" src="/home/assets/images/projects/biped.jpg"> </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="/home/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <!-- <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <span class="navbar-brand mr-2 mb-0"><strong>Mundana</strong></span>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script>.</span>
+
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
+
+            </div>
+            <div>
+                Made with <a target="_blank" class="text-dark font-weight-bold" href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark" target="_blank" href="https://www.wowthemes.net">WowThemes</a>.
+            </div>
+        </div>
+        </div>
+    </footer> -->
+
+    <!-- All this area goes before </body> closing tag --> 
+
+
+</body>
+
+</html>

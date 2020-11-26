@@ -1,0 +1,126 @@
+	<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>AKSHAY  KUMAR</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header Wrapper -->
+			<div class="wrapper style1">
+			
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>				
+			<!-- Banner -->
+				<!-- <div id="banner">
+					<section class="container">
+						<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+						<span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+						<span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+						</section>
+				</div> -->
+
+			</div>
+				
+			<!-- Patents -->
+			<div class="wrapper style5">
+				<h2 style="font-size:50px"> MID-AIR ROBOT-ROBOT OBJECT TRANSFER</h2>
+			<p style="text-align:center;margin:3%;font-size:30px">OCTOBER 2017 - PRESENT | WPI | Prof. Carlos Morato</p>
+<!--			<p style="text-align:center;margin:3%;font-size:20px"><b>TEAMMATES - <a href="http://www.zine.co.in" target="_blank">GAURAV VIKHE </a></b></p> -->
+
+			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
+			<p style="text-align:left;margin:3%">Achieve mid-air robot to robot object transfer and placement at target location via Deep Reinforcement Learning using a single RL agent that drives the two manipulator arms. </p>
+
+			<p style="text-align:left;margin:3%"> <b>RESEARCH ASPECTS</b></p>
+			<p style="text-align:left;margin:3%"><br><b>•</b>&nbsp;&nbsp; Phantom X Pincher manipulator arms were used for simulation<br><b>•</b> &nbsp;&nbsp;Deep Q-Learning was used to solve the problem of large Q-tables that native Q-Learning can't deal with<br><b>•</b> &nbsp;&nbsp;Experience Replay with 128 sample experiences from memory of 3000 was used to train the DQN agent<br><b>•</b> &nbsp;&nbsp;To prevent random sampling from skipping over important events which must be learned as soon as they happen, our training mini-batch composed of 10 recent and 118 random instances from memory<br><b>•</b>&nbsp;&nbsp;&nbsp;Taking the best action (with marginally higher Q-value) resulted in a single robot acting over and over again while the next best action was neglected <br><b>•</b>&nbsp;&nbsp; So, top two actions were taken at every time step to bring both robots into action.  <br><br><!--<a href="images/ugv/ugv_report.pdf">LINK TO COMPLETE PROJECT REPORT<b></a>-->
+
+					<p style="text-align:center;font-size:25px">	<img src="images/handover/ff.png" style="width:941px;height:387px;margin-left:2%;"></img> <br><br> <b>REWARD STRUCTURE FOR THE AGENT</b></p>	
+
+
+
+
+			<p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
+			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;">Our choice of simulator is V-REP by Coppelia Robotics to implement our experiment. V-REP’s Python remote API client provides programmatic access to the simulator. Keras provides a convenient way to design complex neural networks easily. We used Keras with TensorFlow as the backend. We developed our own wrapper around V-REP’s Python Remote API functions called vreppy which provides a simple interface between Python codes and V-REP. Using vreppy, we can load scenes, robot models, access joints, start simulations and more <br> <br> 
+
+The two PhantomX Pincher manipulators together have 10 active joints in all. Considering two actions for each joint and a do - nothing action, we end up with a total of 21 actions. Our 21-dimensional action space is discrete, with a discretization of 4◦ for revolute joints. We build our Markov state as a combination of 10 joint values and 3 object coordinates, resulting in a 13-dimensional state space. Using a DQN allows us to have a continuous state space, which can account for environment noise and limitations of simulation environment.
+
+<br><br>
+We use Deep Q Network (DQN) for our RL agent as this allows a continuous state space and a discrete action space which fits perfectly with our setup.
+Our neural network comprises of 4 hidden layers (32, 64, 64, 32) with a dropout of 0.15 on each layer and a ReLU activation for each layer. 
+We use an Adam optimizer with a learning rate of 0.0005 and Mean Squared Error (MSE) as the loss function.
+
+
+			<p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
+			
+			<p style="text-align:left;margin:3%"> <b>•</b> &nbsp; Custom setup of the V-REP scene using own wrapper was achieved<br>
+			<b>•</b>&nbsp;&nbsp; Subtask 1: One manipulator achieving the task of placing the object to desired location without the second one was done</b><br>
+			<b>•</b>&nbsp;&nbsp; Subtask 2: Mid-air object transfer was almost achieved with some errors due to the limitations of computation power </b><br> 
+			<b>•</b>&nbsp;&nbsp; Complete task where the robot achieves the two subtasks together is underway</b> </p>
+
+			<br><br><br>
+			<iframe width="840" height="472" src="https://www.youtube.com/embed/te6rLAuGVdQ" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe><br>
+			<p style="font-size:25px"> <img src="images/handover/episcore.png" style="width:540px;height:405px;margin-left:2%;"></img> 
+			<img src="images/handover/timeepi.png" style="width:540px;height:405px;margin-left:2%"></img> <br><b>EPISODE SCORES vs. EPISODES | TIME-STEPS vs EPISODES </b></p> 
+		 
+			<br>
+			<br><br>
+			<p style="text-align:left;margin:3%"> <b>GALLERY</b></p>
+			<img src="images/handover/a.png" style="width:500px;height:350px;margin-left:2%;"></img>
+			<img src="images/handover/b.png" style="width:500px;height:350px;margin-left:2%"></img>
+			<img src="images/handover/c.png" style="width:500px;height:350px;margin-left:2%"></img> 
+			<img src="images/handover/d.png" style="width:500px;height:350px;margin-left:2%"></img>
+			<img src="images/handover/e.png" style="width:500px;height:350px;margin-left:2%"></img>
+
+			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
+			<p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p>
+			</div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-80wD9DDzx11bb64z-50.gif' border='0' alt='conter12'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=80wD9DDzx11bb64z'></script></div>
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+  
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+
+
+    </body>
+</html>

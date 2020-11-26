@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Real Time Operating Systems In Robotics | ThatRobotBoy</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Real Time Operating Systems In Robotics | ThatRobotBoy</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Real Time Operating Systems In Robotics" />
+<meta name="author" content="akshay" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Robotics is an interdisciplinary domain and seamless hardware-software interaction within the different components is important for good performance. While electronics, sensing, actuation and other low-level embedded systems are computationally very efficient to satisfy timing requirements; the high-level algorithms and decision making is computationally expensive. The high-level software manages communication, data aggregation, iterative solutions, matrix operations and a lot of mathematical computations. Thus, execution of commands at desired speed becomes critical towards following desired performance and control on the robot." />
+<meta property="og:description" content="Robotics is an interdisciplinary domain and seamless hardware-software interaction within the different components is important for good performance. While electronics, sensing, actuation and other low-level embedded systems are computationally very efficient to satisfy timing requirements; the high-level algorithms and decision making is computationally expensive. The high-level software manages communication, data aggregation, iterative solutions, matrix operations and a lot of mathematical computations. Thus, execution of commands at desired speed becomes critical towards following desired performance and control on the robot." />
+<link rel="canonical" href="http://localhost:4000/home/rt-linux/" />
+<meta property="og:url" content="http://localhost:4000/home/rt-linux/" />
+<meta property="og:site_name" content="ThatRobotBoy" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-26T00:00:00-08:00" />
+<script type="application/ld+json">
+{"description":"Robotics is an interdisciplinary domain and seamless hardware-software interaction within the different components is important for good performance. While electronics, sensing, actuation and other low-level embedded systems are computationally very efficient to satisfy timing requirements; the high-level algorithms and decision making is computationally expensive. The high-level software manages communication, data aggregation, iterative solutions, matrix operations and a lot of mathematical computations. Thus, execution of commands at desired speed becomes critical towards following desired performance and control on the robot.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/rt-linux/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"datePublished":"2019-01-26T00:00:00-08:00","headline":"Real Time Operating Systems In Robotics","dateModified":"2019-01-26T00:00:00-08:00","url":"http://localhost:4000/home/rt-linux/","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/home/assets/images/favicon.ico">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,400i,700" rel="stylesheet">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/home/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/home/assets/css/theme.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+
+
+</head>
+
+<body class="">
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-indigo" href="/home/index.html"><strong>ThatRobotBoy</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+<a class="nav-link" href="/home/index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/author-akshay.html">About Me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-white" href="/home/projects.html">Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/publications.html">Publications</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/skills.html">Skills</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
+</li>
+<!-- <li class="nav-item">
+<a class="nav-link" href="/home/contact.html">Contact</a>
+</li> -->
+
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/home/categories.html#robotics">robotics</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/home/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h2 class="display-4 mb-4 article-headline">Real Time Operating Systems In Robotics</h2>
+					<div class="d-flex align-items-center">
+						<!-- <small class="ml-3"> Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span> -->
+                            <span class="text-muted d-block mt-1">Jan 26, 2019 · <span class="reading-time">
+  
+  
+    7 mins read
+  
+</span>
+    </span>
+						<!-- </small> -->
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_linkedin"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_reddit"></a>
+						<a class="a2a_button_twitter"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8 " style="text-align: justify;">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p>Robotics is an interdisciplinary domain and seamless hardware-software interaction within the different components is important for good performance. While electronics, sensing, actuation and other low-level embedded systems are computationally very efficient to satisfy timing requirements; the high-level algorithms and decision making is computationally expensive. The high-level software manages communication, data aggregation, iterative solutions, matrix operations and a lot of mathematical computations. Thus, execution of commands at desired speed becomes critical towards following desired performance and control on the robot.</p>
+
+<p><strong>Real-time operating systems execute commands at determined timestamps and computation is completed at the desired timings. RTOSs ensure maintaining synchronization between the high-level software and the low-level software and the hardware thereafter.</strong> Hence, such systems are used in robotics to serve as standard high-performance and reliable data processing platform.</p>
+
+<p><strong>Robots generally run on time critical constraints and thus need deterministic and timely execution of software. Failure to do so results in inconsistent and unpredictable robot behavior.</strong> Numerous robots across the globe use linux and while it is not inherently realtime, real-time patches over the native linux kernel allow operating systems to execute smooth hardware interaction with umpteen drivers and realtime behavior of the software.</p>
+
+<p><img src="/home/assets/images/rtlinux/robotics.png" alt="Object Detection, Object Recognition and Segmentation" /></p>
+
+<h3 id="real-time-system-characteristics">Real Time System Characteristics</h3>
+
+<p><strong>There are several misconceptions about realtime operating system, an OS which is fast or has high performance traits. However, real-time operating systems are those systems that can process and execute data in defined time and be deterministic in nature. It is not fast execution but execution at defined execution speed, consistently.</strong> RTOS may or may not be able to consistently complete the task within given time due to the varying amount of computation to be done. Ocassionally, it may fail to obey time limits and result in variability called jitter. While hard real-time systems have more stringent tolerance on the jitter, soft real-time systems can act deterministically but have larger jitter.</p>
+
+<p>RTOS guarantee execution as per the specified time and failure to do so may lead to failure of the system. Safety critical systems like aerospace, rocket science, online payment portals are all required to perform deterministically and use RTOS for the same.</p>
+
+<p><img src="/home/assets/images/rtlinux/rt_graph.png" alt="Object Detection, Object Recognition and Segmentation" /></p>
+
+<p>There are several practices deployed to ensure realtime performance of kernels and OSs.</p>
+
+<ul>
+  <li>Interrupt servicing latency is the time between the interrupt being raised and the software response to the same being executed. Lower this latency, better is the real-time performance consistency.</li>
+  <li>Realtime threads should be prioritized and their priority should be statically locked instead of dynamic modification.</li>
+  <li>Multithreading operations heavily involve resource management and other computational sophistications. Lesser the delay involved in switching threads, lower is the jitter.</li>
+  <li>Non-deterministic coding concepts like mutexes and memory allocation should be either pre-empted or pre-allocated. Also, printing statements should be avoided.</li>
+  <li>Networking protocols like TCP/IP should be avoided because they have delays in information transmission and exchange.</li>
+  <li>For several hardware devices, drivers may be non-realtime and thus should be avoided.</li>
+</ul>
+
+<h3 id="real-time-in-linux-kernels">Real Time In Linux Kernels</h3>
+
+<p>Linux is an open-source monolithic kernel that supports running a family of UNIX-like operating-systems. The most commonly used operating systems are Ubuntu, Fedora and Mint among others. The linux family of operating systems are largely deployed on servers and several cross-platform hardware architectures.</p>
+
+<p>Linux is the most sought after robotics platform due to features like cross-platform support, open source, software-hardware configurability, interoperability with other OSs, huge driver support for hardware interaction and most of all, the most conducive programming development environment. Linux is deployed across different architectures from x86 to ARM and from microprocessors to SoCs.</p>
+
+<p>As mentioned, the linux kernel is not real-time and has an average maximum latency of 104 microseconds. There are two main approaches to development of realtime behavior on linux. The <strong>dual kernel</strong> approach uses a microkernel, a secondary kernel sitting between the linux kernel and the hardware and manages the software-hardware interaction trying to maintain realtime performance. RTLinux, Xenomai and RTAI are such realtime microkernel patches which were used extensively and are still around in several legacy systems. Dual kernel approaches are sophisticated and the complexities around special tools, libraries, APIs, poor scalability and hardware layer customization for different versions make it not so user/development friendly.</p>
+
+<p><img src="/home/assets/images/rtlinux/dual_kernel.png" alt="Dual Kernel Real Time Linux Implementations" /> <br /> <em>Dual Kernel Real Time Linux Implementations</em></p>
+
+<p>The other category is the in-kernel approach that modifies various aspects of interrupts, priority inheritance, preemption and determinism to enforce realtime behavior on the kernel. <a href="https://rt.wiki.kernel.org/index.php/Frequently_Asked_Questions">PREEMPT_RT</a> is an in-kernel patch that makes the linux kernel behave like a realtime system. PREEMPT_RT has several patches actively maintained, supported by a huge community and deployed very effectively. PREEMPT_RT runs interrupt handlers in kernel thread while supporting priorities for them as well. It also replaces spinlocks with realtime mutexes to handle data better. Both of these features make it fully preemptible and thus effectively realtime.</p>
+
+<p>RTOSs follow the priority stack such that tasks demanding CPU usage are provided with the resources within a predetermined delay time (obeyed consistently) depending upon the ranking in the stack. At this step, only tasks with similar priorities are competing to acquire the resources and all other non-realtime tasks are dynamically de-prioritized. The PREEMPT_RT patch makes the native linux kernel completely preemptible (preemption means allocating resources to a particular task for a finite amount of time to enforce deterministic behavior and then, switch context/resources to the next queued/priority-based task) and thus memory management, mutex locking, interrupt handling, task-scheduling and all other non-deterministic behavior invoking components are managed deterministically thereby obtaining realtime behavior. Better usability, integration with prime feature integration with mainline linux and comparable/slightly slower performance against sophisticated dual-kernel systems makes PREEMPT_RT the best realtime tool for linux.</p>
+
+<p>C or C++ are the most common languages for realtime applications due to their highly efficient nearest to machine language implementation. The kernel manages the interaction of the software with the multiple hardware drivers and protocols. Thus, the programming rules remain the same regardless of a realtime/non-realtime environment but the latter obviously has better, predictable and reliable performance.</p>
+
+<h3 id="real-time-linux-in-robotics">Real Time Linux In Robotics</h3>
+
+<p>Robotics applications generally involve a plethora of software packages and programs running, either synchronously or asynchronously. Navigation, perception and planning are few of the most most computationally expensive algorithms. There are several instances of hardware triggered instant responses from the software, the interrupts. Also, there are numerous multi-threading and parallel computing techniques as well.</p>
+
+<p>The significance of real-time operating systems in robotics to ensure that interrupt servicing and thread switching operations are seamless and instantaneous. Low latency and consistent low/no jitter computations help maintain efficient closed-loop control systems, obey event-based response and ensures reliability. Deterministic behavior of realtime operating systems enforce stable robot motion, perception and planning.</p>
+
+<p>Mobile and manipulators robots involve intensive mathematics, arithmetic calculations, algebra, matrix operations and calculus as well. All such operations involve exhaustive computations and only realtime OSs can guarantee reliable behavior of the robot. Advaned operations like jacobians, inverse kinematics and PID control are detrimental to closed-loop operation. Fault systems, event-based operations and safety critical tasks all need realtime OS to avoid failure.</p>
+
+<p><img src="/home/assets/images/rtlinux/domains.png" alt="All domains of robotics are generally computationally expensive" /> <br /> <em>All domains of robotics are generally computationally expensive</em></p>
+
+<p>Several versions of the PREEMPT_RT kernel are deployed to obtain realtime OS behavior ideal for robotics platform. The robot operating system(ROS) is one of the most widely used robotics middleware platform. However, for non-deterministic non-realtime behavior; ROS has not been the best suitable for industrial and critical applications. The usage of TCP/IP protocol, subscriber-publisher methodology add to the non-deterministic nature of ROS. This lead to the development of ROS 2.0 using the DDS technology for real-time systems thereby making ROS suitable for reliable robotics applications.</p>
+
+<p><img src="/home/assets/images/rtlinux/ros12.png" alt="Comparison between ROS 1 and ROS 2 architectures" /> <em>Comparison between ROS 1 and ROS 2 architectures</em></p>
+
+<hr />
+
+<p>Eventually, realtime OS behavior is incumbent to obtain desired behavior on any robotics platform. Almost all high-level robotics software run realtime linux and work as the best deployment as well as development environment.</p>
+
+                
+			</article>
+			
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/home/tags.html#blog_post">blog_post</a>
+				
+				</span>
+			</div>
+ 
+            <!-- Mailchimp Subscribe Form -->
+            <!-- 
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+                            <form action="https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                            <div class="mc-field-group">
+							
+								<input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+							
+							
+								<button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+							
+                            </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+             -->
+            
+            
+             <!-- Author Box -->
+                <!-- 				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/home//assets/images/AKSHAY_KUMAR.jpg" alt="Akshay" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.					
+					</div>
+				</div>				
+                 -->
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'kumarakshay-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/home/glossary-dl/"> Deep Learning</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/home/visual-servoing-for-manipulators-part1/"> Visual Servoing For Manipulators - Part I </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="/home/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <!-- <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <span class="navbar-brand mr-2 mb-0"><strong>Mundana</strong></span>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script>.</span>
+
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
+
+            </div>
+            <div>
+                Made with <a target="_blank" class="text-dark font-weight-bold" href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark" target="_blank" href="https://www.wowthemes.net">WowThemes</a>.
+            </div>
+        </div>
+        </div>
+    </footer> -->
+
+    <!-- All this area goes before </body> closing tag --> 
+
+
+</body>
+
+</html>

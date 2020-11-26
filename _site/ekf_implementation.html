@@ -1,0 +1,159 @@
+    <!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>EKF Localization - AKSHAY KUMAR</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+                <div class="navbox">
+                    <ul style="white-space:nowrap;margin-top: 10px">
+                        <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                        <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                        <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                    </ul>
+                </div>
+            </div>
+                
+            <!-- Patents -->
+            <div class="wrapper style5">
+                <h2 style="font-size:50px"> EKF LOCALIZATION ON UTIAS DATASET</h2>
+            <p style="text-align:center;margin:3%;font-size:30px">JANUARY - FEBRUARY 2020 </p>
+<!--             <p style="text-align:center;font-size:25px"><a href="images/lfd/LfD_project_report.pdf">LINK TO COMPLETE PROJECT REPORT</a></p>
+ -->
+            <p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
+            <p style="text-align:left;margin:3%">To implement the <b>Extended Kalman Filter</b> based localization for SLAM using the <a href="">UTIAS</a>  dataset available online<br><br> 
+
+            <p style="text-align:left;margin:3%"> <b>RESEARCH ASPECTS</b></p>
+            <p style="text-align:left;margin:3%"><b>•</b> &nbsp;&nbsp;Giving demonstrations to the manipulator in task space and conducting learning experiments in joint-space<br><b>•</b>&nbsp;&nbsp; Understanding scope of temporal and spatial scaling and how it reflects in the task space 
+
+            <p style="text-align:center; font-size:25px ">  <img src="images/lfd/lfd_flow.png" style="width:677px;height:481px;margin-left:2%;"></img> <br> <br> <b> FlowChart of data the process </b></p> 
+
+            <p style="text-align:left;margin:3%"> <b>OVERVIEW</b></p>
+            <p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> 
+
+            SLAM is essentially an online process that needs to handle the dynamic environment and other variables. Robot Localization is severely prone to sensor inaccuracies, model inaccuracies, environmental conditions like terrain, ambient lighting issues among others. Similar problems exist with the mapping process where offline as well as online techniques are employed to enhance the behavior. Thus, SLAM applications are very difficult to simulate with appropriate representations of real-life situations. The UTIAS dataset being used in this project has the robot logs for sensor data and the corresponding groundtruth information for the landmarks which helps implement different localization and mapping techniques on real information.
+
+            </p>
+
+            <p style="text-align:left;margin:3%"> <b>DATASET</b></p>
+            <p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> 
+
+            <a href="">The UTIAS Multi-Robot Cooperative Localization and Mapping Dataset</a> is created by the <a href="http://asrl.utias.utoronto.ca/">Autonomous Space Robotics Lab</a> at the University of Toronto. The provided dataset has the following characteristics and in-depth information about the same can be found on the dataset website.
+
+          <ul style="margin-left:5%;margin-right:5%;text-align:justify;list-style-type:disc;">
+            <li>
+            Robots - The dataset has data from five different robots run simultaneously, with a laptop onboard and a monocular camera for sensing. The information available is 1) odometry, 2) measurements(range and bearing) and 3) groundtruth for robot poses and landmarks poses.
+            </li>
+            
+            <li>
+            Landmarks - There are 15 cylindrical tubes spread out randomly in the environment.
+            </li>
+            
+            <li>
+            Odometry - The +x axis is along the forward heading of the robot. The odometry data is linear forward velocity (v) and angular velocity (\omega) logged at 67 Hz or 15 milliseconds.
+            </li>
+            
+
+              <center>
+                  <figure>
+                      <img src="images/ekf2/robot_bodyframe.jpg" style="width:294;height:388px;">
+                      <img src="images/ekf2/environment.jpg" style="width:580;height:388px;">
+                      <figcaption>Robot Model with coordinate frames and data collection environment</figcaption>
+                      <br>
+                  </figure>
+              </center>
+            <li>
+            Groundtruths - The dataset provides the robot pose <b style="font-weight: 500">(x, y, &#952)</b> and the landmark position <b style="font-weight: 500">(x,y)</b> for several timestamps, in the global frame. All this information is collected using a Vicon motion capture system.
+            <br>
+            </li>
+            <li>
+            </li>   
+            </p>
+
+            <p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
+            <p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> 
+
+The complete environment was setup in V-REP and Python using its Remote-API interface with Python <br><br>
+
+The demonstrations could be fed to the simulation model in task-space using a gaming controller that uses ROS based Inverse Kinematics service <br><br>
+
+The training was done in joint space considering the variations at each joint level over time. <br><br>
+
+Several combinations for the number of Gaussian basis functions were tested and nfs = 150 gave most reliable results<br><br>
+
+
+                    <p style="text-align:center;font-size:25px"><img src="images/lfd/dmp_flow.png" style="width:770px;height:420px;margin-left:2%;"></img><br><br><b> Dynamic Movement Primitive Training pipeline </b></p> 
+
+            <p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
+            
+            <p style="text-align:left;margin:3%">
+            <b>•</b>&nbsp;&nbsp; The setup was successfully trained successfully for a given demonstration</b><br>
+            <b>•</b> &nbsp; Testing on changed terminal states and temporal scaling requirements worked fairly well. Spatial scaling was not tried to avoid reaching joint limits for the robot<br>
+
+            <p style="text-align:center;font-size:20px">
+                <img src="images/lfd/learned.png" style="width:768px;height:432px;margin-left:2%;"></img> <br> <b>Initially learned DMP trajectory</b> </p>
+            <p style="text-align:center;font-size:20px">
+                <img src="images/lfd/changed_terminal.png" style="width:768px;height:432px;margin-left:2%;"></img> <br><b>Testing for changed start and end positions for all the joints</b></p><br>    
+            <p style="text-align:center;font-size:20px">
+                <img src="images/lfd/temp_terminal.png" style="width:768px;height:432px;margin-left:2%;"></img> <br><b>Testing for changed terminal states and temporal scaling (doubled time-span)</b></p>
+            <p style="text-align:center;font-size:20px">                
+                <img src="images/lfd/weights.png" style="width:619px;height:205px;margin-left:2%;"></img><br><br><b>   Snippet of the various parameters generated in the learned trajectory</b></p>
+
+<!--            <p style="text-align:center;font-size:20px"><img src="images/lfd/learned.png" style="width:640px;height:360px;margin-left:2%;"></img> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/lfd/changed_terminal.png" style="width:640px;height:360px;margin-left:2%;"></img><br><br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Initially learned DMP trajectory &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Testing for changed start and end positions for all the joints</b></p><br>   
+            <p style="text-align:center;font-size:20px"><img src="images/lfd/temp_terminal.png" style="width:640px;height:360px;margin-left:2%;"></img><img src="images/lfd/weights.png" style="width:619px;height:205px;margin-left:2%;"></img><br><br><b> Testing for changed terminal states and temporal scaling (doubled time-span) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Snippet of the various parameters generated in the learned trajectory</b></p> -->               
+
+            <br>
+<p style="font-size:25px"><iframe width="560" height="315" src="https://www.youtube.com/embed/D7gGC7onx2g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jUWe7IzsP7M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br><br><b>Changed Terminal States | Temporal Scaling - Twice Slow  </b> <br><br><br> <iframe width="560" height="315" src="https://www.youtube.com/embed/pJVwLNNWdy8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
+
+<br><br> <b>DMP - Changed Terminal states as well as Temporal Scaling </b></p>
+
+
+            <center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
+            <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 01/30/2020</center></p>
+            </div>
+
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-CZ8x1CZw9b9A6D7D-50.gif' border='0' alt='free counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=CZ8x1CZw9b9A6D7D'></script></div>
+
+            <div id="mySidenav" class="sidenav">
+
+                 <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                 <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                 <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+            </div>
+
+            </div>
+
+    </body>
+</html>
