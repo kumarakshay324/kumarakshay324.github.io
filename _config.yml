@@ -23,7 +23,7 @@ authors:
     akshay:
       name:           Akshay
       site:           https://www.kumarakshay.me
-      avatar:         /assets/images/AKSHAY_KUMAR.jpg
+      avatar:         assets/images/AKSHAY_KUMAR.jpg
       bio:            I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.
 
       biol2:          This website is a collection of my current side projects, previous academic projects, work experience, skills, technical blogs and a lot more. 
@@ -72,7 +72,7 @@ defaults:
     values:
       layout: post
       author: akshay
-      avatar: /assets/images/avatar1.jpg
+      avatar: assets/images/avatar1.jpg
       
   # all pages
   - scope:
