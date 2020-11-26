@@ -1,0 +1,90 @@
+# Site
+name: 'ThatRobotBoy'
+description: 'Portfolio Website for Akshay - A colllection of his projects, blogs and other stories'
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/favicon.ico'
+baseurl: '/home'
+disqus: 'kumarakshay-me'
+email: 'akumar5@wpi.edu'
+mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
+
+include: ["_pages"]
+permalink: /:title/
+
+# Plugins
+plugins: 
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-seo-tag
+  
+authors:
+    akshay:
+      name:           Akshay
+      site:           https://www.kumarakshay.me
+      avatar:         /assets/images/AKSHAY_KUMAR.jpg
+      bio:            I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.
+
+      biol2:          This website is a collection of my current side projects, previous academic projects, work experience, skills, technical blogs and a lot more. 
+
+      biop2:          I have previously worked as a Robotics Software Engineer at Modbot, San Francisco, CA. I have an MS in Robotics Engineering (2019) degree from Worcester Polytechnic Institute, MA, USA and a BTech. in Electrical Engineering (2017) degree from Malaviya National Institute Of Technology Jaipur, India.
+                      My areas of current and previous work involves robotics software stack development in C++ and Python for modular industrial manipulator arms, robot control, dynamics, collision detection, navigation and deep learning. Other areas of research and interests include visual servoing, mobile robotics, SLAM, computer vision, deep learning and reinforcement learning.
+
+      intro1:         I am full-stack roboticist interested in learning and working on the various domains of robotics and AI. I also build cool robots on the side. .
+                      My areas of research and interests include manipulation, mobile robot navigation and motion planning, computer vision, visual servoing, SLAM, deep learning and deep reinforcement learning.
+
+      blog_intro:     These blogs are more of a collection of my personal learnings/understandings assimilated from various other websites, courses, projects and experience and less of polished blogs or tutorials!
+                      <br><br> But, hey if I do anyone any good with these, I don't mind! You can hit me up to talk more about them! <hr>
+
+      invisibleai:    My current work at Invisible AI involves developing computationally efficient computer vision algorithms for industrial applications, deployed on the edge. It includes architecting and writing production-grade robust code that stiches together multiple deep learning,
+                      modules and advanced as well as conventional computer vision algorithms. The tech-stack includes C++, Python, Pytorch, CUDA and OpenCV among others.
+
+      modbot:         I have previously worked as a Robotics Software Engineer at Modbot, San Francisco, CA. During my time with Modbot Inc., I worked on developing dynamically configurable software for motion planning, control techniques, kinematics algorithms, system modeling, and identification for modular robot arms in a test-driven development setting.
+                      Being the only on-site robotics specialist, I was involved in the complete software development cycle from design and POC through to the deployment of high-fidelity real-time robot software stack using C++ and Python in a Linux environment.
+
+      education1:     I have a <strong>MS in Robotics Engineering </strong> degree from Worcester Polytechnic Institute, MA, USA. My coursework included Deep Reinforcement Learning, Deep Learning for Advanced Robot Perception, Robot Dynamics, Robot Control and Artificial Intelligence among others.
+                      The graduate program courses had projects as an integral component of the grades. The projects involved implementing intricate mathematical concepts using latest software tools and technologies. You can check out my course projects here in the Projects section.
+
+      education2:     I also have a <strong> BTech. in Electrical Engineering </strong> degree from Malaviya National Institute Of Technology Jaipur, India where I learned about control systems, computer architecture, embedded systems and intricate motion systems while also building lots of robots like bipeds and animatronic face on the side.
+
+      abs1:           Hardware in the loop based simulation of a robotic system with real time control and animation of working model
+      aut1:           Akshay Kumar, Anshul Mittal, Rajat Arya, Akash Shah Sharad Garg; Rajesh Kumar, 2017. International Conference on Inventive Systems and Control (ICISC), Coimbatore, 2017, pp. 1-5, doi- 10.1109/ICISC.2017.8068734.
+      pub1:           The computer-based real-time simulation of an electro-mechanical system using not only automatically fed pre-defined simulation conditions, but real life input signals to the system to enhance user control options is proposed. The introduced system is a robotic assistive technology for repair and maintenance of electrical power transmission lines in live condition. The setup is assisted by a simulation to provide real-time animation of the system under study while the controller operates the same, remotely and simultaneously. These systems can be used for research or educational purposes so as to measure the efficiency of the design for mechatronics industrial systems not only on predetermined inputs but on random test data sets as well and observe its response to the operational constraints that limit the system use.
+
+      abs2:           Joint angle measurement for biped robot orientation estimation using MEMs based inertial sensors
+      aut2:           Rahul Ravichandran, Akshay Kumar, Rajesh Kumar 2017. 2018 Second International Conference on Electronics, Communication and Aerospace Technology (ICECA), Coimbatore, 2018, pp. 225-231, doi- 10.1109/ICECA.2018.8474917
+      pub2:           The implementation and efficacy of closed loop systems in machines with moving limbs/parts is largely dependent upon the feedback systems that measure the extent of motion - linear or rotational. This paper proposes a novel technique for measurement of joint angles and thus rotational motion for links pivoted at a powered/non-powered joint, using low-cost inertial sensors. The paper proposes the substitution of noisy, inefficient and poor resolution mechanical sensors like optical or pulse encoders with tri-axial accelerometers and tri-axial gyroscope fused in low-cost Inertial Measurement Units(IMUs). This technique is used to measure the angles between the various joints of a bipedal robot and estimate its complete orientation in three dimensional space. The crux of this paper is utilizing the extended capabilities of the inertial sensors in joint angle estimation for closed loop operation of a twelve-Degree Of Freedom(DOF) lower body biped robot with potential implementation on stable bent knee walking on flat surfaces. All the joints of the biped are revolute and facilitate rotation of various limbs like thigh, shin and foot, analogous to a human leg. All links have IMUs mounted on them for the proposed task.
+
+      abs3:           Robot-Robot Handover via Reinforcement Learning
+      aut3:           Akshay Kumar, Gaurav Vikhe and Chaitanya Perugu
+      pub3:           Engineering robot collaboration without significant reliance on sophisticated camera equipment to observe the robot's environment has always been a subject of interest for researchers. We believe combining proprioceptive sensing with reinforcement learning is essential for enabling robots to achieve tasks through collaboration in novel unknown environments. To that end, we propose a framework for two arm manipulators to work collaboratively in order to successfully transfer an object between locations that transcend one robot's reachability. Our major focus is on achieving mid-air object transfer, using a single RL agent, much like one brain controlling two arms. We attempt the proposed project in the V-REP simulation environment using deep Q-learning, a deep reinforcement learning algorithm and present the results of our experiments on subtasks of the whole task. Our agent successfully learned to place the object at the goal and to transfer the object among themselves to a reasonable degree.
+
+      email:          akumar5@wpi.edu
+      twitter:        https://twitter.com/kumarakshay324
+ 
+# Defaults
+defaults:
+
+  # all posts
+  - scope:
+      path: "_posts"
+    values:
+      layout: post
+      author: akshay
+      avatar: /assets/images/avatar1.jpg
+      
+  # all pages
+  - scope:
+      path: "_pages"
+    values:
+      layout: page
+      
+# Syntax
+markdown: kramdown
+highlighter: rouge
+
+# Paginate
+paginate: 20
+
+# Exclude metadata and development time dependencies (like Grunt plugins)
+exclude: [README.markdown, package.json, grunt.js, Gruntfile.js, Gruntfile.coffee, node_modules]

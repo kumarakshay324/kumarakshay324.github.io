@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Model Predictive Control In Robotics - Part I | ThatRobotBoy</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Model Predictive Control In Robotics - Part I | ThatRobotBoy</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Model Predictive Control In Robotics - Part I" />
+<meta name="author" content="akshay" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Control techniques in robotics can largely be classified as model-based and model-free. The most common control techniques include PID, gain-scheduling, cruise-control, adaptive control, robust control and reinforcemment learning-based control among others. Majority of the model-based control techniques have an upper-hand over the model-free techniques as the former estimate control signals with some information about the response expected from the plant." />
+<meta property="og:description" content="Control techniques in robotics can largely be classified as model-based and model-free. The most common control techniques include PID, gain-scheduling, cruise-control, adaptive control, robust control and reinforcemment learning-based control among others. Majority of the model-based control techniques have an upper-hand over the model-free techniques as the former estimate control signals with some information about the response expected from the plant." />
+<link rel="canonical" href="http://localhost:4000/home/model-predictive-control-part1/" />
+<meta property="og:url" content="http://localhost:4000/home/model-predictive-control-part1/" />
+<meta property="og:site_name" content="ThatRobotBoy" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-28T00:00:00-08:00" />
+<script type="application/ld+json">
+{"description":"Control techniques in robotics can largely be classified as model-based and model-free. The most common control techniques include PID, gain-scheduling, cruise-control, adaptive control, robust control and reinforcemment learning-based control among others. Majority of the model-based control techniques have an upper-hand over the model-free techniques as the former estimate control signals with some information about the response expected from the plant.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/model-predictive-control-part1/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"datePublished":"2019-01-28T00:00:00-08:00","headline":"Model Predictive Control In Robotics - Part I","dateModified":"2019-01-28T00:00:00-08:00","url":"http://localhost:4000/home/model-predictive-control-part1/","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/home/assets/images/favicon.ico">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,400i,700" rel="stylesheet">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/home/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/home/assets/css/theme.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+
+
+</head>
+
+<body class="">
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-indigo" href="/home/index.html"><strong>ThatRobotBoy</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+<a class="nav-link" href="/home/index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/author-akshay.html">About Me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-white" href="/home/projects.html">Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/publications.html">Publications</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/skills.html">Skills</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
+</li>
+<!-- <li class="nav-item">
+<a class="nav-link" href="/home/contact.html">Contact</a>
+</li> -->
+
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/home/categories.html#robotics">robotics</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/home/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h2 class="display-4 mb-4 article-headline">Model Predictive Control In Robotics - Part I</h2>
+					<div class="d-flex align-items-center">
+						<!-- <small class="ml-3"> Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span> -->
+                            <span class="text-muted d-block mt-1">Jan 28, 2019 · <span class="reading-time">
+  
+  
+    8 mins read
+  
+</span>
+    </span>
+						<!-- </small> -->
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_linkedin"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_reddit"></a>
+						<a class="a2a_button_twitter"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8 " style="text-align: justify;">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p>Control techniques in robotics can largely be classified as <strong>model-based</strong> and <strong>model-free</strong>. The most common control techniques include PID, gain-scheduling, cruise-control, adaptive control, robust control and reinforcemment learning-based control among others. Majority of the model-based control techniques have an upper-hand over the model-free techniques as the former estimate control signals with some information about the response expected from the plant.</p>
+
+<p>The model-free techniques like PID or other ML and AI based techniques, need a lot of training to develop the same extent of fidelity as model-based techniques. However, model-based techniques are prone to modeling errors while system identification and modeling in itself is a very strenous process and model-free techniques do not have such requirements. Model-free techniques deriving the tuning parameters during the training procedure are essentially deriving a pseudo-plant model in the backend that helps them know the correct relationshop between the input and output.</p>
+
+<p><img src="/home/assets/images/mpc/controls.png#center" alt="Examples of Control Techniques" /> <em>Examples of Control Techniques</em></p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>Model predictive control is an advanced control technique that manipulates the plant output while also satisfying the set of constraints and handling disturbances. MPC is an online technique which is essentially an optimization problem for the objective function defined for the desired plant output. MPC uses the plant model and predicts the control signals for a finite set of future timestamps corresponding to the desired output. However, it only implements/executes inputs only for a small fraction of the predicted timestamps and repeats the process at the next prediction timestamp.</p>
+
+<p>MPC can handle the dynamics of the highly non-linear systems and the unanticipated disturbances as well. It can operate on MIMO (multi-input multi-output) systems with constraints on the system properties. As MPC can look into the future predictions, it can also handle unexpected disturbances. However, it is a computationally expensive method and with increasing system complexity, the compute power requirement can increase exponentially.</p>
+
+<p>It is often known as <strong>receding horizon control or dynamical matrix controlor generalized predictive control.</strong></p>
+
+<p><img src="/home/assets/images/mpc/mpc_plant.png" alt="MPC Flowchart" /> <em>MPC Flowchart</em></p>
+
+<h3 id="common-applications-of-mpc">Common Applications Of MPC</h3>
+<p>MPC is straightforward genralized control technique that can handle a lot of constraints, variations, disturbances and almost all system given the model, thus making it suitable control technique for a lot of applications from industry and products to academia and more.</p>
+
+<p>Common applications of MPC include:</p>
+
+<ul>
+  <li>Trajectory Control for vehicles</li>
+  <li>Process Control for manufacturing factories</li>
+  <li>Missile guidance systems</li>
+  <li>Space navigation</li>
+</ul>
+
+<p><img src="/home/assets/images/mpc/mpc_applications.jpg" alt="MPC Applications" /> <br /> <em>MPC Applications</em></p>
+
+<h3 id="functional-aspects-of-mpc">Functional Aspects Of MPC</h3>
+
+<p>MPC uses the model of the system and solves an optimization problem attempting to find the global minima for the defined objective function also called cost function. The optimization task is an interative process that finds the most favorable set of input signals that minimize the error in desired and predicted output while also satisyfing the set of constraints. The sequence of control inputs steer the system towards the desired setpoint response. At each timestep, the controller solves an open-loop optimization problem and after it applies the first control signal generated, the output is fedback as system state for optimization for the next timestep.</p>
+
+<p>An MPC may not necessarily be optimal as the optimization solvers are prone to local-minimas but it ensures that the system converges to the best possible and feasible solution.</p>
+
+<p>MPC has a few design parameters which need to be either selected carefully or learned by experience to obtain the best performance of the controller.</p>
+
+<ul>
+  <li>
+    <p>Sample Time - Ts 
+It is the time period at which the controller executes the control algorithm and sends the instructions to the system. Larger sample time means the system’s ability to respond to unknown disturbances is poor and smaller sample time means the controller is very computationally heavy. Thus, the optimal value of the sample time should be the system rise time, i.e. the time in which the system response rises from 10% to 90% of the desired steady-state output. If the sample time is very low, lower than the mechanical response time of the system; the system doesn’t have enough time to act on the current input signal and the new signal arrives thereby creating undesired behavior.</p>
+  </li>
+  <li>
+    <p>Constraints on variables 
+There could several physical limits on the different inputs and outputs as well as their rate of change, in the system that the optimization should take into consideration. Such constraints are useful in maintaining smooth response, non-impulsive and infeasible behavior of the system.</p>
+  </li>
+  <li>
+    <p>Weights for different components of the objective function 
+Because there are several constraints and goals to be achieved, it is difficult to quantitatively present the goal priority in the optimization task. In an MPC, weights are defined for ratio between different output goals, or between the outputs and the inputs or between different soft constraints that could be bent a little.</p>
+  </li>
+  <li>
+    <p>Prediction Horizon 
+It is the number of the timesteps over which the optimization should be done while predicting the control inputs. The larger the prediction horizon, the more computationally expensive does the system get while the lower the predicted horizon, the poor the optimization efficiency and ability to look into the future. It is the number of timesteps the controller looks into the future and usually 20-30 time samples, each of timestep Ts.</p>
+  </li>
+  <li>
+    <p>Control Horizon 
+It is a certain number of timesteps into the future that the optimizer derives as the moves that have significant impact on the system’s attempt to converge to the desired output. It is usually chosen as 10-20% of the predicted horizon.</p>
+  </li>
+</ul>
+
+<h3 id="sample-mpc-problem">Sample MPC Problem</h3>
+
+<p>A typical multivariate control system using an MPC controller operates on the system model, usually non-linear, a cost function and an optimization algorithm. Usually, the problem is a convex optimization task and that should be optimized for prediction horizon.</p>
+
+<p><img src="/home/assets/images/mpc/state_space.png" alt="State-Space Model of Control Systems" /> <br /> <em>State-Space Model of Control Systems</em></p>
+
+<p>For a given discrete time state-space model like shown above, the typical cost function could be:</p>
+
+<p><img src="/home/assets/images/mpc/cost_function.png" alt="Sample Cost function for a common non-linear function" /> <br /> <em>Sample Cost function for a common non-linear function</em></p>
+
+<p>In the cost function above,</p>
+
+<ul>
+  <li>i is the current timestamp and n is the total prediction horizon</li>
+  <li>xdi is the desired output for the particular timestamp i while xi is the system current state</li>
+  <li>wxi is the weight of the desired/reference output at the particular timestemp i</li>
+  <li>wui is the weight of the rate of change of input at the particular timestemp i</li>
+  <li>Δui is the weight of the rate of change of input at the particular timestemp i</li>
+</ul>
+
+<p><img src="/home/assets/images/mpc/mpc_signals.png" alt="MPC Time Graph" /> <em>MPC Time Graph</em></p>
+
+<h3 id="types-of-mpc">Types of MPC</h3>
+
+<p>MPC is largely dependent on the model of the system and while it may be easy to model simple automation systems, it gets extremely complicated to design dynamic systems like robots and their non-linearity is difficult to solve for the MPC. There are several complexities in systems as well, which tend to disturb the dynamics and expected responses from it. To accomodate such variations or adapt to changing operational evnironment or to ease the MPC implementation, different types of MPC are deployed.</p>
+
+<ul>
+  <li>
+    <p>Linear MPC - The simplest implementation of an MPC where if the model is linea and the constraints are linear, then MPC optimization cost function could be a QP problem and be solved easily using a linear time-invariant MPC. The problem becomes a simple convex optimization task with a global minima and no more complexities.</p>
+  </li>
+  <li>
+    <p>Adaptive MPC - If the system model is non-linear, while the constraints and the cost function are still linear, the model can be linearized at each operating point (computationally expensive step though) and same method as above could be implemented. Because the MPC adapts to the system at each time step, this is called adaptive MPC.</p>
+  </li>
+  <li>
+    <p>Gain Scheduling MPC - It is more coarse version of the adaptive MPC and analogous in behavior to the gain scheduling used in PID contro. Instead of the system being linearized at each operating point, gain-scheduling MPC linearizes the function over diffeerent segments in the operational range offline and then implements a linear MPC switching between the different linearized models depending on the system state.</p>
+  </li>
+  <li>
+    <p>Nonlinear MPC - If the cost function, system model and the constraints are all non-linear, non-linear MPC is deployed. It is very prone to local minimas due to the non-convex optimization task and may result in sub-optimal solutions.</p>
+  </li>
+</ul>
+
+<hr />
+
+<p>Model Predictive Control is a very powerful tool for controling the system response and is widely used in robotics. It finds major applications in autonomous vehicle trajectory tracking and control. It has also been researched for, in manipulation and aerial navigation. <a href="#">Part II </a> of this series explains the application of MPC in robotics with an implementation for the same, in C++. Stay tuned!</p>
+
+                
+			</article>
+			
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/home/tags.html#blog_post">blog_post</a>
+				
+				</span>
+			</div>
+ 
+            <!-- Mailchimp Subscribe Form -->
+            <!-- 
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+                            <form action="https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                            <div class="mc-field-group">
+							
+								<input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+							
+							
+								<button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+							
+                            </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+             -->
+            
+            
+             <!-- Author Box -->
+                <!-- 				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/home//assets/images/AKSHAY_KUMAR.jpg" alt="Akshay" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.					
+					</div>
+				</div>				
+                 -->
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'kumarakshay-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/home/visual-servoing-for-manipulators-part1/"> Visual Servoing For Manipulators - Part I</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/home/mobile-robot-kinematics/"> Mobile Robot Kinematics </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="/home/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <!-- <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <span class="navbar-brand mr-2 mb-0"><strong>Mundana</strong></span>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script>.</span>
+
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
+
+            </div>
+            <div>
+                Made with <a target="_blank" class="text-dark font-weight-bold" href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark" target="_blank" href="https://www.wowthemes.net">WowThemes</a>.
+            </div>
+        </div>
+        </div>
+    </footer> -->
+
+    <!-- All this area goes before </body> closing tag --> 
+
+
+</body>
+
+</html>

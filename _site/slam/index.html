@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simultaneous Localization & Mapping | ThatRobotBoy</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Simultaneous Localization &amp; Mapping | ThatRobotBoy</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Simultaneous Localization &amp; Mapping" />
+<meta name="author" content="akshay" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Simultaneous Localization &amp; Mapping is the domain of robotics that forms the pillar for autonomous navigation in mobile robots of all kinds and even self-driving cars. As the name suggests, SLAM involves mapping (creating computationally viable representation of the environment) and localization(determination of robot’s pose in the environment), at the same time. It is like a chicken-and-the-egg problem - a map is needed to localize the robot pose on it and the pose is needed to estimate the map. It is the most applicable in GPS denied environments or environments where a task needs to be done at higher accuracy than the GPS provided map information." />
+<meta property="og:description" content="Simultaneous Localization &amp; Mapping is the domain of robotics that forms the pillar for autonomous navigation in mobile robots of all kinds and even self-driving cars. As the name suggests, SLAM involves mapping (creating computationally viable representation of the environment) and localization(determination of robot’s pose in the environment), at the same time. It is like a chicken-and-the-egg problem - a map is needed to localize the robot pose on it and the pose is needed to estimate the map. It is the most applicable in GPS denied environments or environments where a task needs to be done at higher accuracy than the GPS provided map information." />
+<link rel="canonical" href="http://localhost:4000/home/slam/" />
+<meta property="og:url" content="http://localhost:4000/home/slam/" />
+<meta property="og:site_name" content="ThatRobotBoy" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-21T00:00:00-08:00" />
+<script type="application/ld+json">
+{"description":"Simultaneous Localization &amp; Mapping is the domain of robotics that forms the pillar for autonomous navigation in mobile robots of all kinds and even self-driving cars. As the name suggests, SLAM involves mapping (creating computationally viable representation of the environment) and localization(determination of robot’s pose in the environment), at the same time. It is like a chicken-and-the-egg problem - a map is needed to localize the robot pose on it and the pose is needed to estimate the map. It is the most applicable in GPS denied environments or environments where a task needs to be done at higher accuracy than the GPS provided map information.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/home/slam/"},"@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/home/assets/images/logo.png"},"name":"akshay"},"datePublished":"2019-01-21T00:00:00-08:00","headline":"Simultaneous Localization &amp; Mapping","dateModified":"2019-01-21T00:00:00-08:00","url":"http://localhost:4000/home/slam/","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/home/assets/images/favicon.ico">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,400i,700" rel="stylesheet">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/home/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/home/assets/css/theme.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+
+
+</head>
+
+<body class="">
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-indigo" href="/home/index.html"><strong>ThatRobotBoy</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+<a class="nav-link" href="/home/index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/author-akshay.html">About Me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-white" href="/home/projects.html">Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/publications.html">Publications</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/skills.html">Skills</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/home/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
+</li>
+<!-- <li class="nav-item">
+<a class="nav-link" href="/home/contact.html">Contact</a>
+</li> -->
+
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/home/categories.html#robotics">robotics</a><span class="sep">, </span>
+                        
+                          <a class="sscroll text-danger" href="/home/categories.html#tutorial">tutorial</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h2 class="display-4 mb-4 article-headline">Simultaneous Localization & Mapping</h2>
+					<div class="d-flex align-items-center">
+						<!-- <small class="ml-3"> Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span> -->
+                            <span class="text-muted d-block mt-1">Jan 21, 2019 · <span class="reading-time">
+  
+  
+    10 mins read
+  
+</span>
+    </span>
+						<!-- </small> -->
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_linkedin"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_reddit"></a>
+						<a class="a2a_button_twitter"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8 " style="text-align: justify;">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p><strong>Simultaneous Localization &amp; Mapping</strong> is the domain of robotics that forms the pillar for autonomous navigation in mobile robots of all kinds and even self-driving cars. As the name suggests, SLAM involves mapping (creating computationally viable representation of the environment) and localization(determination of robot’s pose in the environment), at the same time. It is like a chicken-and-the-egg problem - a map is needed to localize the robot pose on it and the pose is needed to estimate the map. It is the most applicable in GPS denied environments or environments where a task needs to be done at higher accuracy than the GPS provided map information.</p>
+
+<p><img src="/home/assets/images/slam/slam_intro.png" alt="Sample of a SLAM operational PR2 robot" /> <em>Sample of a SLAM operational PR2 robot</em></p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>SLAM is used for locomotion tasks in indoor as well as outdoor applications. Moroever, there are applications of the same in robotic manipulation and humanoids. The robot pose is the robot’s position (x, y, z) coordinates with reference to the origin and the orientation of robot’s heading. Mapping is modeling of the environment in different ways. Estimating one among the pose or the map when the other is given is easy but simultaneous estimations with uncertain priori is extremely difficult. So, the results obtained are highly stochastic and thus the entire process is aimed at making decisions that enhance the probabilities.</p>
+
+<p>Using observed landmarks, estimates of maps and sensor-based information; the complete navigation SLAM is implemented. The sensor-based information includes deriving landmarks in the scene (like edges of the wall as seen by a camera) or other features of the map like the possible relative positioning of landmarks or otherwise.</p>
+
+<p>SLAM as expected is a highly stochastic setup and probabilistic techniques are largely used. The stochasticity in solutions is reduced by using closed-loop solutions, i.e. relating the landmarks and features by comparing it against the ones that the robot has already visited. Meticulous perception systems are needed to establish relationships between unknown map elements, features and landmarks.</p>
+
+<h3 id="mapping">Mapping</h3>
+
+<p>Maps are representations of a scene and can be done in several ways for robot to interpret. For instance, a human-readable definition of a map for a desert would be sand all around, then an oasis in the center and then a few bushes around; a robot needs to know a lot more and the nuances and in a computationally defined format. These maps are generally 2D and can be easily extensible to 3D format. There are two main categories of maps - metric maps and topological maps. Metric maps are analogous to political maps of a city while topological maps are the physical maps of the same place.</p>
+
+<p><img src="/home/assets/images/slam/occup.png" alt="Sample Robot Map - Occupany Grid Map" /> <em>Sample Robot Map - Occupany Grid Map</em></p>
+
+<ul>
+  <li><strong>Metric Maps</strong></li>
+</ul>
+
+<p>Metric maps are geometric representations of the surroundings with known edge sizes and area scaled as per real world. Occupany grids are the most common form of metric maps where the complete area is decomposed into several smaller units with information about if the map is occupied by anything or free for robot motion. 
+While the ease of creating occupancy grids makes them preferrable for general applications, large storage and processing power is needed to process all individual grids at every iteration. Dynamic variation of grid sizes(collapsing several smaller grids into one large grid) is useful in overcoming these limitations. Grids maps are useful for motion and path planning algorithms like A* or Djisktra as they have low computational costs. Occupancy probability definition for each sub-grid in the large grid makes the map diffcult to obtain for practical use with large areas.</p>
+
+<ul>
+  <li><strong>Topological Maps</strong></li>
+</ul>
+
+<p>Topological maps are description of the robot environment in terms of physical features. For an indoor environment, it would be landmarks and features like rooms, electrical appliances and furniture. The path to locations are proposed as sections in the map that can be accessed by the robot. The features are called nodes while the connecting paths are called edges or connections. These maps require verbose knowledge of the environment and are generally used in visual SLAM.</p>
+
+<h3 id="localization-algorithms">Localization Algorithms</h3>
+
+<p>Localization is a map dependent definition of robot’s pose that determines. For a known map, known sensor observations and location estimates, robot localization is very much possible. The quality of localization with higher probabilities for correctness highly depends on sensor readings. Thus, more the sensors, better the localization sensing.</p>
+
+<p>A robot can bes easily localized using information from exteroceptive and interoceptive sensors like range finders and IMUs respectively, processed over time.</p>
+
+<ul>
+  <li><strong>Localization Algorithms</strong></li>
+</ul>
+
+<p>Robot localization is generally solved using algorithms like Kalman Filter, Extended Kalman Filter and Particle Filters. KF and EKF solve for linear and non-linear systems respectively, by using the system model and the related covariances. Extended Kalman Filtering is generally the most used algorithm that supports multiple sensor data usage and provides accurate robot pose.</p>
+
+<p>Particle filter is a setup where each unique particle represents a probable robot pose with some associated probability of being the robot’s actual pose. Thereafter, the SLAM algorithm can use the mean, average or highest probability value as the robot pose. Large number of particles results in more computational overhead.</p>
+
+<ul>
+  <li><strong>Robot Pose Types</strong></li>
+</ul>
+
+<p>A robot’s pose is generally defined in a frame of reference, i.e. the origin of a map. Onboard sensors are good for measuring the robot’s own motion and thus the relative pose estimation of the robot with reference to the previous can be obtained. Wheel encoders are used for odometry estimation. They measure the rotations in each motor and use the robot’s model to obtain the motion information (change in position and change in orientation). The other way is using inertial measurement units that use accelerometers, gyroscopes andd magnetometers and integrate the measurements to estimate the motion. However, each of these sensing options have their own limitations. Wheel encoder based odometry are prone to huge errors due to slipping, uneven ground and drifting as well as inherent sensor inefficiencies. IMUs are prone to drift and bias accumulation over time. The estimations are made based on integrations and thus prone drift</p>
+
+<p>Given the volatality of maps and thus everything derived from it, absolute pose estimation of a robot in a map is extremely difficult and inextensible as the map is still in evolution. The unknown nature of surroundings makes it difficult to localize on the absolute level. Absolute positioning is done by laser rangefinders or GPS, both of which are very limited in scope and usage. While it is not prone to any accumulating errors, the absolute estimations can be marred by sensor issues and limited sensors.</p>
+
+<h3 id="nuances-of-slam">Nuances of SLAM</h3>
+
+<p>SLAM techniques run with only certain physical parameters. It includes <code class="highlighter-rouge">u</code> - the robot control input, <code class="highlighter-rouge">z</code> - the sensor observations, <code class="highlighter-rouge">m</code> - the environment map and <code class="highlighter-rouge">x</code> - the robot pose or path.</p>
+
+<p>Feature-based SLAM methods analyze the surroundings, create the maps, obtain close-to-accurate robot poses and thus converge onto motion tasks. It needs absolute robot poses, absolute positions of the landmarks but only relative measurement of the landmarks.</p>
+
+<p>Measurements and estimations in SLAM are cyclic. So, an error in robot pose leads to an imperfect estimate of the map that eventually results in a poor robot pose calculated thereafter; eventually, showing that they are correlated. Also, the mappings between the observations and the actual landmarks are unknown.</p>
+
+<p>SLAM could be operational as full SLAM, online SLAM and integral SLAM. Full SLAM estimates the complete path(sequence of poses) and the full environment map while online SLAM estimates pose for the latest time stamp using the old information and the complete map. Integral SLAM does recursive computations, one at a time. Thus, full SLAM computes sets of <code class="highlighter-rouge">u</code>, <code class="highlighter-rouge">z</code>, <code class="highlighter-rouge">x</code> and final <code class="highlighter-rouge">m</code> while online SLAM computes <code class="highlighter-rouge">u_last</code>, <code class="highlighter-rouge">z_last</code>, and the complete map <code class="highlighter-rouge">m</code>.</p>
+
+<p><img src="/home/assets/images/slam/slam_types.png" alt=" Full SLAM vs Online SLAM" /> <em>Full SLAM vs Online SLAM</em></p>
+
+<h3 id="sensors-in-slam">Sensors in SLAM</h3>
+
+<p>Interoceptive and exteroceptive are two broad categories of sensors comprising of onboard sensors like wheel encoders, IMUs and GPS and cameras and laser scanners respectively. Interoceptive sensors are supposed to measure the physical quantities of the robot itself while the exteroceptive sensors observe the outer world and each of them thus contribute towards robot’s pose estimation. Sonars, lasers and cameras are the three most used exteroceptive sensing systems used in SLAM.</p>
+
+<p>Sonars and lasers use time of flight and phase-shift based computations to determine the contents and the structure of the environment, the map. LiDARs rangefinders have long ranges and high operational speeds to determine planar features like walls in the environment. 2D LiDARs can only determine planar features while 3D LiDARs can determine the complete environment due to the highly dense information available. However, LiDARs cannot observe surface properties to localize and identify objects. Thus, LiDARs are more emphatically used to determine locations of obstacles and bounds of the environment.</p>
+
+<p>Visual sensing using monocular cameras, stereocameras and RGB-D cameras suffice to compensate for the limitations of the LiDARs. While cameras can provide rich information, processing the same is computationally expensive and needs more time and more complex algorithms to obtain computer legible data. Visual Odometry estimation and visual landmark estimation are the most useful SLAM applications for camera information. Monocular vision lacks depth information for the contents in the image thus making 3D map reconstruction very difficult. While there have been attempts are obtaining depth information based on robot motion and consecutive frames of images, it is still limited by complex algorithms and real-time computations. The depth information even obtained after this is associated with an unknown or probably incorrect scaling factor that mars the direct use in motion.</p>
+
+<p>Stereovision is today’s easiest option to obtain the depth information for the surroundings. It uses the triangulation method on two monocular cameras of known focal lengths, setup at a known distance and that determines the depth of any pixel in real-world physical quantities.</p>
+
+<p><img src="/home/assets/images/slam/slam_types.png" alt=" Different Sensors on a mobile robot" /> <em>Different Sensors on a mobile robot</em></p>
+
+<h3 id="sensor-fusion">Sensor Fusion</h3>
+
+<p>Both pose estimation techniques are mutually exclusive but several sensor-fusion techniques are used to compensate for the limitations in the individual sensors. Sensor fusion can be performed at sensor level as well as at the approach level. Multiple sensor data feed can be either fused together before estimating the pose or individual estimations can be fused later on.</p>
+
+<p>The position measure can be fused using a probabilistic framework like Markov Localization or Kalman Localization. Markov Localization predicts(using the several sensors and their relative and/or absolute measurements) the pose information as a probability over all possible locations while Kalman localization predicts the same as a probability over the complete map thus making the location with highest chances have the largest probability.</p>
+
+<p>Given the pose of a robot is 6DOF (x, y, z position coordinates and alpha, beta and gamma orientation coordinates), it becomes really difficult to estimate each of them accurately and their corelation makes accuracy challenging.</p>
+                
+			</article>
+			
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/home/tags.html#blog_post">blog_post</a>
+				
+				</span>
+			</div>
+ 
+            <!-- Mailchimp Subscribe Form -->
+            <!-- 
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+                            <form action="https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                            <div class="mc-field-group">
+							
+								<input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+							
+							
+								<button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+							
+                            </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+             -->
+            
+            
+             <!-- Author Box -->
+                <!-- 				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/home//assets/images/AKSHAY_KUMAR.jpg" alt="Akshay" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.					
+					</div>
+				</div>				
+                 -->
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'kumarakshay-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/home/til-cs/"> Computer Science </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="/home/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <!-- <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <span class="navbar-brand mr-2 mb-0"><strong>Mundana</strong></span>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script>.</span>
+
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
+
+            </div>
+            <div>
+                Made with <a target="_blank" class="text-dark font-weight-bold" href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark" target="_blank" href="https://www.wowthemes.net">WowThemes</a>.
+            </div>
+        </div>
+        </div>
+    </footer> -->
+
+    <!-- All this area goes before </body> closing tag --> 
+
+
+</body>
+
+</html>
