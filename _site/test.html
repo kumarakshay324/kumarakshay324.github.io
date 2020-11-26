@@ -1,0 +1,521 @@
+    <!DOCTYPE HTML>
+
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #fffffe;
+  border: 1px solid #dbdbd5;;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.blog_box_sidenav {
+  margin-left: 8%;
+  margin-right: 10%;
+  position: fixed;
+  background-color: #fffffe;
+  border: 1px solid #dbdbd5;
+  height: auto;
+  width: 350px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+.blog_box_sidenav p:hover{
+  color: #140440;
+  font-weight: 500;
+  /*text-decoration: bold;*/
+  /*background-color: #cfc ;*/
+
+}
+
+
+</style>
+</head>
+
+<html>
+    <head>
+        <title>AKSHAY  KUMAR</title>
+        <link rel="icon" href="images/profile.jpg">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+            
+            <!-- Header -->
+
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>
+                </div>
+                
+            <!-- Banner -->
+    <!--                <div id="banner">
+                        <section class="container">
+                            <span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+                            <span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+                            <span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+                            </section>
+                    </div>
+ -->
+            </div>          
+
+            <!-- Introduction -->
+            <div class="wrapper style6" align="justify" >
+
+            <br>
+
+            <!-- <div class="column"> -->
+                <div class="blog_box_sidenav" align="left" >
+                    <center>
+                    <br>
+                    <span style="font-size:25px;text-decoration: none;">LATEST POSTS</span>
+                    </center><br>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="mp_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Motion Planning in Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Visual SLAM - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Simulataneous Localization and Mapping - An Introduction</p>
+                        <br>
+                    </a>
+                    <br>
+                </div>
+                
+            <!-- </div> -->
+
+            <div class="blog_box" align="justify" >
+                    <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+                <br>
+                    <h2 style="font-size:40px; font-weight: 500;">SAMPLING BASED MOTION PLANNERS</h2>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Motion planning is the soul of autonomous robot motion/navigation but given the huge variations in operational conditions, robot architecture and tasks, motion planning for robots  becomes one of the most sophisticated domains of robotics.
+                <br><br>                    
+                Given the complexity of a common robot operational indoor/outdoor scene, the ideal expectation of a motion planning algorithm functional across all possible scenarios is extremely challenging. While there is enough effort put into exploiting the robot's physical model and degrees of freedom during motion planning; there is substantial effort put into modeling the environment and its constraints as well.
+                <br><br>
+                For instance, navigation of a mobile robot (assumed to be a point object located at the robot's geometrical center ) in a warehouse involves having a padding (generally equal to the robot footprint) around all the edges of the warehouse and around the obstacles because it is practically impossible for the robot's center to go further out. Similarly, an industrial manipulator arm with fencing all around cannot obtain a pose where, though the end-effector lies within the allowed workspace has an IK configuration with a portion of the robot extruding out of the fencing. 
+                <br><br>
+                Such intricacies necissate the formulation of different motion planning algorithms with varying assumptions and performance specifications. This article discusses the sampling-based motion planning techniques and its variants, the most used techniques implemented on mobile robots used in the industry and academia alike. 
+
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/sampling_mp/ft.png" style="width:550px;height:450px;">
+                        <figcaption>Figure 1 - Mobile Robot Navigation Scene with Padding </figcaption>
+                    </figure>
+
+
+                    <br><br>
+                </center>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                MP algorithms are generally designed knowing the limitations and demands of the environment. Also, a lot of motion planning attempts to reduce the environment and obtain a simplified version of the same for computational interpretation. <b style="font-weight: 500">Discrete search techniques</b> are used to derive finite motion waypoints that connect the start and end. A grid-based representation of the environment is one such example, which, although promises optimality and quick solution, it is neither an adequate representation of the environment nor suitable for high dimensional state-space.
+
+                <br><br>
+                <b style="font-weight: 500">Instead of systematic discretization of the C-space and employing search algorithms, sampling-based algorithms randomly extract samples from the C-space and then construct a path out of it. Sampling-based algorithms are more useful in high-dimensional scenarios and find more optimal solutions.</b> 
+
+                </p>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;font-weight: 500">
+                <!-- <br><br> -->
+                Motion planning eventually is a PSPACE-hard problem where the complexity grows exponentially with C-space dimensions and gets extremely challenging with completeness and optimality requirements. 
+
+                </p>
+                <center>
+                    <figure>
+                        <img src="images/blogs/sampling_mp/warehouse.png" style="width:600px;height:406px;">
+                        <figcaption>Figure 2 - Warehouse Map - Grid Representation of the Environment </figcaption>
+                    </figure>
+                    <br><br>
+                </center>
+
+                </p>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Discrete Motion Planning </h1>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                It is important to acknowledge the discrete motion planning pipeline and its nuances. Despite the already mentioned limitations, discrete MP is still employed on several ocassions for ease of use and in limited complexity applications.
+
+                <br><br>
+
+                Discrete-search creates a discrete, finite, systematic and specific  quantizated representation of the environment, obtain action-space and their involved costs and eventually employ the concerned search algorithm to find the path. They generally employ techniques like Breadth-First search, Depth-First search, A* and its variants and Dijkstra algorithms to find paths for the robot.
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/sampling_mp/discrete.png" style="width:920px;height:200px;">
+                        <figcaption>Figure 3 - Discrete Motion Planning Pipeline </figcaption>
+                    </figure>
+                    <br><br>
+                </center>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/sampling_mp/bdfc.gif" style="width:640px;height:333px;">
+                        <figcaption>Figure 4 - Depth-First & Breadth-First Search </figcaption>
+                    </figure>
+                    <!-- <br><br> -->
+                </center>
+
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Owing to the exploding nature of runtime and computational expense of search algorithms for large discrete spaces, dimensionality issues and accrual of potential inaccuracies due to the resolution of the discrete spaces; discrete motion planning becomes a non-ideal, very limited in scope technique. 
+
+                </p>
+
+
+                <br>
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">Sampling-based Motion Planning</h1>                
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                <b style="font-weight: 500">Sampling in motion planning uses the complete continuous C-space, draws samples out of it, checks the viability of the sample and eventually tries to use it to create a path towards the goal. Several assumptions and hand-crafted constraints/relaxations on performance and results help in designing very efficient real-time paths for robots.</b>
+                <br><br>
+                Sampling is not affected by dimensionality of the C-space and with relaxed completeness (probabilistic completeness, i.e. asymptotic convergence) and sub-optimality conditions, it promises to be the most effective in almost all use-cases. 
+                <br><br>
+
+                <b style="font-weight: 500"> The Monte-Carlo methods engendered the belief in using a subset instead of all the possibilities in any state-space for search problems. Sampling-based algorithms promise better runtime performance and thus trump other more exhaustive techniques.</b>
+                </p>
+
+                <center>
+                    <table style="width:800px;">
+                      <br>
+                      <tr>
+                        <th><b>Advantages</b></th>
+                        <th><b>Disadvantages</b></th> 
+                      </tr>
+                      <tr>
+                        <td>Probabilistically Complete</td>
+                        <td>Unlike to sample narrow passages</td>
+                      </tr>
+                      <tr>
+                        <td>Applicable to High Dimensional State Space</td>
+                        <td>Sub-optimal solutions</td>
+                      </tr>
+                    </table>
+                    <caption>Advantages & Disadvantages of Sampling Based Algorithms</caption>
+                    <br><br><br>
+                </center>
+
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/sampling_mp/sampling.png" style="width:640px;height:333px;">
+                        <figcaption>Figure 5 - Sampling-based Motion Planning </figcaption>
+                    </figure>
+                    <br><br>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    The most common sampling-based algorithms discussed here are Probabilistic Roadmaps and Randomly-Exploring Random Trees. There have been several variations proposed and used for these algorithms that have improved performance, completeness, speed and accuracy.
+                </p>
+
+                <center>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">  <b>PROBABILISTIC ROADMAPS- PRM</b></p>
+                </center>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Probabilistic Roadmap planning is a construct and multi-query motion planning technique proposed first in 1996. It has two steps - a learning phase (generally preprocessed ) and a query phase. The learning phase does the bulk work of understanding the workspace upfront before the second query phase which merely searches through the representation derived in the prior phase to provide a final solution.
+                <br><br>
+
+                <center>
+                    <b style="font-weight: 600"><u>LEARNING PHASE</u></b> </p>
+                </center>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                In the <b style="font-weight: 500">learning phase</b> - several samples are drawn from the workspace and connected to ones nearby, thus creating a roadmap between them all, including the start and desired end point. It lays the foundation for connectivity in the in the C<sub>free</sub>. The learning phase has a <b style="font-weight: 500">construction phase</b> and an <b style="font-weight: 500">expansion phase</b>.
+                <br><br>
+                The construction phase creates the roadmap and the expansion phase attempts at filling the gaps in connectivity between sections of the workspace positioned uniquely, involving additional sampling and connections thereafter between the disconnected components.
+
+                <b  style="font-weight: 500">
+                    <center>Learning Phase - Part I - Construction</center>
+                    <br>
+                </b>
+
+                    <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                        <li>Initialize the graph <b>G(V,E)</b> where <b>V</b> is the collection of nodes (the sampled points, also called milestones) and <b>E</b> is the collection of edges connecting certain nodes</li><br>
+                        <li>
+                            Randomly sample definite number of configurations, ensure they are collision free samples and add them to <b>V</b> 
+                            <br><br>
+                            Extracting random samples still is still tricky. Ideally, the samples should be distributed across the complete <b>C<sub>space</sub></b>. Usually, uniform probability distribution over the particular dimension is used to ensure a map with good connectivity.
+                        </li><br>
+                        <li>
+                            Attempt connecting each node in V to certain, k number of other nodes and find a path between them using a local planner. The local planner can either be a fast one that tries connecting directly between the samples or a slow non-deterministic one. 
+
+                            <br><br>                            
+                            If the connection is established between two nodes (the path being collision-free), the edge <b>E(node<sub>1</sub>, node<sub>2</sub>)</b> is saved. Generally, connectivity between the nodes is inversely proportional to the distance between them.
+                        </li> <br>
+                    </ul>
+
+                            <center>
+                                <figure>
+                                    <img src="images/blogs/sampling_mp/prm_exp.png" style="width:580px;height:290px;">
+                                    <figcaption>Figure 6 - Missing Connections during the Construction Phase </figcaption>
+                                </figure>
+                                <br><br>
+                            </center>
+
+                <b  style="font-weight: 500">
+                    <center>Learning Phase - Part II - Expansion</center>
+                </b>
+                    <br>
+                    <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                        <li>
+                            Certain nodes are selected for expansion, i.e. more connectivity is attempted from those nodes.
+                        </li><br>
+                        <li>
+                            Each node <b>n</b> in <b>V</b> is assigned a weight <b>w(n)</b>. It is an estimate of proximity of the node to difficult regions like the narrow passage shown above.
+                            <br><br>
+                            Weights are normalized such that <b>&#931w(n) = 1</b> and the ones with highest weights(like the red point in Figure 6) are selected to expand. If a node has poor connectivity, it should have a higher weight <b>w(n)</b>.
+
+                        </li><br>
+                        <li>
+                            Estimation of weights for the node <b>n</b> can use different standards. It could be counting a certain number of nodes from <b>V</b> lying within a known distance radius of the node <b>n</b> or checking distances between a node <b>n</b> and its nearest connected nodes.
+                            <br><br>
+                            For the former, lower the number of connected nodes, higher the chances of the node being deserted and has poor connectivity; while for the latter, the larger distance between the node and its connected nodes, the higher connectivity gap  or disconnection exists in that region.
+                            <br><br>
+                            The results from local planner connection attempts for a particular node can also be used to understand the connectivity of the same. High failure cases can be intuitively be understood as the node connected poorly or being completely disconnected. Such nodes are awarded higher weights and more connection is attempted around these. 
+
+                        </li><br>
+                        <li>
+                            For the local planner,
+                            <br> 
+                            <center>
+                                <i>Failure Ratio, <b>f<sub>r</sub>(n) = f(n) / t(n) + 1 </b></i>
+                            </center>
+
+                            where <b>f</b> is the number of failures during attempted <b>t</b> number of connections. 
+                            <br>
+                            Finally, for one node, the  weight <br>
+                            <center>
+                                <b>w(n)</b> = <b>f<sub>r</sub>(n) / &#931 f<sub>r</sub>(a)</b>
+                            </center>
+                            <br>    
+                            where <b>f<sub>r</sub>(a)</b> is for every node <b>a</b> in <b>V</b>  
+                        </li><br>
+                        <li>
+                            Finally, after the normalized weights are obtained, nodes with weights over a certain threshold are selected are expansions
+                        </li><br>
+                        <li>
+                            For a selected node <b>n</b>, at a pre-defined distance from it and in a random direction; a new node <b>n<sub>new</sub></b> is generated.
+                            <ul style="column-width:1000px;margin-left:50px;text-align:justify;list-style-type:circle;">
+                                <li>If <b>n<sub>new</sub></b> lies in <b>C<sub>free</sub></b> and the edge <b>e</b> connecting them also does, then <b>n<sub>new</sub></b> is added to <b>V</b> and the edge <b>e(n, n<sub>new</sub>)</b> is saved in <b>E</b>.
+                                </li>
+                                <li> If not, the same attempt for a new node <b>n<sub>new</sub></b> is attempted in another random direction.
+                                </li>
+                            </ul> 
+                        </li>
+                        <li>
+                            At the end of expansion phase, more connectivity and ideally in inaccessible areas of the map, is obtained.
+                        </li><br>                        
+                    </ul>
+
+                            <center>
+                                <figure>
+                                    <img src="images/blogs/sampling_mp/expansion.jpg" style="width:580px;height:290px;">
+                                    <figcaption>Figure 7 - Enhanced Connectivity in Expansion Phase </figcaption>
+                                </figure>
+                                <br><br>
+                            </center>                                        
+                </p>
+
+                <center>
+                    <b style="font-weight: 600"><u>QUERY PHASE</u></b> </p>
+                </center>
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                The <b style="font-weight: 500">Query Phase</b> is a relatively easier phase with all the bulk computational processing already done. It accepts a start <b>s</b> and a goal <b>g</b> configuration and attempts to find a path between them.
+                <br><br>
+                 Ideally, a path exists in the roadmap connecting the two and the query returns that path (a collection of all intermediate edges passing through other intermittent nodes that eventually establish connectivity between <b>s</b> and <b>g</b>)  
+
+                <br><br>
+                Sampling algorithms are apt for even high-dimensional robot state-space and also suitable for real-time applications. <b>Randomly Growing Rapi Trees(RRT) or PRM(Probabilistic Roadmaps)</b> are the commmon sampling-based algorithms. 
+
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mp/rrt_star.gif" style="width:350;height:250;">
+                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
+                        <!-- <br><br> -->
+                        &emsp;&emsp;
+                        <img src="images/blogs/mp/prm.gif" style="width:250;height:250px;">
+                        <figcaption>RRT* and PRM Algorithms </figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Exact Planning Algorithms</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Certain planning algorithms try to solve for motion planning problems directly. Exact algorithms are thorough in their approach and thus find a solution if it exists, for sure. It computes exact path of motion between any two points (terminal or intermittent) that are supposed to solve a part of the problem. 
+                <br><br>
+
+                <b>Cellular decomposition or visibility graphs</b> are the most common examples of such algorithms. They are however intractable and computationally expensive, thus not really extensible for high-dimensional problems.
+
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mp/cells.gif" style="width:350;height:250;">
+                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
+                        <!-- <br><br> -->
+                        &emsp;&emsp;
+                        <img src="images/blogs/mp/visibilitygraph.png" style="width:220;height:220px;">
+                        <figcaption>Cellular Decomposition and Visibility Graphs </figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Search-based Planning Algorithms</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                Search-based algorithms employ general computer-science search algorithms and solve the motion planning task as optimization tasks. Generally, the MP problem is represented as a graph with several grids/lattices and then optimal connections/nodes between the grids that connect the start and desired end points are derived. 
+                <br><br>
+
+                <b>Dijkstra, A* and other A* variants</b> are the most common examples of search-based algorithms. While they are again not apt for high-dimensional solutions, they can be applicable to certain tasks like coverage problems and vehicle planning.
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/mp/a_star.gif" style="width:250px;height:250px;">
+                        <!-- <figcaption>Figure 2 - Different operational blocks of a functional robot </figcaption> -->
+                        <!-- <br><br> -->
+                        &emsp;&emsp;
+                        <img src="images/blogs/mp/djikstra.gif" style="width:250;height:250px;">
+                        <figcaption>A* and Dijkstra Algorithms </figcaption>
+                        <br>
+                    </figure>
+                </center>
+
+                <br>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;"> <i> <b>Other Planning Algorithms</b></i> </p>
+
+                <p style="column-width:1000px;margin-left:250px;margin-right:200px;text-align:justify;">
+
+                The above-mentioned algorithms are all model-based operations that  need the robot model to determine the feasibility of the algorithm. There has been recent research done in <b>reinforcement learning and other AI technology</b> for motion planning. 
+                <br><br>
+
+                <br>
+
+                </p>
+
+                <br><br>
+            </div>
+            </div>
+
+
+            <div id="disqus_thread" style="column-width: 1000px;margin-left: 570px;margin-right: 200px;"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+            var disqus_config = function () {
+            this.page.url = "http://kumarakshay.me/test.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 124; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://kumarakshay-me.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                            
+
+    
+        <!-- Section One -->
+            <div class="wrapper style2">
+
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+
+            </div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script></div>
+
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+  
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+<script id="dsq-count-scr" src="//kumarakshay-me.disqus.com/count.js" async></script>
+    </body>
+</html>

@@ -6,7 +6,7 @@ tags: recent
 info: February - April 2020
 abstract: "Collaborative Task Planning using DRL for mid-air robot-robot object handover"
 categories: [ Robotics, tutorial ]
-tags: [undergrad]
+tags: [recent]
 github: https://github.com/kumar-akshay324/rl-handover
 image: assets/images/projects/roboarm.jpg
 # documentation: assets/images/fuzzy/fuzzy.pdf

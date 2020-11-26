@@ -1,0 +1,137 @@
+	<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>AKSHAY  KUMAR</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header Wrapper -->
+			<div class="wrapper style1">
+			
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>				
+			<!-- Banner -->
+				<!-- <div id="banner">
+					<section class="container">
+						<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+						<span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+						<span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+						</section>
+				</div> -->
+
+			</div>
+				
+			<!-- Patents -->
+			<div class="wrapper style5">
+				<h2 style="font-size:50px"> LEARNING FROM DEMONSTRATION USING DYNAMIC MOVEMENT PRIMITIVES</h2>
+			<p style="text-align:center;margin:3%;font-size:30px">FEBRUARY - MAY 2018 </p>
+			<p style="text-align:center;font-size:25px"><a href="images/lfd/LfD_project_report.pdf">LINK TO COMPLETE PROJECT REPORT</a></p>
+
+			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
+			<p style="text-align:left;margin:3%">To develop a <b>Learning from Demonstration</b> framework using Dynamic Movement Primitives for the 5-DOF Kuka YouBot manipulator arm in V-REP simulation environment<br><br> 
+
+			<p style="text-align:left;margin:3%"> <b>RESEARCH ASPECTS</b></p>
+			<p style="text-align:left;margin:3%"><b>•</b> &nbsp;&nbsp;Giving demonstrations to the manipulator in task space and conducting learning experiments in joint-space<br><b>•</b>&nbsp;&nbsp; Understanding scope of temporal and spatial scaling and how it reflects in the task space 
+
+			<p style="text-align:center; font-size:25px	">	<img src="images/lfd/lfd_flow.png" style="width:677px;height:481px;margin-left:2%;"></img> <br> <br> <b> FlowChart of data the process </b></p>	
+
+
+			<p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
+			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> 
+
+The complete environment was setup in V-REP and Python using its Remote-API interface with Python <br><br>
+
+The demonstrations could be fed to the simulation model in task-space using a gaming controller that uses ROS based Inverse Kinematics service <br><br>
+
+The training was done in joint space considering the variations at each joint level over time. <br><br>
+
+Several combinations for the number of Gaussian basis functions were tested and nfs = 150 gave most reliable results<br><br>
+
+
+					<p style="text-align:center;font-size:25px"><img src="images/lfd/dmp_flow.png" style="width:770px;height:420px;margin-left:2%;"></img><br><br><b> Dynamic Movement Primitive Training pipeline </b></p>	
+
+			<p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
+			
+			<p style="text-align:left;margin:3%">
+			<b>•</b>&nbsp;&nbsp; The setup was successfully trained successfully for a given demonstration</b><br>
+			<b>•</b> &nbsp; Testing on changed terminal states and temporal scaling requirements worked fairly well. Spatial scaling was not tried to avoid reaching joint limits for the robot<br>
+
+			<p style="text-align:center;font-size:20px">
+				<img src="images/lfd/learned.png" style="width:768px;height:432px;margin-left:2%;"></img> <br> <b>Initially learned DMP trajectory</b> </p>
+			<p style="text-align:center;font-size:20px">
+				<img src="images/lfd/changed_terminal.png" style="width:768px;height:432px;margin-left:2%;"></img> <br><b>Testing for changed start and end positions for all the joints</b></p><br>	
+			<p style="text-align:center;font-size:20px">
+				<img src="images/lfd/temp_terminal.png" style="width:768px;height:432px;margin-left:2%;"></img> <br><b>Testing for changed terminal states and temporal scaling (doubled time-span)</b></p>
+			<p style="text-align:center;font-size:20px">				
+				<img src="images/lfd/weights.png" style="width:619px;height:205px;margin-left:2%;"></img><br><br><b>   Snippet of the various parameters generated in the learned trajectory</b></p>
+
+<!-- 			<p style="text-align:center;font-size:20px"><img src="images/lfd/learned.png" style="width:640px;height:360px;margin-left:2%;"></img> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/lfd/changed_terminal.png" style="width:640px;height:360px;margin-left:2%;"></img><br><br><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Initially learned DMP trajectory &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Testing for changed start and end positions for all the joints</b></p><br>	
+			<p style="text-align:center;font-size:20px"><img src="images/lfd/temp_terminal.png" style="width:640px;height:360px;margin-left:2%;"></img><img src="images/lfd/weights.png" style="width:619px;height:205px;margin-left:2%;"></img><br><br><b> Testing for changed terminal states and temporal scaling (doubled time-span) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Snippet of the various parameters generated in the learned trajectory</b></p> -->				
+
+			<br>
+<p style="font-size:25px"><iframe width="560" height="315" src="https://www.youtube.com/embed/D7gGC7onx2g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jUWe7IzsP7M" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<br><br><b>Changed Terminal States | Temporal Scaling - Twice Slow  </b> <br><br><br> <iframe width="560" height="315" src="https://www.youtube.com/embed/pJVwLNNWdy8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> 
+
+<br><br> <b>DMP - Changed Terminal states as well as Temporal Scaling </b></p>
+
+
+			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
+			<p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p>
+			</div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-CZ8x1CZw9b9A6D7D-50.gif' border='0' alt='free counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=CZ8x1CZw9b9A6D7D'></script></div>
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+  
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+
+
+    </body>
+</html>

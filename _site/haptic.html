@@ -1,0 +1,130 @@
+	<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>AKSHAY  KUMAR</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Header Wrapper -->
+			<div class="wrapper style1">
+			
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>				
+			<!-- Banner -->
+				<!-- <div id="banner">
+					<section class="container">
+						<span style="font-size:80px;color:black"><b>AKSHAY KUMAR</b></span>
+						<span style="font-size:25px;color:black" >  <b>MASTERS IN ROBOTICS ENGINEERING</b> | WORCESTER POLYTECHNIC INSTITUTE </span>
+						<span style="font-size:40px;color:black"> PORTFOLIO </span>
+
+						</section>
+				</div> -->
+
+			</div>
+				
+			<!-- Patents -->
+			<div class="wrapper style5">
+				<h2 style="font-size:50px"> HAPTIC REHABILITATION DEVICE</h2>
+			<p style="text-align:center;margin:3%;font-size:30px">SEPTEMBER - DECEMBER 2017 | CIBR LAB | WPI | Prof. Zhi Jane Li</p>
+			<p style="text-align:center;font-size:25px"><a href="images/haptic/project_report.pdf">LINK TO COMPLETE PROJECT REPORT</a></p>
+
+			<p style="text-align:left;margin-left:3%;margin-right:3%;"><b>OBJECTIVE</b></p>
+			<p style="text-align:left;margin:3%">To build two robotic manipulators that work as end-effector type rehabilitation device capable of aiding upper body stroke patients to regain motion <br><br><br> <b>I specifically worked on DMP based formulation of the robot path and conversion of the same from task-space to joint space trajectory </b></p>
+
+			<p style="text-align:left;margin:3%"> <b>RESEARCH ASPECTS</b></p>
+			<p style="text-align:left;margin:3%"><b>•</b> &nbsp;&nbsp;Vibrational feedback enabled end-effector gripper for haptic intimation<br><b>•</b> &nbsp;&nbsp;Motion Capture was used to record regular exercises<br><b>•</b>&nbsp;&nbsp; Dynamic Movement Primitives were used to formulate the trajectory for generalization<br><b>•</b>&nbsp;&nbsp;&nbsp;Motion was interfaced with a two-paddle Pong game to make the exercises more interactive  <br><b>•</b> &nbsp;&nbsp;Excercise action trajectories for the wrist for shoulder abduction/rotation and elbow flexion were translated on to the rehabilation devices<!--<a href="images/ugv/ugv_report.pdf">LINK TO COMPLETE PROJECT REPORT<b></a>-->
+					<p style="text-align:center">	<img src="images/haptic/flowchart.png" style="width:840px;height:523px;margin-left:2%;"></img> </p>	
+
+
+
+
+			<p style="text-align:left;margin:3%"> <b>METHODOLOGY</b></p>
+			<p style="text-align:justify;margin:3%;margin-left:3%;margin-right:3%;"> The model was made large enough to cover considerable 3D space for each exercise to be possible. Electronics used in the project included Nucleo 144 board for processing, 12-bit absolute magnetic encoder to sense joint position and velocity, 10 kgs payload load-cells at each joints to measure the torque and 22 kg-cm servo motors. Two motors were used at each joint to provide extra torque that could actually carry the stroke patient's arm around. <br><br>
+
+Software part of the project, basically has two modes of operation for arms based on the stage of recovery. First is user control mode, i.e with compliant control in this mode the patient can play the pong game , this mode can be used after significant recovery is done. Second is follow path mode, in which the arm is provided with predefined path, so it basically moves the patient's arm so the joints can get some recovery this mode can be used in the early stage of recovery. This uses the DMP generated trajectories.
+
+The other sections included developing Compliant Controller, a gravity compensation system and implementing the vibrational feedback in the in-house developed game.
+
+					<p style="text-align:center;font-size:25px"><img src="images/haptic/traj.png" style="width:1295px;height:226px;margin-left:2%;"></img><br><b> Trajectory generation pipeline </b></p>	
+
+
+
+			<p style="text-align:left;margin:3%"> <b>RESULTS</b></p>
+			
+			<p style="text-align:left;margin:3%">
+			<b>•</b>&nbsp;&nbsp; Though slightly erroneous, satisfactory motion capture data was extracted for several upper body rehabilitation exercises </b><br>
+			<b>•</b> &nbsp; DMP was successfully implemented in simulation as well as on the real robot<br>
+			<b>•</b>&nbsp;&nbsp; Compliance control as well as gravity compensation was achieved </b><br>
+			<b>•</b>&nbsp;&nbsp; Pong game with haptic feedback was achieved as well </b><br> 
+			<b>•</b>&nbsp;&nbsp; Non-constrained IK solvers, low communication speed, inefficient PID tuning and noisy sensors are the prominent current limitations among others </b> 
+			<b>•</b>&nbsp;&nbsp; Proof-of-concept working model was successfully achieved </b><br> </p>
+
+			<p style="text-align:center;font-size:25px"><img src="images/haptic/akshay.PNG" style="width:1375px;height:493px;margin-left:2%;"></img><br><br><b> Final trajectory in joint-space </b></p>	
+
+
+			<br>
+		<p style="font-size:25px"><iframe width="640" height="360" src="https://www.youtube.com/embed/LuIrgPoT_I8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<iframe width="640" height="360" src="https://www.youtube.com/embed/Xygv5b_1DZs" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+<br><br><b>Left Arm Trajectory simulation | Right Arm Trajectory simulation  </b> <br><br><br> <iframe width="1280" height="720" src="https://www.youtube.com/embed/_7Q-fqpDKSM" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> <br><br> <b>Final Working model </b></p>
+
+			<p style="text-align:left;margin:3%"> <b>GALLERY</b></p>
+			<img src="images/haptic/ldmpx.png" style="width:800px;height:450px;margin-left:2%;"></img>
+			<img src="images/haptic/ldmpx.png" style="width:800px;height:450px;margin-left:2%"></img>
+			<img src="images/haptic/ldmpx.png" style="width:800px;height:450px;margin-left:2%"></img> 
+			<img src="images/haptic/rdmpx.png" style="width:800px;height:450px;margin-left:2%"></img>
+			<img src="images/haptic/rdmpy.png" style="width:800px;height:450px;margin-left:2%"></img> 
+			<img src="images/haptic/rdmpz.png" style="width:800px;height:450px;margin-left:2%"></img>
+
+			<center><p><a href="portfolio.html"> <b>BACK </b></a><p></center>
+			<p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p>
+			</div>
+<div align=center><a href='https://www.counter12.com'><img src='https://www.counter12.com/img-CZ8x1CZw9b9A6D7D-50.gif' border='0' alt='free counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=CZ8x1CZw9b9A6D7D'></script></div>
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+  
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+
+
+    </body>
+</html>

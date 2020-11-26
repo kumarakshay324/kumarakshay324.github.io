@@ -1,0 +1,415 @@
+    <!DOCTYPE HTML>
+
+<head>
+<style>
+
+div.blog_box {
+  margin-left: 30%;
+  margin-right: 10%;
+
+  background-color: #fffffe;
+  border: 1px solid #dbdbd5;;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+div.blog_box_sidenav {
+  margin-left: 8%;
+  margin-right: 10%;
+  position: fixed;
+  background-color: #fffffe;
+  border: 1px solid #dbdbd5;
+  height: auto;
+  width: 350px;
+  opacity: 1.0;
+  filter: alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+div.column{
+  /*float: right;*/
+  margin-right: 0%;
+  margin-left: 0%;  
+  width: 30%;
+  /*width*/: 30%;
+  position: fixed;
+}
+
+.blog_box_sidenav p:hover{
+  color: #140440;
+  font-weight: 500;
+  /*text-decoration: bold;*/
+  /*background-color: #cfc ;*/
+
+}
+
+#myDIV {
+}
+
+</style>
+</head>
+
+<html>
+    <head>
+        <title>Bayesian Methods in Robotics - AKSHAY KUMAR</title>
+        <link rel="icon" href="images/profile.jpg">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.dropotron.min.js"></script>
+        <script src="js/skel.min.js"></script>
+        <script src="js/skel-layers.min.js"></script>
+        <script src="js/init.js"></script>
+        <noscript>
+            <link rel="stylesheet" href="css/skel.css" />
+            <link rel="stylesheet" href="css/style.css" />
+        </noscript>
+        <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+    </head>
+    <body class="homepage">
+
+        <!-- Header Wrapper -->
+            <div class="wrapper style1">
+            
+            <!-- Header -->
+
+                        
+                        <!-- Nav -->
+                            <div class="navbox">
+                                <ul style="white-space:nowrap;margin-top: 10px">
+                                    <li class="active" style="display:inline; "><a href="portfolio.html" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white">PORTFOLIO &emsp; </a> </li>                                 
+                                    <li class="active" style="display:inline; "><a href="images/AKSHAY_KUMAR_RESUME_1PAGE.pdf" target="_blank" style="text-decoration: none; font-size: 25px; font-weight: 500; color: white ">RESUME &emsp;</a></li>
+
+                                    <li class="active" style="display:inline; text-decoration: none;"><a href="index.html" style="text-decoration: none;font-size: 25px; font-weight: 500; color: white">HOME &emsp;</a></li>
+
+                                </ul>
+                            </div>
+                </div>
+                
+            </div>          
+
+            <!-- Introduction -->
+            <div class="wrapper style6" align="justify" >
+
+            <br>
+
+            <!-- <div class="column"> -->
+                <div class="blog_box_sidenav" align="left" >
+                    <center>
+                    <br>
+                    <span style="font-size:25px;text-decoration: none;">LATEST POSTS</span>
+                    </center><br>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="#">
+                        <p style="margin-right:2%; margin-left: 2%">  Extended Kalman Filters in Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="mp_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Motion Planning in Robotics</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="ros.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Robot Operating System - Command Line Tools</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="sampling.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Sampling-based motion planners</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="visual_slam.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Visual SLAM - An Introduction</p>
+                    </a>
+
+                    <a style="display:block;font-size:16px;color:black;;text-decoration:none;margin-left:2%;margin-right:10%margin-top:5%" 
+                    href="slam_intro.html">
+                        <p style="margin-right:2%; margin-left: 2%">  Simulataneous Localization and Mapping - An Introduction</p>
+                        <br>
+                    </a>
+                    <br>
+                </div>
+                
+            <!-- </div> -->
+
+            <div class="blog_box" align="justify" >
+                    <!-- <center><img src="images/posts.jpg" style="width:1120px;height:706px;margin-left:5%;"></center> -->
+                <br>
+                    <h2 style="font-size:40px; font-weight: 500;">BAYESIAN METHODS IN ROBOTICS</h2>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                The domain of robotics has exploded over the past couple of decades. Robots have evolved from being manipulators employed in manufacturing factories to personal robots, humanoids, mobile robots, robot vacuum cleaners and a lot more. 
+                <br><br>
+                With all different kinds of robots coming up, considerable stochasticity is introduced due to the sensors for perception, model and measurement inaccuracies and computational uncertainties. Sensors are generally noisy and known to be performing reliably only within a certain expected accuracy. The physical robot models, size measurements, actuator configuration and manufacturing also carry certain imperfections.
+                <br><br>
+                There are several probabilisitic techniques employed to represent and model these inaccuracies in order to ensure that the final state estimations are closest to ideal. While probabilistic methods try to enhance the accuracy, the stochastic nature of the system with approximations and inaccurate assumptions still deters usage of the technique for critical applications that need to be ideally deterministic in behavior.
+                <br><br>
+
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/bayesian/overview.jpg" style="width:330px;height:247px;">
+                    </figure>
+                    <br>
+                </center>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Introduction</h1>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Probabilistic techiques are largely deployed in robotics for two tasks to tackle uncertainties in state estimation and action ultilization. While state estimation incurs inaccuracies due to noisy sensors, robot action has uncertain behavior due to imperfect physical model and operational environment inflicted errors( like wheel slippage) thereby necissating the mathematical representation of these tentative uncertaintiies and their inclusion in the system model.
+                <br><br>
+                While these uncertainties can be modeled numerically, state estimation repeatedly uses this model along with the incoming sensor measurements to derive the final probability density for the state at the each consecutive timestamp, using several probabilisitic computations. <b style="font-weight: 500">Recursive Bayesian estimation</b>, also called Bayes filter is this probabilisitic technique for sequential state estimation.
+                <br><br>
+                Techniques like the Kalman filters and its variants and the Particle filters are the front-runners of this domain. State estimation applications often also involve a priori multi-sensor data-fusion step which also uses these filtering techniques to provide the best perception results.
+
+
+                <br><br>
+                <b style="font-weight: 500"> NOTE: Readers are expected to have basic knowledge about probability, conditional probability, probability distribution functions and their mathematical representations.</b>
+
+               <br><br> 
+                <button onclick="myFunction()" class="btn" style="background-color: #FFFFFF;border: none; text-align: center; font-size: 16px;cursor: pointer;width: auto; padding-top: 5px;padding-bottom: : 5px">
+                Basic Concepts at a glance - <b style="font-weight: 500">Click to show</b>
+
+                </button>
+
+                <div id="myDIV" style="display: none;">
+                <p style="column-width:1000px;margin-left:200px;text-align:justify;">
+                <center>
+                    <figure>
+                        <img src="images/blogs/bayesian/prob_basics.png" style="width:700px;height:500px;">
+                    </figure>
+                    <br>
+                </center>
+                </p>
+                </div>
+
+                <script>
+                function myFunction() {
+                  var x = document.getElementById("myDIV");
+                  if (x.style.display === "none") {
+                    x.style.display = "block";
+                  } else {
+                    x.style.display = "none";
+                  }
+                }
+                </script>
+
+                </p>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px; ">Bayesian Terminology and Concepts</h1>
+                <br>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                Probabilistic theory can get confounding when dealing with several jargons. Moreover, the complete foundation of these probabilistic techniques is built upon just a few mathematical concepts and assumptions, discussed here.
+                <br><br>
+                <i>For all discussions further;  <b style="font-weight: 500">x</b> = state, <b style="font-weight: 500">z</b> = observation,  <b style="font-weight: 500">u</b> = action and <b style="font-weight: 500">X</b> = a random variable</i>
+                </p>
+
+                <ul style="column-width:1000px;margin-left:300px;margin-right:200px;text-align:justify;list-style-type:disc;">
+                    <li> <b style="font-weight: 500">P( z | X = x<sub>i</sub> )</b>  is causal (given that the state <b style="font-weight: 500">x</b> is known, what could the observation <b style="font-weight: 500">z</b> predict  ) while <b style="font-weight: 500">P( X = x<sub>i</sub> | z )</b> is diagnostic (given that the observation <b style="font-weight: 500">z</b> is known, what would the actual state <b style="font-weight: 500">x</b> be).
+                        <br><br>
+                        Causal systems are easier to obtain because it represents the reliability of a sensor (that obtains the observation <b style="font-weight: 500">z</b>) which can be obtained manually.
+                        <br><br>
+                    The Bayes rule gives us <br>
+                    <center> <b style="font-weight: 500">
+                        P( X = x<sub>i</sub> | z ) = P( z | X = x<sub>i</sub> ) * P(X = x<sub>i</sub>) / P(z)
+                    </b>
+                    </center>
+                    <br>
+                    <li>
+                        Normalization of the Bayes Filter gives
+                        <center>
+                            <b style="font-weight: 500">
+                    P( x | y ) = P( y | x ) * P( x ) / P( y ) = &#951 P( y | x ) * P( x )
+                    <br>
+                    where &#951  = P( y )<sup>-1</sup> = 1 / ( &#931 P( y | x) P( x ))
+
+                            </b>
+                        </center>
+                    </li><br>
+                    <li>
+                        Markov assumption says current observation <b style="font-weight: 500">z<sub>t</sub></b> at timestamp <b style="font-weight: 500">t</b> is independent of all prior observations <b style="font-weight: 500">z<sub>1:t-1</sub></b> and all prior input signals <b style="font-weight: 500">u<sub>1:t</sub></b>, given the state <b style="font-weight: 500">x<sub>t</sub></b> is available. 
+
+                        <br><br>                            
+                        Markov assumption also states that the current state <b style="font-weight: 500">x<sub>t</sub></b> at timestamp <b style="font-weight: 500">t</b> is independent of all prior observations <b style="font-weight: 500">z<sub>1:t-1</sub></b> given the state at the previous timestamp <b style="font-weight: 500">x<sub>t-1</sub></b> and input signal at the current timestamp <b style="font-weight: 500"> u<sub>t</sub></b> are available.
+                        <br><br>
+                        <center>
+                            <figure>
+                                <img src="images/blogs/bayesian/markov_model.png" style="width:560px;height:230px;">
+                            </figure>
+                            <br>
+                        </center>
+
+                    </li> <br>
+                    <li>
+                        A <b style="font-weight: 500">sensor model</b> is the mathematical representation of the belief in the accuracy of a sensor's estimate of the parameter. The <b style="font-weight: 500">actions model</b> is the mathematical representation of the belief in the ability of the inputs given to the robot to actually drive the robot to the expected(mathematically derived) final configuration.
+                        <br><br>
+                        For instance, in a mobile robot; the range-measurement sensor model should state the probability with which the sensor measures the distance accurately and could be affected by noise and operational limitations of the sensor. For the action model, it would be the ability of the mobile robot to move the amount of distance that it is expected to, when fed with a particular velocity/acceleration/jerk.
+                    </li> <br>
+                    <li>
+                        <b style="font-weight: 500">Transition probability</b> defines the likelihood of change from state <b style="   font-weight: 500">x<sub>a</sub></b> to state <b style="font-weight: 500">x<sub>b</sub></b>. 
+
+                        <b style="font-weight: 500">Emission probability</b> defines the likelihood of a sensor measurment of a state <b style="   font-weight: 500">z<sub>a</sub></b> accurately representing the actual state <b style="font-weight: 500">x<sub>a</sub></b>.
+                        <br>
+                        Transition Probability = <b  style="font-weight: 500">p( x<sub>t</sub> | x<sub>t-1</sub> )</b>
+                        <br>
+                        Emission Probability = <b  style="font-weight: 500">p( z<sub>t</sub> = x<sub>t</sub> | x<sub>t</sub> )</b>
+                    </li>
+                </ul>
+
+                <h1 style="text-align:left;margin-left:200px;font-size:20px ">State Estimation</h1>                
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                For a robot, its state could comprise of any number of parameters defining its configuration. It could be the position(x,y,z) and orientation(qw,qx,qy,qz) for the end-effector of a manipulator or the GPS coordinates of a drone or the joint angles of the legs of a biped robot.
+                <br><br>
+                <b style="font-weight: 500">For the sake of simplicity, this artcile refers to the pose of a mobile robot - position (x, y) and orientation (&#952) of the heading as the state being determined. In mobile robotics terminology, this is localization - the process of determining the location of the robot in the world given the actions that it takes and the perception model derived observations.
+                </b>
+                </p>
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/bayesian/localization.png" style="width:450px;height:400px;">
+                        <figcaption>Visual Representation of Robot Localization </figcaption>
+                    </figure>
+                    <br>
+                </center>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    For a mobile robot, it can be intuitively understood that the current best estimate of its pose will be dependent upon how well does the sensor model observe its pose and how well does the robot model implement the action on the robot.
+                    <br><br>
+                    Thus, the probabilistic representation of the robot's pose, i.e. the localization process should be dependent on the sensor model and the action model.
+
+                    <center style="column-width:1000px;margin-left:200px;margin-right:200px;">
+                    <b style="font-weight: 500">
+                    Sensor model =  P(z<sub>t</sub> | x<sub>t</sub> ) 
+                    </b>
+                    <br>
+                    <b style="font-weight: 500">Inference:</b> sensor observation at timestampt t is only dependent upon the state at timestamp t
+                    <br><br>
+                    <b style="font-weight: 500">
+                    Action model =  P(x<sub>t</sub> | u<sub>t</sub>, x<sub>t-1</sub> )
+                    </b>
+                    <br>
+                    <b style="font-weight: 500">Inference:</b> State at timestamp t is dependent upon the action taken at timestamp t and state at timestamp (t-1)
+                    </b>
+
+                    </center>
+                </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+
+                The recursive Bayes estimation involves two major steps called the <b style="font-weight: 500">prediction step</b> and the <b style="font-weight: 500">correction step</b>. The prediction step involves estimating the next/current value of the state based on the previous state and accounting for the probability of transition from the previous state to the next state. The correction step involves using the sensor model probability of the current state to rectify the result obtained from the prediction step.  
+                <br><br>
+                Mathematically, the final equation for <b style="font-weight: 500">state estimation </b> is given by
+
+                <center>
+                    <figure>
+                        <img src="images/blogs/bayesian/final.png" style="width:450px;height:130px;">
+                    </figure>
+                    <br>
+                </center>
+                </p>    
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                As evident, the prediction step includes the action or motion model  <b style="font-weight: 500">p(x<sub>t</sub> | u<sub>t</sub>, x<sub>t-1</sub> )</b> of the system while the correction step uses the sensor model <b style="font-weight: 500">p(z<sub>t</sub> | x<sub>t</sub> )</b> and finally normalizes it with a factor <b style="font-weight: 500">&#951</b>.
+                </p>
+
+                <p style="text-align:center;font-size:20px "><b style="font-weight:500">CONCLUSIONS FOR RECURSIVE BAYESIAN ESTIMATION</b>  </p>
+
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    <b style="font-weight: 500">Bayes</b> filters while computing the probabilities need to model the nature of inaccuracies and noise. Given the universal applicability, we could assume it to be a <b style="font-weight: 500">Gaussian</b>  model which, for noise in measurements would suggest that the error(essentially the probability of occurence) in measurement would be distributed around the actual value as a Gaussian centered around it.
+                    <br><br>
+                    Other distributions could be a uniform distribution or a special polynomial defined distribution.
+                </p>
+                <hr width="20%">
+                    <br>                
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    <b style="font-weight: 500">While</b> the underlying probabilistic concepts remain the same for all systems, the action/motion model and sensor/observation models of the system could be linear or non-linear. Kalman filter family has different variants supporting both. 
+                </p>
+                <hr width="20%">
+                    <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">
+                    <b style="font-weight: 500">The</b> distribution may or may not have a parametric representation. Basically, the Gaussian distribution can be modeled and defined using the mean and the variance while a uniform distribution would have a value and the range of extent.
+                    However, there could be arbitrary distributions not modeled by finite number of parameters and need multiple sampling instances to represent the distribution. 
+                </p>
+                <hr width="20%">
+                <br>
+                <p style="column-width:1000px;margin-left:200px;margin-right:200px;text-align:justify;">                
+                    <b style="font-weight: 500">
+                    The different distribution mechanisms divide the broad category of filtering/recursive estimation techniques to Kalman and Particle Filters. While Kalman filters operate on parametric definitions, particle filters use sampled points/particles to model the distribution. These filters should be discussed individually in later posts.
+                    </b>
+                </p>
+
+            </div>
+            </div>
+
+            <p style="column-width:1000px;margin-left:550px;margin-right:200px;text-align:center;font-size: 22px;font-weight: 500;color: red">
+                <i>
+                IF YOU LIKED THE ARTICLE, DON'T FORGET TO LEAVE A REACTION OR A COMMENT!                         
+                </i>
+            </p>
+
+            <div id="disqus_thread" style="column-width: 1000px;margin-left: 570px;margin-right: 200px;"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+            var disqus_config = function () {
+            this.page.url = "http://kumarakshay.me/bayesian.html";  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = 150; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://kumarakshay-me.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+    
+        <!-- Section One -->
+            <div class="wrapper style2" align="center">
+
+                <p style="margin-bottom:0;padding-bottom:0;"><hr width="50%"><center>Copyright @Akshay Kumar | Last Updated on 05/25/2019</center></p> 
+
+<a href='https://www.counter12.com'><img src='https://www.counter12.com/img-y9Z8xYWb7W273YW2-50.gif' border='0' alt='counter'></a><script type='text/javascript' src='https://www.counter12.com/ad.js?id=y9Z8xYWb7W273YW2'></script>
+            </div>
+
+            <div id="mySidenav" class="sidenav">
+<!--              <a href="#" id="about">About
+ -->
+
+                     <a href="mailto:singhakshay324@gmail.com" target="_blank" id="gmail1"><img src="images/contacts/gmail.png" style="width:50px;height:50px;"> </a>
+
+                     <a href="mailto:akumar5@wpi.edu" target="_blank" id="gmail2"><img src="images/contacts/outlook.png" style="width:50px;height:50px;"></a>
+
+                    <a href="http://in.linkedin.com/in/kumarakshay324" target="_blank" id="linkedin"><img src="images/contacts/linkedin.png" style="width:50px;height:50px;;"></a></center>
+
+                     <a href="https://github.com/kumar-akshay324" target="_blank" id="github"><img src="images/contacts/github.png" style="width:50px;height:50px;"></a>
+
+                    <a href=" http://www.quora.com/profile/Akshay-Singh-66" target="_blank" id="quora"><img src="images/contacts/quora.png" style="width:50px;height:50px;;"></a>
+
+  
+
+
+<!--              <a href="#" id="blog">Blog</a>
+              <a href="#" id="projects">Projects</a>
+              <a href="#" id="contact">Contact</a>
+ -->            </div>
+    </body>
+</html>
