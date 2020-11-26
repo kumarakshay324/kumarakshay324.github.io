@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/home/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/home/" rel="alternate" type="text/html" /><updated>2020-11-26T13:20:06-08:00</updated><id>http://localhost:4000/home/feed.xml</id><title type="html">ThatRobotBoy</title><subtitle>Portfolio Website for Akshay - A colllection of his projects, blogs and other stories</subtitle><entry><title type="html">Baxter Kinematics &amp;amp; Dynamics Library</title><link href="http://localhost:4000/home/baxter/" rel="alternate" type="text/html" title="Baxter Kinematics &amp;amp; Dynamics Library" /><published>2020-11-24T00:00:00-08:00</published><updated>2020-11-24T00:00:00-08:00</updated><id>http://localhost:4000/home/baxter</id><content type="html" xml:base="http://localhost:4000/home/baxter/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-26T13:37:30-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ThatRobotBoy</title><subtitle>Portfolio Website for Akshay - A colllection of his projects, blogs and other stories</subtitle><entry><title type="html">Baxter Kinematics &amp;amp; Dynamics Library</title><link href="http://localhost:4000/baxter/" rel="alternate" type="text/html" title="Baxter Kinematics &amp;amp; Dynamics Library" /><published>2020-11-24T00:00:00-08:00</published><updated>2020-11-24T00:00:00-08:00</updated><id>http://localhost:4000/baxter</id><content type="html" xml:base="http://localhost:4000/baxter/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;To develop a complete Kinematics and Dynamics Library for the 7-DOF arm of the Baxter robot. The libray includes solutions to Forward and Inverse Position and Velocity Kinematics and the M, C and G matrices required to build the dynamical models of manipulator arms along with workspace analysis and building blocks for null-space optimization&lt;/p&gt;
 
@@ -12,7 +12,7 @@
   &lt;li&gt;Determination of the almost “half-a-million” coefficients of the M, C and G matrices&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/mykdl/final_flowchart.jpeg&quot; alt=&quot;FLow-Chart showing the modules of the library&quot; /&gt; &lt;br /&gt; &lt;em&gt;Flow-Chart showing the modules of the library&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/mykdl/final_flowchart.jpeg&quot; alt=&quot;FLow-Chart showing the modules of the library&quot; /&gt; &lt;br /&gt; &lt;em&gt;Flow-Chart showing the modules of the library&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
 
@@ -24,7 +24,7 @@
 
 &lt;p&gt;The &lt;strong&gt;Euler-Lagrangian&lt;/strong&gt; method to derive the dynamical model of a robotic manipulator incorporates the computation of Kinetic and Potential energies of the system parameterized by the joint angles, i.e. the orientation of the arm. Thereafter, computation of the Lagrangian and its derivatives with time and joint variables results in the required dynamic model.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/mykdl/fpk.png&quot; alt=&quot;Forward Position Kinematics - Implementation on real robot model and skeleton model in simulation&quot; /&gt; &lt;br /&gt; &lt;em&gt;Forward Position Kinematics - Implementation on real robot model and skeleton model in simulation&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/mykdl/fpk.png&quot; alt=&quot;Forward Position Kinematics - Implementation on real robot model and skeleton model in simulation&quot; /&gt; &lt;br /&gt; &lt;em&gt;Forward Position Kinematics - Implementation on real robot model and skeleton model in simulation&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
 
@@ -44,7 +44,7 @@
 &lt;p&gt;&lt;em&gt;Pseduo-Inverse Inverse Kinematics Solution&lt;/em&gt;&lt;/p&gt;
 
 &lt;iframe width=&quot;768&quot; height=&quot;434&quot; src=&quot;https://www.youtube.com/embed/PPKZ8XThTAk&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;em&gt;IK solution implemented on Baxter in Gazebo simulation&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/baxter.png" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/baxter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Surface Electromyography Signal Extraction</title><link href="http://localhost:4000/home/semg/" rel="alternate" type="text/html" title="Surface Electromyography Signal Extraction" /><published>2020-11-22T00:00:00-08:00</published><updated>2020-11-22T00:00:00-08:00</updated><id>http://localhost:4000/home/semg</id><content type="html" xml:base="http://localhost:4000/home/semg/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;IK solution implemented on Baxter in Gazebo simulation&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/baxter.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/baxter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Surface Electromyography Signal Extraction</title><link href="http://localhost:4000/semg/" rel="alternate" type="text/html" title="Surface Electromyography Signal Extraction" /><published>2020-11-22T00:00:00-08:00</published><updated>2020-11-22T00:00:00-08:00</updated><id>http://localhost:4000/semg</id><content type="html" xml:base="http://localhost:4000/semg/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;Electromyography refers to the procedure of extracting electrical signals from the human nervous system that flow through the various parts of the body and are intended to carry the information from the brain to the site of action. The objective of the work is to design a robust setup for efficient and accurate extraction of surface electromyographic signals that can be used to drive wearable devices as per human intent.&lt;/p&gt;
 
@@ -59,7 +59,7 @@
   &lt;li&gt;GUI was developed over an open source platform - Processing&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/e.png&quot; alt=&quot;Flow Chart&quot; /&gt; &lt;br /&gt; &lt;em&gt;Flow Chart&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/semg/e.png&quot; alt=&quot;Flow Chart&quot; /&gt; &lt;br /&gt; &lt;em&gt;Flow Chart&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
 
@@ -79,11 +79,11 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/bb.jpg&quot; alt=&quot;Raw Signals For Right Thigh Muscles&quot; /&gt; &lt;br /&gt; &lt;em&gt;Raw Signals For Right Thigh Muscles&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/semg/bb.jpg&quot; alt=&quot;Raw Signals For Right Thigh Muscles&quot; /&gt; &lt;br /&gt; &lt;em&gt;Raw Signals For Right Thigh Muscles&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/aa.png&quot; alt=&quot;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&quot; /&gt; &lt;br /&gt; &lt;em&gt;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/semg/aa.png&quot; alt=&quot;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&quot; /&gt; &lt;br /&gt; &lt;em&gt;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/semg/ui.png&quot; alt=&quot;UI for the Data Logger&quot; /&gt; &lt;br /&gt; &lt;em&gt;UI for the Data Logger&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/semg.jpg" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/semg.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Motion Planning for Dual-Arm Manipulator</title><link href="http://localhost:4000/home/motion-planning/" rel="alternate" type="text/html" title="Motion Planning for Dual-Arm Manipulator" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/home/motion-planning</id><content type="html" xml:base="http://localhost:4000/home/motion-planning/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/semg/ui.png&quot; alt=&quot;UI for the Data Logger&quot; /&gt; &lt;br /&gt; &lt;em&gt;UI for the Data Logger&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/semg.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/semg.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Motion Planning for Dual-Arm Manipulator</title><link href="http://localhost:4000/motion-planning/" rel="alternate" type="text/html" title="Motion Planning for Dual-Arm Manipulator" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/motion-planning</id><content type="html" xml:base="http://localhost:4000/motion-planning/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;Extracting trajectories for desired motion and simulating them on ROS MoveIt platform before implementation on the Yashkawa SDA10F dual-arm robot&lt;/p&gt;
 
@@ -109,7 +109,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
   &lt;li&gt;Initial simulation of robot’s demo package achieved using Rviz&lt;/li&gt;
   &lt;li&gt;Custom robot model for MoveIt using the setup assistant and defining special links was achieved&lt;/li&gt;
   &lt;li&gt;Manipulation of the robot in joint space achieved and simulated in Rviz&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/dualarm.jpg" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/dualarm.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Control System Design for Unmanned Ground Vehicle</title><link href="http://localhost:4000/home/ugv/" rel="alternate" type="text/html" title="Control System Design for Unmanned Ground Vehicle" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/home/ugv</id><content type="html" xml:base="http://localhost:4000/home/ugv/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;/ul&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/dualarm.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/dualarm.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Control System Design for Unmanned Ground Vehicle</title><link href="http://localhost:4000/ugv/" rel="alternate" type="text/html" title="Control System Design for Unmanned Ground Vehicle" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/ugv</id><content type="html" xml:base="http://localhost:4000/ugv/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;The objective was to design the control system for an unmanned ground vehicle. The control system was supposed to obtain the input sequences for a DC motor powered robot using its odometry.&lt;/p&gt;
 
@@ -135,7 +135,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/ugv/gallery.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/ugv.jpg" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/ugv.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Fuzzy Logic Controller For Robot Navigation</title><link href="http://localhost:4000/home/fuzzy-logic-controller/" rel="alternate" type="text/html" title="Fuzzy Logic Controller For Robot Navigation" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/home/fuzzy-logic-controller</id><content type="html" xml:base="http://localhost:4000/home/fuzzy-logic-controller/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/ugv/gallery.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/ugv.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/ugv.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Fuzzy Logic Controller For Robot Navigation</title><link href="http://localhost:4000/fuzzy-logic-controller/" rel="alternate" type="text/html" title="Fuzzy Logic Controller For Robot Navigation" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/fuzzy-logic-controller</id><content type="html" xml:base="http://localhost:4000/fuzzy-logic-controller/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;Design of a Fuzzy Logic Controller (FLC) for mobile robot navigation in an unknown, static or dynamic envinronments using the Tracking FLC and Obstacle Avoidance FLC and implementation of the same on TurtleBot2 robot.&lt;/p&gt;
 
@@ -148,9 +148,9 @@ The pre-processing was data extraction involved skin preparation and electrode p
   &lt;li&gt;Design of If-Else fuzzy rules for OAFLC and TFLC&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/fuzzy/fis.png&quot; alt=&quot;Fuzzy Inference System - Controller Design&quot; /&gt; &lt;br /&gt; &lt;em&gt;Fuzzy Inference System - Controller Design&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/fuzzy/fis.png&quot; alt=&quot;Fuzzy Inference System - Controller Design&quot; /&gt; &lt;br /&gt; &lt;em&gt;Fuzzy Inference System - Controller Design&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/fuzzy/mem.png&quot; alt=&quot;Membership Function for TFLC - Distance between robot and target&quot; /&gt; &lt;br /&gt; &lt;em&gt;Membership Function for TFLC - Distance between robot and target&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/fuzzy/mem.png&quot; alt=&quot;Membership Function for TFLC - Distance between robot and target&quot; /&gt; &lt;br /&gt; &lt;em&gt;Membership Function for TFLC - Distance between robot and target&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
 
@@ -164,7 +164,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;p&gt;Weighted behavior fusion for both FLCs to obtain final robot commands.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/fuzzy/fusion.jpeg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt; &lt;em&gt;Behavior Fusion&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/fuzzy/fusion.jpeg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt; &lt;em&gt;Behavior Fusion&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
 
@@ -177,7 +177,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;iframe width=&quot;768&quot; height=&quot;432&quot; src=&quot;https://www.youtube.com/embed/GUEN4Orpb2A&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;iframe width=&quot;768&quot; height=&quot;432&quot; src=&quot;https://www.youtube.com/embed/4fj4q-swg0U&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/turtlebot.png" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/turtlebot.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Geofencing-based Rail Crossing Alert System</title><link href="http://localhost:4000/home/rail-alert/" rel="alternate" type="text/html" title="Geofencing-based Rail Crossing Alert System" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/home/rail-alert</id><content type="html" xml:base="http://localhost:4000/home/rail-alert/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;iframe width=&quot;768&quot; height=&quot;432&quot; src=&quot;https://www.youtube.com/embed/4fj4q-swg0U&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/turtlebot.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/turtlebot.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Geofencing-based Rail Crossing Alert System</title><link href="http://localhost:4000/rail-alert/" rel="alternate" type="text/html" title="Geofencing-based Rail Crossing Alert System" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/rail-alert</id><content type="html" xml:base="http://localhost:4000/rail-alert/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;Building a system capable of designing a virtual perimeter-geofence around unmanned rail-road crossovers to prevent mishaps.&lt;/p&gt;
 
@@ -189,8 +189,8 @@ The pre-processing was data extraction involved skin preparation and electrode p
   &lt;li&gt;Low power bluetooth supported system for instant update on new geofences&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/geofence/d.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;
-&lt;img src=&quot;/home/assets/images/geofence/c.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/geofence/d.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;
+&lt;img src=&quot;/assets/images/geofence/c.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
 
@@ -205,7 +205,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/geofence/combined.png&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/geofence.jpg" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/geofence.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Robot-Robot Object Handover Using Reinforcement Learning</title><link href="http://localhost:4000/home/rl/" rel="alternate" type="text/html" title="Robot-Robot Object Handover Using Reinforcement Learning" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/home/rl</id><content type="html" xml:base="http://localhost:4000/home/rl/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/geofence/combined.png&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/geofence.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/geofence.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Robot-Robot Object Handover Using Reinforcement Learning</title><link href="http://localhost:4000/rl/" rel="alternate" type="text/html" title="Robot-Robot Object Handover Using Reinforcement Learning" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/rl</id><content type="html" xml:base="http://localhost:4000/rl/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;Achieve mid-air robot to robot object transfer and placement at target location via Deep Reinforcement Learning using a single RL agent that drives the two manipulator arms.&lt;/p&gt;
 
@@ -220,7 +220,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
   &lt;li&gt;So, top two actions were taken at every time step to bring both robots into action.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
 
@@ -243,7 +243,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;iframe width=&quot;840&quot; height=&quot;472&quot; src=&quot;https://www.youtube.com/embed/te6rLAuGVdQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/handover/a.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/handover.png" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/handover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Human Motion Mimicking Robot Arm</title><link href="http://localhost:4000/home/roboarm/" rel="alternate" type="text/html" title="Human Motion Mimicking Robot Arm" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/home/roboarm</id><content type="html" xml:base="http://localhost:4000/home/roboarm/">&lt;h3 id=&quot;about-the-event&quot;&gt;About The Event&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/handover/a.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/handover.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/handover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Human Motion Mimicking Robot Arm</title><link href="http://localhost:4000/roboarm/" rel="alternate" type="text/html" title="Human Motion Mimicking Robot Arm" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/roboarm</id><content type="html" xml:base="http://localhost:4000/roboarm/">&lt;h3 id=&quot;about-the-event&quot;&gt;About The Event&lt;/h3&gt;
 
 &lt;p&gt;The event Tech-Expo was a student innovation contest organised at MNIT JAIPUR during its anual Techno-Cultural Fest - BLitzschalg ‘14. The objective was to propose an engineering solution to any existing world problem or assist the same.&lt;/p&gt;
 
@@ -261,7 +261,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
   &lt;li&gt;Processing done via Arduino micro-controller&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
 
@@ -277,7 +277,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/roboarm/all.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">About The Event</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/roboarm.jpg" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/roboarm.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Haptic Rehabilitation Device Using Arm Stroke Rehabilitation</title><link href="http://localhost:4000/home/haptic/" rel="alternate" type="text/html" title="Haptic Rehabilitation Device Using Arm Stroke Rehabilitation" /><published>2019-11-27T00:00:00-08:00</published><updated>2019-11-27T00:00:00-08:00</updated><id>http://localhost:4000/home/haptic</id><content type="html" xml:base="http://localhost:4000/home/haptic/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/roboarm/all.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">About The Event</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/roboarm.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/roboarm.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Haptic Rehabilitation Device Using Arm Stroke Rehabilitation</title><link href="http://localhost:4000/haptic/" rel="alternate" type="text/html" title="Haptic Rehabilitation Device Using Arm Stroke Rehabilitation" /><published>2019-11-27T00:00:00-08:00</published><updated>2019-11-27T00:00:00-08:00</updated><id>http://localhost:4000/haptic</id><content type="html" xml:base="http://localhost:4000/haptic/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;To build two robotic manipulators that work as end-effector type rehabilitation device capable of aiding upper body stroke patients to regain motion&lt;/p&gt;
 
@@ -308,7 +308,7 @@ The pre-processing was data extraction involved skin preparation and electrode p
   &lt;li&gt;Pong game with haptic feedback was achieved as well&lt;/li&gt;
   &lt;li&gt;Non-constrained IK solvers, low communication speed, inefficient PID tuning and noisy sensors are the prominent current limitations among others&lt;/li&gt;
   &lt;li&gt;Proof-of-concept working model was successfully achieved&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/haptic.jpg" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/haptic.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Learning From Demonstration Using DMPs</title><link href="http://localhost:4000/home/lfd/" rel="alternate" type="text/html" title="Learning From Demonstration Using DMPs" /><published>2019-11-26T00:00:00-08:00</published><updated>2019-11-26T00:00:00-08:00</updated><id>http://localhost:4000/home/lfd</id><content type="html" xml:base="http://localhost:4000/home/lfd/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;/ul&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/haptic.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/haptic.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Learning From Demonstration Using DMPs</title><link href="http://localhost:4000/lfd/" rel="alternate" type="text/html" title="Learning From Demonstration Using DMPs" /><published>2019-11-26T00:00:00-08:00</published><updated>2019-11-26T00:00:00-08:00</updated><id>http://localhost:4000/lfd</id><content type="html" xml:base="http://localhost:4000/lfd/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;To develop a &lt;strong&gt;Learning from Demonstration&lt;/strong&gt; framework using Dynamic Movement Primitives for the 5-DOF Kuka YouBot manipulator arm in V-REP simulation environment&lt;/p&gt;
 
@@ -319,13 +319,13 @@ The pre-processing was data extraction involved skin preparation and electrode p
   &lt;li&gt;Understanding scope of temporal and spatial scaling and how it reflects in the task space&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/lfd_flow.png&quot; alt=&quot;Data FLow-Chart&quot; /&gt; &lt;br /&gt; &lt;em&gt;Data Flow-Chart&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/lfd_flow.png&quot; alt=&quot;Data FLow-Chart&quot; /&gt; &lt;br /&gt; &lt;em&gt;Data Flow-Chart&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
 
 &lt;p&gt;The complete environment was setup in V-REP and Python using its Remote-API interface with Python. The demonstrations could be fed to the simulation model in task-space using a gaming controller that uses ROS based Inverse Kinematics service. The training was done in joint space considering the variations at each joint level over time. Several combinations for the number of Gaussian basis functions were tested and nfs = 150 gave most reliable results&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/dmp_flow.png&quot; alt=&quot;Dynamic Movement Primitive Training pipeline&quot; /&gt; &lt;br /&gt; &lt;em&gt;Dynamic Movement Primitive Training pipeline&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/dmp_flow.png&quot; alt=&quot;Dynamic Movement Primitive Training pipeline&quot; /&gt; &lt;br /&gt; &lt;em&gt;Dynamic Movement Primitive Training pipeline&lt;/em&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
 
@@ -336,13 +336,13 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/learned.png&quot; alt=&quot;Initially learned DMP trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Initially learned DMP trajectory&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/learned.png&quot; alt=&quot;Initially learned DMP trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Initially learned DMP trajectory&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/changed_terminal.png&quot; alt=&quot;Testing for changed start and end positions for all the joints&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed start and end positions for all the joints&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/changed_terminal.png&quot; alt=&quot;Testing for changed start and end positions for all the joints&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed start and end positions for all the joints&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/temp_terminal.png&quot; alt=&quot;Testing for changed terminal states and temporal scaling (doubled time-span)&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed terminal states and temporal scaling (doubled time-span)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/temp_terminal.png&quot; alt=&quot;Testing for changed terminal states and temporal scaling (doubled time-span)&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed terminal states and temporal scaling (doubled time-span)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/home/assets/images/lfd/weights.png&quot; alt=&quot;Snippet of the various parameters generated in the learned trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Snippet of the various parameters generated in the learned trajectory&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/weights.png&quot; alt=&quot;Snippet of the various parameters generated in the learned trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Snippet of the various parameters generated in the learned trajectory&lt;/em&gt;&lt;/p&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/D7gGC7onx2g&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;p&gt;&lt;em&gt;Changed Terminal States&lt;/em&gt;&lt;/p&gt;
@@ -351,4 +351,4 @@ The pre-processing was data extraction involved skin preparation and electrode p
 &lt;p&gt;&lt;em&gt;Temporal Scaling - Twice Slow&lt;/em&gt;&lt;/p&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/pJVwLNNWdy8&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;em&gt;DMP - Changed Terminal states as well as Temporal Scaling&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/home/assets/images/projects/youbot.jpg" /><media:content medium="image" url="http://localhost:4000/home/assets/images/projects/youbot.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;&lt;em&gt;DMP - Changed Terminal states as well as Temporal Scaling&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/youbot.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/youbot.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
