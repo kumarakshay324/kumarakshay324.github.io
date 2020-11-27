@@ -1,4 +1,292 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-26T14:34:48-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ThatRobotBoy</title><subtitle>Portfolio Website for Akshay - A colllection of his projects, blogs and other stories</subtitle><entry><title type="html">Baxter Kinematics &amp;amp; Dynamics Library</title><link href="http://localhost:4000/baxter/" rel="alternate" type="text/html" title="Baxter Kinematics &amp;amp; Dynamics Library" /><published>2020-11-24T00:00:00-08:00</published><updated>2020-11-24T00:00:00-08:00</updated><id>http://localhost:4000/baxter</id><content type="html" xml:base="http://localhost:4000/baxter/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-27T01:04:09-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">ThatRobotBoy</title><subtitle>Portfolio Website for Akshay - A colllection of his projects, blogs and other stories</subtitle><entry><title type="html">Sampling-based Motion Planners</title><link href="http://localhost:4000/sampling-mp/" rel="alternate" type="text/html" title="Sampling-based Motion Planners" /><published>2020-11-25T00:00:00-08:00</published><updated>2020-11-25T00:00:00-08:00</updated><id>http://localhost:4000/sampling-mp</id><content type="html" xml:base="http://localhost:4000/sampling-mp/">&lt;p&gt;Motion planning is the soul of autonomous robot motion/navigation but given the huge variations in operational conditions, robot architecture and tasks, motion planning for robots becomes one of the most sophisticated domains of robotics.&lt;/p&gt;
+
+&lt;p&gt;Given the complexity of a common robot operational indoor/outdoor scene, the ideal expectation of a motion planning algorithm functional across all possible scenarios is extremely challenging. While there is enough effort put into exploiting the robot’s physical model and degrees of freedom during motion planning; there is substantial effort put into modeling the environment and its constraints as well.&lt;/p&gt;
+
+&lt;p&gt;For instance, navigation of a mobile robot (assumed to be a point object located at the robot’s geometrical center ) in a warehouse involves having a padding (generally equal to the robot footprint) around all the edges of the warehouse and around the obstacles because it is practically impossible for the robot’s center to go further out. Similarly, an industrial manipulator arm with fencing all around cannot obtain a pose where, though the end-effector lies within the allowed workspace has an IK configuration with a portion of the robot extruding out of the fencing.&lt;/p&gt;
+
+&lt;p&gt;Such intricacies necissate the formulation of different motion planning algorithms with varying assumptions and performance specifications. This article discusses the sampling-based motion planning techniques and its variants, the most used techniques implemented on mobile robots used in the industry and academia alike.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sampling_mp/ft.png&quot; alt=&quot;Mobile Robot Navigation Scene with Padding&quot; /&gt; &lt;br /&gt;&lt;em&gt;Mobile Robot Navigation Scene with Padding&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;MP algorithms are generally designed knowing the limitations and demands of the environment. Also, a lot of motion planning attempts to reduce the environment and obtain a simplified version of the same for computational interpretation. Discrete search techniques are used to derive finite motion waypoints that connect the start and end. A grid-based representation of the environment is one such example, which, although promises optimality and quick solution, it is neither an adequate representation of the environment nor suitable for high dimensional state-space.&lt;/p&gt;
+
+&lt;p&gt;Instead of systematic discretization of the C-space and employing search algorithms, sampling-based algorithms randomly extract samples from the C-space and then construct a path out of it. Sampling-based algorithms are more useful in high-dimensional scenarios and find more optimal solutions.&lt;/p&gt;
+
+&lt;p&gt;Motion planning eventually is a PSPACE-hard problem where the complexity grows exponentially with C-space dimensions and gets extremely challenging with completeness and optimality requirements.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sampling_mp/warehouse.png&quot; alt=&quot;Warehouse Map - Grid Representation of the Environment&quot; /&gt; &lt;br /&gt;&lt;em&gt;Warehouse Map - Grid Representation of the Environment&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;discrete-motion-planning&quot;&gt;Discrete Motion Planning&lt;/h3&gt;
+
+&lt;p&gt;It is important to acknowledge the discrete motion planning pipeline and its nuances. Despite the already mentioned limitations, discrete MP is still employed on several ocassions for ease of use and in limited complexity applications.&lt;/p&gt;
+
+&lt;p&gt;Discrete-search creates a discrete, finite, systematic and specific quantizated representation of the environment, obtain action-space and their involved costs and eventually employ the concerned search algorithm to find the path. They generally employ techniques like Breadth-First search, Depth-First search, A* and its variants and Dijkstra algorithms to find paths for the robot.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sampling_mp/discrete.png&quot; alt=&quot;Discrete Motion Planning Pipeline&quot; /&gt; &lt;br /&gt;&lt;em&gt;Discrete Motion Planning Pipeline&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sampling_mp/bdfc.gif&quot; alt=&quot;Depth-First &amp;amp; Breadth-First Search&quot; /&gt; &lt;br /&gt;&lt;em&gt;Depth-First &amp;amp; Breadth-First Search&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Owing to the exploding nature of runtime and computational expense of search algorithms for large discrete spaces, dimensionality issues and accrual of potential inaccuracies due to the resolution of the discrete spaces; discrete motion planning becomes a non-ideal, very limited in scope technique.&lt;/p&gt;
+
+&lt;h3 id=&quot;sampling-based-motion-planning&quot;&gt;Sampling-based Motion Planning&lt;/h3&gt;
+
+&lt;p&gt;Sampling in motion planning uses the complete continuous C-space, draws samples out of it, checks the viability of the sample and eventually tries to use it to create a path towards the goal. Several assumptions and hand-crafted constraints/relaxations on performance and results help in designing very efficient real-time paths for robots.&lt;/p&gt;
+
+&lt;p&gt;Sampling is not affected by dimensionality of the C-space and with relaxed completeness (probabilistic completeness, i.e. asymptotic convergence) and sub-optimality conditions, it promises to be the most effective in almost all use-cases.&lt;/p&gt;
+
+&lt;p&gt;The Monte-Carlo methods engendered the belief in using a subset instead of all the possibilities in any state-space for search problems. Sampling-based algorithms promise better runtime performance and thus trump other more exhaustive techniques.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Advantages - Probabilistically Complete, Applicable to High Dimensional State Space&lt;/li&gt;
+  &lt;li&gt;Disadvantages - Unlike to sample narrow passages, Sub-optimal solutions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The most common sampling-based algorithms discussed here are Probabilistic Roadmaps and Randomly-Exploring Random Trees. There have been several variations proposed and used for these algorithms that have improved performance, completeness, speed and accuracy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sampling_mp/sampling.png&quot; alt=&quot;Sampling-based Motion Planning&quot; /&gt; &lt;br /&gt;&lt;em&gt;Sampling-based Motion Planning&lt;/em&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;probabilistic-roadmaps--prm&quot;&gt;PROBABILISTIC ROADMAPS- PRM&lt;/h4&gt;
+
+&lt;p&gt;Probabilistic Roadmap planning is a construct and multi-query motion planning technique proposed first in 1996. It has two steps - a learning phase (generally preprocessed ) and a query phase. The learning phase does the bulk work of understanding the workspace upfront before the second query phase which merely searches through the representation derived in the prior phase to provide a final solution.&lt;/p&gt;
+
+&lt;h5 id=&quot;learning-phase&quot;&gt;LEARNING PHASE&lt;/h5&gt;
+
+&lt;p&gt;In the learning phase - several samples are drawn from the workspace and connected to ones nearby, thus creating a roadmap between them all, including the start and desired end point. It lays the foundation for connectivity in the in the &lt;strong&gt;Cfree&lt;/strong&gt;. The learning phase has a construction phase and an expansion phase.&lt;/p&gt;
+
+&lt;p&gt;The construction phase creates the roadmap and the expansion phase attempts at filling the gaps in connectivity between sections of the workspace positioned uniquely, involving additional sampling and connections thereafter between the disconnected components.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning Phase - Part I - Construction&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Initialize the graph &lt;strong&gt;G(V,E)&lt;/strong&gt; where &lt;strong&gt;V&lt;/strong&gt; is the collection of nodes (the sampled points, also called milestones) and &lt;strong&gt;E&lt;/strong&gt; is the collection of edges connecting certain nodes&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Randomly sample definite number of configurations, ensure they are collision free samples and add them to &lt;strong&gt;V&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Extracting random samples still is still tricky. Ideally, the samples should be distributed across the complete C&lt;sub&gt;space&lt;/sub&gt;. Usually, uniform probability distribution over the particular dimension is used to ensure a map with good connectivity.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Attempt connecting each node in V to certain, k number of other nodes and find a path between them using a local planner. The local planner can either be a fast one that tries connecting directly between the samples or a slow non-deterministic one.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If the connection is established between two nodes (the path being collision-free), the edge &lt;strong&gt;E(node&lt;sub&gt;1&lt;/sub&gt;, node&lt;sub&gt;2&lt;/sub&gt;)&lt;/strong&gt; is saved. Generally, connectivity between the nodes is inversely proportional to the distance between them.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sampling_mp/prm_exp.png&quot; alt=&quot;Missing Connections during the Construction Phase&quot; /&gt; &lt;br /&gt;&lt;em&gt;Missing Connections during the Construction Phase&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Learning Phase - Part II - Expansion&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Certain nodes are selected for expansion, i.e. more connectivity is attempted from those nodes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Each node &lt;strong&gt;n&lt;/strong&gt; in &lt;strong&gt;V&lt;/strong&gt; is assigned a weight &lt;strong&gt;w(n)&lt;/strong&gt;. It is an estimate of proximity of the node to difficult regions like the narrow passage shown above.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Weights are normalized such that &lt;strong&gt;Σw(n) = 1&lt;/strong&gt; and the ones with highest weights(like the red point in Figure 6) are selected to expand. If a node has poor connectivity, it should have a higher weight &lt;strong&gt;w(n)&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Estimation of weights for the node &lt;strong&gt;n&lt;/strong&gt; can use different standards. It could be counting a certain number of nodes from &lt;strong&gt;V&lt;/strong&gt; lying within a known distance radius of the node n or checking distances between a node &lt;strong&gt;n&lt;/strong&gt; and its nearest connected nodes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For the former, lower the number of connected nodes, higher the chances of the node being deserted and has poor connectivity; while for the latter, the larger distance between the node and its connected nodes, the higher connectivity gap or disconnection exists in that region.&lt;/p&gt;
+
+&lt;p&gt;The results from local planner connection attempts for a particular node can also be used to understand the connectivity of the same. High failure cases can be intuitively be understood as the node connected poorly or being completely disconnected. Such nodes are awarded higher weights and more connection is attempted around these.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For the local planner,&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Failure Ratio, f&lt;sub&gt;r&lt;/sub&gt;(n) = f(n) / t(n) + 1&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;where f is the number of failures during attempted t number of connections. 
+Finally, for one node, the weight&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;w(n) = f&lt;sub&gt;r&lt;/sub&gt;(n) / Σ f&lt;sub&gt;r&lt;/sub&gt;(a)&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;where &lt;strong&gt;fr(a)&lt;/strong&gt; is for every node &lt;strong&gt;a&lt;/strong&gt; in &lt;strong&gt;V&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finally, after the normalized weights are obtained, nodes with weights over a certain threshold are selected are expansions&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;For a selected node &lt;strong&gt;n&lt;/strong&gt;, at a pre-defined distance from it and in a random direction; a new node nnew is generated.
+    &lt;ul&gt;
+      &lt;li&gt;If &lt;strong&gt;n&lt;sub&gt;new&lt;/sub&gt;&lt;/strong&gt; lies in &lt;strong&gt;C&lt;sub&gt;free&lt;/sub&gt;&lt;/strong&gt; and the edge &lt;strong&gt;e&lt;/strong&gt; connecting them also does, then &lt;strong&gt;n&lt;sub&gt;new&lt;/sub&gt;&lt;/strong&gt; is added to &lt;strong&gt;V&lt;/strong&gt; and the edge &lt;strong&gt;e(n, n&lt;sub&gt;new&lt;/sub&gt;)&lt;/strong&gt; is saved in &lt;strong&gt;E&lt;/strong&gt;.&lt;/li&gt;
+      &lt;li&gt;If not, the same attempt for a new node nnew is attempted in another random direction.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;At the end of expansion phase, more connectivity and ideally in inaccessible areas of the map, is obtained.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/sampling_mp/expansion.jpg&quot; alt=&quot;Enhanced Connectivity in Expansion Phase&quot; /&gt; &lt;br /&gt;&lt;em&gt;Enhanced Connectivity in Expansion Phase&lt;/em&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;query-phase&quot;&gt;QUERY PHASE&lt;/h5&gt;
+&lt;p&gt;The Query Phase is a relatively easier phase with all the bulk computational processing already done. It accepts a start s and a goal g configuration and attempts to find a path between them.&lt;/p&gt;
+
+&lt;p&gt;Ideally, a path exists in the roadmap connecting the two and the query returns that path (a collection of all intermediate edges passing through other intermittent nodes that eventually establish connectivity between s and g)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;If the start &lt;strong&gt;s&lt;/strong&gt; and goal &lt;strong&gt;g&lt;/strong&gt; are points not already sampled and existing in the roadmap &lt;strong&gt;R&lt;/strong&gt;, they are connected to the closest nodes in &lt;strong&gt;R&lt;/strong&gt;, through paths P&lt;sub&gt;s&lt;/sub&gt; and P&lt;sub&gt;g&lt;/sub&gt;. If these two connections are not possible, the complete query fails for path the between s and g does not exist.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Starting with &lt;strong&gt;s&lt;/strong&gt;, new nodes with increasing distance from it are added to the path &lt;strong&gt;P&lt;/strong&gt; being derived, using a local planner again.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finally, the complete path connecting is given as &lt;strong&gt;P&lt;sub&gt;complete&lt;/sub&gt; = P&lt;sub&gt;s&lt;/sub&gt; + P + P&lt;sub&gt;g&lt;/sub&gt;&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Given that there are several parameters, assumptions and challenges like number of samples, number of retries, sampling techniques, local planners, narrow passages in the map and sampling near obstacles; there are chances of the query failing.&lt;/p&gt;
+
+&lt;p&gt;However, limited connectivity in the roadmap and all problems are attempted to be resolved by retrying Learning Phase, exhaustively running Expansion Phase and concurrently operational Learning &amp;amp; Query Phases.&lt;/p&gt;
+
+&lt;p&gt;There are several enhanced PRM techniques like Obstacle-Based PRM, Medial-Axis PRM and Simplified PRM among others used to address specific challenges for sampling near obstacles, sampling in narrow passages and sampling problems in general.&lt;/p&gt;
+
+&lt;h4 id=&quot;rapidly-exploring-random-trees&quot;&gt;RAPIDLY-EXPLORING RANDOM TREES&lt;/h4&gt;
+
+&lt;p&gt;Rapidly-Exploring Random Trees (RRT) is the most famous family of sampling-based motion planning algorithms. While PRMs or Potential Field methods are probabilistic in nature and have limitations with substantial effect on planning, RRTs can solve better for lots of constraints.&lt;/p&gt;
+
+&lt;p&gt;The algorithm basically starts at some location in the map and starts branching out in random directions, sampling new points at pre-defined distance from the initial location. After an edge is established between the initial point and the new sampled point, the latter becomes the initial location for the next step of branching out.&lt;/p&gt;
+
+&lt;p&gt;Using appropriate values for step size, number of sampels to drawn, initial point and other parameters, a densely connected tree-structured map is promised.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;The Algorithm&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Setup the planner with an initial point &lt;strong&gt;x&lt;sub&gt;init&lt;/sub&gt;&lt;/strong&gt;, the number of points to be sampled &lt;strong&gt;k&lt;/strong&gt; and the step size &lt;strong&gt;Δt&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Initialze a tree &lt;strong&gt;τ&lt;/strong&gt; that shall contain sampled points, with the initial point &lt;strong&gt;x&lt;sub&gt;init&lt;/sub&gt;&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sample a random point &lt;strong&gt;x&lt;sub&gt;rand&lt;/sub&gt;&lt;/strong&gt; in the workspace&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Obtain the nearest neighbor &lt;strong&gt;x&lt;sub&gt;near&lt;/sub&gt;&lt;/strong&gt; for the &lt;strong&gt;x&lt;sub&gt;rand&lt;/sub&gt;&lt;/strong&gt; point from the list of points in &lt;strong&gt;τ&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finally, derive a new point &lt;strong&gt;x&lt;sub&gt;new&lt;/sub&gt;&lt;/strong&gt; and add it to the tree &lt;strong&gt;τ&lt;/strong&gt; 
+If distance &lt;strong&gt;(x&lt;sub&gt;near&lt;/sub&gt; , x&lt;sub&gt;rand&lt;/sub&gt;)&lt;/strong&gt; is less than step size &lt;strong&gt;Δ&lt;/strong&gt;, then &lt;strong&gt;x&lt;sub&gt;new&lt;/sub&gt; = x&lt;sub&gt;near&lt;/sub&gt;&lt;/strong&gt;, else &lt;strong&gt;x&lt;sub&gt;new&lt;/sub&gt;&lt;/strong&gt; is an intermittent point at a distance of &lt;strong&gt;Δ&lt;/strong&gt; from &lt;strong&gt;x&lt;sub&gt;near&lt;/sub&gt;&lt;/strong&gt; on the line joining &lt;strong&gt;x&lt;sub&gt;near&lt;/sub&gt;&lt;/strong&gt; and &lt;strong&gt;x&lt;sub&gt;rand&lt;/sub&gt;&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The edge &lt;strong&gt;e(x&lt;sub&gt;near&lt;/sub&gt;, x&lt;sub&gt;new&lt;/sub&gt;)&lt;/strong&gt; is an intermittent path in the tree. Several short paths like these ensure connectivity throughout the map&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If the &lt;strong&gt;distance(x&lt;sub&gt;new&lt;/sub&gt;, x&lt;sub&gt;goal&lt;/sub&gt;)&lt;/strong&gt; is less than the step size &lt;strong&gt;Δ&lt;/strong&gt;, the edge &lt;strong&gt;e(x&lt;sub&gt;near&lt;/sub&gt;, x&lt;sub&gt;new&lt;/sub&gt;)&lt;/strong&gt; is also stored as a path.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Final points in &lt;strong&gt;τ&lt;/strong&gt; are all possible nodes in the map.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Salient Features of RRTs&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;*RRTs can solve for holonomic, nonholonomic and kinodynamic situations. Kinodynamic planning is when the robot planning is done within the kinematic constraints of velocity, acceleration, joint angle limits and obstacle avoidance.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;In cases where a naive random tree is generated out of incrementally selecting random points and adding it to the vertices, it heavily explores an already clustered environment.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Even a random walk shows bias towards already explored places. Since, RRT is generated by selection of the nearest vertex, it ensures unexplored sections of the configuratio space are considerably seen.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;RRTs do not form closed loops and thus, the map it decides is near optimal if not completely optimal.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Initially, the vertices are not uniformly distributed but the probability of a random point lying withing the step size delta&lt;strong&gt;t of a vertex of a tree(the x&lt;/strong&gt;near point) eventually tends to 1&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If the random points generated are uniform, then such a setting would be independent of &lt;strong&gt;x&lt;sub&gt;init&lt;/sub&gt;&lt;/strong&gt; and would defy the purpose of RRTs.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Also, if the points are sampled from some pre-defined PDF (probability distribution function), then the RRT vertices would be accordingly. Such a setup can be used to device biased schemes which might be difficult and time taking to converge.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Ideal performance of a RRT is defined by the distance parameter &lt;strong&gt;Δ&lt;/strong&gt; - which determines the shortest distance between two states.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;For constrained path planning, the optimal path would be the one with the least cost function and the cost function would be its metric.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Probabilistic approach creates too many extra edges and also depends upon k-nearest neighbors as compared to a single neihbor for the RRTs.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;RRT is probabilistically complete and relatively easier to implement.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;RRT maps always remain connected even in cases of less vertices and can be applied to a broad range of planning algorithms.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Given the advantages of the basic RRT algorithm, several enhancements like Bidirectional RRT, RRT&lt;em&gt;, RRT-Connect and RRT&lt;/em&gt;-Smart among others have been used to optimize the solutions and get better performance.&lt;/p&gt;
+
+&lt;p&gt;Recently, lots of efforts have been put into using RRT with better hardware (like GPUs), using other search algorithms in conjunction and hand-crafted optimizations for certain operational constraints/desires have fetched roboticists enhanced performance and usage.&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="blog_post" /><summary type="html">Motion planning is the soul of autonomous robot motion/navigation but given the huge variations in operational conditions, robot architecture and tasks, motion planning for robots becomes one of the most sophisticated domains of robotics.</summary></entry><entry><title type="html">An Introduction To Visual SLAM</title><link href="http://localhost:4000/visual-slam/" rel="alternate" type="text/html" title="An Introduction To Visual SLAM" /><published>2020-11-25T00:00:00-08:00</published><updated>2020-11-25T00:00:00-08:00</updated><id>http://localhost:4000/visual-slam</id><content type="html" xml:base="http://localhost:4000/visual-slam/">&lt;p&gt;&lt;strong&gt;Visual SLAM&lt;/strong&gt; is the most researched topic in all of SLAM technology today. Visual sensing has made feature extraction extremely easy and provided rich information for autonomous navigation. Visual SLAM techniques generally track features in images over successive frames and use the triangulation or other techniques to obtain their 3D position which thus helps create the map while also working backwards to predict the camera pose(eventually the robot pose) that observed the map features.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/slam/visual_slam.png&quot; alt=&quot;Sample of Visual SLAM features&quot; /&gt; &lt;br /&gt;&lt;em&gt;Sample of Visual SLAM features&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;The observation point, properties of the camera and the estimation of camera motion is used to reconstruct the 3D scene of the environment, i.e. the map.&lt;/p&gt;
+
+&lt;p&gt;SLAM has two components - a sensor data processing and modeling system and secondly the observed data inference system. Using corresponding frames of images, the map features are discovered and created while during the complete run, the features are compared with each other for loop closure(event of the robot revisiting an old location)&lt;/p&gt;
+
+&lt;p&gt;Visual SLAM also has several methods and employs different technologies in conjunction for autonomous navigation. Visual odometry, visual data usage and camera type and type of image processing are parts of the complete SLAM puzzle wherein specific algorithms for each of them are used to implement an end-to-end SLAM setup.&lt;/p&gt;
+
+&lt;h3 id=&quot;visual-slam-nuances&quot;&gt;Visual SLAM Nuances&lt;/h3&gt;
+
+&lt;p&gt;Visual SLAM has different kinds of data interpretation and data processing methods. A camera sees a lot of information but needs a trade-off between the quantity of pixel information to be used, information that can be encapsulated and how computationally viability of the involved processes can be ensured.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Map Data Quality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Sparse visual SLAM&lt;/strong&gt; utilizes only a portion of the complete image pixels while &lt;strong&gt;dense visual SLAM&lt;/strong&gt; utilizes almost all of the pixels of the incoming image. Given the difference in quantity of pixels used and thus the quality of features observed, sparse and dense visual SLAM methods generate very different maps.&lt;/p&gt;
+
+&lt;p&gt;Sparse methods generate point cloud maps that are basically points in 3D space at a depth suggesting the presence of an obstacle in the environment. Point clouds are coarse representations of the environment with very limited information and thus, post processing of information is computationally expensive. Dense maps on the other hand have loads of pixels to use, so their handling and interpretation needs more powerful hardware.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Direct &amp;amp; Indirect Methods&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Indirect methods&lt;/strong&gt; also called feature-based methods for SLAM use the input images, obtain a few sparse features from them and then compare the features to solve for SLAM. &lt;strong&gt;SIFT(Scale-invariant feature transform)&lt;/strong&gt;, &lt;strong&gt;SURF(Speeded up robust feature)&lt;/strong&gt;, &lt;strong&gt;BRIEF(Binary Robust Independent Elementary Features)&lt;/strong&gt; and &lt;strong&gt;ORB(Oriented FAST and rotated BRIEF)&lt;/strong&gt; are some of those algorithms that are used to extract features for images and compare them against the different features from different poses. Finally, tracking procedures are used to minimize the error in a the pose of a feature as tracked and the expected pose from the camera estimate, i.e. feature reprojection error, over all the points.&lt;/p&gt;
+
+&lt;p&gt;Features are those special regions in an image that tend to be present uniquely/distinctively in the canvas. Generally these features could be corners of walls or objects like tables and chairs in the scene or windows and doors around.&lt;/p&gt;
+
+&lt;p&gt;Feature extraction obtains the useful information in images. All features observed are converted into compact descriptors to be matched against other descriptors. These descriptors are generally the appearance, pixel gradient around the feature or otherwise, nearby the feature.&lt;/p&gt;
+
+&lt;p&gt;After the features are extracted, feature matching/comparison for the descriptors is done. Features are matched over several frames and tracking different features over long sequences helps in understanding motion. Matching of features uing techniques like RANSAC(RANdom SAmple Consensus) eventually leads to pose estimation for the robot.&lt;/p&gt;
+
+&lt;p&gt;Cameras can see everything and a lot more. Wide angle cameras include even more information. Images with features/interesting information concentrated in a small area of the image canvas are difficult to use for feature matching than others with features spread all over the canvas. While storage requirements make it difficult maintain a database of all the features, it is still better than the direct methods as it still discards the larger parts of the images, the non-feature parts of the image.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Direct Methods&lt;/strong&gt; compare complete images against each other and then find the overlapping parts to observe motion. Several semi-dense 3D maps can be created using semi-dense filtering algorithms and thus provide more information about the environment. However, they can’t handle intermittent noise because those noisy pixels would also be considered as regular parts of the image and thus possibly presented in the final map. Given that they compare complete images, they are slower than the feature-based version as well.&lt;/p&gt;
+
+&lt;h3 id=&quot;loop-closure&quot;&gt;Loop Closure&lt;/h3&gt;
+
+&lt;p&gt;Loop Closure is one of the most important aspects of SLAM that ensures that the solutionsa are consistent over the complete work area and over long durations of operation. Loop closure refers to the processing of comparing previously visited scenes/features with the ones from the incoming scenes such that the pose estimation errors are corrected.&lt;/p&gt;
+
+&lt;p&gt;The easiest form of loop closure is matching the incoming image frame with all the previous ones for similar features. However, the storage and computational requirements make it very difficult for real-time applications. Defining key frames( frames of high interest and with more information enclosed within) from the previous frames helps in reducing this computational needs.&lt;/p&gt;
+
+&lt;p&gt;Out of the several frames, for a frame to be selected as key frame, the feature descriptors are hierarchically quantized and represented by a Bag of Visual Words (BOW) called a vocabulary tree. Thereafter, a place recognition approach based on this vocabulary tree is used. Clustering of feature descriptors makes comparison a mere step of observing the frequency and comparing the similarity of the histogram of frequencies.&lt;/p&gt;
+
+&lt;p&gt;False positive and false negative are two kinds of loop closure problems better known as perceptual aliasing and perceptual variability respectively. Perceptual aliasing declares two different places, to be the same while perceptual variability is where one same place is thought of as two different places. Precision-recall curves are useful when predicting the probability of a binary outcome (here if frames match or not) and using the same here in loop closure helps define the performance better.&lt;/p&gt;
+
+&lt;h3 id=&quot;back-end-optimization&quot;&gt;Back-End Optimization&lt;/h3&gt;
+
+&lt;p&gt;Camera pose optimization is an obvious process to obtain camera motion while dealing with drift pose estimation. EKF is used to minimize the noise in motion prediction and motion observation.&lt;/p&gt;
+
+&lt;p&gt;Bundle adjustment or graph optimization is another method that combinedly optimizes the pose of the camera(hence the robot pose) and the 3D structure paraneters viewed in multiple frames, by minimizing a cost function. Inconsistency in models and processing of filtering techniques make way for this method.&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="blog_post" /><summary type="html">Visual SLAM is the most researched topic in all of SLAM technology today. Visual sensing has made feature extraction extremely easy and provided rich information for autonomous navigation. Visual SLAM techniques generally track features in images over successive frames and use the triangulation or other techniques to obtain their 3D position which thus helps create the map while also working backwards to predict the camera pose(eventually the robot pose) that observed the map features.</summary></entry><entry><title type="html">Baxter Kinematics &amp;amp; Dynamics Library</title><link href="http://localhost:4000/baxter/" rel="alternate" type="text/html" title="Baxter Kinematics &amp;amp; Dynamics Library" /><published>2020-11-24T00:00:00-08:00</published><updated>2020-11-24T00:00:00-08:00</updated><id>http://localhost:4000/baxter</id><content type="html" xml:base="http://localhost:4000/baxter/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;To develop a complete Kinematics and Dynamics Library for the 7-DOF arm of the Baxter robot. The libray includes solutions to Forward and Inverse Position and Velocity Kinematics and the M, C and G matrices required to build the dynamical models of manipulator arms along with workspace analysis and building blocks for null-space optimization&lt;/p&gt;
 
@@ -44,7 +332,7 @@
 &lt;p&gt;&lt;em&gt;Pseduo-Inverse Inverse Kinematics Solution&lt;/em&gt;&lt;/p&gt;
 
 &lt;iframe width=&quot;768&quot; height=&quot;434&quot; src=&quot;https://www.youtube.com/embed/PPKZ8XThTAk&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;em&gt;IK solution implemented on Baxter in Gazebo simulation&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/baxter.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/baxter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Surface Electromyography Signal Extraction</title><link href="http://localhost:4000/semg/" rel="alternate" type="text/html" title="Surface Electromyography Signal Extraction" /><published>2020-11-22T00:00:00-08:00</published><updated>2020-11-22T00:00:00-08:00</updated><id>http://localhost:4000/semg</id><content type="html" xml:base="http://localhost:4000/semg/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;IK solution implemented on Baxter in Gazebo simulation&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/baxter.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/baxter.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Surface Electromyography Signal Extraction</title><link href="http://localhost:4000/semg/" rel="alternate" type="text/html" title="Surface Electromyography Signal Extraction" /><published>2020-11-22T00:00:00-08:00</published><updated>2020-11-22T00:00:00-08:00</updated><id>http://localhost:4000/semg</id><content type="html" xml:base="http://localhost:4000/semg/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
 
 &lt;p&gt;Electromyography refers to the procedure of extracting electrical signals from the human nervous system that flow through the various parts of the body and are intended to carry the information from the brain to the site of action. The objective of the work is to design a robust setup for efficient and accurate extraction of surface electromyographic signals that can be used to drive wearable devices as per human intent.&lt;/p&gt;
 
@@ -83,272 +371,825 @@ The pre-processing was data extraction involved skin preparation and electrode p
 
 &lt;p&gt;&lt;img src=&quot;/assets/images/semg/aa.png&quot; alt=&quot;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&quot; /&gt; &lt;br /&gt; &lt;em&gt;Average activation value of muscle activation suggesting patterns during flexion and extension of the knee&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/semg/ui.png&quot; alt=&quot;UI for the Data Logger&quot; /&gt; &lt;br /&gt; &lt;em&gt;UI for the Data Logger&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/semg.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/semg.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Motion Planning for Dual-Arm Manipulator</title><link href="http://localhost:4000/motion-planning/" rel="alternate" type="text/html" title="Motion Planning for Dual-Arm Manipulator" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/motion-planning</id><content type="html" xml:base="http://localhost:4000/motion-planning/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/semg/ui.png&quot; alt=&quot;UI for the Data Logger&quot; /&gt; &lt;br /&gt; &lt;em&gt;UI for the Data Logger&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/semg.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/semg.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Motion Planning In Robotics</title><link href="http://localhost:4000/motion-planning/" rel="alternate" type="text/html" title="Motion Planning In Robotics" /><published>2020-08-15T00:00:00-07:00</published><updated>2020-08-15T00:00:00-07:00</updated><id>http://localhost:4000/motion-planning</id><content type="html" xml:base="http://localhost:4000/motion-planning/">&lt;p&gt;Motion Planning in robotics refers to mathematically deriving the seqeunce of robot configuration that allows it to achieve a task. It is the study of algorithms and techniques that determine variation in the physical properties of a robot that consequently determine its path of motion. Motion planning is a broad envelope of algorithms applicable to mobile robots, humanoids, manipulator arms and any non-trivial robot type.&lt;/p&gt;
 
-&lt;p&gt;Extracting trajectories for desired motion and simulating them on ROS MoveIt platform before implementation on the Yashkawa SDA10F dual-arm robot&lt;/p&gt;
+&lt;p&gt;Apart from different kinds of robots, few other nuances of motion planning includes non-holonomic constraints, multi-robot planning, physically constrained robot planning and high-dimensional planning. While deriving the robot configuration like angular positions of the actuators of position controlled 6DOF robot arm or robot pose (positio and orientation) for a mobile robot, motion planning algorithms are largely dependent upon the robot model, the world around (obstacles, viable motion paths and configurations), robot physical properties and many more.&lt;/p&gt;
 
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/mp/mp1.gif&quot; alt=&quot;Robot Manipulator moving through the green target path&quot; /&gt; &lt;em&gt;Robot Manipulator moving through the green target path&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Robotics involves innumerable concepts like motion planning, path planning, robot control and collision detection among others that can be defined as a high-level task or process. However, it is important to define the problem from high-level specifications to low-level machine level descriptions. Motion planning is one of those problem where while at the high level it is making the robot go from a start to an end point, the computational representation would be defining the actuator path at every momemnt, velocity profiling, configuration conversion from task space to actuator space and many more such nuancces.&lt;/p&gt;
+
+&lt;p&gt;MP generally addresses the translations and rotations ignoring the robot dynamics and motion-affecting properties. It is the contol system that implements the desired motion (generated from the motion planning algorithms) considering the physical properties of the robot.&lt;/p&gt;
+
+&lt;p&gt;For a task like motion from point A to point B on a robot, a motion planning solution generates a plan, represents it as computationally viable solution, declares conditions for compeletion and qualitative expectations.&lt;/p&gt;
+
+&lt;p&gt;A robot planning algorithm needs a state-space definition of the robot (basically the different independent variables of a robot) that needs to be defined during the planning, the temporal distrubution of the state-space, initial and final states and the feasibility definition and the optimality conditions.&lt;/p&gt;
+
+&lt;p&gt;The general concepts involved in motion planning include &lt;strong&gt;geometric representations and transformations of robot state (position, orientation, joint angles), configuration space definitions, sampling-based planners, search-based planners, dynamic motion planning, obstacle avoidance, decision theory and closed-loop online motion planning&lt;/strong&gt;. Each of these concepts have their own contribution towards handling exceptional planning scenarios or completing more complex definitions of the planning task.&lt;/p&gt;
+
+&lt;p&gt;It is important to note that motion planning operates on four broad spectrums - &lt;strong&gt;discrete space planning, planning under different constraints, planning in continuous space and planning in uncertainty.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;nuances-of-motion-planning-for-robots&quot;&gt;Nuances Of Motion Planning For Robots&lt;/h3&gt;
+
+&lt;p&gt;Motion planning is a broad field that is not merely confined to generating kinematic configurations but encapsulates several other smaller problems in robotics along.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;MoveIt motion planning framework for ROS was used for the project&lt;/li&gt;
-  &lt;li&gt;OMPL library (available in MoveIt) was used with RRT* and RRTConnect being the primary solvers&lt;/li&gt;
-  &lt;li&gt;2-finger Robotiq grippers were attached in URDF for grasping tasks&lt;/li&gt;
-  &lt;li&gt;3D Kinect Scan using Ubuntu libraries like libfreenect and OpenNI as well as Kinect SDK for Windows was used to create 3D model of real-life obstacles in simulation&lt;/li&gt;
-  &lt;li&gt;Trajectory was extracted using MoveIt commander and fed to controller for real-life motion&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Trajectory Planning&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
-
-&lt;p&gt;The project initially started with getting hold of the basic demo ROS package for the SDA10F dual-arm robot provided by Motoman. Further exploration made us understand that we had to make custom changes in the model of the robot and creating a similar ROS package needed the MoveIt Setup Assistant which was relatively easy after stitching together the components of the URDF. Further, making the robot traverse to random-valid positions generated by MoveIt was easy and extracting the time-distributed values of angular position, velocity and acceleration for all the joints of the robot was simple.&lt;/p&gt;
-
-&lt;p&gt;However, the challenge was to feed custom start and end locations and make MoveIt use its inbuilt feature to decide the best planning algorithm, derive trajectories for the traversal and execute the best sorted one. Owing to the erroneous model of the robot, task-space custom-fed start and end positions couldn’t derive trajectories but the same was possible in the joint space.&lt;/p&gt;
-
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;p&gt;A trajectory is a time-sequence of desired position, velocity and acceleration(could also extend to jerk) for every robot actuator. During boundary condition checking across timestamps, this may also define velocity profile to ensure smooth motion.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Initial simulation of robot’s demo package achieved using Rviz&lt;/li&gt;
-  &lt;li&gt;Custom robot model for MoveIt using the setup assistant and defining special links was achieved&lt;/li&gt;
-  &lt;li&gt;Manipulation of the robot in joint space achieved and simulated in Rviz&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/dualarm.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/dualarm.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Control System Design for Unmanned Ground Vehicle</title><link href="http://localhost:4000/ugv/" rel="alternate" type="text/html" title="Control System Design for Unmanned Ground Vehicle" /><published>2019-11-30T00:00:00-08:00</published><updated>2019-11-30T00:00:00-08:00</updated><id>http://localhost:4000/ugv</id><content type="html" xml:base="http://localhost:4000/ugv/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
-
-&lt;p&gt;The objective was to design the control system for an unmanned ground vehicle. The control system was supposed to obtain the input sequences for a DC motor powered robot using its odometry.&lt;/p&gt;
-
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The complete control system was designed on MATLAB-SIMULINK using the transfer functions obtained from the intrinsic characteristics of the motors&lt;/li&gt;
-  &lt;li&gt;The Control Systems Library of SIMULINK was used for the various control blocks&lt;/li&gt;
-  &lt;li&gt;The system was simulated on a pre-defined map where it was supposed to traverse along the same without collisions till the target&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Planning Under Constraints&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
-
-&lt;p&gt;The sample UGV had differential drive mechanism for motion with the two rear wheels powered individually and the front wheel was the castor wheel. The rear wheels had series DC motors whose speed was regulated via armature-voltage controlled. By virtue of the back emf, the motors had a closed loop control.&lt;/p&gt;
-
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;p&gt;Planning for robots gets tricky with constraints about kinematic, dynamic or other physial properties. Holonomic constraints (where spatial properties like joint angle limits or end-effector position) are easier to abide by for motion planning algorithms. However, the non-holonomic constraints are anything apart from the constraints on geometric coordinates and could be limits on jerk observed, manipulability index limits or otherwise.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The simulation of the control system was successfully performed&lt;/li&gt;
-  &lt;li&gt;The system showed stable closed loop operation with easy to control feedback signals&lt;/li&gt;
-  &lt;li&gt;Awarded full score for the project work under the subject - Modern Control Theory &amp;amp; Designing Techniques&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Task Based Planning&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/ugv/gallery.png&quot; alt=&quot;&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/ugv.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/ugv.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Fuzzy Logic Controller For Robot Navigation</title><link href="http://localhost:4000/fuzzy-logic-controller/" rel="alternate" type="text/html" title="Fuzzy Logic Controller For Robot Navigation" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/fuzzy-logic-controller</id><content type="html" xml:base="http://localhost:4000/fuzzy-logic-controller/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
-
-&lt;p&gt;Design of a Fuzzy Logic Controller (FLC) for mobile robot navigation in an unknown, static or dynamic envinronments using the Tracking FLC and Obstacle Avoidance FLC and implementation of the same on TurtleBot2 robot.&lt;/p&gt;
-
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+&lt;p&gt;While the basic definition of motion planning is generation of configuration sequences for start to end points, on several occassions there are open-ended tasks that are defined in different terms. Coverage problems for robots like vacuum cleaners, warehouse robots, welding robots and force-controlled task executing robots are non-trivial. They often are strategised in terms of intermittent start-end based MP problems that eventually complete the final task.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Accessing stereovision point-cloud data and laserscan data&lt;/li&gt;
-  &lt;li&gt;Defining membership functions for Obstacle Avoidance FLC and Tracking FLC inputs - distance between the robot and the target, distance between the robot and obstacle and the angular presence of the same&lt;/li&gt;
-  &lt;li&gt;Fuzzy Inference System design and defuzzification techniques&lt;/li&gt;
-  &lt;li&gt;Design of If-Else fuzzy rules for OAFLC and TFLC&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Planning for Non-trivial Robots&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/fuzzy/fis.png&quot; alt=&quot;Fuzzy Inference System - Controller Design&quot; /&gt; &lt;br /&gt; &lt;em&gt;Fuzzy Inference System - Controller Design&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Planning for redundant robots with extra DOFs or for underwater/zero-gravity robots or unique designs like snake robots or even humanoids is more of a control integrated motion planning task. In such MP problems, it is not possible to defined trajectories or motion profiles without considering the robot stability (dynamic or static), feasibility and optimality of the proposed motion.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/fuzzy/mem.png&quot; alt=&quot;Membership Function for TFLC - Distance between robot and target&quot; /&gt; &lt;br /&gt; &lt;em&gt;Membership Function for TFLC - Distance between robot and target&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;motion-planning-algorithms&quot;&gt;Motion Planning Algorithms&lt;/h3&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+&lt;p&gt;Robots are complex structures with considerable disparities between the mathematical models and the actual hardware. Moreover, there are several uncertainties in the environment that can potentially not be represented in the motion planning problem.&lt;/p&gt;
 
-&lt;p&gt;The Takagi-Sugeno-Kang fuzzy inference technique and the Centroid defuzzification methods are used to implement our proposed controller&lt;/p&gt;
-
-&lt;p&gt;The TSK approach computes the output of the If-Else rules as a linear expression made up of weighted conditional components. Elaborately, the FIS setup processes all If-Else conditional statements with the weights generated on the basis of the membership functions and computes a new weight for execution of the condition&lt;/p&gt;
-
-&lt;p&gt;The Centroid defuzzification process computes a normalized weight distribution for conditions and thereafter their weighted sum to generate final numerical output values&lt;/p&gt;
-
-&lt;p&gt;The Gazebo simulation environment was used with a customized design of the world cluttered with obstacles&lt;/p&gt;
-
-&lt;p&gt;Weighted behavior fusion for both FLCs to obtain final robot commands.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/fuzzy/fusion.jpeg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt; &lt;em&gt;Behavior Fusion&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;p&gt;Thus, there are different approaches to solving for the desired motion of the robot.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The robot was successfully able to navigate through the environment and avoid obstacles enroute reaching the target.&lt;/li&gt;
-  &lt;li&gt;The controller was tested on several terminal states as well as environments&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sampling-based Planning Algorithms&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+&lt;p&gt;Sampling-based algorithms deduce the configuration space into huge number of samples and thus breakdownt the complete motion into smaller steps. Paths are constructed between samples that satisfy certain task completion criterion and sequentially the intermittent steps are solved. Conditions on sampling ensure individual optimal steps but do not promise completeness of the task as they solve only at a granular level.&lt;/p&gt;
 
-&lt;iframe width=&quot;768&quot; height=&quot;432&quot; src=&quot;https://www.youtube.com/embed/GUEN4Orpb2A&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p&gt;Sampling algorithms are apt for even high-dimensional robot state-space and also suitable for real-time applications. Rapidly Exploring Random Trees(RRT) or PRM(Probabilistic Roadmaps) are the commmon sampling-based algorithms.&lt;/p&gt;
 
-&lt;iframe width=&quot;768&quot; height=&quot;432&quot; src=&quot;https://www.youtube.com/embed/4fj4q-swg0U&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/turtlebot.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/turtlebot.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Geofencing-based Rail Crossing Alert System</title><link href="http://localhost:4000/rail-alert/" rel="alternate" type="text/html" title="Geofencing-based Rail Crossing Alert System" /><published>2019-11-29T00:00:00-08:00</published><updated>2019-11-29T00:00:00-08:00</updated><id>http://localhost:4000/rail-alert</id><content type="html" xml:base="http://localhost:4000/rail-alert/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
-
-&lt;p&gt;Building a system capable of designing a virtual perimeter-geofence around unmanned rail-road crossovers to prevent mishaps.&lt;/p&gt;
-
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/mp/rrt_star.gif&quot; alt=&quot;RRT Algorithm&quot; /&gt; 
+&lt;img src=&quot;/assets/images/mp/prm.gif&quot; alt=&quot;PRM Algorithm&quot; /&gt; &lt;br /&gt; &lt;em&gt;RRT Algorithm &amp;amp; PRM Algorithm&lt;/em&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Two on-board GPS to ascertain the correct current location of the moving vehicle&lt;/li&gt;
-  &lt;li&gt;Option to build geofence using co-ordinates that are either pre-fed or dynamically updated over the internet, for all the rail-road crossovers in the country&lt;/li&gt;
-  &lt;li&gt;Low power bluetooth supported system for instant update on new geofences&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Exact Planning Algorithms&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/geofence/d.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;
-&lt;img src=&quot;/assets/images/geofence/c.jpg&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;
+&lt;p&gt;Certain planning algorithms try to solve for motion planning problems directly. Exact algorithms are thorough in their approach and thus find a solution if it exists, for sure. It computes exact path of motion between any two points (terminal or intermittent) that are supposed to solve a part of the problem.&lt;/p&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+&lt;p&gt;Cellular decomposition or visibility graphs are the most common examples of such algorithms. They are however intractable and computationally expensive, thus not really extensible for high-dimensional problems.&lt;/p&gt;
 
-&lt;p&gt;The system was designed to be mounted in vehicles and could initiate a series of warnings if in case the vehicle moves nearby any rail-road crossover. The system helped avert any inappropriate attempt at crossing the junction when there are chances of a train to cross at the same time. The setup drew several layers of concentric circles/polygons that served as multiple levels of perimeter breach. The on-board GPS from the vehicle checked for such breaches and initiated control measures depending upon the intensity of breach. The corrective measures included verbal warning, speed reduction and automatic vehicle lockdown among others.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/mp/cells.gif&quot; alt=&quot;Cellular Decomposition&quot; /&gt;
+&lt;img src=&quot;/assets/images/mp/visibilitygraph.png&quot; alt=&quot;Visibility Graphs&quot; /&gt; &lt;br /&gt; &lt;em&gt;Cellular Decomposition &amp;amp; Visibility Graphs&lt;/em&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;p&gt;Cellular Decomposition and Visibility Graphs&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Published a patent for the innovative technology&lt;/li&gt;
-  &lt;li&gt;The system current is being implemented into use by the North-Eastern Railways, a Government of India undertaking.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Search-based Planning Algorithms&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+&lt;p&gt;Search-based algorithms employ general computer-science search algorithms and solve the motion planning task as optimization tasks. Generally, the MP problem is represented as a graph with several grids/lattices and then optimal connections/nodes between the grids that connect the start and desired end points are derived.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/geofence/combined.png&quot; alt=&quot;Behavior Fusion&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/geofence.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/geofence.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Robot-Robot Object Handover Using Reinforcement Learning</title><link href="http://localhost:4000/rl/" rel="alternate" type="text/html" title="Robot-Robot Object Handover Using Reinforcement Learning" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/rl</id><content type="html" xml:base="http://localhost:4000/rl/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
+&lt;p&gt;Dijkstra, A* and other A* variants are the most common examples of search-based algorithms. While they are again not apt for high-dimensional solutions, they can be applicable to certain tasks like coverage problems and vehicle planning.&lt;/p&gt;
 
-&lt;p&gt;Achieve mid-air robot to robot object transfer and placement at target location via Deep Reinforcement Learning using a single RL agent that drives the two manipulator arms.&lt;/p&gt;
-
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/mp/a_star.gif&quot; alt=&quot;A-Star Algorithm&quot; /&gt;
+&lt;img src=&quot;/assets/images/mp/djikstra.gif&quot; alt=&quot;Djisktra's Algorithm&quot; /&gt; &lt;br /&gt; &lt;em&gt;A-Star Algorithm &amp;amp; Djisktra’s Algorithm&lt;/em&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Phantom X Pincher manipulator arms were used for simulation&lt;/li&gt;
-  &lt;li&gt;Deep Q-Learning was used to solve the problem of large Q-tables that native Q-Learning can’t deal with&lt;/li&gt;
-  &lt;li&gt;Experience Replay with 128 sample experiences from memory of 3000 was used to train the DQN agent&lt;/li&gt;
-  &lt;li&gt;To prevent random sampling from skipping over important events which must be learned as soon as they happen, our training mini-batch composed of 10 recent and 118 random instances from memory&lt;/li&gt;
-  &lt;li&gt;Taking the best action (with marginally higher Q-value) resulted in a single robot acting over and over again while the next best action was neglected&lt;/li&gt;
-  &lt;li&gt;So, top two actions were taken at every time step to bring both robots into action.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Other Planning Algorithms&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The above-mentioned algorithms are all model-based operations that need the robot model to determine the feasibility of the algorithm. There has been recent research done in reinforcement learning and other AI technology for motion planning.&lt;/p&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+&lt;h3 id=&quot;motion-planning-notes&quot;&gt;Motion Planning Notes&lt;/h3&gt;
 
-&lt;p&gt;Our choice of simulator is V-REP by Coppelia Robotics to implement our experiment. V-REP’s Python remote API client provides programmatic access to the simulator. Keras provides a convenient way to design complex neural networks easily. We used Keras with TensorFlow as the backend. We developed our own wrapper around V-REP’s Python Remote API functions called vreppy which provides a simple interface between Python codes and V-REP. Using vreppy, we can load scenes, robot models, access joints, start simulations and more&lt;/p&gt;
-
-&lt;p&gt;The two PhantomX Pincher manipulators together have 10 active joints in all. Considering two actions for each joint and a do - nothing action, we end up with a total of 21 actions. Our 21-dimensional action space is discrete, with a discretization of 4◦ for revolute joints. We build our Markov state as a combination of 10 joint values and 3 object coordinates, resulting in a 13-dimensional state space. Using a DQN allows us to have a continuous state space, which can account for environment noise and limitations of simulation environment.&lt;/p&gt;
-
-&lt;p&gt;We use Deep Q Network (DQN) for our RL agent as this allows a continuous state space and a discrete action space which fits perfectly with our setup. Our neural network comprises of 4 hidden layers (32, 64, 64, 32) with a dropout of 0.15 on each layer and a ReLU activation for each layer. We use an Adam optimizer with a learning rate of 0.0005 and Mean Squared Error (MSE) as the loss function.&lt;/p&gt;
-
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;p&gt;Motion planning is literally all over the place with numerous solutions to a problem, numerous kinds of constraints and limitations and lots of confounding terminology. Advanced robotic systems need to encorporate several of these and thus makes the system too complex to perform reliably.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Custom setup of the V-REP scene using own wrapper was achieved&lt;/li&gt;
-  &lt;li&gt;Subtask 1: One manipulator achieving the task of placing the object to desired location without the second one was done&lt;/li&gt;
-  &lt;li&gt;Subtask 2: Mid-air object transfer was almost achieved with some errors due to the limitations of computation power&lt;/li&gt;
-  &lt;li&gt;Complete task where the robot achieves the two subtasks together is underway&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Algorithms like &lt;strong&gt;roadmaps (visibility maps and voronoi maps), cellular decomposition and potential fields&lt;/strong&gt; are generally applicable to possibly all kinds of mobile robots. The assumption here is generally that the robot is a point in space and the actual 3D model is only used for collision checks that decide the feasibility of the path.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Any path for robot motion should ideally be formulated by a set of mathematical equations connecting the start and the end through intermittent points. Computers execute instructions in discrete steps and thus any continuous state mathematical representations are still executed in &lt;strong&gt;discrete steps by random sampling (in sampling-based algorithms) or pre-defined steps (search-based cellular decomposition and many more).&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Configuration space or C-space&lt;/strong&gt; is the set of all possible configurations(a representation of the position of every point on the robot, for a rigid body robot) of a robot. For manipulators, the joint angles and posiitons (for revolute and prismatic joints respectively) for all the DOFs are able to successfully represent it in 3D space and for mobile robots, it is the odometry that defines its setup in space.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
-
-&lt;iframe width=&quot;840&quot; height=&quot;472&quot; src=&quot;https://www.youtube.com/embed/te6rLAuGVdQ&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/handover/a.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/handover.png" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/handover.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Human Motion Mimicking Robot Arm</title><link href="http://localhost:4000/roboarm/" rel="alternate" type="text/html" title="Human Motion Mimicking Robot Arm" /><published>2019-11-28T00:00:00-08:00</published><updated>2019-11-28T00:00:00-08:00</updated><id>http://localhost:4000/roboarm</id><content type="html" xml:base="http://localhost:4000/roboarm/">&lt;h3 id=&quot;about-the-event&quot;&gt;About The Event&lt;/h3&gt;
-
-&lt;p&gt;The event Tech-Expo was a student innovation contest organised at MNIT JAIPUR during its anual Techno-Cultural Fest - BLitzschalg ‘14. The objective was to propose an engineering solution to any existing world problem or assist the same.&lt;/p&gt;
-
-&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
-
-&lt;p&gt;Building a robotic arm capable of replicating the motion of human arm using a sensor powered pair of gloves.&lt;/p&gt;
-
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+&lt;p&gt;Motion planning needs the information about a robot’s valid C-space (valid in the sense where joint position limits exist due to physical structure or otherwise) before proposing a path for motion. &lt;strong&gt;Cfree&lt;/strong&gt; and &lt;strong&gt;Cobs&lt;/strong&gt; represent the obstacle-free and obstacle occupied C-space respectively.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Used adaptive local minima and maxima algorithm to map flex sensor and artifical arm motion that accounted for the erratic nature of the flex sensor&lt;/li&gt;
-  &lt;li&gt;2.2” Flex sensors used for sensing the movement of the fingers&lt;/li&gt;
-  &lt;li&gt;Low torque servo motors for actuation of the fingers of the artificial robotic arm&lt;/li&gt;
-  &lt;li&gt;Setup has 15 degrees of freedom with all the 3 joints of an individual finger steered by a single actuator using wire for power transmission&lt;/li&gt;
-  &lt;li&gt;Processing done via Arduino micro-controller&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The most common high-level tasks for motion planning are &lt;strong&gt;coverage, localization, mapping and navigation&lt;/strong&gt;. There are huge trade-offs made between completeness, optimality, computational expense, control.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The formulation of a robot path can be done in joint-space(actuator positions) or task-space(3D world coordinates). While joint-space representations are straighforward, task space representations use &lt;strong&gt;homogeneous transformations and pose definitions&lt;/strong&gt;. Pose definitions for a manipulator end-effector or mobile robot center comprise of positions and orientations. Positions in 2D space are x, y for 2D and x, y, z in 3D. Orientations are represented by &lt;strong&gt;quaternions and euler angles&lt;/strong&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;There are certain standard transformations used to define the motion planning results in the desired frames of reference. &lt;strong&gt;Affine Transformations&lt;/strong&gt; are the most common linear transformations that effect all translations, rotations, scaling, shearing and reflections.&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/handover/ff.png&quot; alt=&quot;Reward Structure For the Agent &quot; /&gt; &lt;br /&gt; &lt;em&gt;Reward Structure For the Agent&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Homogeneous transformations&lt;/strong&gt; are linear transformations that can effect all rotations, shearing, scaling and reflections but not translations. They preserve linearity but not the distance.&lt;/p&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Orthogonal transformations&lt;/strong&gt; are again linear transformations that preserve linearity and distance while only effecting rotations and reflections.&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="blog_post" /><summary type="html">Motion Planning in robotics refers to mathematically deriving the seqeunce of robot configuration that allows it to achieve a task. It is the study of algorithms and techniques that determine variation in the physical properties of a robot that consequently determine its path of motion. Motion planning is a broad envelope of algorithms applicable to mobile robots, humanoids, manipulator arms and any non-trivial robot type.</summary></entry><entry><title type="html">CMake Meta-Build System</title><link href="http://localhost:4000/cmake/" rel="alternate" type="text/html" title="CMake Meta-Build System" /><published>2020-06-25T00:00:00-07:00</published><updated>2020-06-25T00:00:00-07:00</updated><id>http://localhost:4000/cmake</id><content type="html" xml:base="http://localhost:4000/cmake/">&lt;p&gt;CMake is a cross-platform generator system designed to create projects. It is not a direct build system, but a meta build system that uses a script with defined rules, called &lt;strong&gt;CMakeLists.txt&lt;/strong&gt; to generate input files for build systems called project files (could be Unix Makefiles or MinGW Makefiles or others, discussed later) that support different kinds of compilation, configuration, testing and packaging options.&lt;/p&gt;
 
-&lt;p&gt;The arm was designed just as a human arm with fingers and the palm. The fingers were powered using low power servo motors and had an actuated wrist as well. The arm was controlled using a glove with flex sensors that could map the motion of the finger to that of the motion of the fingers of the artificial robotic arm using a micro-controller based decision-making system.&lt;/p&gt;
+&lt;p&gt;This article explains the reasoning behind using C++, related terminology used in C++ code compilation and general commands, options and tags to be used to write &lt;strong&gt;CMakeLists.txt&lt;/strong&gt; as per desired requirements.&lt;/p&gt;
 
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cmake/cmake.png&quot; alt=&quot;CMake Pipeline Overview&quot; /&gt;&lt;br /&gt; &lt;em&gt;CMake Pipeline Overview&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;C/C++ is an extremely useful language used for innumerable number of applications. However, with several compilers, operating systems and hardware platforms, it becomes essential to package an optimized C++ project comptabile accross various such platforms and for different desired uses.&lt;/p&gt;
+
+&lt;p&gt;CMake makes it possible for developers to generate the &lt;strong&gt;project makefiles&lt;/strong&gt; to be used by the build system to build the software. CMake does not compile or link any source (C/C++ code files here) itself but only creates configuration files for a build system. The build system thereafter uses the configurations to compile and link the source files as desired.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Build systems&lt;/strong&gt; are a collection of tools that compile the source code, execute all linking and other secondary tasks. They could be configured to not only compile source codes but also synchronise builds in multi-stage build systems. CMake uses the specified generators like Unix Makefiles, Ninja, MinGW Makefiles, Visual Studio and Codeblocks among others and writes the input files for the native build system. Exactly one build system is used at once.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: gcc and g++ are the compiler-drivers of the GNU Compiler Collection. While gcc can compile .c and .cpp files as C and C++ language files respectively, g++ considers both of them to be C++ files. Also, unlike gcc, g++ compilation automatically links all STL C++ libraries.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For ease of understanding, here we can consider using them interchangeably.&lt;/p&gt;
+
+&lt;h3 id=&quot;is-cmake-really-needed&quot;&gt;Is CMake really needed?!&lt;/h3&gt;
+
+&lt;p&gt;C++ is a widely used programming language owing to its powerful capabilities and fast operation. Among several other things, being a compiled language makes C++ really really fast.&lt;/p&gt;
+
+&lt;p&gt;While compilation is a topic for later, it can be understood naively as breaking down a code to its almost machine-level version and preprocessing parts as much as possible such that when executed, considerable sections of the code already have prepared answers or execute immediately on the processor and no time is spent in conversion of human-readable code into machine-compatible code at runtime.&lt;/p&gt;
+
+&lt;p&gt;The most common and rudimentary Hello World C++ program has one main.cpp file and it can be compiled using the following terminal command to obtain the binary.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~$ g++ main.cpp -o main&lt;/code&gt; // Compile 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~$ ./main&lt;/code&gt; // Execute&lt;/p&gt;
+
+&lt;p&gt;If there are 3 files, namely si_int.cpp, com_int.cpp and the main.cpp where the two former files have functions to compute simple interest and compound interest, used(by importing) in the last main.cpp file to calculate results; they could be compiled using terminal command (for C++11) 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~$ g++ si_int.cpp com_int.cpp main.cpp -o main -std=c++11&lt;/code&gt; // Compile 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~$ ./main&lt;/code&gt; // Execute&lt;/p&gt;
+
+&lt;p&gt;The two examples are indicative of the cumbersome process that could shape if there are more files, more dependencies, more libraries to link and other such unique requirements while code compilation; command-line compilation is certainly not the way to go.&lt;/p&gt;
+
+&lt;p&gt;For reassurance, here are some tags needed for g++ to achieve more features.   
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-I&amp;lt;include path&amp;gt;&lt;/code&gt; - Specify a directory (to include files from)   
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-L&amp;lt;library path&amp;gt;&lt;/code&gt; - Specify a library directory   
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-0&lt;/code&gt; - Turn ON optimizations by the compiler   
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-l&amp;lt;library&amp;gt;&lt;/code&gt; - Link with library &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lib&amp;lt;library&amp;gt;.a&lt;/code&gt; 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-Wall&lt;/code&gt; - Turn on Warnings during compilations   
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-g&lt;/code&gt; - Generate flags for debugging during compilation (Used by GDB)  &lt;/p&gt;
+
+&lt;p&gt;Considering the challenges in compilation, CMake provides options to the user to configure the complete project and package it as per need be. The conditions, compilation tags, machine dependencies, language versions and many such parameters.&lt;/p&gt;
+
+&lt;p&gt;CMake is a high-level build-system customized for C++. CMake tracks and stores all flags and conditions that should be followed when the code is finally compiled and run. The liberty of allowing extensibility in code compilation conditions and external libraries/resources used makes CMake a very useful tool.&lt;/p&gt;
+
+&lt;h3 id=&quot;nuances-of-cmake&quot;&gt;Nuances of CMake&lt;/h3&gt;
+
+&lt;p&gt;The CMakeLists.txt has instructions that help developers design different build scenarios and conditional usage of generators, versions and more. Certain general CMake commands are used for some common operations. 
+The common parameters, description and command to configure the same in a CMakeLists.txt are summarized here.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note: Most of the command signatures are only short-hand signatures and do not show all the options and configurable parameters that CMake actually suppports. More detailed explanation(generally needed only if a very complex setup is employed) can be found on the official website of CMake.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The setup had mediocre efficiency and performance&lt;/li&gt;
-  &lt;li&gt;Won the runners up prize for our innovative Robotic Arm in Tech-Expo ‘14 as a freshman&lt;/li&gt;
-  &lt;li&gt;Renovated the design with better 3D printed parts for efficient and better performance&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set string variables using actual string values 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set(&amp;lt;variable_identifier&amp;gt; &amp;lt;string_value&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set string variables using another variable value 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set(&amp;lt;variable_identifier&amp;gt; &amp;lt;${another_variable_identifier}&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Append string variables using another variable value 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;string(APPEND &amp;lt;variable_identifier&amp;gt; &amp;lt;string_value&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set list variables using actual string values 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set(&amp;lt;list_identifier&amp;gt; &amp;lt;string_value1&amp;gt; &amp;lt;string_value2&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set list variables using another list value 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set(&amp;lt;list_identifier&amp;gt; &amp;lt;${another_list_identifier}&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Append list variables using another list value 
+  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;list(APPEND &amp;lt;list_identifier&amp;gt; &amp;lt;string_value&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/roboarm/all.png&quot; alt=&quot;Picture&quot; /&gt; &lt;br /&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="undergrad" /><summary type="html">About The Event</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/roboarm.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/roboarm.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Haptic Rehabilitation Device Using Arm Stroke Rehabilitation</title><link href="http://localhost:4000/haptic/" rel="alternate" type="text/html" title="Haptic Rehabilitation Device Using Arm Stroke Rehabilitation" /><published>2019-11-27T00:00:00-08:00</published><updated>2019-11-27T00:00:00-08:00</updated><id>http://localhost:4000/haptic</id><content type="html" xml:base="http://localhost:4000/haptic/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
-
-&lt;p&gt;To build two robotic manipulators that work as end-effector type rehabilitation device capable of aiding upper body stroke patients to regain motion&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;I specifically worked on DMP based formulation of the robot path and conversion of the same from task-space to joint space trajectory&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
+&lt;p&gt;The &lt;strong&gt;string_value&lt;/strong&gt; variable can be a file name as well. The identifiers can either be user defined for later use the script or from the common list of CMake supported variables like &lt;strong&gt;CMAKE_BUILD_TYPE&lt;/strong&gt; and &lt;strong&gt;PROJECT_LINK_LIBS&lt;/strong&gt; among others.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Vibrational feedback enabled end-effector gripper for haptic intimation&lt;/li&gt;
-  &lt;li&gt;Motion Capture was used to record regular exercises&lt;/li&gt;
-  &lt;li&gt;Dynamic Movement Primitives were used to formulate the trajectory for generalization&lt;/li&gt;
-  &lt;li&gt;Motion was interfaced with a two-paddle Pong game to make the exercises more interactive&lt;/li&gt;
-  &lt;li&gt;Excercise action trajectories for the wrist for shoulder abduction/rotation and elbow flexion were translated on to the rehabilation devices&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;CMake Package version to be used. Versions &amp;gt; 3.0.0 are generally used though. 
+  &lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake_minimum_required(VERSION 3.18.0)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Operations dependent on OS type. CMake can generate different configurations depending on Linux/Apple/Windows OS. 
+ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if(APPLE)
+ // do something for APPLE OS
+  endif()
+  
+  if(UNIX AND LINUX) 
+  // do something for LINUX
+  endif())
+  
+  if(WIN32)
+  // do something for WINDOWS OS 
+  endif()&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Software build type
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set(CMAKE_BUILD_TYPE Release/Debug)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;C++ Version. For instance, C++11 in this case 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;set(CMAKE_CXX_STANDARD 11)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Give a name to the project
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;project(&amp;lt;string_value&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;An executable is built from the source file and assign the string_value as the name of the executable
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add_executable(&amp;lt;string_value&amp;gt; &amp;lt;code_file_name&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add the executable library to the compilation sequence
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add_library(&amp;lt;string_value&amp;gt; &amp;lt;library_type&amp;gt; &amp;lt;file_location&amp;gt;)&lt;/code&gt;
+  For example, 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;add_library_(&amp;lt;libName&amp;gt; SHARED/STATIC src/lib_executable.cpp)&lt;/code&gt;
+  If STATIC, then the name of the library is libName.a and it is libName.so if SHARED&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Include the header files from the source code into the build environment 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;include_directories(&amp;lt;include_header_locations&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;While to set source code files to a string value, all files need to be mentioned manually, GLOB or GLOB_RECURSE allows for searching and selecting multiple source code files
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file(GLOB SOURCES &quot;src/*.cpp&quot;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Several properties need to define for the executable binary
+An example would be setting the language as CXX(for C++).   set_target_properties(cmake_usage_example PROPERTIES LINKER_LANGUAGE CXX)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Defining the location in the system for installation of the library.
+ &lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;install(TARGET &amp;lt;libray_name&amp;gt; DESTINATION &amp;lt;destination_location&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Find the location of a library and store its reference in a temporary VARIABLE cache. 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find_package(&amp;lt;VARIABLE&amp;gt; &amp;lt;library_name&amp;gt; &amp;lt;path_to_library&amp;gt;)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Link an already extant library (either native library or third-party installed library or custom-built one ) to the current executable or library being created 
+  &lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;target_link_libraries(&amp;lt;to_be_linked&amp;gt; options &amp;lt;to_link_ref&amp;gt;)&lt;/code&gt; 
+  For example 
+ &lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;target_link_libraries(libApp LINK_PUBLIC ${VARIABLE})&lt;/code&gt; 
+  &lt;lib_to_link_ref&gt; can be found from something like find_package&lt;/lib_to_link_ref&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
-
-&lt;p&gt;The model was made large enough to cover considerable 3D space for each exercise to be possible. Electronics used in the project included Nucleo 144 board for processing, 12-bit absolute magnetic encoder to sense joint position and velocity, 10 kgs payload load-cells at each joints to measure the torque and 22 kg-cm servo motors. Two motors were used at each joint to provide extra torque that could actually carry the stroke patient’s arm around.&lt;/p&gt;
-
-&lt;p&gt;Software part of the project, basically has two modes of operation for arms based on the stage of recovery. First is user control mode, i.e with compliant control in this mode the patient can play the pong game , this mode can be used after significant recovery is done. Second is follow path mode, in which the arm is provided with predefined path, so it basically moves the patient’s arm so the joints can get some recovery this mode can be used in the early stage of recovery. This uses the DMP generated trajectories. The other sections included developing Compliant Controller, a gravity compensation system and implementing the vibrational feedback in the in-house developed game.&lt;/p&gt;
-
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;h3 id=&quot;example-c-application--cmakeliststxt&quot;&gt;Example C++ Application &amp;amp; CMakeLists.txt&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Though slightly erroneous, satisfactory motion capture data was extracted for several upper body rehabilitation exercises&lt;/li&gt;
-  &lt;li&gt;DMP was successfully implemented in simulation as well as on the real robot&lt;/li&gt;
-  &lt;li&gt;Compliance control as well as gravity compensation was achieved&lt;/li&gt;
-  &lt;li&gt;Pong game with haptic feedback was achieved as well&lt;/li&gt;
-  &lt;li&gt;Non-constrained IK solvers, low communication speed, inefficient PID tuning and noisy sensors are the prominent current limitations among others&lt;/li&gt;
-  &lt;li&gt;Proof-of-concept working model was successfully achieved&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/haptic.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/haptic.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Learning From Demonstration Using DMPs</title><link href="http://localhost:4000/lfd/" rel="alternate" type="text/html" title="Learning From Demonstration Using DMPs" /><published>2019-11-26T00:00:00-08:00</published><updated>2019-11-26T00:00:00-08:00</updated><id>http://localhost:4000/lfd</id><content type="html" xml:base="http://localhost:4000/lfd/">&lt;h3 id=&quot;objective&quot;&gt;Objective&lt;/h3&gt;
-
-&lt;p&gt;To develop a &lt;strong&gt;Learning from Demonstration&lt;/strong&gt; framework using Dynamic Movement Primitives for the 5-DOF Kuka YouBot manipulator arm in V-REP simulation environment&lt;/p&gt;
-
-&lt;h3 id=&quot;research-aspects&quot;&gt;Research Aspects&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Giving demonstrations to the manipulator in task space and conducting learning experiments in joint-space&lt;/li&gt;
-  &lt;li&gt;Understanding scope of temporal and spatial scaling and how it reflects in the task space&lt;/li&gt;
+  &lt;li&gt;Install CMake and check version
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo make install cmake&lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake --version&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/lfd_flow.png&quot; alt=&quot;Data FLow-Chart&quot; /&gt; &lt;br /&gt; &lt;em&gt;Data Flow-Chart&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The following example is a simple C++ application. It has a class with functions for a few mathematical operations. The main script to be executed uses this class as need be. Finally, the Unix Makefiles CMake generator will be used to create the build system Makefile.&lt;/p&gt;
 
-&lt;h3 id=&quot;methodology&quot;&gt;Methodology&lt;/h3&gt;
-
-&lt;p&gt;The complete environment was setup in V-REP and Python using its Remote-API interface with Python. The demonstrations could be fed to the simulation model in task-space using a gaming controller that uses ROS based Inverse Kinematics service. The training was done in joint space considering the variations at each joint level over time. Several combinations for the number of Gaussian basis functions were tested and nfs = 150 gave most reliable results&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/dmp_flow.png&quot; alt=&quot;Dynamic Movement Primitive Training pipeline&quot; /&gt; &lt;br /&gt; &lt;em&gt;Dynamic Movement Primitive Training pipeline&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/images/cmake/tree.png&quot; alt=&quot;Repository Tree&quot; /&gt;&lt;br /&gt; &lt;em&gt;Repository Tree&lt;/em&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;The setup was successfully trained successfully for a given demonstration&lt;/li&gt;
-  &lt;li&gt;Testing on changed terminal states and temporal scaling requirements worked fairly well. Spatial scaling was not tried to avoid reaching joint limits for the robot&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/assets/images/cmake/cpp-cmake-example.zip&quot;&gt;Download example source code&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;gallery&quot;&gt;Gallery&lt;/h3&gt;
+&lt;p&gt;Finally, the project is executed using the steps:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/learned.png&quot; alt=&quot;Initially learned DMP trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Initially learned DMP trajectory&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;We create a build folder to avoid cluttering built files with source code - &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdir -p build&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt; into the folder and then run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cmake ..&lt;/code&gt; where the two dots represent the presence of CMakeLists.txt in one folder prior; to generate the project files&lt;/li&gt;
+  &lt;li&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make &amp;lt;executable&amp;gt;&lt;/code&gt; to compile the source code&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;./cmake_usage_example&lt;/code&gt; to run the compiled sample code&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>akshay</name></author><category term="Computer Science" /><category term="blog_post" /><summary type="html">CMake is a cross-platform generator system designed to create projects. It is not a direct build system, but a meta build system that uses a script with defined rules, called CMakeLists.txt to generate input files for build systems called project files (could be Unix Makefiles or MinGW Makefiles or others, discussed later) that support different kinds of compilation, configuration, testing and packaging options.</summary></entry><entry><title type="html">C++ Data Structures in Robotics - Part I</title><link href="http://localhost:4000/ds-cpp-robotics/" rel="alternate" type="text/html" title="C++ Data Structures in Robotics - Part I" /><published>2020-06-25T00:00:00-07:00</published><updated>2020-06-25T00:00:00-07:00</updated><id>http://localhost:4000/ds-cpp-robotics</id><content type="html" xml:base="http://localhost:4000/ds-cpp-robotics/">&lt;p&gt;I have been working with C++ for a couple of years now. While I have not encountered use of a lot of off-the-shelf C++ algorithms used intensively in robot software stack development, certain data structures have definitely been very efficient for particular applications in robotics. I thought it was time to revisit the basic data structures in C++ and also, makes notes for future use.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/changed_terminal.png&quot; alt=&quot;Testing for changed start and end positions for all the joints&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed start and end positions for all the joints&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;The more important reason for this article is to aggregate information of how and why differrent data structures should be used in robotics algorithms.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/temp_terminal.png&quot; alt=&quot;Testing for changed terminal states and temporal scaling (doubled time-span)&quot; /&gt; &lt;br /&gt; &lt;em&gt;Testing for changed terminal states and temporal scaling (doubled time-span)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Standard data structures in C++ STL are:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/lfd/weights.png&quot; alt=&quot;Snippet of the various parameters generated in the learned trajectory&quot; /&gt; &lt;br /&gt; &lt;em&gt;Snippet of the various parameters generated in the learned trajectory&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vectors (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::vector&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Graphs&lt;/li&gt;
+  &lt;li&gt;Matrices&lt;/li&gt;
+  &lt;li&gt;Stacks (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::stack&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Queues (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::queue&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;List (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::list&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::forward_list&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Heap (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::heap&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Maps (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::map&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::unordered_map&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Sets (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::set&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Miscellaneous : Priority Queue(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::priority_queue&lt;/code&gt;) and Deque (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::deque&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/D7gGC7onx2g&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;em&gt;Changed Terminal States&lt;/em&gt;&lt;/p&gt;
+&lt;h3 id=&quot;vectors&quot;&gt;VECTORS&lt;/h3&gt;
 
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/jUWe7IzsP7M&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;em&gt;Temporal Scaling - Twice Slow&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A vector is used for simple storage of a collection of same data type objects. It is a sequence container that supports dynamic size modification on the fly. They are similar to arrays and store data in contiguous memory locations but additionally can change size.&lt;/p&gt;
 
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/pJVwLNNWdy8&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;p&gt;&lt;em&gt;DMP - Changed Terminal states as well as Temporal Scaling&lt;/em&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="tutorial" /><category term="sticky" /><summary type="html">Objective</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/projects/youbot.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/projects/youbot.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;Vectors are internally just simple arrays that have extra space allocations for possible growth and modification. This is because if the memory is fixed, there may be no more room for additional data when being dynamically modified and all the data has to be reallocated to a bigger memory group. Thus, to avoid such time consuming reallocation steps, vectors consume more memory but are computationally efficient is maintaining dynamic storage.&lt;/p&gt;
+
+&lt;p&gt;Most common instances to use vectors for efficiency include serialization, easy traversal, index based lookup, addiiton to the end, and conversion to C-style arrays. They should be avoided for applications like arbitrary insertion/deletion and dynamically changing the location of storage.&lt;/p&gt;
+
+&lt;p&gt;The most common operations on vectors are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Iterators: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;begin()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;end()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rbegin()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rend()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;crbegin()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;crend()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cbegin()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cend()&lt;/code&gt;
+Return the iterator or const iterator from the beginning or the reverse beginning of the vector&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sizing: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;size()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;max_size()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;resize()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;capacity()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;empty()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;reserve()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shrink_to_fit()&lt;/code&gt;
+The first four methods return the size, maximum size, the capacity and check for the emptiness of the vector. The reserve(n) method is used to declare that the storage is needed for n elements and the vector is reallocated only if the current capacity is lesser than that, else nothing changes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Modification: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;push_back()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pop_back()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;insert()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;erase()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;swap()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emplace()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;emplace_back()&lt;/code&gt; 
+First four methods are to push or remove a value from the end of the vector. Then, insert data or a data container to one index before the specified index. Data can also be removed from a particular position (iterator value) or a length of data positions using erase.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Vectors in Robotics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For the majority of my applications while storing the manipulator joints’ custom data types, I have used the vector. It allows easy traversal and thus makes kinematics and dynamics operations easy on each robot joint. ROS uses arrays for such storage as it is assumes the size of the containers should be fixed. For storing all physical values of the robot parameters like joint forces, torques, limits, positions and more, I have had custom data structures and then a vector storing a collection of the same.&lt;/p&gt;
+
+&lt;p&gt;The easy traversal through a vector makes it suitable for storing instruction sequences like trajectories. For example:&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumar-akshay324/3843532ea8f6df156b239a71182c4b35.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;em&gt;Example Operations on Vectors&lt;/em&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumar-akshay324/9e24df6dd2586a629fad9e97b509fb88.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;em&gt;Example Trajectory Struct using C++ Vector&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;graphs&quot;&gt;GRAPHS&lt;/h3&gt;
+
+&lt;p&gt;Graphs are one of the most important structures and used extensively in all domains of computer science. Graphs are essential for all sorts of search algorithms, tree traversals, optimized paths and more.&lt;/p&gt;
+
+&lt;p&gt;A graph is basically a collection of several vertices connected to other via links. Each vertex in a graph is called a node and links are called edges. The adjacent nodes in a graph are those two nodes which are connected by an edge. The number of edges (essentially the other nodes) that a particular node is connected to is called degree of a node. Sequence of traversal from one node to the other via edges is called a path.&lt;/p&gt;
+
+&lt;p&gt;If all the nodes are connected to atleast one other node and no node is isolated, the graph is a connected graph whereas if all nodes are connected to all other nodes resulting in a total of n(n-1)/2 nodes, it is called a complete graph. If there are weights assigned for traversal via each edge, the graph is a weighted graph. If the direction of edges from a node in the graph is fixed thus fixing the traversal direction, it is called a diagraph.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Graph Representation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A graph data structure can be naively thought of as a collection of nodes and each node has a collection of the other nodes it is connnected. It may also need to store information about the weight and the direction of the edge.&lt;/p&gt;
+
+&lt;p&gt;C++ does not have an in-built data structure to represent graphs. Thus, there are different ways to represent the graph programmatically.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sequential Representation: Adjacency matrices are used for sequential representations of relationships between the nodes in a graph. Here, the &lt;strong&gt;N&lt;/strong&gt; nodes are laid out along the rows and the columns of a &lt;strong&gt;N x N&lt;/strong&gt; matrix adjacency_matrix. Now, for a pair of nodes that have an undirected edge, the value of &lt;strong&gt;adjacency_matrix(node&lt;sub&gt;A&lt;/sub&gt;, node&lt;sub&gt;B&lt;/sub&gt;)&lt;/strong&gt; and adjacency_matrix(node&lt;sub&gt;B&lt;/sub&gt;, node&lt;sub&gt;A&lt;/sub&gt;)is non-zero and often used to represent the weight of the edge. For a directed graph, from node &lt;strong&gt;A&lt;/strong&gt; to node &lt;strong&gt;B&lt;/strong&gt;, only adjacency_matrix(node&lt;sub&gt;A&lt;/sub&gt;, node&lt;sub&gt;B&lt;/sub&gt;) value is non zero and the other pair adjacency_matrix(node&lt;sub&gt;B&lt;/sub&gt;, node&lt;sub&gt;A&lt;/sub&gt;) is zero (rows and column node represents the start and end node respectively).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Linked Representation: For this representation adjacency lists are used. An adjacency list for a node represents the other nodes linked to it as a linked list. It terminates in a null.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Graphs in Robotics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Graphs are probably the most important data structures in robotics. Almost all planning algorithms that need some kind of search or path finding employ graphs. Graphs provide for establishing directional connectivity between two positions in space and thus extremely important for mobile robots, drones, and manipulators.&lt;/p&gt;
+
+&lt;p&gt;Graphs used with cost functions between points determine traversal algorithms and decisions. Most path planning algorithms like A&lt;em&gt;, Dijikstra, RRT, RRT&lt;/em&gt;, and PRMs all operate on nodes in the configuration space and they are represented using graphs. Other general search algorithms in computer science, like breadth-first or depth-first search also use graphs along with queques and stacks respectively.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumar-akshay324/efc3f735d2706c401baaa6e196c678c0.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;em&gt;Adjacency Matrix Based Graphs&lt;/em&gt;&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumar-akshay324/36d62facc6f7b611476424d36c6419eb.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;em&gt;Adjacency Lists Based Graphs&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;matrices&quot;&gt;MATRICES&lt;/h3&gt;
+
+&lt;p&gt;Matrices are useful data structures used to store data systematically in rows and columns. They are commonly used to represent 3D transitions, multivariate states, and covariances for systems.&lt;/p&gt;
+
+&lt;p&gt;All computer vision applications use matrices while performing image processing operations because they help in condensing the data and representign it more intuively. For instance, a B/W image is represented as a 3D matrix where each value for a particular (row, column) pixel position is the RGB color for that pixel. For a depth sensing camera, there is also a fourth dimension for the depth of the pixel from the camera.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Matrices in Robotics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Matrices are undoubtedly the most common data structures used in robotics regardless of the domain. Robot control uses matrices for state-space definitions, kinematics of the robot use matrices for transformations and movements, dynamics used matrices to represent the physical features, state estimation uses matrices for variances, operations and more. All computer vision and machine learning applications in robotics use matrices to appropriately represent neural networks and vectors.&lt;/p&gt;
+
+&lt;p&gt;Matrices in C++ are either defined using 2-dimensional arrays or vectors of vectors. However, niether of are as efficient, intuitve and easy to use as the matrix support provided in numpy in Python. Eigen, a header only library is the most common open-source library for matrices in C++. While it does use arrays under the hood, the templated librarry provides easy to use wrapper and implementations for almost all matrix operations like transformations and even Singular Value Decomposition (SVD).&lt;/p&gt;
+
+&lt;h3 id=&quot;stack&quot;&gt;STACK&lt;/h3&gt;
+
+&lt;p&gt;Stacks are only of the best inbuilt containers in C++. STL provides std::stack which is a standard stack supporting first-in last-out OR last-in first-out data handling. The methods supported by std::stack are pop(), push(), and top() that remove the item on the top of the stack, push the item to the top and return the item from the top of the stack respectively.&lt;/p&gt;
+
+&lt;p&gt;Stacks are useful for reversal of elements or search algorithms using graphs. Stacks have a constant O(1) complexity in all the three function calls.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stacks In Robotics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;When a Depth-First Search is implemented, the children of the node being explored are all pushed into a stack and popped when explored.&lt;/p&gt;
+
+&lt;p&gt;MORE ABOUT USE OF STACKS.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumar-akshay324/99b1360479a3c134ca8b85daa8567e17.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;em&gt;Using stacks for a valid sequence of braces problem&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;queue&quot;&gt;QUEUE&lt;/h3&gt;
+
+&lt;p&gt;Queues, like stacks, are also one of the best inbuilt containers in C++. STL provides std::queue which is a standard queue supporting first-in first-out OR last-in last-out data handling. The methods supported by std::queue are front(), back(), pop() and size() that returns the element at the head, returns the element at the tail, removes the element at the head and returns the size of the queue respectively.&lt;/p&gt;
+
+&lt;p&gt;Queues are useful for any simple ordering based task. Queue can be used to store list of semaphores ( the identities that manage resource locking and availability in multi-threading systems) and execute them sequentially or for CPU scheduling operations.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Queue in Robotics&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Queues are used in a Breadth-First Search implementation where all the children of the node being explored, i.e. all the siblings are pushed into a queue and popped sequentially before exploring the children of the individual sibling (done in stacks).&lt;/p&gt;
+
+&lt;p&gt;Queues are used in several filtering applications to pop the first-in item and add the new incoming data for moving average filter, exponential filter and more.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;THIS ARTICLE IS GETTING PRETTY LONG, SO TO SIMPLIFY - I AM MOVING REST OF THE TOPICS TO A PART II COMING SOON!&lt;/strong&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Robotics" /><category term="Computer Science" /><category term="blog_post" /><summary type="html">I have been working with C++ for a couple of years now. While I have not encountered use of a lot of off-the-shelf C++ algorithms used intensively in robot software stack development, certain data structures have definitely been very efficient for particular applications in robotics. I thought it was time to revisit the basic data structures in C++ and also, makes notes for future use.</summary></entry><entry><title type="html">Version Control Using Git</title><link href="http://localhost:4000/git/" rel="alternate" type="text/html" title="Version Control Using Git" /><published>2020-06-25T00:00:00-07:00</published><updated>2020-06-25T00:00:00-07:00</updated><id>http://localhost:4000/git</id><content type="html" xml:base="http://localhost:4000/git/">&lt;p&gt;Version control is the most important system for managing code bases. It is the system for recording different versions of files, usually source code files, changing over time. It allows users to track changes in code over time and helps collaborative code development. Tracking and unique identification of every change posted to a code enables users to monitor progress, mark particular states of the code and completely or selectively revert to older versions if needed.&lt;/p&gt;
+
+&lt;p&gt;Version control system (VCS) is a very handy software for code organization, multiple developer collaboration and code sharing. VCS allows parallel code development/testing/deployment for several programmers spread across multiple large teams. The most common version control tools used are git, cvs, mercurial and svn.&lt;/p&gt;
+
+&lt;p&gt;Git is one of the best and most widely used distributed version control system to handle big projects. It was developed by Linus Torvalds during the development of the Linux kernel. It is a free and open-source tool shipped natively with most of the linux distros. While locally installed git is sufficient for individual purpose, the true essence of VCS lies in remote collaboration.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/git/tree2.png&quot; alt=&quot;Version Control Tree Structure&quot; /&gt;&lt;br /&gt; &lt;em&gt;Version Control Tree Structure&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;Git is a decentralized version control system where all users can have their individual versions of the code. Also, git allows offline code development while network connectivity and online VCS hosts are needed for remote collaboration. Online platforms like Github, Gitlab and Bitbucket are the most widely used ones and serve for code sharing within between the VCS framework. Git keeps variations in code over time by recording and tracking only the difference in code and not maintaining multiple code copies. All these differences are sorted and stored, as per different branches of the git tree, in a hidden .git folder inside the porject source code.&lt;/p&gt;
+
+&lt;h3 id=&quot;git-concepts--terminology&quot;&gt;Git Concepts &amp;amp; Terminology&lt;/h3&gt;
+
+&lt;p&gt;Following are the basic concepts and git terminology for access, modification and development of the project source code.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Repository&lt;/strong&gt; - Project source code folder&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Branch&lt;/strong&gt; - Different version of the same source code that different users can use, add and makes changes to, independently. The master branch is usually the main branch that every other individual feature, bug-fix or release branch merges to.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Fork&lt;/strong&gt;/Clone - Create a personal copy of the project source code, essentially from an online hosting platform&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Commit&lt;/strong&gt; - Add the new changes to the source code, to the current version aka branch and log it with a message and a timestamp&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Remote&lt;/strong&gt; - Online repository storage. It works for collaboration with multiple developers and backup storage.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;.gitignore&lt;/strong&gt; - Text file with names or regex rules for files and folders that should not be considered for tracking via VCS. These could be compiled files, executables, binaries or keys that don’t need to be put on online platforms or shared. Standard rules and common templates can be fetched online here at Github Online Repository&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;README&lt;/strong&gt;.md - A markdown file that usually carries description of the project, performance results, instructions for usage, development and installation of the project.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/git/commit_process.png&quot; alt=&quot;Basic Concept of Git VCS&quot; /&gt;&lt;br /&gt; &lt;em&gt;Basic Concept of Git VCS&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;common-git-commands&quot;&gt;Common Git Commands&lt;/h3&gt;
+
+&lt;h4 id=&quot;setup-and-remote-connection&quot;&gt;Setup and remote connection&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Initialize the git control system inside the project source code folder 
+ 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git init&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Stage the new addtional changes completely or partially to commit to the branch 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add . &lt;/code&gt;       // Stage all changes
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add --all&lt;/code&gt;   // Stage changes including deleted files
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git add &amp;lt;file_name/folder_name&amp;gt;&lt;/code&gt;  // Stage all changes&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Finally add staged changes to the current branch
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git commit -m &amp;lt;message to notify commit log&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Push the new commits on a local branch to remote repository
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push origin &amp;lt;branch&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Fetch or obtain the updated codes in the different branches from the remote repositories
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git fetch&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Merge the changes from a different branch to the current branch
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git merge &amp;lt;branch&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pull and merge the changes made to the current branch on the remote repository from a differnt user. It is a fetch + merge 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git pull origin &amp;lt;branch&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Pull before push is a standard protocol for collaboration. Changes to a local branch can’t be merged to the same online unless the updates to the remote(made probably by a different collaborator) are absorbed in the local branch.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Clone a remote repository to the local machine 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git clone &amp;lt;remote_git_url&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reset the all changes and get to master branch 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git reset --hard&lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git reset --hard &amp;lt;commit_id&amp;gt;&lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git reset&lt;/code&gt;   // Undo the staging command for the currently uncommitted changes &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;diagnostics&quot;&gt;Diagnostics&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Check the difference and edits in new uncommitted and unstaged files 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git diff&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Get the list of branches on the local machine 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Get the list of tags available 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git tag&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;See history for commits, messages and authors
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git log&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;List the changes, timestamps and authors for the file
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git blame &amp;lt;file_name&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Show the changes made in a particular commit
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git show &amp;lt;commit_id&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;branch-commands&quot;&gt;Branch Commands&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Switch to the specified branch 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout &amp;lt;branch_name&amp;gt; &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a new branch
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout -b &amp;lt;new_branch_name&amp;gt; &amp;lt;base_branch_name&amp;gt; &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Delete a branch
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git branch -d &amp;lt;branch_name&amp;gt; &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Switch to a particular commit ID of the code if it exists on the branch
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout &amp;lt;commit_id&amp;gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;discard-or-archive-uncommitted-changes&quot;&gt;Discard or Archive uncommitted changes&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Restore a particular file to the last committed version. All uncommited local changes are lost
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git checkout &amp;lt;file_name&amp;gt; &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Remove all new uncommitted edits and restore the project to the last commit
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Archive the current uncommitted changes to stash
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash save &quot;&amp;lt;message_to_save_edit&amp;gt;&quot; &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Obtain the list of stashed or archived changes
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash list &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Apply last stashed set of changes to edits
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash apply &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Apply a particular set of stashed changes to the current branch
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git stash apply stash@{&amp;lt;stash_number&amp;gt;} // Stash number from the list&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;user-credentials-configuration&quot;&gt;User Credentials’ Configuration&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add username for remote git service account 
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config --global user.name &quot;&amp;lt;github/bitbucket user_name&amp;gt;&quot;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add email ID for remote git service account
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git config --global user.email &quot;&amp;lt;github/bitbucket user_mail_id&amp;gt;&quot; &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Connect a local repository to remote git service URL
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git remote add origin &quot;&amp;lt;github/bitbucket repository URL&amp;gt;&quot; &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set the origin/remote git service URL to current local repository
+&lt;br /&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git set-url remote origin &quot;&amp;lt;github/bitbucket repository URL&amp;gt;&quot;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;benefits-of-git&quot;&gt;Benefits Of Git&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Automated code release, build, testing and deployment schedules triggered on commits, tags or merges can be run from third party softwares like Jenkins to enhance efficiency during code development.&lt;/li&gt;
+  &lt;li&gt;Streamlined code development with discete feature/bug-fixing/refactor branches&lt;/li&gt;
+  &lt;li&gt;Multiple backups of codes in local or remote storage&lt;/li&gt;
+  &lt;li&gt;Pull requests from feature branches usually incorporate code reviews and testing to maintain code quality and functionality&lt;/li&gt;
+  &lt;li&gt;Hierarchy in permissions for code merging or modification to particular branches or creating tags helps avoid mistakes from newer developers and maintain code quality&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Git is one of the most sought after technical skill in the software development industry. It has made collaboration more systematic and synchronized. While this list of git commands is only the ones used most commonly, man git can be used to learn more detailed description of git commands.&lt;/p&gt;</content><author><name>akshay</name></author><category term="Computer Science" /><category term="blog_post" /><summary type="html">Version control is the most important system for managing code bases. It is the system for recording different versions of files, usually source code files, changing over time. It allows users to track changes in code over time and helps collaborative code development. Tracking and unique identification of every change posted to a code enables users to monitor progress, mark particular states of the code and completely or selectively revert to older versions if needed.</summary></entry><entry><title type="html">Polymorphism in C++</title><link href="http://localhost:4000/polymorphism/" rel="alternate" type="text/html" title="Polymorphism in C++" /><published>2020-06-25T00:00:00-07:00</published><updated>2020-06-25T00:00:00-07:00</updated><id>http://localhost:4000/polymorphism</id><content type="html" xml:base="http://localhost:4000/polymorphism/">&lt;p&gt;Among the most common imperative, object-oriented and functional programming paradigms, OOP is perhaps the most used paradigm in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/polymorphism/oop.png&quot; alt=&quot;OOP Principles&quot; /&gt;&lt;br /&gt; &lt;em&gt;OOP Principles&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;OOP concepts are applicable at the class level and not at the object level in C++. Classes are the user-defined data types with member functions and variables and they C++ form the backbone of all OOP programming. Inheritance is defining classes that could derive/inherit properties from other base classes. The derived class inherits from the base class and is used when the derived class IS-A base class. Inheritance using classes in C++ lays the foundation of implementation of all other OOP princicples.&lt;/p&gt;
+
+&lt;p&gt;Abstraction is essentially limiting the data visibility and is achieved by access modifiers like public, protected and private. Encapsulation refers to wrappig up information and functions together. It is basically implemented to allow programs to access data while hiding the manipulation of data.&lt;/p&gt;
+
+&lt;p&gt;Finally, polymorphism is the feature that can invoke different behavior of a function in the inheritance hierarchy. Polymorphism executes different function implementations depending on the type of object that calls the method. It is basically about which kind of object(base or derived class object) calls a method defined in multiple classes throughout the hierarchy.&lt;/p&gt;
+
+&lt;p&gt;Function overriding and overloading are special features of C++. Virtual and pure-virtual functions are the correct implementations of polymorphism.&lt;/p&gt;
+
+&lt;h3 id=&quot;function-overloading&quot;&gt;Function Overloading&lt;/h3&gt;
+
+&lt;p&gt;Function overloading is a C++ feature that allows defining multiple functions with the same name but different signatures i.e., different arguments, can be defined in the same class. When called with different arguments, the compiler resolves which function is to be called. Function overloading is not possible depending on the return type.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int sum(int a, int b) { return a + b; } &lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float sum(float a, float b) { return a + b; } &lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;float sum(float a, float b, float c) { return a + b + c; } &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;It is not an implementation of polymorphism in C++.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;polymorphism&quot;&gt;Polymorphism&lt;/h3&gt;
+
+&lt;p&gt;Polymorphism resolves the correct function being called, at runtime; via the process called dynamic linking. A function declared in the base class using the virtual prefix is a virtual function and its definitions in base class as well as derived class informs the compiler to avoid static compile-time linkage.If the base class has a pure virtual function, i.e. the function signature has = 0 in the end, then it is mandatory to define it in the derived class and override the base class implementation.&lt;/p&gt;
+
+&lt;p&gt;The base class shall have &lt;strong&gt;virtual&lt;/strong&gt; functions that are redefined in the derived classes.&lt;/p&gt;
+
+&lt;script src=&quot;https://gist.github.com/kumar-akshay324/5a830045bbb6f2909a49633c9af06bb1.js&quot;&gt;&lt;/script&gt;
+&lt;p&gt;&lt;em&gt;Example Code&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Output of the above code is: 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Square area: &lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pentagon area: &lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dummy called in base class &lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dummy called in base class &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In the code, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;area()&lt;/code&gt; function is a pure virtual method in the base class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RegularPolygon&lt;/code&gt; and has overriding definitions in derived classes. Even though the calls to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;area()&lt;/code&gt; function are made from base class pointer poly (that stores the derived object pointers), it still resolves to the implementations from the individual derived classes via dynamic linking at runtime, using vtables. Here, the compiler looks inside the contents of the pointer to know the type of object calling the method and resolves it correctly. It is all because the function was declared with the virtual keyword indicating polymorphism.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, the dummy() method is a normal method with definitions in the base as well as derived classes. However, calls to such methods depend on the type of pointer making the call and thus, when the poly object of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RegularPolygon&lt;/code&gt; type calls the method, it only calls the implementation from the base RegularPolygon class and not from their individual derived classes due to static linking.&lt;/p&gt;
+
+&lt;p&gt;Polymorphism is a very useful tool to implement abstract classes (classes with atleast one pure virtual function) or interfaces. They are helpful in architecting the fundamental structure of base classes correctly. Virtual methods are useful to avoid incorrect pointer handling.&lt;/p&gt;</content><author><name>akshay</name></author><category term="Computer Science" /><category term="blog_post" /><summary type="html">Among the most common imperative, object-oriented and functional programming paradigms, OOP is perhaps the most used paradigm in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous.</summary></entry><entry><title type="html">STL Data Structures &amp;amp; Algorithms in C++</title><link href="http://localhost:4000/stl-cpp/" rel="alternate" type="text/html" title="STL Data Structures &amp;amp; Algorithms in C++" /><published>2020-06-25T00:00:00-07:00</published><updated>2020-06-25T00:00:00-07:00</updated><id>http://localhost:4000/stl-cpp</id><content type="html" xml:base="http://localhost:4000/stl-cpp/">&lt;p&gt;The &lt;strong&gt;Standard Template Library&lt;/strong&gt; in C++ is a large native library in C++ that provides in-built data structures and algorithms. It is a collection of containers, iterations and algorithms. STL is templated and thus supports multiple variants of data types like vectors, lists, deque, arrays, heaps and sets. This article talks about the general algorithms for searching, sorting and queries applicable to these containers&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/stl/stl_overview.png&quot; alt=&quot;STL Overview&quot; /&gt;&lt;br /&gt; &lt;em&gt;STL Overview&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+
+&lt;p&gt;This list of algorithms is not exhaustive yet contains the most common and# useful C++ native algorithms in the STL library. Any of these algorithms can be written again though the efficiency of the same would atmost be comparable to the same available in the STL libraries.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:  vector.begin(), vector.end() can also be replaced by std::begin(vector) and std::end(vector) respectively as std::begin(vector) was only introduced in C++ 11 to allow easy coding for generic templated structures that support C-style arrays (that do not have methods like .begin()) as well as STL containers.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;heaps&quot;&gt;HEAPS&lt;/h3&gt;
+&lt;p&gt;Heaps are special tree-based data structures following one particular heap condition: node values down the tree are sctricty ascending(min heap) or strictly descending (max heap), i.e. parent-child relationship is monotonic. A heap is not completely sorted but partially ordered binary tree and thus knowing the priority for the element, a heap can serve for efficient data manipulation and accessibility.&lt;/p&gt;
+
+&lt;p&gt;The Standard Template Library in C++ allows for a heap data structure and which has a priority queue as the base container. The algorithms provide the functions necessary to use the features of a heap.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/stl/heap.png&quot; alt=&quot;Data Structure - Heaps&quot; /&gt;&lt;br /&gt; &lt;em&gt;Data Structure - Heaps&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Algorithms for Heaps&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a heap from vector of numbers 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::make_heap(vector.begin(), vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Add contents to a heap (it handles the pushing of numbers and arranges them in the heap based on the comparison) 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::push_heap(vector.begin(), vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Pop out the highest number 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::pop_heap(vector.begin(), vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reverse the order of the heap (Applicable to other containers as well )
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::reverse(vector.begin(), vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sort the elements of the heap in ascending order and the range is no longer a heap 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::sort_heap(vector.begin(), vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;sorting&quot;&gt;SORTING&lt;/h3&gt;
+&lt;p&gt;Sorting the information stored in containers based on conditions is one of the most common things to do while dealing with any data. As simple as ranking students on the scores obtained means first arranging the scores in descending order.&lt;/p&gt;
+
+&lt;p&gt;The Standard Template Library in C++ provides in-built implementations for different kinds of sorting operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/stl/sorting.png&quot; alt=&quot;Sorting&quot; /&gt;&lt;br /&gt; &lt;em&gt;Sorting&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Algorithms for Sorting&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sorting of numbers in ascending order. If function is provided then it is used for sorting comparison. If fucntion returns true, then first element ordered before second.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::sort(vector.begin(), vector.end(), function)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sorting of numbers in ascending order. If function is provided then it is used for sorting comparison. If fucntion returns true, then first element ordered before second. 
+Different from sort because it preserves the order of elements that have the same values, thus called stable. 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::stable_sort(vector.begin(), vector.end(), function)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Sorting of numbers in the range [first, last) only for specified middle values. If function provided then it is used for sorting comparison. If fucntion returns &lt;strong&gt;true&lt;/strong&gt;, then first element ordered before second.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::partial_sort(vector.begin(), middle, vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Rearrange the list such that the nth element has the value that should have existed there if the list was sorted. The nth element has all preceding elements lesser than it and succeeding elements larger than it. 
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::nth_element(vector.begin(), nth_element, vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;permutations&quot;&gt;PERMUTATIONS&lt;/h3&gt;
+&lt;p&gt;Elements of a container are required to be shuffled in different orders as per need.&lt;/p&gt;
+
+&lt;p&gt;The Standard Template Library in C++ provides in-built implementations for different kinds of permutation/re-arranging operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Algorithms for Permutations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reverse the order of elements in the container
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::reverse(vector.begin(), vector.end()) &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create a new copy of the container to a new_vector with reversed order of elements
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::reverse_copy(vector.begin(), vector.end(), new_vector.begin()) &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Rotate the container about the middle element such that the middle element becomes the first element of the new rotated vector. Possible applications are found in insertion sort or order reshuffling
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::rotate(vector.begin(), vector.middle(), vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reshuffle the elements of the container based on using the std::rand as the random seed generator function
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::random_shuffle(vector.begin(), vector.end()) &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reshuffle the elements of the container based on a seed obtained via URBG (Uniform Random Bit Generator). More efficient that the std::random_shuffle
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::shuffle(vector.begin(), vector.end(), random_number_generator) &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Rearrange the elements of the container into a permutation higher up in the lexicographical order.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::next_premutation(vector.begin(), vector.end()) &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Rearrange the elements of the container into a permutation lower down in the lexicographical order.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::prev_premutation(vector.begin(), vector.end())&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;querying-ranges&quot;&gt;QUERYING RANGES&lt;/h3&gt;
+&lt;p&gt;Several queries about the features of containers are made, either for one single container or multiple ones.&lt;/p&gt;
+
+&lt;p&gt;The Standard Template Library in C++ provides in-built implementations for several such querying operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Algorithms for Querying Containers&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Counts the number of occurences of the value in the container
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::count(vector.begin(), vector.end(), value)&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute the sum of the contents of the container and store it to the value init. If binary method function is provided, then the method is used for accumulation.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::accumulate(vector.begin(), vector.end(), init)&lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::accumulate(vector.begin(), vector.end(), init, function) &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Compute the partial sum of the contents of the container iteratively and store the it to container with result interator as the beginning. If binary method function is provided, then the method is used for the partial operation.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::partial_sum(vector.begin(), vector.end(), result) &lt;/code&gt;
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::partial_sum(vector.begin(), vector.end(), result, function) &lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Checks for all the elements of the container returning true for the given unary operator.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If all elements return true, the function returns true else returns false. It returns false for an empty range.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::all_of(vector.begin(), vector.end(), unary_function) &lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checks for all the elements of the container returning true for the given unary operator.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If at least one of the elements return true, the function returns true else returns false. It returns false for an empty range.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::any_of(vector.begin(), vector.end(), unary_function) &lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Checks for all the elements of the container returning true for the given unary operator.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If none of the elements return true, the function returns true else returns false. It returns true for an empty range.
+&lt;br /&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;std::none_of(vector.begin(), vector.end(), unary_function) &lt;/code&gt;&lt;/p&gt;</content><author><name>akshay</name></author><category term="Computer Science" /><category term="blog_post" /><summary type="html">The Standard Template Library in C++ is a large native library in C++ that provides in-built data structures and algorithms. It is a collection of containers, iterations and algorithms. STL is templated and thus supports multiple variants of data types like vectors, lists, deque, arrays, heaps and sets. This article talks about the general algorithms for searching, sorting and queries applicable to these containers</summary></entry></feed>

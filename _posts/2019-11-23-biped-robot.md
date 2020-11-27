@@ -3,7 +3,7 @@ layout: projects_default
 title:  "Lower Body Flat-Foot Walking Biped Robot"
 info: July 2016 - May 2017 | Zine Lab, MNIT Jaipur
 abstract: "Design and development of a lower body walking biped robot"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: [undergrad]
 github: https://github.com/kumar-akshay324/rl-handover
 image: assets/images/projects/biped.jpg

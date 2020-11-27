@@ -2,7 +2,7 @@
 layout: post
 title:  "Visual Servoing For Manipulators - Part I"
 author: akshay
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: blog_post
 ---
 
@@ -11,7 +11,6 @@ Visual Servoing is one of the most used robotics in the industry for automation.
 ![Visual Servoing]({{site.baseurl}}/assets/images/visual_servoing/visual_servoing.gif ) *Visual Servoing*
 
 ### Introduction
-
 
 Image processing represents the physical state of the object in the world such that it can be related to the robot pose. The fundamental geometric relationship between an object in 3D space and its projection in an image helps connect the visual feed to the world and the robot. Visual servoing is dependent on robot pose estimation, robot control and realtime image processing. The kinematics and dynamics of robots vary depending on the model thereby changing the control instructions. 
 

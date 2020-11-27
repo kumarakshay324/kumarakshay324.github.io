@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Polymorphism in C++ | ThatRobotBoy</title>
+
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Polymorphism in C++ | ThatRobotBoy</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Polymorphism in C++" />
+<meta name="author" content="akshay" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Among the most common imperative, object-oriented and functional programming paradigms, OOP is perhaps the most used paradigm in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous." />
+<meta property="og:description" content="Among the most common imperative, object-oriented and functional programming paradigms, OOP is perhaps the most used paradigm in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous." />
+<link rel="canonical" href="http://localhost:4000/polymorphism/" />
+<meta property="og:url" content="http://localhost:4000/polymorphism/" />
+<meta property="og:site_name" content="ThatRobotBoy" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-25T00:00:00-07:00" />
+<script type="application/ld+json">
+{"description":"Among the most common imperative, object-oriented and functional programming paradigms, OOP is perhaps the most used paradigm in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/polymorphism/"},"datePublished":"2020-06-25T00:00:00-07:00","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"akshay"},"headline":"Polymorphism in C++","dateModified":"2020-06-25T00:00:00-07:00","url":"http://localhost:4000/polymorphism/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,400i,700" rel="stylesheet">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+
+
+</head>
+
+<body class="">
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-indigo" href="/index.html"><strong>ThatRobotBoy</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+<a class="nav-link" href="/index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/author-akshay.html">About Me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-white" href="/projects.html">Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/publications.html">Publications</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/skills.html">Skills</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
+</li>
+<!-- <li class="nav-item">
+<a class="nav-link" href="/contact.html">Contact</a>
+</li> -->
+
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#computer science">computer science</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h2 class="display-4 mb-4 article-headline">Polymorphism in C++</h2>
+					<div class="d-flex align-items-center">
+						<!-- <small class="ml-3"> Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span> -->
+                            <span class="text-muted d-block mt-1">Jun 25, 2020 · <span class="reading-time">
+  
+  
+    4 mins read
+  
+</span>
+    </span>
+						<!-- </small> -->
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_linkedin"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_reddit"></a>
+						<a class="a2a_button_twitter"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8 " style="text-align: justify;">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p>Among the most common imperative, object-oriented and functional programming paradigms, OOP is perhaps the most used paradigm in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous.</p>
+
+<p><img src="/assets/images/polymorphism/oop.png" alt="OOP Principles" /><br /> <em>OOP Principles</em></p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>OOP concepts are applicable at the class level and not at the object level in C++. Classes are the user-defined data types with member functions and variables and they C++ form the backbone of all OOP programming. Inheritance is defining classes that could derive/inherit properties from other base classes. The derived class inherits from the base class and is used when the derived class IS-A base class. Inheritance using classes in C++ lays the foundation of implementation of all other OOP princicples.</p>
+
+<p>Abstraction is essentially limiting the data visibility and is achieved by access modifiers like public, protected and private. Encapsulation refers to wrappig up information and functions together. It is basically implemented to allow programs to access data while hiding the manipulation of data.</p>
+
+<p>Finally, polymorphism is the feature that can invoke different behavior of a function in the inheritance hierarchy. Polymorphism executes different function implementations depending on the type of object that calls the method. It is basically about which kind of object(base or derived class object) calls a method defined in multiple classes throughout the hierarchy.</p>
+
+<p>Function overriding and overloading are special features of C++. Virtual and pure-virtual functions are the correct implementations of polymorphism.</p>
+
+<h3 id="function-overloading">Function Overloading</h3>
+
+<p>Function overloading is a C++ feature that allows defining multiple functions with the same name but different signatures i.e., different arguments, can be defined in the same class. When called with different arguments, the compiler resolves which function is to be called. Function overloading is not possible depending on the return type.</p>
+
+<p><br /><code class="language-plaintext highlighter-rouge">int sum(int a, int b) { return a + b; } </code>
+<br /><code class="language-plaintext highlighter-rouge">float sum(float a, float b) { return a + b; } </code>
+<br /><code class="language-plaintext highlighter-rouge">float sum(float a, float b, float c) { return a + b + c; } </code></p>
+
+<p><strong>It is not an implementation of polymorphism in C++.</strong></p>
+
+<h3 id="polymorphism">Polymorphism</h3>
+
+<p>Polymorphism resolves the correct function being called, at runtime; via the process called dynamic linking. A function declared in the base class using the virtual prefix is a virtual function and its definitions in base class as well as derived class informs the compiler to avoid static compile-time linkage.If the base class has a pure virtual function, i.e. the function signature has = 0 in the end, then it is mandatory to define it in the derived class and override the base class implementation.</p>
+
+<p>The base class shall have <strong>virtual</strong> functions that are redefined in the derived classes.</p>
+
+<script src="https://gist.github.com/kumar-akshay324/5a830045bbb6f2909a49633c9af06bb1.js"></script>
+<p><em>Example Code</em></p>
+
+<p>Output of the above code is: 
+<br /><code class="language-plaintext highlighter-rouge">Square area: </code>
+<br /><code class="language-plaintext highlighter-rouge">Pentagon area: </code>
+<br /><code class="language-plaintext highlighter-rouge">Dummy called in base class </code>
+<br /><code class="language-plaintext highlighter-rouge">Dummy called in base class </code></p>
+
+<p>In the code, the <code class="language-plaintext highlighter-rouge">area()</code> function is a pure virtual method in the base class <code class="language-plaintext highlighter-rouge">RegularPolygon</code> and has overriding definitions in derived classes. Even though the calls to the <code class="language-plaintext highlighter-rouge">area()</code> function are made from base class pointer poly (that stores the derived object pointers), it still resolves to the implementations from the individual derived classes via dynamic linking at runtime, using vtables. Here, the compiler looks inside the contents of the pointer to know the type of object calling the method and resolves it correctly. It is all because the function was declared with the virtual keyword indicating polymorphism.</p>
+
+<p>On the other hand, the dummy() method is a normal method with definitions in the base as well as derived classes. However, calls to such methods depend on the type of pointer making the call and thus, when the poly object of <code class="language-plaintext highlighter-rouge">RegularPolygon</code> type calls the method, it only calls the implementation from the base RegularPolygon class and not from their individual derived classes due to static linking.</p>
+
+<p>Polymorphism is a very useful tool to implement abstract classes (classes with atleast one pure virtual function) or interfaces. They are helpful in architecting the fundamental structure of base classes correctly. Virtual methods are useful to avoid incorrect pointer handling.</p>
+
+                
+			</article>
+			
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog_post">blog_post</a>
+				
+				</span>
+			</div>
+ 
+            <!-- Mailchimp Subscribe Form -->
+            <!-- 
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+                            <form action="https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                            <div class="mc-field-group">
+							
+								<input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+							
+							
+								<button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+							
+                            </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+             -->
+            
+            
+             <!-- Author Box -->
+                <!-- 				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/AKSHAY_KUMAR.jpg" alt="Akshay" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.					
+					</div>
+				</div>				
+                 -->
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'kumarakshay-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/git/"> Version Control Using Git</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/stl-cpp/"> STL Data Structures & Algorithms in C++ </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <!-- <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <span class="navbar-brand mr-2 mb-0"><strong>Mundana</strong></span>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script>.</span>
+
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
+
+            </div>
+            <div>
+                Made with <a target="_blank" class="text-dark font-weight-bold" href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark" target="_blank" href="https://www.wowthemes.net">WowThemes</a>.
+            </div>
+        </div>
+        </div>
+    </footer> -->
+
+    <!-- All this area goes before </body> closing tag --> 
+
+
+</body>
+
+</html>

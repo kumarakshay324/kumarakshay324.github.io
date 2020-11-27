@@ -3,7 +3,7 @@ layout: projects_default
 title:  "Motion Planning for Dual-Arm Manipulator"
 info: September 2017 - April 2018 | Prof. Zhi Li
 abstract: "Motion Planning of a 15-DOF dual arm robot for task automation"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: [sticky]
 # github: https://github.com/BaxterKDL
 image: assets/images/projects/dualarm.jpg

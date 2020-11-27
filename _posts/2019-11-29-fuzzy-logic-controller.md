@@ -3,7 +3,7 @@ layout: projects_default
 title:  "Fuzzy Logic Controller For Robot Navigation"
 info: February - April 2018 | Prof. Gregory Fischer
 abstract: "Using a Fuzzy Logic Controller for autonomous navigation of a Turtlebot robot"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: [sticky]
 github: https://github.com/TurtleBot-FuzzyLogicControl
 image: assets/images/projects/turtlebot.png

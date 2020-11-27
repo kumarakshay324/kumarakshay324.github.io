@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Model Predictive Control In Robotics - Part I"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 # image: assets/images/1.jpg
 tags: [Robotics]
 tags: blog_post

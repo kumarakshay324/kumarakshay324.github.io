@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "Using Extended Kalman Filter For Robot Localization"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: recent
 info: February - April 2020
 abstract: "Collaborative Task Planning using DRL for mid-air robot-robot object handover"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: [recent]
 github: https://github.com/kumar-akshay324/rl-handover
 image: assets/images/projects/roboarm.jpg

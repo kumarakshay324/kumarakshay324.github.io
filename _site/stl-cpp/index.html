@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>STL Data Structures & Algorithms in C++ | ThatRobotBoy</title>
+
+    <!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>STL Data Structures &amp; Algorithms in C++ | ThatRobotBoy</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="STL Data Structures &amp; Algorithms in C++" />
+<meta name="author" content="akshay" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Standard Template Library in C++ is a large native library in C++ that provides in-built data structures and algorithms. It is a collection of containers, iterations and algorithms. STL is templated and thus supports multiple variants of data types like vectors, lists, deque, arrays, heaps and sets. This article talks about the general algorithms for searching, sorting and queries applicable to these containers" />
+<meta property="og:description" content="The Standard Template Library in C++ is a large native library in C++ that provides in-built data structures and algorithms. It is a collection of containers, iterations and algorithms. STL is templated and thus supports multiple variants of data types like vectors, lists, deque, arrays, heaps and sets. This article talks about the general algorithms for searching, sorting and queries applicable to these containers" />
+<link rel="canonical" href="http://localhost:4000/stl-cpp/" />
+<meta property="og:url" content="http://localhost:4000/stl-cpp/" />
+<meta property="og:site_name" content="ThatRobotBoy" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-06-25T00:00:00-07:00" />
+<script type="application/ld+json">
+{"description":"The Standard Template Library in C++ is a large native library in C++ that provides in-built data structures and algorithms. It is a collection of containers, iterations and algorithms. STL is templated and thus supports multiple variants of data types like vectors, lists, deque, arrays, heaps and sets. This article talks about the general algorithms for searching, sorting and queries applicable to these containers","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/stl-cpp/"},"datePublished":"2020-06-25T00:00:00-07:00","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"akshay"},"headline":"STL Data Structures &amp; Algorithms in C++","dateModified":"2020-06-25T00:00:00-07:00","url":"http://localhost:4000/stl-cpp/","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,400i,700" rel="stylesheet">
+
+    <!-- Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700" rel="stylesheet">
+
+    <!-- Bootstrap Modified -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- Theme Stylesheet -->
+    <link rel="stylesheet" href="/assets/css/theme.css">
+
+    <!-- Jquery on header to make sure everything works, the rest  of the scripts in footer for fast loading -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+
+    <!-- This goes before </head> closing tag, Google Analytics can be placed here --> 
+
+
+</head>
+
+<body class="">
+
+    <!-- Navbar -->
+    <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-indigo" href="/index.html"><strong>ThatRobotBoy</strong></a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarColor02" style="">
+            <ul class="navbar-nav mr-auto d-flex align-items-center">
+               <!--  Replace menu links here -->
+
+<li class="nav-item">
+<a class="nav-link" href="/index.html">Home</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/author-akshay.html">About Me</a>
+</li>
+<li class="nav-item">
+<a class="nav-link btn btn-white" href="/projects.html">Projects</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/publications.html">Publications</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/skills.html">Skills</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
+</li>
+<!-- <li class="nav-item">
+<a class="nav-link" href="/contact.html">Contact</a>
+</li> -->
+
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <!-- Search Results -->
+    <div id="lunrsearchresults">
+        <ul class="mb-0"></ul>
+    </div>
+
+    <!-- Content -->
+    <main role="main" class="site-content">
+        
+<div class="container">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
+		<div class="h-100 tofront">
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#computer science">computer science</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h2 class="display-4 mb-4 article-headline">STL Data Structures & Algorithms in C++</h2>
+					<div class="d-flex align-items-center">
+						<!-- <small class="ml-3"> Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span> -->
+                            <span class="text-muted d-block mt-1">Jun 25, 2020 · <span class="reading-time">
+  
+  
+    6 mins read
+  
+</span>
+    </span>
+						<!-- </small> -->
+					</div>
+				</div>
+                
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div class="container-lg pt-4 pb-4">
+	<div class="row justify-content-center">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_linkedin"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_reddit"></a>
+						<a class="a2a_button_twitter"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8 " style="text-align: justify;">
+            
+            <!-- Article -->
+			<article class="article-post">                
+			<p>The <strong>Standard Template Library</strong> in C++ is a large native library in C++ that provides in-built data structures and algorithms. It is a collection of containers, iterations and algorithms. STL is templated and thus supports multiple variants of data types like vectors, lists, deque, arrays, heaps and sets. This article talks about the general algorithms for searching, sorting and queries applicable to these containers</p>
+
+<p><img src="/assets/images/stl/stl_overview.png" alt="STL Overview" /><br /> <em>STL Overview</em></p>
+
+<h3 id="introduction">Introduction</h3>
+
+<p>This list of algorithms is not exhaustive yet contains the most common and# useful C++ native algorithms in the STL library. Any of these algorithms can be written again though the efficiency of the same would atmost be comparable to the same available in the STL libraries.</p>
+
+<p><strong>Note:  vector.begin(), vector.end() can also be replaced by std::begin(vector) and std::end(vector) respectively as std::begin(vector) was only introduced in C++ 11 to allow easy coding for generic templated structures that support C-style arrays (that do not have methods like .begin()) as well as STL containers.</strong></p>
+
+<h3 id="heaps">HEAPS</h3>
+<p>Heaps are special tree-based data structures following one particular heap condition: node values down the tree are sctricty ascending(min heap) or strictly descending (max heap), i.e. parent-child relationship is monotonic. A heap is not completely sorted but partially ordered binary tree and thus knowing the priority for the element, a heap can serve for efficient data manipulation and accessibility.</p>
+
+<p>The Standard Template Library in C++ allows for a heap data structure and which has a priority queue as the base container. The algorithms provide the functions necessary to use the features of a heap.</p>
+
+<p><img src="/assets/images/stl/heap.png" alt="Data Structure - Heaps" /><br /> <em>Data Structure - Heaps</em></p>
+
+<p><strong>Algorithms for Heaps</strong></p>
+
+<ul>
+  <li>
+    <p>Create a heap from vector of numbers 
+<br /><code class="language-plaintext highlighter-rouge">std::make_heap(vector.begin(), vector.end())</code></p>
+  </li>
+  <li>
+    <p>Add contents to a heap (it handles the pushing of numbers and arranges them in the heap based on the comparison) 
+<br /><code class="language-plaintext highlighter-rouge">std::push_heap(vector.begin(), vector.end())</code></p>
+  </li>
+  <li>
+    <p>Pop out the highest number 
+<br /><code class="language-plaintext highlighter-rouge">std::pop_heap(vector.begin(), vector.end())</code></p>
+  </li>
+  <li>
+    <p>Reverse the order of the heap (Applicable to other containers as well )
+<br /><code class="language-plaintext highlighter-rouge">std::reverse(vector.begin(), vector.end())</code></p>
+  </li>
+  <li>
+    <p>Sort the elements of the heap in ascending order and the range is no longer a heap 
+<br /><code class="language-plaintext highlighter-rouge">std::sort_heap(vector.begin(), vector.end())</code></p>
+  </li>
+</ul>
+
+<h3 id="sorting">SORTING</h3>
+<p>Sorting the information stored in containers based on conditions is one of the most common things to do while dealing with any data. As simple as ranking students on the scores obtained means first arranging the scores in descending order.</p>
+
+<p>The Standard Template Library in C++ provides in-built implementations for different kinds of sorting operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.</p>
+
+<p><img src="/assets/images/stl/sorting.png" alt="Sorting" /><br /> <em>Sorting</em></p>
+
+<p><strong>Algorithms for Sorting</strong></p>
+
+<ul>
+  <li>
+    <p>Sorting of numbers in ascending order. If function is provided then it is used for sorting comparison. If fucntion returns true, then first element ordered before second.
+<br /><code class="language-plaintext highlighter-rouge">std::sort(vector.begin(), vector.end(), function)</code></p>
+  </li>
+  <li>
+    <p>Sorting of numbers in ascending order. If function is provided then it is used for sorting comparison. If fucntion returns true, then first element ordered before second. 
+Different from sort because it preserves the order of elements that have the same values, thus called stable. 
+<br /><code class="language-plaintext highlighter-rouge">std::stable_sort(vector.begin(), vector.end(), function)</code></p>
+  </li>
+  <li>
+    <p>Sorting of numbers in the range [first, last) only for specified middle values. If function provided then it is used for sorting comparison. If fucntion returns <strong>true</strong>, then first element ordered before second.
+<br /><code class="language-plaintext highlighter-rouge">std::partial_sort(vector.begin(), middle, vector.end())</code></p>
+  </li>
+  <li>
+    <p>Rearrange the list such that the nth element has the value that should have existed there if the list was sorted. The nth element has all preceding elements lesser than it and succeeding elements larger than it. 
+<br /><code class="language-plaintext highlighter-rouge">std::nth_element(vector.begin(), nth_element, vector.end())</code></p>
+  </li>
+</ul>
+
+<h3 id="permutations">PERMUTATIONS</h3>
+<p>Elements of a container are required to be shuffled in different orders as per need.</p>
+
+<p>The Standard Template Library in C++ provides in-built implementations for different kinds of permutation/re-arranging operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.</p>
+
+<p><strong>Algorithms for Permutations</strong></p>
+
+<ul>
+  <li>
+    <p>Reverse the order of elements in the container
+<br /><code class="language-plaintext highlighter-rouge">std::reverse(vector.begin(), vector.end()) </code></p>
+  </li>
+  <li>
+    <p>Create a new copy of the container to a new_vector with reversed order of elements
+<br /><code class="language-plaintext highlighter-rouge">std::reverse_copy(vector.begin(), vector.end(), new_vector.begin()) </code></p>
+  </li>
+  <li>
+    <p>Rotate the container about the middle element such that the middle element becomes the first element of the new rotated vector. Possible applications are found in insertion sort or order reshuffling
+<br /><code class="language-plaintext highlighter-rouge">std::rotate(vector.begin(), vector.middle(), vector.end())</code></p>
+  </li>
+  <li>
+    <p>Reshuffle the elements of the container based on using the std::rand as the random seed generator function
+<br /><code class="language-plaintext highlighter-rouge">std::random_shuffle(vector.begin(), vector.end()) </code></p>
+  </li>
+  <li>
+    <p>Reshuffle the elements of the container based on a seed obtained via URBG (Uniform Random Bit Generator). More efficient that the std::random_shuffle
+<br /><code class="language-plaintext highlighter-rouge">std::shuffle(vector.begin(), vector.end(), random_number_generator) </code></p>
+  </li>
+  <li>
+    <p>Rearrange the elements of the container into a permutation higher up in the lexicographical order.
+<br /><code class="language-plaintext highlighter-rouge">std::next_premutation(vector.begin(), vector.end()) </code></p>
+  </li>
+  <li>
+    <p>Rearrange the elements of the container into a permutation lower down in the lexicographical order.
+<br /><code class="language-plaintext highlighter-rouge">std::prev_premutation(vector.begin(), vector.end())</code></p>
+  </li>
+</ul>
+
+<h3 id="querying-ranges">QUERYING RANGES</h3>
+<p>Several queries about the features of containers are made, either for one single container or multiple ones.</p>
+
+<p>The Standard Template Library in C++ provides in-built implementations for several such querying operations. The templated nature of the library allows for the same algorithm to be applicable to all kinds of containers offered by C++.</p>
+
+<p><strong>Algorithms for Querying Containers</strong></p>
+
+<ul>
+  <li>
+    <p>Counts the number of occurences of the value in the container
+<br /><code class="language-plaintext highlighter-rouge">std::count(vector.begin(), vector.end(), value)</code></p>
+  </li>
+  <li>
+    <p>Compute the sum of the contents of the container and store it to the value init. If binary method function is provided, then the method is used for accumulation.
+<br /><code class="language-plaintext highlighter-rouge">std::accumulate(vector.begin(), vector.end(), init)</code>
+<br /><code class="language-plaintext highlighter-rouge">std::accumulate(vector.begin(), vector.end(), init, function) </code></p>
+  </li>
+  <li>
+    <p>Compute the partial sum of the contents of the container iteratively and store the it to container with result interator as the beginning. If binary method function is provided, then the method is used for the partial operation.
+<br /><code class="language-plaintext highlighter-rouge">std::partial_sum(vector.begin(), vector.end(), result) </code>
+<br /><code class="language-plaintext highlighter-rouge">std::partial_sum(vector.begin(), vector.end(), result, function) </code></p>
+  </li>
+  <li>
+    <p>Checks for all the elements of the container returning true for the given unary operator.</p>
+  </li>
+</ul>
+
+<p>If all elements return true, the function returns true else returns false. It returns false for an empty range.
+<br /><code class="language-plaintext highlighter-rouge">std::all_of(vector.begin(), vector.end(), unary_function) </code></p>
+
+<ul>
+  <li>Checks for all the elements of the container returning true for the given unary operator.</li>
+</ul>
+
+<p>If at least one of the elements return true, the function returns true else returns false. It returns false for an empty range.
+<br /><code class="language-plaintext highlighter-rouge">std::any_of(vector.begin(), vector.end(), unary_function) </code></p>
+
+<ul>
+  <li>Checks for all the elements of the container returning true for the given unary operator.</li>
+</ul>
+
+<p>If none of the elements return true, the function returns true else returns false. It returns true for an empty range.
+<br /><code class="language-plaintext highlighter-rouge">std::none_of(vector.begin(), vector.end(), unary_function) </code></p>
+                
+			</article>
+			
+			<!-- Tags -->
+			<div class="mb-4">
+				<span class="taglist">
+				
+				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#blog_post">blog_post</a>
+				
+				</span>
+			</div>
+ 
+            <!-- Mailchimp Subscribe Form -->
+            <!-- 
+			<div class="border p-5 bg-lightblue">
+				<div class="row justify-content-between">
+					<div class="col-md-6 mb-2 mb-md-0">
+						<h5 class="font-weight-bold">Join Newsletter</h5>
+						 Get the latest news right in your inbox. We never spam!
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+                            <form action="https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b" method="post" name="mc-embedded-subscribe-form" class="wj-contact-form validate w-100" target="_blank" novalidate>
+                            <div class="mc-field-group">
+							
+								<input type="email" placeholder="Enter e-mail address" name="EMAIL" class="required email form-control w-100" id="mce-EMAIL" autocomplete="on" required>
+							
+							
+								<button type="submit" value="Subscribe" name="subscribe" class="heart btn btn-success btn-block w-100 mt-2">Subscribe</button>
+							
+                            </div>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+             -->
+            
+            
+             <!-- Author Box -->
+                <!-- 				
+				<div class="row mt-5">
+					<div class="col-md-2 align-self-center">
+                         
+                        <img class="rounded-circle" src="/assets/images/AKSHAY_KUMAR.jpg" alt="Akshay" width="90"/>
+                         
+					</div>
+					<div class="col-md-10">		
+                        <h5 class="font-weight-bold">Written by Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-2">Follow</a></span></h5>
+						I am a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.					
+					</div>
+				</div>				
+                 -->
+            
+            <!-- Comments -->
+            
+                <!--  Don't edit anything here. Set your disqus id in _config.yml -->
+
+<div id="comments" class="mt-5">
+    <div id="disqus_thread">
+    </div>
+    <script type="text/javascript">
+        var disqus_shortname = 'kumarakshay-me'; 
+        var disqus_developer = 0;
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>
+    Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    </noscript>
+</div>
+            
+            
+		</div>
+        
+        
+	</div>
+</div>
+
+
+<!-- Aletbar Prev/Next -->
+<div class="alertbar">
+    <div class="container">
+        <div class="row prevnextlinks small font-weight-bold">
+          
+            <div class="col-md-6 rightborder pl-0">
+                <a class="text-dark" href="/polymorphism/"> Polymorphism in C++</a>
+            </div>
+          
+          
+            <div class="col-md-6 text-right pr-0">
+                <a class="text-dark" href="/motion-planning/"> Motion Planning In Robotics </a>
+            </div>
+          
+        </div>
+    </div>
+</div>
+
+    </main>
+
+
+    <!-- Scripts: popper, bootstrap, theme, lunr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+    <script src="/assets/js/theme.js"></script>
+
+
+    <!-- Footer -->
+    <!-- <footer class="bg-white border-top p-3 text-muted small">
+        <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div>
+                <span class="navbar-brand mr-2 mb-0"><strong>Mundana</strong></span>
+                <span>Copyright © <script>document.write(new Date().getFullYear())</script>.</span>
+
+                <a class="text-dark ml-1" target="_blank" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a>
+
+            </div>
+            <div>
+                Made with <a target="_blank" class="text-dark font-weight-bold" href="https://www.wowthemes.net/mundana-jekyll-theme/"> Mundana Jekyll Theme </a> by <a class="text-dark" target="_blank" href="https://www.wowthemes.net">WowThemes</a>.
+            </div>
+        </div>
+        </div>
+    </footer> -->
+
+    <!-- All this area goes before </body> closing tag --> 
+
+
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 layout: post
 title:  "Bayesian Methods in Robotics"
 author: akshay
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: [robotics]
 tags: blog_post
 ---

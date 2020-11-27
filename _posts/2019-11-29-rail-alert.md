@@ -3,7 +3,7 @@ layout: projects_default
 title:  "Geofencing-based Rail Crossing Alert System"
 info: September - December 2015 | Zine Lab, MNIT Jaipur
 abstract: "Using a Fuzzy Logic Controller for autonomous navigation of a Turtlebot robot"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: [undergrad]
 # github: https://github.com/TurtleBot-FuzzyLogicControl
 image: assets/images/projects/geofence.jpg

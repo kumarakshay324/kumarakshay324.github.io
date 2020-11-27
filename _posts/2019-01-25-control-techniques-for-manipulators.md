@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Control Techniques For Robot Manipulators"
-categories: [ Robotics, tutorial ]
+categories: [ Robotics,  ]
 tags: blog_post
 ---
 Industrial automation today is spearheaded by dexterous manipulators and warehouse mobile robots. Manipulator arms dominate the manufacturing and post-processing industry, whereas mobile robots are the new-generation inventory management machines. Manipulators have been on functional on assembly lines, packaging stations, palletizing tasks and sorting tasks since the last quarter of the 20th century. 
