@@ -4,6 +4,7 @@ title:  "Visual Servoing For Manipulators - Part I"
 author: akshay
 categories: [ Robotics,  ]
 tags: blog_post
+image: assets/images/projects/visual_servo.png
 ---
 
 Visual Servoing is one of the most used robotics in the industry for automation. It involves using computer-vision based realtime feedback of the task space for online control of manipulator end-effector pose while performing tasks. Servoing refers to using a closed-loop feedback mechanism to manipulate reference input signal to a system while eventually driving the system to the desired target. Extracted features from visual information relate the robot current configuration to the task at hand and the system generates high-level pose control commands towards task completion.

@@ -5,6 +5,7 @@ author: akshay
 categories: [ Robotics,  ]
 tags: [robotics]
 tags: blog_post
+image: assets/images/projects/bayesian.png
 ---
 The domain of robotics has exploded over the past couple of decades. Robots have evolved from being manipulators employed in manufacturing factories to personal robots, humanoids, mobile robots, robot vacuum cleaners and a lot more. 
 

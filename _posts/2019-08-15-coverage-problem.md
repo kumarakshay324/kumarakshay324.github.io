@@ -3,6 +3,7 @@ layout: post
 title:  "Coverage Problem In Robotics"
 categories: [ Robotics,  ]
 tags: blog_post
+image: assets/images/projects/coverage.png
 ---
 
 Mobile robots are very often supposed to move around the deployment area and complete certain tasks in specific locations of the area. Such problems where the robot is supposed to navigate to an arbitrary location in the pre-fed map and complete a task based on the tool to be used, is called a coverage problem. ​Figure 1 shows such a setup where the robot has a map for the environment, a warehouse in this case; and it is supposed to traverse to the area from any random start point and navigate the area according to the tool and task.

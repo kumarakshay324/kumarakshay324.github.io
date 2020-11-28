@@ -3,6 +3,7 @@ layout: post
 title:  "Polymorphism in C++"
 categories: [ Computer Science,  ]
 tags: blog_post
+image: assets/images/projects/poly.png
 ---
 Among the most common imperative, object-oriented and functional programming paradigms, OOP is perhaps the most used paradigm in the industry today. OOP allows for desired levels of abstraction, modularity, safety and data management. Large project architectures are able to thrive and expand fairly easily due to the OOP design. Inheritance, polymorphism, encapsulation, asbtraction operational principles of OOP that makes it so famous.
 

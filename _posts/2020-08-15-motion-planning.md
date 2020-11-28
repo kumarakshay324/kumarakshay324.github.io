@@ -3,6 +3,7 @@ layout: post
 title:  "Motion Planning In Robotics"
 categories: [ Robotics,  ]
 tags: blog_post
+image: assets/images/projects/motion_planning.png
 ---
 
 Motion Planning in robotics refers to mathematically deriving the seqeunce of robot configuration that allows it to achieve a task. It is the study of algorithms and techniques that determine variation in the physical properties of a robot that consequently determine its path of motion. Motion planning is a broad envelope of algorithms applicable to mobile robots, humanoids, manipulator arms and any non-trivial robot type. 

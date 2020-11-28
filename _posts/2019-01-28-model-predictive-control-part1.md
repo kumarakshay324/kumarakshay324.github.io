@@ -5,6 +5,7 @@ categories: [ Robotics,  ]
 # image: assets/images/1.jpg
 tags: [Robotics]
 tags: blog_post
+image: assets/images/projects/mpc.png
 ---
 Control techniques in robotics can largely be classified as **model-based** and **model-free**. The most common control techniques include PID, gain-scheduling, cruise-control, adaptive control, robust control and reinforcemment learning-based control among others. Majority of the model-based control techniques have an upper-hand over the model-free techniques as the former estimate control signals with some information about the response expected from the plant. 
 

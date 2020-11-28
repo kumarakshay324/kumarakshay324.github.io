@@ -2,7 +2,7 @@
 layout: post
 title:  "Mobile Robot Kinematics"
 categories: [ Robotics ]
-# image: assets/images/2.jpg
+image: assets/images/projects/mobile_robots.png
 tags: blog_post
 ---
 

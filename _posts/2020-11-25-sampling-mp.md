@@ -3,6 +3,7 @@ layout: post
 title:  "Sampling-based Motion Planners"
 categories: [ Robotics,  ]
 tags: blog_post
+image: assets/images/projects/planners.png
 ---
 
 Motion planning is the soul of autonomous robot motion/navigation but given the huge variations in operational conditions, robot architecture and tasks, motion planning for robots becomes one of the most sophisticated domains of robotics. 

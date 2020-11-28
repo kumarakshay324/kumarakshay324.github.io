@@ -11,4 +11,4 @@ image: assets/images/projects/visual_odom.png
 ---
 ### Objective
 
-Achieve mid-air robot to robot object transfer and placement at target location via Deep Reinforcement Learning using a single RL agent that drives the two manipulator arms.
+Soon To Be Updated

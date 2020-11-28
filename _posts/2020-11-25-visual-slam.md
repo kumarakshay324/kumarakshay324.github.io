@@ -3,6 +3,7 @@ layout: post
 title:  "An Introduction To Visual SLAM"
 categories: [ Robotics,  ]
 tags: blog_post
+image: assets/images/projects/visual_slam.png
 ---
 
 **Visual SLAM** is the most researched topic in all of SLAM technology today. Visual sensing has made feature extraction extremely easy and provided rich information for autonomous navigation. Visual SLAM techniques generally track features in images over successive frames and use the triangulation or other techniques to obtain their 3D position which thus helps create the map while also working backwards to predict the camera pose(eventually the robot pose) that observed the map features.

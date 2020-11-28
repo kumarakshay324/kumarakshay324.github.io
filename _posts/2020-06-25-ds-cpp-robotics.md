@@ -3,6 +3,7 @@ layout: post
 title:  "C++ Data Structures in Robotics - Part I"
 categories: [ Robotics, Computer Science]
 tags: blog_post
+image: assets/images/projects/cpp_robotics.png
 ---
 
 I have been working with C++ for a couple of years now. While I have not encountered use of a lot of off-the-shelf C++ algorithms used intensively in robot software stack development, certain data structures have definitely been very efficient for particular applications in robotics. I thought it was time to revisit the basic data structures in C++ and also, makes notes for future use. 

@@ -2,8 +2,8 @@
 layout: post
 title:  "Extended Kalman Filters for Robot Localization"
 categories: [ Robotics ]
-# image: assets/images/15.jpg
 tags: blog_post
+image: assets/images/projects/ekf.png
 ---
 Bayesian methods discussed earlier were a preface to the use of different probabilistic techniques in robotics. Bayesian inference derives the final equation that presents the various steps involved in the process of state-estimation by using the action and the model of the system.
 
