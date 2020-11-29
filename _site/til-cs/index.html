@@ -118,7 +118,7 @@
                             <span class="text-muted d-block mt-1">Jan 22, 2019 · <span class="reading-time">
   
   
-    7 mins read
+    8 mins read
   
 </span>
     </span>
@@ -175,12 +175,16 @@
 
 <h3 id="-fpic-tag-in-gccg-november-27-2020">-fPIC tag in gcc/g++ <code class="language-plaintext highlighter-rouge">November 27, 2020</code></h3>
 
-<p>-fPIC is a tag, always used for CMake flags or any other meta build system meant for</p>
+<p>-fPIC is a tag, used as a flag for CMake or any other meta build system meant to determine position independence in the machine code. If <strong>fPIC</strong> is turned on, it ensures that code execution is independent of the address the machine-generated code resides in, when the code execution jumps from one address to another.</p>
+
+<p>When a shared library is created and shared with multiple applications, it is not certain if the code is loaded into the same memory address always. Thus, fPIC needs to be <strong>ON</strong> to ensure proper functioning of the code. For static libraries, runtime relocation is not needed and thus works without fPIC flag.</p>
+
+<p>Amazing <a href="https://stackoverflow.com/questions/5311515/gcc-fpic-option">StackOverflow</a> link for more details.</p>
 
 <p>It is a compiler cache</p>
 <h3 id="ccache-in-c-november-26-2020">CCache in C++ <code class="language-plaintext highlighter-rouge">November 26, 2020</code></h3>
 
-<p>It is a compiler cache</p>
+<p>It is a compiler cache that caches (locally stores) the previous builds for reuse during the next compilation. It helps speed up clean compilation efforts. It supports common compilers like GCC and Clang and common OSes including Linux, Windows and macOS. It is limited to only single-file caches and multi-file compilation and linking falls back to the actual compiler.</p>
 
 <h3 id="virtual-destructors-in-c-february-22-2020">Virtual Destructors in C++ <code class="language-plaintext highlighter-rouge">February 22, 2020</code></h3>
 
