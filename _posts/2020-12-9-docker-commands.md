@@ -15,6 +15,10 @@ The official documentation exists [here] https://docs.docker.com/engine/referenc
 
 `docker exec -it container_id bash`
 
+* Pull a Docker Image from the cloud
+
+`docker pull user_name/build_environment_name:tag`
+
 * Copy files from docker image to the host machine
 
 `docker cp container_id:/path/to/file/in/docker /host/machine/destination/folder`
