@@ -64,6 +64,15 @@
         <div class="navbar-collapse collapse" id="navbarColor02" style="">
             <ul class="navbar-nav mr-auto d-flex align-items-center">
                <!--  Replace menu links here -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Awesome Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
 
 <li class="nav-item">
 <a class="nav-link" href="/index.html">Home</a>
@@ -83,11 +92,33 @@
 <li class="nav-item">
 <a class="nav-link" href="/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
 </li>
-<!-- <li class="nav-item">
-<a class="nav-link" href="/contact.html">Contact</a>
-</li> -->
 
+    
             </ul>
+            <ul class="navbar-nav mr-auto d-flex align-items-right">
+                <!--  Replace menu links here -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Awesome Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<li class="nav-item">
+<a href="https://www.linkedin.com/in/kumarakshay324" class="fa fa-linkedin-square" style="color:#0e76a8"></a>
+</li>
+<li class="nav-item">
+<a href="https://www.github.com/kumar-akshay324" class="fa fa-github" style="color:black"></a>
+</li>
+<li class="nav-item">
+<a href="mailto:akumar5@wpi.edu" class="fa fa-envelope-square" style="color: red;"></a>
+</li>
+    
+             </ul>
+ 
         </div>
     </div>
     </nav>
@@ -118,7 +149,7 @@
                             <span class="text-muted d-block mt-1">Jan 22, 2019 · <span class="reading-time">
   
   
-    8 mins read
+    9 mins read
   
 </span>
     </span>
@@ -173,6 +204,16 @@
 
 <p><img src="/assets/images/til/til_art.jpg" alt="" /></p>
 
+<h3 id="ldd-december-22-2020">ldd <code class="language-plaintext highlighter-rouge">December 22, 2020</code></h3>
+
+<p>List Dynamic Dependencies (LDD) is a command-line utility in Linux/Unix to discover the list of shared libraries required by another library/program. It is mainly used to print if a shared dependency is missing or has a broken link. Dynamic libraries help avoid compilation overhead of the dependencies, while compiling the main program.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ldd /path/to/executable/program</code>  displays the shared library dependencies</li>
+  <li><code class="language-plaintext highlighter-rouge">ldd -v /path/to/executable/program</code> adds more verbose description</li>
+  <li>Additional tags like <code class="language-plaintext highlighter-rouge">-u</code> and <code class="language-plaintext highlighter-rouge">r</code> are used to print the unused direct dependencies and used on dynamic executables respectively</li>
+</ul>
+
 <h3 id="-fpic-tag-in-gccg-november-27-2020">-fPIC tag in gcc/g++ <code class="language-plaintext highlighter-rouge">November 27, 2020</code></h3>
 
 <p>-fPIC is a tag, used as a flag for CMake or any other meta build system meant to determine position independence in the machine code. If <strong>fPIC</strong> is turned on, it ensures that code execution is independent of the address the machine-generated code resides in, when the code execution jumps from one address to another.</p>
@@ -181,7 +222,6 @@
 
 <p>Amazing <a href="https://stackoverflow.com/questions/5311515/gcc-fpic-option">StackOverflow</a> link for more details.</p>
 
-<p>It is a compiler cache</p>
 <h3 id="ccache-in-c-november-26-2020">CCache in C++ <code class="language-plaintext highlighter-rouge">November 26, 2020</code></h3>
 
 <p>It is a compiler cache that caches (locally stores) the previous builds for reuse during the next compilation. It helps speed up clean compilation efforts. It supports common compilers like GCC and Clang and common OSes including Linux, Windows and macOS. It is limited to only single-file caches and multi-file compilation and linking falls back to the actual compiler.</p>

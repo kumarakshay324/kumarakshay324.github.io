@@ -64,6 +64,15 @@
         <div class="navbar-collapse collapse" id="navbarColor02" style="">
             <ul class="navbar-nav mr-auto d-flex align-items-center">
                <!--  Replace menu links here -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Awesome Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
 
 <li class="nav-item">
 <a class="nav-link" href="/index.html">Home</a>
@@ -83,11 +92,33 @@
 <li class="nav-item">
 <a class="nav-link" href="/assets/documents/AKSHAY_KUMAR_RESUME_1PAGE.pdf">Resume</a>
 </li>
-<!-- <li class="nav-item">
-<a class="nav-link" href="/contact.html">Contact</a>
-</li> -->
 
+    
             </ul>
+            <ul class="navbar-nav mr-auto d-flex align-items-right">
+                <!--  Replace menu links here -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Awesome Icons</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<li class="nav-item">
+<a href="https://www.linkedin.com/in/kumarakshay324" class="fa fa-linkedin-square" style="color:#0e76a8"></a>
+</li>
+<li class="nav-item">
+<a href="https://www.github.com/kumar-akshay324" class="fa fa-github" style="color:black"></a>
+</li>
+<li class="nav-item">
+<a href="mailto:akumar5@wpi.edu" class="fa fa-envelope-square" style="color: red;"></a>
+</li>
+    
+             </ul>
+ 
         </div>
     </div>
     </nav>
@@ -120,7 +151,7 @@
                             <span class="text-muted d-block mt-1">Jan 25, 2019 · <span class="reading-time">
   
   
-    1 min read
+    2 mins read
   
 </span>
     </span>
@@ -172,9 +203,27 @@
 <p><br /></p>
 <hr />
 
+<h3 id="adam-optimizer">Adam Optimizer</h3>
+
+<p>Adam is an adaptive rate optimizer that dynamically modifies the value of learning rates for each parameter and specifically effective in training deep neural networks. It uses the moving average of the gradient for momentum and the squared gradients to scale the learning rate, similar to SGD and RMSProp respectively. It uses the first and second moments of gradients to modify the learning rate for each parameter. It is the most commonly used optimizers and beats others in speed.</p>
+
 <h4 id="gradient-descent">Gradient Descent</h4>
 
 <p>Gradient descent is the method to compute the gradient of the objective function/ loss function with respect to each of the model parameters. The magnitude and direction of the gradient suggests the variation in the parameters, during the training with the goal of minimizing the loss and its rate of change as well.</p>
+
+<h3 id="leaky-relu">Leaky-ReLU</h3>
+
+<p>The common rectified linear activation (ReLU) function is a piecewise function which has value constantly proportional to the input, for positive inputs and a value of 0 otherwise. This leads to a derivative of 1 for positive and 0 for otherwise inputs.</p>
+
+<p>The <strong>Leaky-ReLU</strong> is a little modified with a very small slope value for non-positive inputs which ensures that no neurons go dead (have zero effect) on the learning during backpropogation. This little value is called <em>alpha</em> and thus the gradient-descent is <em>alpha * x</em> instead of 0.</p>
+
+<h3 id="one-hot-encoding">One Hot Encoding</h3>
+
+<p>One hot encoding is used in machine learning to represent classes, for a classication algorithm, as a combination of multiple bits with a single 1 (HIGH) for the class and rest 0s (LOW. It is a common way of defining the state of a state machine. For instance, for 3 classes of animals - dogs, cats and cows the one-hot encoding representation looks like dogs - 100, cats - 010 and cows - 001. It helps programmatically represent the classification labels and outputs for computational efficiency.</p>
+
+<h3 id="softmax">Softmax</h3>
+
+<p>Softmax is an activation function that normalizes a set of K values to another set of values (between 0 and 1) that sum to up tp 1. It helps conform the output of a machine learning algorithm into a set of probabilities. It is also known as softargmax or normalized exponential function and uses exponents of the variables for normalization.</p>
 
                 
 			</article>
@@ -270,7 +319,7 @@
           
           
             <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/rt-linux/"> Real Time Operating Systems In Robotics  <img height="30px" class="ml-1" src="/assets/images/projects/rtlinux.png"> </a>
+                <a class="text-dark" href="/optical-flow/"> Optical Flow In Computer Vision </a>
             </div>
           
         </div>

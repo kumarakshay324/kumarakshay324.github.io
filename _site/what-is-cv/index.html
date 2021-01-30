@@ -4,24 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Geofencing-based Rail Crossing Alert System | ThatRobotBoy</title>
+    <title>Computer Vision Basics | ThatRobotBoy</title>
 
     <!-- Begin Jekyll SEO tag v2.6.1 -->
-<title>Geofencing-based Rail Crossing Alert System | ThatRobotBoy</title>
+<title>Computer Vision Basics | ThatRobotBoy</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Geofencing-based Rail Crossing Alert System" />
+<meta property="og:title" content="Computer Vision Basics" />
 <meta name="author" content="akshay" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Objective" />
-<meta property="og:description" content="Objective" />
-<link rel="canonical" href="http://localhost:4000/rail-alert/" />
-<meta property="og:url" content="http://localhost:4000/rail-alert/" />
+<meta name="description" content="These are my notes from the Computer Vision Basics course on Coursera. I had some free time, so I decided to revise my hand-written notes while also digitising the same." />
+<meta property="og:description" content="These are my notes from the Computer Vision Basics course on Coursera. I had some free time, so I decided to revise my hand-written notes while also digitising the same." />
+<link rel="canonical" href="http://localhost:4000/what-is-cv/" />
+<meta property="og:url" content="http://localhost:4000/what-is-cv/" />
 <meta property="og:site_name" content="ThatRobotBoy" />
-<meta property="og:image" content="http://localhost:4000/assets/images/projects/geofence.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2019-11-29T00:00:00-08:00" />
+<meta property="article:published_time" content="2019-01-25T00:00:00-08:00" />
 <script type="application/ld+json">
-{"description":"Objective","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/rail-alert/"},"datePublished":"2019-11-29T00:00:00-08:00","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"akshay"},"image":"http://localhost:4000/assets/images/projects/geofence.jpg","headline":"Geofencing-based Rail Crossing Alert System","dateModified":"2019-11-29T00:00:00-08:00","url":"http://localhost:4000/rail-alert/","@context":"https://schema.org"}</script>
+{"description":"These are my notes from the Computer Vision Basics course on Coursera. I had some free time, so I decided to revise my hand-written notes while also digitising the same.","author":{"@type":"Person","name":"akshay"},"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/what-is-cv/"},"datePublished":"2019-01-25T00:00:00-08:00","@type":"BlogPosting","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"akshay"},"headline":"Computer Vision Basics","dateModified":"2019-01-25T00:00:00-08:00","url":"http://localhost:4000/what-is-cv/","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -133,28 +132,30 @@
     <main role="main" class="site-content">
         
 <div class="container">
-<div class="jumbotron jumbotron-fluid mb-0 pl-0 pt-0 pb-0 bg-white position-relative">
+<div class="jumbotron jumbotron-fluid mb-3 pl-0 pt-0 pb-0 bg-white position-relative">
 		<div class="h-100 tofront">
-			<div class="row w-100  justify-content-between ">
-				<div class=" col-md-6  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
-
-					<h2 class="display-4 mb-4 article-headline">Geofencing-based Rail Crossing Alert System</h2>
+			<div class="row  justify-content-center ">
+				<div class=" col-md-8  pr-0 pr-md-4 pt-4 pb-4 align-self-center">
+					<p class="text-uppercase font-weight-bold">
+                        <span class="catlist">
+						
+                          <a class="sscroll text-danger" href="/categories.html#computer vision">computer vision</a><span class="sep">, </span>
+                        
+                        </span>
+					</p>
+					<h2 class="display-4 mb-4 article-headline">Computer Vision Basics</h2>
 					<div class="d-flex align-items-center">
 						<!-- <small class="ml-3"> Akshay <span><a target="_blank" href="https://twitter.com/kumarakshay324" class="btn btn-outline-success btn-sm btn-round ml-1">Follow</a></span> -->
-                            <!-- <span class="text-muted d-block mt-1">Nov 29, 2019 </span> -->
+                            <span class="text-muted d-block mt-1">Jan 25, 2019 · <span class="reading-time">
+  
+  
+    3 mins read
+  
+</span>
+    </span>
 						<!-- </small> -->
-						<!-- <h2 class="display-4 mb-4">September - December 2015 | Zine Lab, MNIT Jaipur</h2> -->
-						<h2 class="lead mb-4 text-indigo">September - December 2015 | Zine Lab, MNIT Jaipur</h2>
-					</div>
-					<div class="d-flex align-items-center">
-					<a href="" class="btn btn-dark">Github</a>
-					<a href="/" class="btn btn-dark">Documentation</a>
 					</div>
 				</div>
-                
-					<div class="col-md-6 pr-0 align-self-center">
-						<img class="rounded w-75 " src="/assets/images/projects/geofence.jpg" alt="Geofencing-based Rail Crossing Alert System">
-					</div>
                 
 			</div>
 		</div>
@@ -162,50 +163,91 @@
 </div>
 
 
+
+
+
 <div class="container-lg pt-4 pb-4">
 	<div class="row justify-content-center">
-                
-		<div class="col-md-10 col-lg-10 " style="text-align: justify;">
+        
+        
+        <!-- Share -->
+		<div class="col-lg-2 pr-4 mb-4 col-md-12">
+			<div class="sticky-top sticky-top-offset text-center">
+				<div class="text-muted">
+					Share this
+				</div>
+				<div class="share d-inline-block">
+					<!-- AddToAny BEGIN -->
+					<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+						<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+						<a class="a2a_button_linkedin"></a>
+						<a class="a2a_button_email"></a>
+						<a class="a2a_button_reddit"></a>
+						<a class="a2a_button_twitter"></a>
+					</div>
+					<script async src="https://static.addtoany.com/menu/page.js"></script>
+					<!-- AddToAny END -->
+				</div>
+			</div>
+		</div>
+        
+        
+		<div class="col-md-12 col-lg-8 " style="text-align: justify;">
             
             <!-- Article -->
 			<article class="article-post">                
-			<h3 id="objective">Objective</h3>
+			<p>These are my notes from the Computer Vision Basics course on Coursera. I had some free time, so I decided to revise my hand-written notes while also digitising the same.</p>
 
-<p>Building a system capable of designing a virtual perimeter-geofence around unmanned rail-road crossovers to prevent mishaps.</p>
+<p>Computer Vision strives to make computers understand visual feed and images and unpack its information, intuitively and more elaborately compared to humans and other living beings. The human visual perception system comprising the eye and the brain is analogous to computational vision systems using a camera and a processing unit. Spatial and temporal visual information packed in videos are extremely to critical to most of the intelligent applications of CV in robotics, autonomous vehicles, monitoring and scene understanding tasks.</p>
 
-<h3 id="research-aspects">Research Aspects</h3>
+<p><strong>Computer vision reads still images or a sequence of images to automatically extract all useful information performing tasks like object detection, classification, depth estimation, motion estimation, scene understanding, predictions and more while being robust to different image qualities. Computer vision attempts to develop intelligent vision systems efficient as humans but also robust to problems of optical illusion and other biological limitations of the human vision system.</strong></p>
 
-<ul>
-  <li>Two on-board GPS to ascertain the correct current location of the moving vehicle</li>
-  <li>Option to build geofence using co-ordinates that are either pre-fed or dynamically updated over the internet, for all the rail-road crossovers in the country</li>
-  <li>Low power bluetooth supported system for instant update on new geofences</li>
-</ul>
+<p>Several concepts of CV are based on geometry and statistics applied to traveling light.</p>
 
-<p><img src="/assets/images/geofence/d.jpg" alt="Behavior Fusion" /> <br />
-<img src="/assets/images/geofence/c.jpg" alt="Behavior Fusion" /> <br /></p>
-
-<h3 id="methodology">Methodology</h3>
-
-<p>The system was designed to be mounted in vehicles and could initiate a series of warnings if in case the vehicle moves nearby any rail-road crossover. The system helped avert any inappropriate attempt at crossing the junction when there are chances of a train to cross at the same time. The setup drew several layers of concentric circles/polygons that served as multiple levels of perimeter breach. The on-board GPS from the vehicle checked for such breaches and initiated control measures depending upon the intensity of breach. The corrective measures included verbal warning, speed reduction and automatic vehicle lockdown among others.</p>
-
-<h3 id="results">Results</h3>
+<h3 id="related-fields-of-computer-vision">Related fields of Computer Vision</h3>
 
 <ul>
-  <li>Published a patent for the innovative technology</li>
-  <li>The system current is being implemented into use by the North-Eastern Railways, a Government of India undertaking.</li>
+  <li>Artificial Intelligence - Object Detection, Classification, Semantic Segmentation and more</li>
+  <li>Digital Signal Processing - Image compression, enhancement and</li>
+  <li>Neuroscience - Natural vision pipelines</li>
 </ul>
 
-<h3 id="gallery">Gallery</h3>
+<p>Using good open-source tools and in-built libraries/packages helps accelerate computer vision learning curve towards solving more high-level task.</p>
 
-<p><img src="/assets/images/geofence/combined.png" alt="Behavior Fusion" /> <br /></p>
+<h3 id="evolution-of-computer-vision">Evolution Of Computer Vision</h3>
+
+<p>Soon after photography was discovered and cameras became a common tool to capture the real world on a paper, naive computer vision approaches were developed to understand the conversion of photographs on a paper to the real-world equivalent. Several inventions followed, including the definition of pixels, connection of a camera with a computer and the discovery of color cameras.</p>
+
+<p>Optical flow, motion estimation, edge detection, character recognition were the first few algorithms discovered in the early days of computer vision. Mathematical representation of different optical phenomena and their different applications to computer vision form the basis of the modern-age computer vision.</p>
+
+<p>Camera calibration, projections and, skews were important for tasks like 3D reconstruction and image stitching. It also paved the way for stereovision, the basics of which hold true, even today. The Viola-Jones algorithm using Haar Cascades and HoG revolutionised face detection algorithms in the early 2000s. Robust image features like scale and orientation invariance contributed to lots of still image computer vision. Neural networks, especially convolutional neural networks after the 2012 ImageNet challenge led the true revolution in the field of modern-day computer vision applications.</p>
+
+<p>Another breakthrough happened with the proposal of Generative Adversarial Networks (GANs), a relatively new yet very powerful method of making multiple networks compete against each other to eventually improve the learning.</p>
+
+<h3 id="applications-of-computer-vision">Applications of Computer Vision</h3>
+
+<ul>
+  <li>Industrial Monitoring</li>
+  <li>Robotics</li>
+  <li>Augmented Reality</li>
+  <li>Medical Imaging</li>
+  <li>Visual Suveillance</li>
+</ul>
+
+<h3 id="computer-vision-setup">Computer vision setup</h3>
+
+<p>Any computer vision system needs a camera hooked up to a processor via communication cables. The type of camera, type of communication line between the digital signal and the processor and the processor itself are all critical to the performance and capabilities of the vision system. While poor resolution cameras means less information from the scene and thus low performance, a slow processor or limited bandwidth communicatoin pipeline is equally restricts the performance.</p>
+
+<h3 id="light-sources">Light Sources</h3>
+
+<p>Light sources provide the illumination needed for the vision systems. Their luminosity, wavelength and color determines the behavior of the imaging system. For instance, a a yellow filament bulb light may make the camera incorrect capture a white object as yellow because of the light falling on it. Color can be affected by object surfaces, emittance and remittance properties and orientation. A common assumption for CV systems is no light scattering or inter reflection. The visible light wavelength spans from 400-700 nm</p>
+
                 
 			</article>
 			
 			<!-- Tags -->
 			<div class="mb-4">
 				<span class="taglist">
-				
-				  <a class="sscroll btn btn-light btn-sm font-weight-bold" href="/tags.html#undergrad">undergrad</a>
 				
 				</span>
 			</div>
@@ -284,20 +326,17 @@
 <!-- Aletbar Prev/Next -->
 <div class="alertbar">
     <div class="container">
-        <div class="row prevnextlinks small font-weight-bold text-align-center">
-          <!-- 
+        <div class="row prevnextlinks small font-weight-bold">
+          
             <div class="col-md-6 rightborder pl-0">
-                <a class="text-dark" href="/fuzzy-logic-controller/"> <img height="30px" class="mr-1" src="/assets/images/projects/turtlebot.png">  Fuzzy Logic Controller For Robot Navigation</a>
+                <a class="text-dark" href="/optical-flow/"> Optical Flow In Computer Vision</a>
             </div>
           
           
             <div class="col-md-6 text-right pr-0">
-                <a class="text-dark" href="/motion-planning-manipulator/"> Motion Planning for Dual-Arm Manipulator  <img height="30px" class="ml-1" src="/assets/images/projects/dualarm.jpg"> </a>
+                <a class="text-dark" href="/rt-linux/"> Real Time Operating Systems In Robotics  <img height="30px" class="ml-1" src="/assets/images/projects/rtlinux.png"> </a>
             </div>
-		   -->
-			<center>
-				<a href="/projects.html" class="btn btn-warning">BACK</a>
-			</center>
+          
         </div>
     </div>
 </div>
