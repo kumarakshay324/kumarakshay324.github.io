@@ -31,8 +31,8 @@ authors:
       biop2:          I have previously worked as a Robotics Software Engineer at Modbot, San Francisco, CA. I have an MS in Robotics Engineering (2019) degree from Worcester Polytechnic Institute, MA, USA and a BTech. in Electrical Engineering (2017) degree from Malaviya National Institute Of Technology Jaipur, India.
                       My areas of current and previous work involves robotics software stack development in C++ and Python for modular industrial manipulator arms, robot control, dynamics, collision detection, navigation and deep learning. Other areas of research and interests include visual servoing, mobile robotics, SLAM, computer vision, deep learning and reinforcement learning.
 
-      intro1:         I am full-stack roboticist interested in working on the various domains of robotics and AI.
-                      My areas of research and interests include manipulation, mobile robot navigation and motion planning, computer vision, visual servoing, SLAM, deep learning and deep reinforcement learning.
+      intro1:         I am full-stack roboticist interested in working througout the spectrum of robotics and AI.
+                      My primary areas of research and interests include manipulation, mobile robot navigation, motion planning and computer vision, and SLAM among others.
 
       blog_intro:     These blogs are more of a collection of my personal learnings/understandings assimilated from various other websites, courses, projects and experience and less of polished blogs or tutorials!
                       <br><br> But, hey if I do anyone any good with these, I don't mind! You can hit me up to talk more about them! <hr>
@@ -42,6 +42,10 @@ authors:
 
       modbot:         I have previously worked as a Robotics Software Engineer at Modbot, San Francisco, CA. During my time with Modbot Inc., I worked on developing dynamically configurable software for motion planning, control techniques, kinematics algorithms, system modeling, and identification for modular robot arms in a test-driven development setting.
                       Being the only on-site robotics specialist, I was involved in the complete software development cycle from design and POC through to the deployment of high-fidelity real-time robot software stack using C++ and Python in a Linux environment.
+
+
+      experience:     I have experience building robust end-to-end computer vision, DL and robotics software deployed live in factories and industries today using the best development tools and industry practices.
+                      I love working with ownership and responsibility of project. I love working with startups and in small teams which allow for learning and experience across the various aspects of a software/product development cycle. In my spare time, I have worked on several hardware projects as well.
 
       education1:     I have a <strong>MS in Robotics Engineering </strong> degree from Worcester Polytechnic Institute, MA, USA. My coursework included Deep Reinforcement Learning, Deep Learning for Advanced Robot Perception, Robot Dynamics, Robot Control and Artificial Intelligence among others.
                       The graduate program courses had projects as an integral component of the grades. The projects involved implementing intricate mathematical concepts using latest software tools and technologies. You can check out my course projects here in the Projects section.
