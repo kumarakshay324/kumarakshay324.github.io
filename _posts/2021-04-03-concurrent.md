@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Concurret Programming In C++"
+title:  "Concurrent Programming In C++"
 categories: [ Computer Science]
 tags: blog_post
 image: assets/images/projects/concurrent.png
@@ -8,7 +8,7 @@ image: assets/images/projects/concurrent.png
 
 A computer executes each assembly code instruction for an application, on a clock cycle. Each instruction executed, needs access to the processor's ALU and other logical units, available on each core. The multiple cores on a processor allow multiple instructions to be executed simultaenously thus utilizing the compute resources to the fullest. 
 
-Concurrency is the concept of running multiple executions overlapping in time, across the processor. Concurret programming refers to implementing soliutions to execute processes and/or threads of a process simultaneously.  
+Concurrency is the concept of running multiple executions overlapping in time, across the processor. Concurrent programming refers to implementing soliutions to execute processes and/or threads of a process simultaneously.  
 
 ### Introduction
 
