@@ -28,12 +28,49 @@ description: "Portfolio Website for Akshay - A colllection of his projects, blog
             </div>
         </div>
     </div>
-    <center>
+
+    <!-- Sticky - add sticky tag to the post you want to highlight here - tags: [sticky] -->
+    <div class="jumbotron jumbotron-fluid jumbotron-home pt-0 pb-0 mt-3 mb-2rem bg-lightblue position-relative">
+        <div class="pl-4 pr-0 h-100 tofront">
+
+            <!-- <h2 class="font-weight-bold" style="text-align: center">My Robots</h2> -->
+            <h4 class="font-weight-normal spanborder text-indigo" style="text-align: center"><span>MY ROBOTS</span></h4>
+
+            <div class="row justify-content-between">
+                {% for post in site.posts %} 
+                {% if post.tags contains "side_robots" %}
+                <!-- <div class="col-md-5 d-none d-md-block pr-0" style="background-size:cover;background-image:url({{site.baseurl}}/{{ post.image }});">	
+                </div> -->
+                <div class="col-md-3 pt-3 pb-1 pr-lg-1 align-self-center text-dark">
+                    {% if post.image %}
+                        <div class="col-md-12 pr-0 pb-1 mb-3 text-center">
+                            <a href="{{site.baseurl}}{{post.url}}">
+                                <img class="w-auto " style="border-radius: 10%" src="{% if post.image contains "://" %}{{ post.image }}{% else %}{{ site.baseurl }}/{{ post.image }}{% endif %}" alt="{{ post.title }}">
+                            </a>
+                        </div>
+                    {% endif %}
+                    <h5 class="text-center text-dark">{{post.title}}</h5>
+                    <p class=" text-dark text-center">
+                        {{ post.abstract }}
+                    </p>
+                </div>
+                        <!-- <div class="col-md-5 d-none d-md-block pr-0" style="background-size:cover;background-image:url({{site.baseurl}}/{{ post.image }});">	
+                </div> -->
+                {% endif %}
+                {% endfor %}
+        
+            </div>
+        </div>
+    </div>
+
+    <!-- <center>
         <div class="row justify-content-center">
             <a href="{{site.baseurl}}/myrobots.html" class="btn btn-dark" style="text-align: center;">Check Out The Robots I Build!</a>
         </div>
-    </center>
-    <hr>
+    </center> -->
+    <!-- <hr> -->
+    <h4 class="font-weight-normal spanborder text-indigo" style="text-align: center"><span>BLOGS</span></h4>
+
     <div class="row justify-content-center">
         <div class="col-md-9">
             <p class="excerpt" style="text-align: justify">{{ site.authors.akshay.blog_intro }} </p>
@@ -107,3 +144,57 @@ description: "Portfolio Website for Akshay - A colllection of his projects, blog
 
   gtag('config', 'G-PXYGS1H5CV');
 </script>
+
+
+
+
+<!-- <head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    </head>
+    <body>
+        <img id="viewer" src="" height="200px"/>
+        <div id="info"> </div>
+    <script>
+    $(function() {
+    
+        var baseUrl = "assets/images/biped/";
+        var pictureIndex = 0;
+        var pictures = [];
+    
+        function getFiles() {
+            $.ajax(baseUrl).success(function(data) {
+                pictures = [];
+                $(data).find("a[href]").each(function() {
+                    var href = $(this).attr('href');
+                    if (href.indexOf('.jpg') > 0 || href.indexOf('.png') > 0 || href.indexOf('.jpeg') > 0) {
+                        pictures.push(href);
+                    }
+                });
+                console.log(pictures.length + " pictures loaded!");
+                changePicture(0);
+            });
+        }
+    
+        function changePicture(indexOffset) {
+            pictureIndex += indexOffset;
+            if (pictureIndex >= pictures.length) {
+                pictureIndex = 0;
+            } else if (pictureIndex < 0) {
+                pictureIndex = pictures.length - 1;
+            }
+            $('#viewer').attr('src', baseUrl + pictures[pictureIndex]);
+            $('#info').text((pictureIndex + 1) + "/" + pictures.length);
+        }
+    
+        getFiles();
+        $(document).keydown(function(e){
+            var left = -1, right = 1;
+            if (e.keyCode == 37) {
+               changePicture(left); return false;
+            } else if (e.keyCode == 39) {
+                changePicture(right); return false;
+            }
+        });
+    });
+    </script>
+    </body> -->
