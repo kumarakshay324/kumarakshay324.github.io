@@ -5,7 +5,7 @@ categories: [ Computer Vision ]
 tags: glossary
 ---
 
-Collection Of Computer vision and Image Processing terminology.
+Collection Of Computer vision and Image Processing Terminology
 
 <br>
 <hr>
