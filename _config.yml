@@ -24,23 +24,31 @@ authors:
       name:           Akshay
       site:           https://www.kumarakshay.me
       avatar:         assets/images/AKSHAY_KUMAR.jpg
-      bio:            Currently, I work as a Computer Vision Engineer at Invisible AI in San Francisco working on applied computer vision, edge-computing and baffling decision-making algorithms for industrial applications.
 
-      biol2:          This website is a collection of my current side projects, previous academic projects, work experience, skills, technical blogs and a lot more. 
+      intro1:         I am a Senior Computer Vision Engineer at Invisible AI in San Francisco.
+                      I am currently working on using <strong>non Deep Learning techniques<strong> to solve problems like object tracking and geometric scene representation for real time applications.
+                      My research and engineering interests include manipulation, mobile robot navigation, and computer vision.
+                      Lately, I have also been getting my hands dirty with machine learning for 3D computer vision.
+
+      bio:            Before joining Invisible AI, I worked as a Robotics Software Engineer at Modbot, a robotic manipulation start up in SF.
+                      I also did a short stint working part-time for Launchpad Build, a Pasadena-based company on their motion control SW stack for 4 axis gantry systems.
+                      I have a MS in Robotics Engineering from Worcester Polytechnic Institue in MA.
+
+      robot:          I love tinkering with HW mostly building robots, and writing SW to control them.
+
+      biol2:          This website is a collection of my side projects, previous academic projects, work experience, technical blogs and a lot more. 
 
       biop2:          I have previously worked as a Robotics Software Engineer at Modbot, San Francisco, CA. I have an MS in Robotics Engineering (2019) degree from Worcester Polytechnic Institute, MA, USA and a BTech. in Electrical Engineering (2017) degree from Malaviya National Institute Of Technology Jaipur, India.
                       My areas of current and previous work involves robotics software stack development in C++ and Python for modular industrial manipulator arms, robot control, dynamics, collision detection, navigation and deep learning. Other areas of research and interests include visual servoing, mobile robotics, SLAM, computer vision, deep learning and reinforcement learning.
 
-      intro1:         I am full-stack roboticist interested in working througout the spectrum of robotics and AI.
-                      My primary areas of research and interests include manipulation, mobile robot navigation, motion planning and computer vision, and SLAM among others.
 
       blog_intro:     These blogs are more of a collection of my personal learnings/understandings assimilated from various other websites, courses, projects and experience and less of polished blogs or tutorials!
                       <br><br> But, hey if I do anyone any good with these, I don't mind! You can hit me up to talk more about them! <hr>
 
-      invisibleai:    My current work at Invisible AI involves developing computationally efficient computer vision algorithms for industrial applications, deployed on the edge. It includes architecting and writing production-grade robust code that stiches together multiple deep learning,
-                      modules and advanced as well as conventional computer vision algorithms. The tech-stack includes C++, Python, Pytorch, CUDA and OpenCV among others.
+      invisibleai:    My current work at Invisible AI involves developing computationally efficient computer vision algorithms for real time industrial applications, deployed on the edge. It includes architecting and writing production-grade robust code that stiches together multiple deep learning,
+                      modules as well as conventional computer vision algorithms. The tech-stack includes C++, Python, Pytorch, CUDA and OpenCV among others.
 
-      modbot:         I have previously worked as a Robotics Software Engineer at Modbot, San Francisco, CA. During my time with Modbot Inc., I worked on developing dynamically configurable software for motion planning, control techniques, kinematics algorithms, system modeling, and identification for modular robot arms in a test-driven development setting.
+      modbot:         Before Invisible, I worked as a Robotics Software Engineer at Modbot, San Francisco, CA. During my time with Modbot Inc., I worked on developing dynamically configurable software for motion planning, control techniques, kinematics algorithms, system modeling, and identification for modular robot arms in a test-driven development setting.
                       Being the only on-site robotics specialist, I was involved in the complete software development cycle from design and POC through to the deployment of high-fidelity real-time robot software stack using C++ and Python in a Linux environment.
 
 
