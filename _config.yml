@@ -23,10 +23,10 @@ authors:
     akshay:
       name:           Akshay
       site:           https://www.kumarakshay.me
-      avatar:         assets/images/AKSHAY_KUMAR.jpg
+      avatar:         assets/images/AKSHAY_LATEST.jpg
 
       intro1:         I am a Senior Computer Vision Engineer at Invisible AI in San Francisco.
-                      I am currently working on using <strong>non Deep Learning techniques</strong> to solve problems like object tracking and geometric scene representation for real time applications.
+                      I am currently working <strong>non deep learning techniques</strong> for object tracking and geometric scene representation for real time applications.
                       My research and engineering interests include manipulation, mobile robot navigation, and computer vision.
                       Lately, I have also been getting my hands dirty with machine learning for 3D computer vision.
 
