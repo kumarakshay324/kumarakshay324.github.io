@@ -23,7 +23,7 @@ description: "Portfolio Website for Akshay - A colllection of his projects, blog
                     <p class="excerpt" style="text-align: justify">{{ site.authors.akshay.biol2 }} <a href="{{site.baseurl}}/author-akshay.html"> More about me</a> </p>
                 </div>
                 <div class="col-md-3 text-right">
-                    <img alt="{{ site.authors.akshay.name }}" src="{{site.baseurl}}/{{ site.authors.akshay.avatar }}" class="rounded-circle" height="140" width="140">
+                    <img alt="{{ site.authors.akshay.name }}" src="{{site.baseurl}}/{{ site.authors.akshay.avatar }}" class="rounded-circle" height="200" width="200">
                 </div>
             </div>
         </div>
@@ -35,7 +35,10 @@ description: "Portfolio Website for Akshay - A colllection of his projects, blog
 
             <!-- <h2 class="font-weight-bold" style="text-align: center">My Robots</h2> -->
             <h4 class="font-weight-normal spanborder text-indigo" style="text-align: center"><span>MY ROBOTS</span></h4>
-            <p class="excerpt" style="text-align: justify">{{ site.authors.akshay.robot }}</p>
+            <div class="row align-items-center mb-5">
+
+                <p class="excerpt" style="text-align: justify">{{ site.authors.akshay.robot }}</p>
+            </div>
 
             <div class="row justify-content-between">
                 {% for post in site.posts %} 
